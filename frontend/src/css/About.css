@@ -1,0 +1,174 @@
+/* body {
+    background-color: #f9f9fa
+} */
+
+
+.user-card-full {
+    overflow: hidden;
+}
+.inp1{
+    font-size:22px ;
+    height:40px ;
+     color:#E1AA74;
+    background-color: #FFE7C1;
+    width: 280px;
+    border: none;
+    border-radius: 20px;
+    padding-left: 10px;
+    margin-left: -10px;
+
+}
+
+
+.card2 {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    border: none;
+    /* margin-bottom: 30px; */
+    overflow: hidden;
+}
+
+.m-r-0 {
+    margin-right: 0px;
+}
+
+.m-l-0 {
+    margin-left: 0px;
+}
+
+.user-card-full .user-profile {
+    border-radius: 5px 0 0 5px;
+}
+
+.bg-c-lite-green {
+        background: -webkit-gradient(linear, left top, right top, from(#F4DFC8), to(#F4DFC8));
+    background: linear-gradient(to right, #F4DFC8, #F5E8C7);
+}
+.innerDiv{
+    width: 1300px;
+    overflow: hidden;
+    height: 73vh;
+}
+.user-profile {
+    padding: 20px 0;
+}
+
+.card-block {
+    /* padding: 1rem; */
+    height: 500px;
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 50%;
+    height: 180px;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+
+ 
+h6 {
+    font-size: 14px;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+@media only screen and (min-width: 1400px){
+p {
+    font-size: 14px;
+}
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #919aa3 !important;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+    display: inline-block;
+}
+
+.user-card-full .social-link li a {
+    font-size: 20px;
+    margin: 0 10px 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.label1{
+    position: absolute;
+    cursor: pointer;
+    padding-top: 3px;
+
+    
+}
+.label1:hover{
+    background-color:lightsteelblue;
+    border-radius: 50%;
+    height: 29px;
+    width: 90px;
+}
+.labelDiv{
+    /* margin: 0 160px; */
+    display: flex;
+    justify-content: center;
+    bottom: 50px;
+}

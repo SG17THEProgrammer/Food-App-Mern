@@ -1,0 +1,19 @@
+.carousel{
+    border-radius:100px ;
+    padding:4px 10px ;
+    /* padding-top: 3px; */
+    width: 200px;
+    margin-bottom: 20px;
+    background-color: #FAEED1;
+}
+div {
+    display: block;
+    position: relative;
+    font-weight: 500;
+}
+div i {
+    padding-top: 4px;
+    padding-right: 3px ;
+    position: absolute;
+    right: 0;
+}

@@ -1,0 +1,52 @@
+      .icon-hover-danger:hover {
+          border-color: #dc4c64 !important;
+          background-color: white !important;
+      }
+     
+
+      .mainCtn {
+        border: 1px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+         width: 93vw;
+        /* height: 550px;  */
+        overflow: hidden;
+        margin: 90px 40px 0px 40px;
+
+      }
+
+      .butn3{
+        margin-left: -40px;
+        margin-right: 50px;
+        width: 140px;
+        /* border: 1px solid red   ; */
+      
+      }
+      .btn3{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .text{
+        margin-top: 3px;
+        margin-right: 20px;
+      }
+
+      .about{
+        margin-left: 10px;
+      }
+      .input{
+        width: 200px;
+        height: 25px;
+        margin: 0 5px;
+        text-align: center;
+        padding-right: 2px;
+        border: 1px solid black;
+      }
+
+      input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

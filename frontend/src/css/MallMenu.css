@@ -1,0 +1,80 @@
+.outer{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    margin: 100px 30px 0 30px ;
+    border: 1px solid red ;
+
+
+}
+.lftdiv{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}
+
+.vertical{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.horizontal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rgtdiv{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid red ;
+    height: 600px;
+    margin-right: 120px;
+}
+
+.service{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 1px solid red ;
+    height: 100px;
+}
+.serDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 10px;
+    border: 1px solid red ;
+    width: 160px;
+
+}
+.icon{
+    top: 20px;
+    right: 5px;
+}
+
+.icondiv{
+    height: 50px;
+    width: 50px;
+    border: 1px solid red;
+    border-radius: 50%;
+    background-color: bisque;
+}
+
+.icondiv:hover{
+    background-color:darksalmon;
+}
+.star{
+    /* border: 1px solid red; */
+    margin: 20px 0 ;
+}
+.star1{
+    /* border: 1px solid red; */
+    position: relative;
+    bottom: 13px;
+}
+.spantxt{
+    top: 2px;
+    position: relative;
+}

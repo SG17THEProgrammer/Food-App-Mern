@@ -1,0 +1,24 @@
+.label{
+    height:20px;
+     width:40px;
+    position:absolute;
+    margin-top:-14px ;
+     font-size:7px ;
+    right:3px ;
+    border-radius:50%;
+}
+.pic{
+    margin-top:-45px ;
+    right:0px;
+    position:absolute;
+}
+.inp{
+    /* background-color:#B19470; */
+    height:20px;
+     width:40px;
+    margin-top:-20px; 
+     font-size:9px ;
+     right:9px; 
+    border-radius:50% ;
+    visibility:hidden;
+}
