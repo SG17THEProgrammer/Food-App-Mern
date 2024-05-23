@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/navbar'
 import { toast } from 'react-toastify'
 import { ImagetoBase64 } from '../utility/ImagetoBase64'
 import '../css/Admin.css'
+import { FaUpload } from 'react-icons/fa'
+import { useAuth } from '../components/Auth'
+import { useSelector } from 'react-redux'
 
 const Admin = () => {
+  const {user,getCartItems} =useAuth()
+  const productCartItem = useSelector((state) => state.product.cartItem);
 
   const [foodData, setFoodData] = useState({
     name: "",
@@ -75,10 +80,15 @@ const Admin = () => {
       toast.error("Enter all required Fields")
     }
   }
+  useEffect(()=>{
+    getCartItems();
+  },[user,productCartItem])
+
   return (
     <>
       <Navbar></Navbar>
-      <div style={{ display: "flex", justifyContent: "center",marginTop:"100px" }}>
+      <h2 style={{ margin:"90px 0 20px 40px" , textAlign:"center" ,textDecoration:"underline" ,fontFamily:"cursive"}}>Create Product</h2>
+      <div style={{ display: "flex", justifyContent: "center",marginTop:"0px" }}>
         <div className="topDiv">
           <div className='leftDiv'>
             <img src="images/bg-heading-02.jpg" alt="error" className='image3' />
@@ -89,7 +99,18 @@ const Admin = () => {
                 <li className='listitem' style={{marginTop:"-5px"}}><label htmlFor='name'>Name</label>
                   <input type="text" name="name" className='dropdown' onChange={handleOnChange} required value={foodData.name} /></li>
                 <li className='listitem' style={{marginTop:"-5px"}}>
+                <label htmlFor='database'>Item Type</label>
+                  <select name="database" id="database" className='dropdown' value={foodData.database} required onChange={handleOnChange}>
+                    <option value="other">Select Item Type</option>
+                    <option value="fooditem">FoodItem</option>
+                    <option value="mallitem">MallItem</option>
+                  </select>
+                </li>
+
+                <li className='listitem' style={{marginTop:"-5px"}}>
                   <label htmlFor='category'>Category</label>
+
+{foodData.database?foodData.database && foodData.database==='mallitem'?
                   <select className='dropdown' id='category' name='category' required onChange={handleOnChange}
                     value={foodData.category}>
                     <option value="other" >Select Category</option>
@@ -103,22 +124,34 @@ const Admin = () => {
                     <option value="Burger">Burger</option>
                     <option value="Paneer">Paneer</option>
                     <option value="Sandwich">Sandwich</option>
-                  </select>
-                </li>
-                <li className='listitem' style={{marginTop:"-5px"}}>
-                <label htmlFor='database'>Database</label>
-                  <select name="database" id="database" className='dropdown' value={foodData.database} required onChange={handleOnChange}>
-                    <option value="other">Select Database</option>
-                    <option value="fooditem">FoodItem</option>
-                    <option value="mallitem">MallItem</option>
-                  </select>
+                  </select>:
+                  <select className='dropdown' id='category' name='category' required onChange={handleOnChange}
+                    value={foodData.category}>
+                    <option value="other" >Select Category</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Snack">Snack</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="NightMunchies">Night Munchies</option>
+                    <option value="Rice">Rice</option>
+                  </select>:<select className='dropdown' id='category' name='category' required onChange={handleOnChange}
+                    value={foodData.category}>
+                    {!foodData.database==null?<option value="other" >Select Database</option>:
+                    <option value="other" >Choose Database First</option>}
+                    </select>}
+
+
+
                 </li>
                 <li className='listitem' style={{marginTop:"-5px"}}>
                   <label htmlFor='image'>Image
                     <div className='outerimgdiv'>
                       {
                         foodData.image ? <div className='imgDiv1'>
-                          <img src={foodData.image} className='fitimage' />              </div>
+                          <img src={foodData.image} className='fitimage' />              
+                      <FaUpload style={{position:"absolute",left:"45%",bottom:"35%" , fontSize:"25px",cursor:"pointer",opacity:"0.4" }} title='Upload image'></FaUpload>
+                          </div>
                           :
                           <div className='imgDiv1'>
                             <img width="80" height="80" src="https://plus.unsplash.com/premium_photo-1677093905912-a653c6301260?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="add-image" className='image2' />
@@ -143,7 +176,7 @@ const Admin = () => {
                   <label htmlFor='description'>Description</label>
                   <textarea value={foodData.description} style={{ height: "85px" }} name='description' required onChange={handleOnChange} className='dropdown'></textarea>            </li>
                 <li className='listitem'>
-                  <button className='dropdown btn' style={{ marginTop: "0px", textAlign: "center" }}>Save</button>            </li>
+                  <button className='dropdown btn' style={{ marginTop: "0px", marginBottom:"20px", textAlign: "center" }}>Save</button>            </li>
               </div>
             </ul>
           </form>

@@ -6,7 +6,8 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState("");
     const [team , setTeam] = useState([]);
-
+    const [allUsers , setAllUsers] = useState();
+    const [cartItems,setCartItems] =useState()
 
 
     const storeTokensInLS = (serverToken) => {
@@ -15,41 +16,38 @@ export const AuthProvider = ({ children }) => {
       };
 
       
-const saveCartItemsToLS=(productCartItem)=> {
-    localStorage.setItem('cart', JSON.stringify(productCartItem));
+const saveCartItemsToLS=(productCartItem,user)=> {
+    user?localStorage.setItem(user, JSON.stringify(productCartItem)):"";
 }
+const getCartItems = () => {
+  if (user && user._id) {
+    const storedItems = localStorage.getItem(`${user._id}`);
+   storedItems ? setCartItems(JSON.parse(storedItems)): [];
+  }
+};
 
-// Function to retrieve cart items from local storage
-const getCartItemsFromLocalStorage=()=> {
-  let cartItemsJSON = localStorage.getItem('cart');
-  if (cartItemsJSON == []){
-    return [];
-  }
-  else{
-  return cartItemsJSON ? JSON.parse(cartItemsJSON) :[];
-  }
-}
+
+
+
 
 
 
 
       let isLoggedIn = !!token; //token hai true hojayega isLoggedIn agar nhi hai toh isLoggedIn false ho jayega
-   console.log(token);
+  //  console.log(token);
    console.log("isLoggedin ", isLoggedIn);  
  
    const LogoutUser = () => {
      setToken("");
-
      localStorage.removeItem("token");
-     localStorage.removeItem("cart");
    };
 
     // function to check the user Authentication or not
   const userAuthentication = async () => {
 
     if (isLoggedIn){
-    try {
-      const response = await fetch(`http://localhost:8001/user`, {
+      try {
+        const response = await fetch(`http://localhost:8001/user`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -91,16 +89,43 @@ const getCartItemsFromLocalStorage=()=> {
       console.log(error);
     }
   }
+  const getallUsers = async () =>{
+    try {
+      const response = await fetch(`http://localhost:8001/allusers`, {
+        method: "GET",
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+
+        // our main goal is to get the user data 👇
+        setAllUsers(data.allUsers);
+      } else {
+        console.error("Error fetching user data");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
+  
+  
+  
 
   
   useEffect(() => {
+    getallUsers()
+    getCartItems();
     userAuthentication();
     getTeam();
   }, []);
 
     return (
         <>
-        <AuthContext.Provider value={{ isLoggedIn, storeTokensInLS, LogoutUser ,user ,team,saveCartItemsToLS,getCartItemsFromLocalStorage }}>
+        <AuthContext.Provider value={{ isLoggedIn, storeTokensInLS, LogoutUser ,user ,team,saveCartItemsToLS,cartItems,getCartItems,allUsers}}>
           {children}
         </AuthContext.Provider>
         </>

@@ -2,23 +2,28 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import "../css/FoodMall.css"
 import FormatPrice from '../Helpers/FormatPrice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addCartItem } from '../redux/productSlide'
+import { useAuth } from './Auth'
+import { toast } from 'react-toastify'
 
 
 const ListView = ({ id, name, image, category, price, rating, description }) => {
-
+  const {user,isLoggedIn} = useAuth()
     const dispatch = useDispatch()
 
     const handleAddCartProduct = (e) => {
-      dispatch(addCartItem({
+      isLoggedIn?dispatch(addCartItem({
         _id : id,
         name : name,
         price : price,
         category : category,
         image : image  ,
         rating:rating
-      }))}
+      })):toast.error("You must be logged in")}
+      const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
+      const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
+console.log(productDisplay)
 
   return (
     <>
@@ -45,7 +50,9 @@ const ListView = ({ id, name, image, category, price, rating, description }) => 
                         <NavLink to='/cart'><button className='btn' >Go to Cart</button> </NavLink> &nbsp;
                         <NavLink to={`/mallmenu/${id}`}>
                         <button className='btn'>Read More</button>
-                        </NavLink>
+                        </NavLink>&nbsp;&nbsp;
+                        {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' >Edit Product</button></NavLink>:""}
+
                       </div>
                     </div>
                   </div>

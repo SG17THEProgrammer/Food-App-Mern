@@ -8,11 +8,12 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import {ImagetoBase64} from '../utility/ImagetoBase64'
 import { toast } from 'react-toastify'
 import { useAuth } from '../components/Auth'
+import Authorize from '../components/Authorize'
 
 const Register = () => {
 
   const navigate = useNavigate()
-  const {storeTokensInLS} = useAuth() 
+  const {storeTokensInLS,isLoggedIn} = useAuth() 
 
 
   const [registerUser , setregisterUser] =useState({
@@ -67,11 +68,12 @@ const Register = () => {
         
         // setregisterUser({ name:"", email: "", phone: "", password: "",image:""});
         navigate('/home')
-        toast.success("Registration successful");  
+        toast.success(resData.message[0]);  
+        window.location.reload();
         console.log(resData);
       } else {
         // toast.error(resData.extraDetails?resData.extraDetails:resData.message)
-        toast.error("No response");  
+        toast.error(resData.message[0]);  
 
         console.log("error inside response ", "error");
       }
@@ -106,7 +108,7 @@ const Register = () => {
 
   return (
 <>
-<Navbar></Navbar>
+{!isLoggedIn?<><Navbar></Navbar>
 <div className="container" style={{marginTop:"110px" ,height:"490px"}}>
         <div className="cover">
           <div className="front">
@@ -182,7 +184,7 @@ const Register = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div></>:<Authorize></Authorize>}
     </>
 		  )
 }

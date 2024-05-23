@@ -4,30 +4,33 @@ import {NavLink}   from 'react-router-dom'
 import '../css/Slider.css'
 import { addCartItem } from '../redux/productSlide'
 import FormatPrice from '../Helpers/FormatPrice'
+import { useAuth } from './Auth'
+import { toast } from 'react-toastify'
 
 const CardFeature = ({ image, name, price, category, id ,rating}) => {
   // const actualprice =price.props.price
   
     const productCartItem = useSelector((state) => state.product.cartItem);
     // console.log(productCartItem)  
-
+const {user,saveCartItemsToLS,isLoggedIn} = useAuth()
+// console.log(user)
 
 
   const dispatch = useDispatch()
 
   const handleAddCartProduct = () => {
-    dispatch(addCartItem({
+    isLoggedIn?dispatch(addCartItem({
       _id : id,
       name : name,
       price : price,
       category : category,
       image : image,  
       rating: rating
-    }))
+    })):toast.error("Pls login to add cart")
   }
   
   useEffect(()=>{
-    localStorage.setItem('cart', JSON.stringify(productCartItem));
+    user?saveCartItemsToLS(productCartItem,user._id):""
   },[productCartItem])
 
 

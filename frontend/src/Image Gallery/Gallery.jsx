@@ -7,9 +7,11 @@ import './style.css'
 import Category from './Category'
 import { useSelector } from 'react-redux'
 import FormatPrice from '../Helpers/FormatPrice'
+import { useAuth } from '../components/Auth'
+import Pagination from '../components/Pagination'
 
 const Gallery = ({ heading }) => {
-    
+    const [page , setPage] = useState(1)
     
     const productData = useSelector((state) => state.product.productList)
     // console.log("hi", productData)
@@ -52,9 +54,7 @@ const Gallery = ({ heading }) => {
         setItems(updtdItems);
     }
 
-    useEffect(()=>{
-        localStorage.setItem('cart', JSON.stringify(productCartItem));
-      },[productCartItem])
+   
     
     return (
         <>
@@ -65,7 +65,7 @@ const Gallery = ({ heading }) => {
           
 
             <div className='mainDiv'>              
-            {items==0?productData.map((elem)=>{
+            {items==0?productData.slice(page*5-5,page*5).map((elem)=>{
                 return(
                 <Card
                  key={elem._id}
@@ -77,7 +77,8 @@ const Gallery = ({ heading }) => {
                     rating={elem.rating}
                     />
                 )
-            }):items.map((elem)=>{
+            })
+            :items.slice(page*5-5,page*5).map((elem)=>{
                 return(
                 <Card
                  key={elem._id}
@@ -89,8 +90,10 @@ const Gallery = ({ heading }) => {
                     rating={elem.rating}
                     />
                 )
-            })}
+            })
+            }
             </div>
+            <Pagination page={page} setPage={setPage} items={items.length}></Pagination>
 
             {/* <div className='mainDiv'>
             {

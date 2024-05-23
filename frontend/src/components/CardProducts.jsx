@@ -4,20 +4,21 @@ import { NavLink } from 'react-router-dom'
 import { deleteCartItem ,increaseQty,decreaseQty} from '../redux/productSlide'
 import '../css/Cart.css'
 import FormatPrice from '../Helpers/FormatPrice'
+import { useAuth } from './Auth'
 
 const CardProducts = ({qty,total,price,id,name,category,image}) => {
     const dispatch = useDispatch()
   //   console.log(price.props.price)
   // const actualprice =price.props.price;
-console.log(total)
-
+// console.log(total)
+  const {user} = useAuth();
 
 
 
 
     
     const priceInNumber = parseFloat(price)
-    console.log(priceInNumber)
+    // console.log(priceInNumber)
     // const priceTill3Dec = priceInNumber.toFixed(2)
     // // console.log(priceNo)
     // console.log(typeof(priceInNumber))
@@ -46,7 +47,7 @@ console.log(total)
                         <button  className='butn btn'  
                         // style={{margin:"-2px 0 0 -18px" ,padding:"1px"}}
                         //  onClick={minus}
-                        onClick={()=>dispatch(decreaseQty(id))}
+                        onClick={()=>dispatch(decreaseQty([id,user._id]))}
                          >➖</button>
 
                         <span  className='input' 
@@ -58,7 +59,7 @@ console.log(total)
                         <button className='butn btn'
                         //  style={{padding:"1px"}} 
                         // onClick={alert("hi")}
-                        onClick={()=>dispatch(increaseQty(id))}
+                        onClick={()=>dispatch(increaseQty([id,user._id]))}
                         
                         
                 >➕</button>
@@ -77,7 +78,7 @@ console.log(total)
                     </div>
                     <div className="col-lg col-sm-6 d-flex  justify-content-xl-end ">
                       <div className="float-md-end">
-                        <button  className="btn btn-light border text-danger icon-hover-danger" onClick={()=>dispatch(deleteCartItem(id))}> Remove</button>
+                        <button  className="btn btn-light border text-danger icon-hover-danger" onClick={()=>dispatch(deleteCartItem([id,user._id]))}> Remove</button>
                       </div>
                     </div>
                   </div>

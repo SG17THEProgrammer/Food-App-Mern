@@ -1,0 +1,183 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans|Quicksand:400,700';
+
+
+.h2, .h3 {
+  font-size: 16px;
+	letter-spacing: -1px;
+  line-height: 20px;
+}
+
+.h2 {
+    margin-top: 8px;
+    margin-left: -15px;
+    text-decoration: underline;
+	color: #747474;
+	text-align: center;
+}
+
+.h3 {
+	color: #032942;
+	text-align: right;
+}
+
+
+
+.box {
+  width: 330px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          margin-top: 350px;
+}
+
+.box-form {
+  width: 320px;
+  position: relative;
+  z-index: 1;
+  margin-left: -110px;
+
+}
+
+
+.box-login-tab {
+    background-color: #f8f8c6;
+
+	width: 50%;
+	height: 40px;
+	position: relative;
+	float: left;
+	z-index: 1;
+  
+  -webkit-border-radius: 6px 6px 0 0;
+     -moz-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
+  
+	-webkit-transform: perspective(5px) rotateX(0.93deg) translateZ(-1px);
+	        transform: perspective(5px) rotateX(0.93deg) translateZ(-1px);
+	-webkit-transform-origin: 0 0;
+	        transform-origin: 0 0;
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
+	
+	-webkit-box-shadow: 15px -15px 30px rgba(0,0,0,0.32);
+     -moz-box-shadow: 15px -15px 30px rgba(0,0,0,0.32);
+          box-shadow: 15px -15px 30px rgba(0,0,0,0.32);
+}
+
+.box-login-title {
+	width: 35%;
+	height: 40px;
+	position: absolute;
+	float: left;
+	z-index: 2;
+}
+
+.box-login {
+  position: relative;
+  top: -4px;
+  width: 30vw;
+  background: wheat;
+  text-align: center;
+  overflow: hidden;
+  z-index: 2;
+  
+  -webkit-border-top-right-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  -moz-border-radius-bottomright: 6px;
+   border-top-right-radius: 6px;
+   border-bottom-left-radius: 6px;
+   border-bottom-right-radius: 6px;
+  
+  -webkit-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
+     -moz-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
+          box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
+}
+
+.box-info {
+	width: 260px;
+	top: 55px;
+    height: 290px;
+  position: absolute;
+	right: -55px;
+	background-color:bisque;
+	border: 1px solid rgba(255,255,255,0.2);
+	z-index: 0;
+	
+	-webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+    
+    -webkit-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
+    -moz-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
+    box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
+}
+
+
+
+
+
+
+
+
+.fieldset-body {
+    display: table;
+}
+
+.fieldset-body p {
+    width: 100%;
+    display: inline-table;
+    padding: 5px 20px;
+    margin-bottom:2px;
+}
+
+.label3 {
+	float: left;
+  width: 100%;
+	top: 0px;
+	color: #032942;
+	font-size: 13px;
+	font-weight: 700;
+	text-align: left;
+	line-height: 1.5;
+}
+
+
+.input1 {
+    width: 100%;
+    height: 32px;
+    padding: 0px 10px;
+    background-color: rgba(0,0,0,0.03);
+    border: none;
+    display: inline;
+    color: #303030;
+    font-size: 16px;
+    font-weight: 400;
+    float: left;
+    
+    -webkit-box-shadow: inset 1px 1px 0px rgba(0,0,0,0.05), 1px 1px 0px rgba(255,255,255,1);
+    -moz-box-shadow: inset 1px 1px 0px rgba(0,0,0,0.05), 1px 1px 0px rgba(255,255,255,1);
+    box-shadow: inset 1px 1px 0px rgba(0,0,0,0.05), 1px 1px 0px rgba(255,255,255,1);
+}
+
+.input1:focus , #do_login{
+    background-color: #f8f8c6;
+    outline: none;
+    width: 100%;
+}
+
+
+#do_login:hover  {
+	background-color: #df405a;
+  /* border: 1px #df405a solid; */
+}
+
+#do_login:focus ,input{
+	outline: none;
+  border: none;
+  padding: 5px;
+}

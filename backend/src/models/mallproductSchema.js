@@ -16,7 +16,9 @@ const mallitemsSchema = mongoose.Schema({
     },
     price: {
         type: String,
-        required: true
+        required: true,
+        trim:true
+
     },
     description: {
         type: String,

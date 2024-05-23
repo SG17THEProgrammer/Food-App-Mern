@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import FormatPrice from '../Helpers/FormatPrice';
 import '../css/MallMenu.css'
@@ -8,12 +8,19 @@ import Star from '../Helpers/Star';
 import Footer from '../components/Footer';
 import { addCartItem } from '../redux/productSlide';
 import MallMenuOtherProducts from '../components/MallMenuOtherProducts';
+import { useAuth } from '../components/Auth';
+import { toast } from 'react-toastify';
+import Review from '../components/Review';
+import Comments from '../components/Comments';
 
 
 const MallMenu = () => {
 
 
   const { id } = useParams();
+  const {user,getCartItems,isLoggedIn} =useAuth()
+  const productCartItem = useSelector((state) => state.product.cartItem);
+
   console.log(id)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -29,20 +36,23 @@ const MallMenu = () => {
   //   }; 
 
   const handleBuy = () => {
-    dispatch(addCartItem(productDisplay))
-    setTimeout(() => {
+    isLoggedIn? <>{dispatch(addCartItem(productDisplay))}
+    {setTimeout(() => {
       navigate("/cart")
-    }, "1000");
+    }, "1000")}</>:toast.error("You must be logged in")
   }
 
   let image = `https://source.unsplash.com/random/400x500?${productDisplay.name}`;
   const [mainImage, setMainImage] = useState(`${productDisplay.image}`);
 
-
+  useEffect(()=>{
+    getCartItems();
+  },[user,productCartItem])
 
   return (
 
     <>
+    <Review productId={id} userId={user._id}></Review>
       <Navbar></Navbar>
       <div className="outer">
         <div className="lftdiv">
@@ -56,6 +66,7 @@ const MallMenu = () => {
             <img src={`${mainImage}`} alt="error" className='img1' />
           </div>
         </div>
+        
         <div className="rgtdiv">
           <h3>{productDisplay.name}</h3>
           <h5>{productDisplay.category}</h5>
@@ -98,8 +109,14 @@ const MallMenu = () => {
 
           </div>
           <br />
-          <button className='butn' style={{ width: "100px" }} onClick={handleBuy}>Buy Now</button>
+          <span>
+          <button className='butn' style={{ width: "100px" , marginRight:"20px" }} onClick={handleBuy}>Buy Now</button>
+          {user.email=="shray@gmail.com"?<NavLink to={`/edit/${productDisplay._id}`}><button className='butn' style={{ width: "120px" }} >Edit Product</button></NavLink>:""}
+          </span>
         </div>
+      </div>
+      <div className='comment'>
+      <Comments productId={id}></Comments>
       </div>
 
     <MallMenuOtherProducts heading={"Other Mall Products"}></MallMenuOtherProducts>

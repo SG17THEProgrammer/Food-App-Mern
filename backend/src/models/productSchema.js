@@ -16,7 +16,8 @@ const productSchema = mongoose.Schema({
     },
     price: {
         type: String,
-        required: true
+        required: true,
+        trim:true
     },
     description: {
         type: String,
@@ -24,7 +25,9 @@ const productSchema = mongoose.Schema({
     },
     rating:{
         type: String,
-        required: true
+        required: true,
+        trim:true
+
     }
 });
 const Products = mongoose.model("Products", productSchema)

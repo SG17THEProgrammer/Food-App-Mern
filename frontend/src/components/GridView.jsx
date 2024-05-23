@@ -2,28 +2,32 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import FormatPrice from '../Helpers/FormatPrice'
 import "../css/FoodMall.css"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addCartItem } from '../redux/productSlide'
+import { useAuth } from './Auth'
+import { toast } from 'react-toastify'
 
 
 const GridView = ({ name, category, price, rating, image, id }) => {
-    console.log(id)
+    const{user,isLoggedIn} = useAuth()
     const dispatch = useDispatch()
 
     const handleAddCartProduct = (e) => {
-        dispatch(addCartItem({
+        isLoggedIn?dispatch(addCartItem({
             _id: id,
             name: name,
             price: price,
             category: category,
             image: image,
             rating: rating
-        }))
+        })):toast.error("You must be logged in")
     }
-
+    const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
+    const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
+// console.log(productDisplay)
     return (
         <>
-            <div className="card mb-4  " key={id} style={{ maxWidth: '245px', height: "300px", boxShadow: '10px 10px 8px #888888', margin: "10px 0 0px 20px", backgroundColor: "#FFF7D4" }}>
+            <div className="card mb-4  " key={id} style={{ maxWidth: '245px', height: "340px", boxShadow: '10px 10px 8px #888888', margin: "10px 0 0px 20px", backgroundColor: "#FFF7D4" }}>
 
                 <div className="col-md-14 ctn">
                     <NavLink style={{ textDecoration: "none", color: "black" }}
@@ -47,7 +51,7 @@ const GridView = ({ name, category, price, rating, image, id }) => {
                         </small></p>
 
 
-                        <h5 style={{ position: "absolute", left: "160px", bottom: "50px", fontSize: "16px" }}> <i className="fa-solid fa-star fa-xs" style={{ margin: "5px 25px 0 0", color: "#BF3131" }}></i>
+                        <h5 style={{ position: "absolute", left: "160px", bottom: "80px", fontSize: "16px" }}> <i className="fa-solid fa-star fa-xs" style={{ margin: "5px 25px 0 0", color: "#BF3131" }}></i>
                             {rating}</h5>
 
 
@@ -55,6 +59,8 @@ const GridView = ({ name, category, price, rating, image, id }) => {
                             onClick={handleAddCartProduct}>Add to Cart</button>
 
                         <NavLink to="/cart"> <button className='btn' style={{ marginLeft: "4px", marginTop: "-7px", position: "absolute" }}>Go to Cart</button></NavLink>
+                        {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{marginLeft:"-5px",marginTop:"5px"}} >Edit Product</button></NavLink>:""}
+                       
                         {/* <p style={{ fontSize: '12px', paddingTop: '20px', bottom: '0px' }}>Prices may vary for different occasions</p> */}
                     </div>
                 </div>

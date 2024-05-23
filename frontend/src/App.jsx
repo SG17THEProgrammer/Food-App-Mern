@@ -15,10 +15,15 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import Success from './pages/Success'
 import Failed from './pages/Failed'
+import Error from './pages/Error'
 import Logout from './pages/Logout'
 import AboutUs from './pages/AboutUs'
 import FoodMall from './pages/FoodMall'
 import MallMenu from './pages/MallMenu'
+import EditProduct from './pages/EditProduct'
+// import Orders from './pages/Orders'
+import GoToTopButton from './components/GoToTopButton'
+import EditUser from './pages/EditUser'
 
 const App = () => {
 
@@ -45,6 +50,7 @@ const App = () => {
   
   return (
     <>
+    <GoToTopButton></GoToTopButton>
       <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home></Home>}></Route>
@@ -57,13 +63,17 @@ const App = () => {
             {/* <Route path='mallmenu' element={<MallMenu></MallMenu>}></Route> */}
             <Route path='/contact' element={<Contact></Contact>}></Route>
             <Route path='/cart' element={<Cart></Cart>}></Route>
+            {/* <Route path='/orders' element={<Orders></Orders>}></Route> */}
             <Route path='/foodmall' element={<FoodMall></FoodMall>}></Route>
             <Route path='/profile' element={<Profile></Profile>}></Route>
             <Route path='/login' element={<Login></Login>}></Route>
             <Route path='/register' element={<Register></Register>}></Route>
             <Route path='/logout' element={<Logout></Logout>}></Route>
+            <Route path='/edit/:id' element={<EditProduct></EditProduct>}></Route>
+            <Route path='/editUser/:id' element={<EditUser></EditUser>}></Route>
             <Route path='/success' element={<Success></Success>}></Route>
             <Route path='/failed' element={<Failed></Failed>}></Route>
+            <Route path='*' element={<Error></Error>}></Route>
           </Routes>
 
       </BrowserRouter>

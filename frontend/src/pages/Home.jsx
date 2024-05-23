@@ -1,20 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/navbar'
 import '../css/Home.css'
 import SlidingButton from '../components/SlidingButton'
 import Gallery from '../Image Gallery/Gallery'
 import Slider from '../components/Slider'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../components/Footer'
 import { NavLink } from 'react-router-dom'
 import FormatPrice from '../Helpers/FormatPrice'
+import { fetchCartItems } from '../redux/productSlide'
+import { useAuth } from '../components/Auth'
 // import Menu from './Menu'
 const Home = () => {
 
+  const {user ,getCartItems} = useAuth()
+  const productCartItem = useSelector((state) => state.product.cartItem);
+  console.log(productCartItem) 
+  
   const productData = useSelector((state) => state.product.productList)
   // console.log(productData)
-
   const homeProductList = productData.slice(0, 6)
+
+
+  useEffect(()=>{
+  getCartItems();
+},[user,productCartItem])
 
 
   return (

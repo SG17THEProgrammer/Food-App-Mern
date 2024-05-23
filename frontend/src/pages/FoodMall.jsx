@@ -11,9 +11,10 @@ import { NavLink } from 'react-router-dom';
 import Footer from '../components/Footer';
 import GridView from '../components/GridView';
 import ListView from '../components/ListView';
+import { useAuth } from '../components/Auth';
 
 const FoodMall = () => {
-
+  const {saveCartItemsToLS,user,getCartItems} = useAuth()
   const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
   console.log(mallproductData)
 
@@ -48,9 +49,7 @@ const FoodMall = () => {
     setItems(updtdItems);
   }
 
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(productCartItem));
-  }, [productCartItem])
+ 
 
 
   const [search, setSearch] = useState({
@@ -163,6 +162,19 @@ const FoodMall = () => {
     window.location.reload(false);
   }
 
+    useEffect(()=>{
+    user?saveCartItemsToLS(productCartItem,user._id):""
+  },[productCartItem])
+
+  useEffect(()=>{
+    getCartItems();
+  },[user,productCartItem])
+
+  const [visibleProducts, setVisibleProducts] = useState(8);
+
+  const loadMore = () => {
+    setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 8);
+  };
  
   return (
     <>
@@ -195,7 +207,7 @@ const FoodMall = () => {
           <br /><br />
           <button className='butn' style={{ backgroundColor: "#FF407D" }} onClick={refreshPage}> Clear Filters</button>
           <br /><br />
-          <NavLink to="/mallmenu/65eaf51419af9568d7dbad7b">
+          <NavLink to="/mallmenu/65eff59f41232f736a963d5c">
           <button className='butn blinking-button blink' > Mall Menu<sup className='sup'>New</sup></button>
           </NavLink>
 
@@ -205,10 +217,10 @@ const FoodMall = () => {
           <div className="righttopdiv">
             <div>
 
-              <button className='active btn' onClick={toggleLayout}>        <IoGrid />
-              </button>
-              <button className='active btn' onClick={toggleLayout}>        <HiViewList />
-              </button>
+              <a className={grid?'active btn':"btn"} onClick={toggleLayout}>        <IoGrid />
+              </a>
+              <a className={!grid?'active btn':"btn"} onClick={toggleLayout}>        <HiViewList />
+              </a>
 
             </div>
             {items.length === 0 ? <p style={{ fontSize: "20px" }}>{mallproductData.length} total products</p> :
@@ -235,7 +247,7 @@ const FoodMall = () => {
                 grid ?
                   <div className="gridDiv">
                     {
-                      mallproductData.map((val) => {
+                      mallproductData.slice(0, visibleProducts).map((val) => {
                         const { id, name, image, category, price, _id, rating } = val;
             
                         return (
@@ -253,7 +265,7 @@ const FoodMall = () => {
                       )}
                   </div>
                   :
-                  mallproductData.map((val) => {
+                  mallproductData.slice(0, visibleProducts).map((val) => {
                     const { id, name, image, category, price, _id, rating, description } = val;
                     return (
                       <ListView
@@ -274,7 +286,7 @@ const FoodMall = () => {
                 grid ?
                   <div className="gridDiv">
                     {
-                      items.map((val) => {
+                      items.slice(0, visibleProducts).map((val) => {
                         const { id, name, image, category, price, _id, rating } = val;
                         return (
                           <GridView
@@ -290,7 +302,7 @@ const FoodMall = () => {
                       })}
                   </div>
                   :
-                  items.map((val) => {
+                  items.slice(0, visibleProducts).map((val) => {
                     const { id, name, image, category, price, _id, rating, description } = val;
                     return (
                       <ListView
@@ -308,11 +320,13 @@ const FoodMall = () => {
                   })
             }
           </div>
-
-
         </div>
 
       </div>
+          {  !items.length?<> {visibleProducts < mallproductData.length && (
+        <button className='btn' style={{position:"absolute",left:"50%",marginTop:"50px",fontSize:"20px"}} onClick={loadMore}>Load More....</button>
+      )} </> :<> {visibleProducts < items.length && (
+        <button className='btn' style={{position:"absolute",left:"50%",marginTop:"50px",fontSize:"20px"}} onClick={loadMore}>Load More....</button>)}</>   }
       <Footer></Footer>
     </>
   )

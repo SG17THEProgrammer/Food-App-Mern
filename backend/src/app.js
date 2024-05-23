@@ -5,12 +5,13 @@ const cors = require("cors");
 const routes  = require('../src/Routes/route')
 const bodyParser = require('body-parser')
 
-const corsOptions = {
-    origin: "http://localhost:5173",
-    methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
-    credentials: true,
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//     origin: "http://localhost:5173",
+//     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+//     credentials: true,
+// };
+app.use(cors());
+// app.use(cors(corsOptions));
 
 // app.use(express.json());
 // app.use(express.urlencoded({extended:false}));

@@ -12,10 +12,10 @@ const AboutUs = () => {
     <Navbar></Navbar>
     <div className='outerDiv'>
         <div className="about-section">
-        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='img1' alt="error" />
- <p className='para1 shine'>Our app is a digital platform designed to facilitate the ordering, delivery of food. <br /> It  has become increasingly popular due to its convenience and accessibility. <br />Users can  browse menus, place orders, and make payments all   from their smartphones or computers. <br />
+        <div className='imgDiv3'><img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='img1' alt="error" /></div>
+ <div className='paraDiv2' style={{overflow:"scroll"}}  > <p className='para1 shine'>Our app is a digital platform designed to facilitate the ordering, delivery of food. <br /> It  has become increasingly popular due to its convenience and accessibility. <br />Users can  browse menus, place orders, and make payments all   from their smartphones or computers. <br />
  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis aperiam quaerat quas, iste labore enim. Optio quis aut mollitia expedita
-</p>
+</p></div>
 </div>
 
 <h2 style={{textAlign:"center" ,marginTop:"50px" ,textDecoration:"underline"}}>Our Team</h2>

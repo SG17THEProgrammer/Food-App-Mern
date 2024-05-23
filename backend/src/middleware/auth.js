@@ -3,7 +3,7 @@ const User = require("../models/userSchema");
 
 const auth = async (req, res, next) => {
   const token = req.header("Authorization");
-  console.log(token);
+  // console.log(token);
   if (!token) { 
     // If you attempt to use an expired token, you'll receive a "401 Unauthorized HTTP" response.
     return res

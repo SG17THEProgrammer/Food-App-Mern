@@ -7,12 +7,15 @@ import {  toast } from 'react-toastify';
 // import { useDispatch, useSelector } from 'react-redux'
 // import { loginRedux } from '../redux/userSlice'
 import { useAuth } from '../components/Auth';
+import Authorize from '../components/Authorize';
+import Loader from '../components/Loader';
 
 
 const Login = () => {
 
   const navigate = useNavigate()
-  const {storeTokensInLS} = useAuth() 
+  const [isLoading ,setIsLoading] = useState(false)
+  const {storeTokensInLS,isLoggedIn} = useAuth() 
 
 
   const [loginUser , setloginUser] =useState({
@@ -50,6 +53,7 @@ const Login = () => {
     console.log( JSON.stringify(loginUser));
 
     try {
+      setIsLoading(true);
       const response = await fetch(`http://localhost:8001/login`,{
         method: "POST",
         headers: {
@@ -57,11 +61,10 @@ const Login = () => {
         },
         body: JSON.stringify(loginUser),
       });
-      console.log(1)
       console.log("response data : ", response);
       
       const resData = await response.json();
-
+      console.log(1)
       console.log(resData); 
 
       if (response.ok) {
@@ -72,23 +75,32 @@ const Login = () => {
         //storing tokens in LS in simple way
         // localStorage.setItem('token',resData.token);
         
-        // setloginUser({ email: "",password: "" });
-        navigate('/home')
-        // dispatch(loginRedux(resData))
-        toast.success("login successfully");  
+        setTimeout(() =>{
+          setloginUser({ email: "",password: "" });
+          navigate('/home')
+          setIsLoading(false);
+          // dispatch(loginRedux(resData))
+          toast.success(resData.message[0]);
+          window.location.reload();
+        },2000)
       } else {
         // toast.error(`${resData.extraDetails?resData.extraDetails:resData.msg}`)
-        console.log("error inside response ", "error");
+        toast.error(resData.message[0]);
+        setIsLoading(false);
+
+        // console.log("error inside response ", "error");
       }
     } catch (error) {
       toast.error('Error fetching Api')
+      setIsLoading(false);
+
     }
   };
 
   
   return (
     <>
-    <Navbar></Navbar>
+   { !isLoggedIn?<><Navbar></Navbar>
       <div className="container">
         <input type="checkbox" id="flip" />
         <div className="cover">
@@ -156,8 +168,9 @@ const Login = () => {
             </div> */}
           </div>
         </div>
-      </div>
-    </>
+      </div></>:<Authorize></Authorize>}
+      {isLoading ?<Loader></Loader>:""}
+      </>
   )
 }
 

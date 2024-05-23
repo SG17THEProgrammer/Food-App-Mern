@@ -13,6 +13,10 @@ const Logout = () => {
 
     useEffect(() => {
         LogoutUser();
+        setTimeout(()=>{
+            window.location.reload();
+        },2000)
+        toast.success("Successfully logged out")
     }, [LogoutUser]);
 
 

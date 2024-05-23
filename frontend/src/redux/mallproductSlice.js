@@ -2,19 +2,24 @@
   import { createSlice } from "@reduxjs/toolkit";
   import { toast } from "react-toastify";
   
-  const getCartItemsFromLocalStorage=()=> {
-    let cartItemsJSON = localStorage.getItem('cart');
-    if (cartItemsJSON == []){
-      return [];
-    }
-    else{
-    return cartItemsJSON ? JSON.parse(cartItemsJSON) :[];
-    }
+  // const getCartItemsFromLocalStorage=()=> {
+  //   let cartItemsJSON = localStorage.getItem('cart');
+  //   if (cartItemsJSON == []){
+  //     return [];
+  //   }
+  //   else{
+  //   return cartItemsJSON ? JSON.parse(cartItemsJSON) :[];
+  //   }
+  // }
+  const getCartItems=(user)=> {
+    const cartItems = localStorage.getItem(user);
+    return cartItems ? JSON.parse(cartItems) : [];
   }
   
   const initialState = {
     mallproductList:[],
-    cartItem:getCartItemsFromLocalStorage()
+    // cartItem:getCartItemsFromLocalStorage()
+    cartItem:getCartItems()
     
   };
   
@@ -99,7 +104,14 @@
       clearCart:(state) => {
         toast.success("Cart cleared");
         state.cartItem=[];
+      },
+      logoutUser:(state) => {
+        return {
+          ...state,
+          cartItem: []
+        };
       }
+  
     },
   });
   
@@ -111,6 +123,7 @@
     increaseQty,
     decreaseQty,
     clearCart,
+    logoutUser,
   } = mallproductSlice.actions;
   
   

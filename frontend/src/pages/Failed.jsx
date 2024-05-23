@@ -1,18 +1,25 @@
 import React from 'react'
 import '../css/Success.css'
+import { NavLink } from 'react-router-dom'
 
 const Failed = () => {
   return (
-    <div className='topdiv'>
+    <div className="row justify-content-center">
+    <div className="col-md-5">
+        <div className="message-box _success _failed">
+             <i className="fa fa-times-circle icon1" aria-hidden="true"></i>
+            <h2> Your payment failed </h2>
+     <p>  Try again later </p> 
+     <NavLink to="/home">
+     <button className='butn' style={{marginTop:"50px"}}>Back To Home 🏠</button>
+     </NavLink>     
 
-    <div className="card1">
-    <div style={{borderRadius:"200px", height:"200px", width:"200px", background: "#F8FAF5", margin:"0 auto"}}>
-      <i className="checkmark">X</i>
-    </div>
-      <h1 className='heading1'>Failed</h1> 
-      {/* <p className='para1'>We've received your purchase request..!<br/> We'll be in touch shortly!</p> */}
-    </div>
-  </div>  )
+ 
+    </div> 
+</div> 
+</div> 
+
+  )
 }
 
 export default Failed

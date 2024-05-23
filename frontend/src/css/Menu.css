@@ -29,7 +29,14 @@
   height: 580px;
   /* padding:60px 20px; */
   /* border: 1px solid red; */
-  margin: 30px 45px;
+  margin: 30px 120px;
+  display: grid;
+  grid-template-columns: 3fr 1fr ;
+  /* justify-content: center; */
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: flex-end;
 }
 .crd{
     background:url(https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1776&q=80);
