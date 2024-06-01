@@ -14,6 +14,9 @@ const About = () => {
     const { user, getCartItems } = useAuth()
     const productCartItem = useSelector((state) => state.product.cartItem);
 
+   
+
+
 
     const [isReadOnly, setIsReadOnly] = useState(true);
     const [userData, setUserData] = useState(true)
@@ -50,8 +53,8 @@ const About = () => {
     const [update, setUpdate] = useState(false)
 
     const handleEditClick = () => {
-        setIsReadOnly(false);
-        setUpdate(true);
+        setIsReadOnly(!isReadOnly);
+        setUpdate(!update);
     };
 
 
@@ -68,9 +71,7 @@ const About = () => {
 
             if (response.ok) {
                 toast.success("account deleted successfully")
-                // window.location.href = '/';
-                // localStorage.removeItem("token")
-
+                window.location.reload();
             }
             else {
                 console.log('error')
@@ -104,7 +105,7 @@ const About = () => {
         }
 
         catch (error) {
-            toast.error("Email already exists")
+            toast.error("Api not found")
         }
     }
 
@@ -128,7 +129,7 @@ const About = () => {
     return (
         <>
             <Navbar></Navbar>
-            <div className='outerDiv'>
+            <div className='outerDiv1'>
                 <div className="page-content page-container" id="page-content" >
                     <div className="padding" >
                         <div className="row d-flex justify-content-center" >
@@ -157,9 +158,9 @@ const About = () => {
                                         </div>
                                         <div className="col-sm-7" style={{ backgroundColor: "#E1AA74" }}>
                                             <div className="card-block">
-                                                {user.email === "shray@gmail.com" ? <NavLink to='/'><i class="fa-solid fa-trash fa-xl" style={{ margin: "10px 50px 0 0 ", color: "black" }} title='Remove Account' onClick={() => deleteUser(user._id)}></i>
-                                                </NavLink> : ""}
-                                                <i className="fa-solid fa-pen-to-square fa-xl" title='Edit Account Details' style={{ marginTop: "10px" }} onClick={handleEditClick}></i>                                            <h6 className="m-b-20 p-b-5 b-b-default f-w-600" style={{ fontSize: "35px", color: "#FFF3CF" }}>Your Profile</h6>
+                                                {/* {user.email === "shray@gmail.com" ? <NavLink to='/'><i class="fa-solid fa-trash fa-xl" style={{ margin: "10px 50px 0 0 ", color: "black" }} title='Remove Account' onClick={() => deleteUser(user._id)}></i>
+                                                </NavLink> : ""} */}
+                                                <i className="fa-solid fa-pen-to-square fa-xl" title='Edit Account Details' style={{ marginTop: "10px" }} onClick={handleEditClick}></i>                                            <h6 className="m-b-20 p-b-5 b-b-default f-w-600" style={{ fontSize: "35px", color: "#FFF3CF" }}>Your Profile{update? <h5 style={{marginTop:"5px"}}>(Edit Your profile)</h5>:""}</h6>
                                                 <div className="row">
                                                     <div className="col-sm-6">
                                                         <p className="m-b-10 f-w-600" style={{ fontSize: "25px", color: "#FFE4C9" }}>Email</p>
@@ -174,11 +175,7 @@ const About = () => {
 
                                                 </div>
 
-                                                {/* <ul className="social-link list-unstyled m-t-40 m-b-10">
-                                                <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i className="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i className="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
-                                                <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i className="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
-                                            </ul> */}
+                                        
                                             </div>
                                         </div>
                                     </div>
@@ -189,7 +186,7 @@ const About = () => {
                 </div>
             </div>
             {user.email === "shray@gmail.com" ?
-                <AllUsers deleteUser={deleteUser} updateUser={updateUser} handleInput={handleInput} readOnly={isReadOnly} about={about} handleEditClick={handleEditClick}></AllUsers> : ""}
+                <AllUsers deleteUser={deleteUser} ></AllUsers> : ""}
         </>
     )
 }

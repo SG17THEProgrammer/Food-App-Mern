@@ -208,7 +208,7 @@ const EditProduct = () => {
               <input type="number" placeholder="Price" className="form-control1 form-control" name='price' onChange={handleInput} value={cardProduct.price}/>
 
             </div>
-            <button className='button2' type='submit'>Register
+            <button className='button2' type='submit'>Edit
             </button>
         </div>
         </div>

@@ -64,7 +64,6 @@ const Login = () => {
       console.log("response data : ", response);
       
       const resData = await response.json();
-      console.log(1)
       console.log(resData); 
 
       if (response.ok) {

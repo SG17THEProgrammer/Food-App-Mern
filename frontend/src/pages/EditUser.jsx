@@ -54,8 +54,8 @@ const EditUser = () => {
             if (response.ok) {
                 toast.success(data.message[0])
                 setTimeout(() =>{
-
                     navigate('/about')
+                    window.location.reload()
                 },3000)
 
             }

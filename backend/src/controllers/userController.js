@@ -161,29 +161,35 @@ const deleteUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const id = req.params.id;
-        console.log(id)
-        // const {name,phone,email} = req.body    
-        // console.log(updatedUserData)
+        const { email, ...otherFields } = req.body;
+
         if (id) {
-            console.log("1")
-            const updatedData = await User.findByIdAndUpdate({ _id: id }, { $set: { ...req.body } });
-            // res.redirect("/home")
-            // console.log(updatedData)
-            console.log("1")
+            const emailExists = await User.findOne({ email, _id: { $ne: id } });
 
-            await updatedData.save()
+            if (emailExists) {
+                return res.status(400).json({ message: ['Email already exists'] });
+            }
 
-            res.status(200).json({ message: ["Account Updated Successfully"], updatedData })
-        }
-        else {
-            res.status(404).json({message:['No Id found']})
+            const updatedData = await User.findByIdAndUpdate(
+                { _id: id },
+                { $set: { email, ...otherFields } },
+                { new: true } 
+            );
+
+            if (!updatedData) {
+                return res.status(404).json({ message: ['User not found'] });
+            }
+
+            res.status(200).json({ message: ['Account Updated Successfully'], updatedData });
+        } else {
+            res.status(404).json({ message: ['No Id found'] });
         }
 
     } catch (error) {
-        res.status(400).json({message:['Error fetching Api']})
+        res.status(400).json({ message: ['Error fetching API'], error: error.message });
     }
+};
 
-}
 
 
 
