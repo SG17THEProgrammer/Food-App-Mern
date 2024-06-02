@@ -58,3 +58,18 @@
     padding:0 10px;
 }
 
+
+.myReview{
+    margin-bottom: 30px;
+}
+.icn{
+    border: 1px solid red ;
+    position: absolute;
+    right: -4%;
+    top: -12%;
+    border-radius: 50%;
+    padding: 3px;
+    font-size: 26px;
+    background-color: lightcoral;
+
+}

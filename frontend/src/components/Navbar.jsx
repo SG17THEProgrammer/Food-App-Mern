@@ -5,7 +5,6 @@ import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.js'
 import { toast } from 'react-toastify';
 import '../css/Navbar.css'
 import { useDispatch, useSelector } from 'react-redux'
-// import { logoutRedux } from '../redux/userSlice.js'
 import { useAuth } from './Auth.jsx'
 import { fetchCartItems } from '../redux/productSlide.js';
 // import { useAuth0 } from "@auth0/auth0-react";
@@ -22,11 +21,7 @@ const Navbar = () => {
 
     const [toggleButton, setToggleButton] = useState(true);
 
-    const { user } = useAuth();
-
-    useEffect(() => {
-        useAuth
-    }, [user.image])
+    const { user ,isLoggedIn,cartItems } = useAuth();
 
     const dispatch = useDispatch()
 
@@ -34,9 +29,8 @@ const Navbar = () => {
         setToggleButton(false)
     }
 
-    const { isLoggedIn,cartItems } = useAuth();
     console.log(isLoggedIn);
-    console.log(cartItems);
+    // console.log(cartItems);
 
     // const cartItemNumber = useSelector((state) => state.product.cartItem)
     // console.log(cartItemNumber)
@@ -44,7 +38,7 @@ const Navbar = () => {
 
 useEffect(() => {
 
-},[cartItems])
+},[cartItems,user,isLoggedIn])
 
 useEffect(() => {
     dispatch(fetchCartItems(user._id));

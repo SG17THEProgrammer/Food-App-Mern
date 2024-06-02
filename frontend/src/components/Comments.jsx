@@ -32,7 +32,7 @@ const Comments = ({productId,message}) => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({review:review,userId:user._id  , productId:productId}),
+				body: JSON.stringify({review:review,userName:user.name  , productId:productId}),
 			});
 			const resData = await response.json();
 			console.log(resData);

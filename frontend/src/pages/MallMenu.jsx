@@ -52,7 +52,7 @@ const MallMenu = () => {
   return (
 
     <>
-    <Review productId={id} userId={user._id}></Review>
+    <Review productId={id} userName={user.name}></Review>
       <Navbar></Navbar>
       <div className="outer">
         <div className="lftdiv">

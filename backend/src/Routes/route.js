@@ -3,7 +3,7 @@ const router = new express.Router()
 const {contact, team} = require('../controllers/controller')
 const auth = require('../middleware/auth')
 const { register, login, user, deleteUser, updateUser, getallusers } = require('../controllers/userController')
-const { addnewitem, getproduct, getMallproduct ,edititem, postReview, getReview} = require('../controllers/productController')
+const { addnewitem, getproduct, getMallproduct ,edititem, postReview, getReview, deleteReview} = require('../controllers/productController')
 const validate = require('../middleware/validate') 
 const signupSchema = require('../validators/signupSchema')
 const loginSchema = require('../validators/loginSchema')
@@ -19,24 +19,21 @@ router.post('/addnewitem',addnewitem)
 router.post('/payment',payment)
 router.post('/postReview',postReview)
 router.post('/contact',validate(contactSchema),contact)
-// router.post('/addtoCart',addtoCart)
-// router.post('/createOrder',createOrder)
+
 
 
 
 router.get('/user',auth,user)
 router.get('/allusers',getallusers)
-// router.get('/:id/orders',getUserOrder)
 router.get('/getproduct',getproduct)
 router.get('/getMallproduct',getMallproduct)
 router.get('/team',team)
-router.get('/getReview/',getReview)
-// router.get('/getOrder',getOrder)
+router.get('/getReview',getReview)
 
 router.delete('/about/delete/:id',deleteUser)
+router.delete('/deleteReview/:id',deleteReview)
 router.patch('/about/update/:id',validate(aboutSchema),updateUser)
 router.patch('/edititem/:id',edititem)
-// router.patch('/:id/mark-shipped',shippingOrder)
 
 
 

@@ -48,7 +48,7 @@ console.log(productDisplay)
 
   return (
     <>
-      <Review productId={productDisplay._id} userId={user._id}></Review>
+      <Review productId={productDisplay._id} userName={user.name}></Review>
       <Navbar></Navbar>
       <div className='upperDiv'>
         <div className="ctnr">

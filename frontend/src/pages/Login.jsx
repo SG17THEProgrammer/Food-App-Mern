@@ -74,14 +74,13 @@ const Login = () => {
         //storing tokens in LS in simple way
         // localStorage.setItem('token',resData.token);
         
+        toast.success(resData.message[0]);
         setTimeout(() =>{
           setloginUser({ email: "",password: "" });
           navigate('/home')
           setIsLoading(false);
-          // dispatch(loginRedux(resData))
-          toast.success(resData.message[0]);
           window.location.reload();
-        },2000)
+        },3000)
       } else {
         // toast.error(`${resData.extraDetails?resData.extraDetails:resData.msg}`)
         toast.error(resData.message[0]);

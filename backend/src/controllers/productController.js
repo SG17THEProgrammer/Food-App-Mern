@@ -81,21 +81,21 @@ const getMallproduct = async (req, res) => {
 const postReview = async (req, res) => {
   try {
     console.log(req.body)
-    const { review, userId ,productId} = req.body;
+    const { review, userName ,productId} = req.body;
     const { rating, comment } = review;
     
     const reviewData = {
       rating,
       comment,
-      userId,
+      userName,
       productId
     };
     if(!rating){
-         return res.status(400).json({ message: ["Cant post without star rating"] });
+         return res.status(400).json({ message: ["Can't post without star rating"] });
 
     }
     if(!comment){
-         return res.status(400).json({ message: ["Cant post without comment"] });
+         return res.status(400).json({ message: ["Can't post without comment"] });
 
     }
     const newReview = new Review(reviewData);
@@ -111,19 +111,34 @@ const postReview = async (req, res) => {
 }
 
 const getReview = async (req, res) => {
-  const { productId, userId } = req.query;
+  const { productId } = req.query;
   try {
-      const reviews = await Review.find({ productId, userId });
+      const reviews = await Review.find({ productId });
       if (reviews.length > 0) {
       res.status(200).json({reviews});
       }
       else {
-        res.status(404).json({message:['No reviews found for this product by this user.']});
+        res.status(404).json({message:['No reviews found ']});
     }
   } catch (error) {
       res.status(500).send(error.message);
   }
 }
 
+const deleteReview = async (req, res) => {
+  try {
+    const id = req.params.id
+      const review = await Review.findByIdAndDelete({ _id: id });
+      console.log(review)
+      if (!review) {
+          return res.status(404).json({ message: "Review not found" });
+      }
+      else{
+      return res.status(200).json({ message: "Review deleted successfully" });
+      }
+  } catch (error) {
+      return res.status(500).json({ message: "Error occurred while deleting review" });
+  }
+}
 
-module.exports = { addnewitem, getproduct, getMallproduct ,edititem,postReview,getReview}
+module.exports = { addnewitem, getproduct, getMallproduct ,edititem,postReview,getReview,deleteReview}
