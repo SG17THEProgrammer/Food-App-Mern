@@ -11,7 +11,7 @@ const Orders = ({cartItems}) => {
                 <div className="projcard-innerbox">
                     <img className="projcard-img" src={`${item.image}`} alt="Card Image" />
                     <div className="projcard-textbox">
-                        <div><div className="projcard-title">{item.name }</div>
+                        <div><div className="projcard-title">{item.name}</div>
                         <span className="projcard-subtitle" style={{display:"inline"}}>
                         <div >{item.category}</div>
                         <span>{item.rating}⭐</span>

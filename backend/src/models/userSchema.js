@@ -74,7 +74,7 @@ UserSchema.methods.generateToken = async function () {
         //         console.log(userVerify)
 
     } catch (error) {
-        res.send("Something is wrong")
+        res.send("Something went wrong")
     }
 }
 

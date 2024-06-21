@@ -56,7 +56,7 @@ const navigate = useNavigate()
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({products:cartItems,customerInfo:customerInfo ,sessionId:sessionId})
+            body: JSON.stringify({products:cartItems,customerInfo:customerInfo })
           });
           
         if (!response.ok) {

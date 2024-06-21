@@ -116,11 +116,11 @@ export const productSlice = createSlice({
       }
       else{
       localStorage.removeItem(action.payload);
-      toast.success("Cart cleared");
       setTimeout(() => {
         window.location.reload();
         // state.cartItem = [];
       },2000)
+      toast.success("Cart cleared");
     }
     },
     logoutUser:(state) => {
