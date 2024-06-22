@@ -100,6 +100,15 @@ const postReview = async (req, res) => {
     }
     const newReview = new Review(reviewData);
     await newReview.save();
+
+    const ratings = await Review.find({ productId });
+    console.log(ratings)
+    const ratingSum = ratings.reduce((sum, rate) => sum + rate.rating, 0);
+    console.log(ratingSum)
+    const averageRating = ratingSum / ratings.length;
+    console.log(averageRating)
+    await Products.findByIdAndUpdate(productId, { rating: averageRating });
+
       return res.status(200).json({ message:[ "Review saved successfully"] });
 
   } catch (error) {

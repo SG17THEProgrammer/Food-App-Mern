@@ -24,6 +24,8 @@ import EditProduct from './pages/EditProduct'
 // import Orders from './pages/Orders'
 import GoToTopButton from './components/GoToTopButton'
 import EditUser from './pages/EditUser'
+import Delivery from './pages/Delivery'
+import Distance from './components/Distance'
 
 const App = () => {
 
@@ -63,6 +65,7 @@ const App = () => {
             {/* <Route path='mallmenu' element={<MallMenu></MallMenu>}></Route> */}
             <Route path='/contact' element={<Contact></Contact>}></Route>
             <Route path='/cart' element={<Cart></Cart>}></Route>
+            <Route path='/delivery' element={<Delivery></Delivery>}></Route>
             {/* <Route path='/orders' element={<Orders></Orders>}></Route> */}
             <Route path='/foodmall' element={<FoodMall></FoodMall>}></Route>
             <Route path='/profile' element={<Profile></Profile>}></Route>
@@ -73,6 +76,7 @@ const App = () => {
             <Route path='/editUser/:id' element={<EditUser></EditUser>}></Route>
             <Route path='/success' element={<Success></Success>}></Route>
             <Route path='/failed' element={<Failed></Failed>}></Route>
+            <Route path='/distance' element={<Distance></Distance>}></Route>
             <Route path='*' element={<Error></Error>}></Route>
           </Routes>
 

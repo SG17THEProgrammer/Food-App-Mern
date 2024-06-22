@@ -17,7 +17,6 @@ const Cart = () => {
 
   const productCartItem = useSelector((state) => state.product.cartItem);
 
-
   const dispatch = useDispatch()
 
   
@@ -25,62 +24,20 @@ const Cart = () => {
 
   const {user,getCartItems,cartItems} = useAuth()
 
-const navigate = useNavigate()  
 
     const totalPrice = productCartItem.reduce((sum,curr)=>parseFloat(sum) + parseFloat(curr.total),0)
     // console.log(totalPrice)
 
     const totalPriceceil = Math.ceil(totalPrice)
 
-    const discount = Math.ceil(0.5*totalPrice,2);
-    const tax= Math.ceil(totalPrice*0.22,2);
-    const finalPrice =Math.ceil(totalPrice-discount+tax,2)
+    const tax= Math.ceil(totalPrice*0.12,2);
+    const finalPrice =Math.ceil(totalPrice+tax,2)
 
- 
-  const handlePayment = async () => {
-    const stripe = await loadStripe('pk_test_51OkP1CSGM4q7z7zWyecwfKJL4fMfVV3dWiTTksC7PFH8LK5Xix3ADEV0C2UxJQBiY8y23JHqztqyNLeC2fkRsbAt00uIZcT3sD');
 
-    const customerInfo = {
-      name: user.name,
-      address: {
-          line1: '123 Main St',
-          city: 'Anytown',
-          state: 'UP',
-          postal_code: '281006',
-          country: 'IN'
+      const handlePurchase=()=>{
+       productCartItem.length==0?toast.error("No item in cart "):""
       }
-  };
-    try {
-        const response = await fetch('http://localhost:8001/payment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({products:cartItems,customerInfo:customerInfo })
-          });
-          
-        if (!response.ok) {
-            throw new Error('Failed to create checkout session');
-        }
-
-        const data = await response.json();
-        console.log('Session data:', data);
-        toast.success("Redirecting to checkout")
-        setTimeout(async()=>{
-
-          const result = await stripe.redirectToCheckout({ sessionId: data.id });
-          console.log('Stripe redirect result:', result);
-        },2000 )
-
-        if (result.error) {
-            console.error('Stripe redirect error:', result.error);
-        }
-    } catch (error) {
-        console.error('Error during payment handling:', error);
-    }
-};
-
-
+ 
 
 useEffect(()=>{
   getCartItems();
@@ -124,7 +81,7 @@ useEffect(() => {
 </>:<> <h4 style={{marginTop:"45px",textAlign:"center", textDecoration:"underline" , color:"crimson"}}>Cart is Empty</h4></>
                   }</div>
                 <div className="border-top pt-4 mx-4 mb-4">
-                  <p><i className="fas fa-truck text-muted fa-lg"></i> Free Delivery within 1-2 weeks</p>
+                  <p><i className="fas fa-truck text-muted fa-lg"></i>Delivery charges according to location and terms and conditions</p>
                   <p className="text-muted">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elemit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip
@@ -146,10 +103,10 @@ useEffect(() => {
                     <p className="mb-2">Total price:</p>
                     <p className="mb-2">{<FormatPrice price={totalPriceceil}></FormatPrice>}</p>
                   </div>
-                  <div className="d-flex justify-content-between">
+                  {/* <div className="d-flex justify-content-between">
                     <p className="mb-2">Discount:</p>
                     <p className="mb-2 text-success">-{<FormatPrice price={discount}></FormatPrice>}</p>
-                  </div>
+                  </div> */}
                   <div className="d-flex justify-content-between">
                     <p className="mb-2">TAX:</p>
                     <p className="mb-2 text-danger">+{<FormatPrice price={tax}></FormatPrice>}</p>
@@ -161,7 +118,11 @@ useEffect(() => {
                   </div>
 
                   <div className="mt-3">
-                    <a className="btn  w-100  mb-2" onClick={()=>handlePayment()}> Make Purchase </a>
+                    {productCartItem.length!=0?<NavLink to="/delivery" style={{color:"black"}}>
+                    <a className="btn  w-100  mb-2" onClick={handlePurchase}> Make Purchase </a>
+                    </NavLink>:<NavLink to="/cart" style={{color:"black"}}>
+                    <a className="btn  w-100  mb-2" onClick={handlePurchase}> Make Purchase </a>
+                    </NavLink>}
                     <NavLink to="/home" className="btn btn-light w-100 border mt-2"> Back to shop </NavLink>
                   </div>
                 </div>

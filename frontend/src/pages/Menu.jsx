@@ -60,7 +60,7 @@ console.log(productDisplay)
               <p className="crd-meal-type">{productDisplay.category}</p>
               <h2 className="crd-title">{productDisplay.name}</h2>
 
-              <span className='star1'><Star rating={productDisplay.rating}></Star>&nbsp;<span className='spantxt'>{productDisplay.rating} </span>
+              <span className='star1'><Star rating={productDisplay.rating}></Star>&nbsp;<span className='spantxt'>{(productDisplay.rating - Math.floor(productDisplay.rating)) !== 0 ?productDisplay.rating:productDisplay.rating+".0"}  </span>
           </span>
               <p className="crd-body">{productDisplay.description}</p>
               <button className='butn' style={{ marginRight: "10px", marginLeft: "-5px" }} onClick={handleBuy}>Buy Now</button>

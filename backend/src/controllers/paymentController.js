@@ -1,12 +1,10 @@
 const Stripe = require('stripe');
 const stripe = Stripe(`${process.env.STRIPE_SECRET_KEY}`);
+const Delivery = require('../models/deliverySchema');
 
-
-// const stripe = new Stripe(`${import.meta.env.STRIPE_SECRET_KEY}`)
-// console.log(`${process.env.STRIPE_SECRET_KEY}`)
 const payment = async (req, res) => {
     console.log(req.body)
-  const {products,customerInfo}=req.body
+  const {products,customerInfo,deliveryCharge,tax}=req.body
 
     if (!Array.isArray(products) || products.length === 0) {
         return res.status(400).json({ error: 'Invalid product list' });
@@ -33,7 +31,30 @@ const payment = async (req, res) => {
                     unit_amount: priceInNum * 100,
                 },
                 quantity: item.qty,
+               
             };
+        });
+
+        lineItems.push({
+            price_data: {
+                currency: 'inr',
+                product_data: {
+                    name: 'Delivery Charge',
+                },
+                unit_amount: deliveryCharge*100,
+            },
+            quantity: 1,
+        });
+
+        lineItems.push({
+            price_data: {
+                currency: 'inr',
+                product_data: {
+                    name: 'Tax',
+                },
+                unit_amount: tax*100,
+            },
+            quantity: 1,
         });
         
 
@@ -45,6 +66,7 @@ const payment = async (req, res) => {
                 shipping: {
                     name: customerInfo.name,
                     address: customerInfo.address
+                    
                 }
             },
             success_url: `http://localhost:5173/success`, 
@@ -69,4 +91,41 @@ const payment = async (req, res) => {
     }
 }
 
-module.exports = {payment }
+const delivery=async(req,res)=>{
+    try {
+        console.log(req.body)
+        
+        const {delDetails,userId} = req.body
+        const {name,email,phone,address,message,city,pincode,state}  = delDetails
+        const delData = {
+            name,email,phone,address,message,city,pincode,state,userId
+          };
+          if(!delDetails.address){
+               return res.status(400).json({ message: ["Can't proceed without address"] });
+      
+          }
+          if(!delDetails.state){
+               return res.status(400).json({ message: ["Can't proceed without state"] });
+      
+          }
+          if(!delDetails.city){
+               return res.status(400).json({ message: ["Can't proceed without city"] });
+      
+          }
+          if(!delDetails.pincode){
+               return res.status(400).json({ message: ["Can't proceed without pincode"] });
+      
+          }
+        const details = new Delivery(delData);
+        await details.save();
+        return res.status(200).json({ message:[ "delivery details saved successfully "] });
+
+        
+
+    } catch (error) {
+        return res.status(500).json({ message:[ "Error occurred while placing order"] });
+
+    }
+}
+
+module.exports = {payment , delivery }

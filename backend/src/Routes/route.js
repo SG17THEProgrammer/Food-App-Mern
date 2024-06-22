@@ -9,7 +9,8 @@ const signupSchema = require('../validators/signupSchema')
 const loginSchema = require('../validators/loginSchema')
 const contactSchema = require('../validators/contactSchema')
 const aboutSchema = require('../validators/aboutSchema')
-const { payment } = require('../controllers/paymentController')
+const { payment, delivery } = require('../controllers/paymentController')
+const { distance } = require('../controllers/locationController')
 
 
 
@@ -18,6 +19,7 @@ router.post('/login',validate(loginSchema),login)
 router.post('/addnewitem',addnewitem)
 router.post('/payment',payment)
 router.post('/postReview',postReview)
+router.post('/delivery',delivery)
 router.post('/contact',validate(contactSchema),contact)
 
 
@@ -29,6 +31,7 @@ router.get('/getproduct',getproduct)
 router.get('/getMallproduct',getMallproduct)
 router.get('/team',team)
 router.get('/getReview',getReview)
+router.get('/distance',distance)
 
 router.delete('/about/delete/:id',deleteUser)
 router.delete('/deleteReview/:id',deleteReview)

@@ -119,7 +119,7 @@ export const productSlice = createSlice({
       setTimeout(() => {
         window.location.reload();
         // state.cartItem = [];
-      },2000)
+      },1000)
       toast.success("Cart cleared");
     }
     },

@@ -11,20 +11,21 @@ import FormatPrice from '../Helpers/FormatPrice'
 import { fetchCartItems } from '../redux/productSlide'
 import { useAuth } from '../components/Auth'
 // import Menu from './Menu'
+import { FaStar } from "react-icons/fa";
 const Home = () => {
 
-  const {user ,getCartItems} = useAuth()
+  const { user, getCartItems } = useAuth()
   const productCartItem = useSelector((state) => state.product.cartItem);
-  console.log(productCartItem) 
-  
+  console.log(productCartItem)
+
   const productData = useSelector((state) => state.product.productList)
   // console.log(productData)
   const homeProductList = productData.slice(0, 6)
 
 
-  useEffect(()=>{
-  getCartItems();
-},[user,productCartItem])
+  useEffect(() => {
+    getCartItems();
+  }, [user, productCartItem])
 
 
   return (
@@ -43,35 +44,39 @@ const Home = () => {
           {
 
             homeProductList.map((val) => {
-              const { id, name, image, category, price ,_id , rating} = val;
+              const { id, name, image, category, price, _id, rating } = val;
               return (
 
-                        <NavLink style={{ textDecoration: "none", color: "black" }}
-                          to={`/menu/${_id}`}
-                          onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>
-                <div className="card mb-5" key={id} style={{ maxWidth: '200px', height: "240px", boxShadow: '10px 10px 8px #888888', marginRight: "20px", backgroundColor: "#FFF7D4" }}>
-                  <div className="">
+                <NavLink style={{ textDecoration: "none", color: "black" }}
+                  to={`/menu/${_id}`}
+                  onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>
+                  <div className="card mb-5" key={id} style={{ maxWidth: '200px', height: "240px", boxShadow: '10px 10px 8px #888888', marginRight: "20px", backgroundColor: "#FFF7D4" }}>
+                    <div className="">
 
-                    <div className="col-md-14">
+                      <div className="col-md-14">
 
-                      <img src={image} className="img-fluid img" alt="error" style={{ }} />
-                    
-                    </div>
-                    <div className="col-md-30">
-                      <div className="card-body ">
+                        <img src={image} className="img-fluid img" alt="error" style={{}} />
+
+                      </div>
+                      <div className="col-md-30">
+                        <div className="card-body ">
                           <h5 className="card-name" style={{ marginBottom: "3px" }}>{name} </h5>
                           <p className="card-text" style={{ fontSize: '16px', color: "#BF3131", marginBottom: "3px" }}>{category}</p>
-                          <p className="card-text"><small className="text-muted" style={{ marginBottom: "-10px" ,fontSize:"15px"}}>Price: {<FormatPrice price={price}></FormatPrice>}
-</small></p>
-                          <h5 style={{position:"absolute" , left:"150px" , bottom:"25px", fontSize:"16px" }}> <i className="fa-solid fa-star fa-xs" style={{margin:"4px 25px 0 0" ,color: "#BF3131"}}></i>
-{rating}</h5>
-                        {/* <button className='btn' style={{ marginLeft: "-10px", marginTop: "10px" }}>Add to Cart</button> */}
-                        {/* <p style={{ fontSize: '12px', paddingTop: '20px', bottom: '0px' }}>Prices may vary for different occasions</p> */}
+                          <p className="card-text"><small className="text-muted" style={{ marginBottom: "-10px", fontSize: "15px" }}>Price: {<FormatPrice price={price}></FormatPrice>}
+                          </small></p>
+                          <div className='rating1'>
+                              <FaStar style={{fontSize:"15px", color:"red",marginRight:"2px"}}/>
+                            <p style={{marginTop:"-1px"}}>
+                              {rating}</p>
+                              {/* <i className="fa-solid fa-star fa-xs"></i> */}
+                          </div>
+                          {/* <button className='btn' style={{ marginLeft: "-10px", marginTop: "10px" }}>Add to Cart</button> */}
+                          {/* <p style={{ fontSize: '12px', paddingTop: '20px', bottom: '0px' }}>Prices may vary for different occasions</p> */}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                        </NavLink>
+                </NavLink>
 
               )
             })

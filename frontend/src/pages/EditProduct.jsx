@@ -6,7 +6,7 @@ import { useAuth } from '../components/Auth'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FaUpload } from 'react-icons/fa'
 import { ImagetoBase64 } from '../utility/ImagetoBase64'
-import CustomSelect from '../components/CustomSelect'
+// import CustomSelect from '../components/CustomSelect'
 import { toast } from 'react-toastify'
 
 

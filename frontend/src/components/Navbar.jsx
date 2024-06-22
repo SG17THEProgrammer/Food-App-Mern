@@ -65,7 +65,7 @@ useEffect(() => {
                             </li> : ""}
 
                             <li className="nav-item active">
-                                <NavLink className="nav-link ml-2" to='/menu/663cbf1e4abd0a777cdb5dcb' >Menu <span className="sr-only"></span></NavLink>
+                                <NavLink className="nav-link ml-2" to='/menu/6676c2ff1782239b95fa1fcf' >Menu <span className="sr-only"></span></NavLink>
                             </li>
                             <li className="nav-item active">
                                 <NavLink className="nav-link ml-2" to='/aboutUs' >AboutUs <span className="sr-only"></span></NavLink>
@@ -77,8 +77,8 @@ useEffect(() => {
                                 <NavLink className="nav-link ml-2 blink" to='/foodmall' style={{ marginRight: "-10px" }}>FoodMall <sup>New</sup><span className="sr-only"></span></NavLink>
                             </li>
                             <li className="nav-item active">
-                                <NavLink className="nav-link ml-2 blink" to='/mallmenu/663cbfdd4abd0a777cdb5dee' style={{ marginRight: "-10px" }}>MallMenu <sup>New</sup><span className="sr-only"></span></NavLink>
-                            </li>
+                                <NavLink className="nav-link ml-2 blink" to='/mallmenu/6676c1731782239b95fa1fb6' style={{ marginRight: "-10px" }}>MallMenu <sup>New</sup><span className="sr-only"></span></NavLink>
+                            </li>   
                             <li className="nav-item active">
                                 <NavLink className="nav-link ml-2 cart" to='/cart'>                                 <div className='cart'><i className="fa-solid fa-cart-shopping fa-sm  icon" style={{ position: "relative" }} ></i><span className='superscript count'>{cartItems?cartItems.length:0}</span></div>
                                     {/* <span className="sr-only">Cart</span> */}

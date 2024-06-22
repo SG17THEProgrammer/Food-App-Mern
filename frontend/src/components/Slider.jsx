@@ -61,7 +61,6 @@ const Slider = () => {
                   <CardFeature
                   // key={elem.length+1}
                   key={elem._id}
-                    // key={elem._id}
                     id={elem._id}
                     name={elem.name}
                     category={elem.category}

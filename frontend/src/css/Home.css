@@ -75,3 +75,15 @@
         width: 100%;
     }
 }
+
+.rating1{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 57%;
+    left: 65%;
+    font-size: 20px;
+    border: 1px solid red;
+    height: 20px;
+
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/Orders.css'
 import Comments from '../components/Comments'
+import FormatPrice from '../Helpers/FormatPrice'
 const Orders = ({cartItems}) => {
   return (
     <>
@@ -18,13 +19,13 @@ const Orders = ({cartItems}) => {
                         </span>
                         <div className="projcard-bar"></div>
                         <div className="projcard-description">
-                            Price : {item.price}
+                            Price : <FormatPrice price={item.price}></FormatPrice>
                         </div>
                         <div className="projcard-description">
                             Qunatity : {item.qty}
                         </div>
                         <div className="projcard-description">
-                            Total : {item.total}
+                            Total : <FormatPrice price={item.total}> </FormatPrice>
                         </div>
                     </div>
                     <div>
