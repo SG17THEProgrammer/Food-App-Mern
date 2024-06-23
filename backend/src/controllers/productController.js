@@ -102,19 +102,16 @@ const postReview = async (req, res) => {
     await newReview.save();
 
     const ratings = await Review.find({ productId });
-    console.log(ratings)
+    // console.log(ratings)
     const ratingSum = ratings.reduce((sum, rate) => sum + rate.rating, 0);
-    console.log(ratingSum)
+    // console.log(ratingSum)
     const averageRating = ratingSum / ratings.length;
-    console.log(averageRating)
+    // console.log(averageRating)
     await Products.findByIdAndUpdate(productId, { rating: averageRating });
 
       return res.status(200).json({ message:[ "Review saved successfully"] });
 
   } catch (error) {
-      // if (error.code === 11000) {
-      //     return res.status(200).json({ message: ["Do not send the same message"] });
-      // }
       return res.status(500).json({ message:[ "Error occurred while sending review"] });
   }
 }
@@ -136,13 +133,21 @@ const getReview = async (req, res) => {
 
 const deleteReview = async (req, res) => {
   try {
-    const id = req.params.id
+    const {id,productId} = req.params
       const review = await Review.findByIdAndDelete({ _id: id });
       console.log(review)
       if (!review) {
           return res.status(404).json({ message: "Review not found" });
       }
       else{
+        const ratings = await Review.find({ productId });
+    // console.log(ratings)
+    const ratingSum = ratings.reduce((sum, rate) => sum + rate.rating, 0);
+    // console.log(ratingSum)
+    const averageRating = ratings.length >0 ? ratingSum / ratings.length:0;
+    // console.log(averageRating)
+    await Products.findByIdAndUpdate(productId, { rating: averageRating });
+    
       return res.status(200).json({ message: "Review deleted successfully" });
       }
   } catch (error) {

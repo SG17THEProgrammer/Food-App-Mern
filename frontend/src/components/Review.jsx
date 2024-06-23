@@ -30,7 +30,7 @@ const Review = ({productId,userName}) => {
 
         const deleteReview = async (reviewId) => {
             try {
-                const response = await fetch(`http://localhost:8001/deleteReview/${reviewId}`, {
+                const response = await fetch(`http://localhost:8001/deleteReview/${reviewId}/${productId}`, {
                     method: 'DELETE',
                 });
     console.log(response)

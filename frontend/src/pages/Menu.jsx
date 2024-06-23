@@ -66,6 +66,7 @@ console.log(productDisplay)
               <button className='butn' style={{ marginRight: "10px", marginLeft: "-5px" }} onClick={handleBuy}>Buy Now</button>
               <button className='butn' style={{marginBottom:"10px"}} onClick={handleAddCartProduct}>Add To Cart</button>
              {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='butn' style={{marginLeft:"-5px"}} >Edit Product</button></NavLink>:""}
+             {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='butn' style={{marginLeft:"5px"}} >Delete Product</button></NavLink>:""}
             </div>
             <div className="crd-price"><FormatPrice price={productDisplay.price}></FormatPrice> </div>
           </div>

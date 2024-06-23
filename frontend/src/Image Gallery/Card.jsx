@@ -83,6 +83,10 @@ const Card = ({ id, image, name, price, category ,rating }) => {
                                 <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{ marginLeft: "-8px" }}
 
 >Edit Product</button></NavLink>:""}
+{user.email==="shray@gmail.com"?
+                                <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{ marginLeft: "8px" }}
+
+>Delete Prod.</button></NavLink>:""}
                                 {/* <p style={{ fontSize: '12px', paddingTop: '20px', bottom: '0px' }}>Prices may vary for different occasions</p> */}
                             </div>
                         </div>

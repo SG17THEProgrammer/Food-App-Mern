@@ -6,6 +6,7 @@ import { addCartItem } from '../redux/productSlide'
 import FormatPrice from '../Helpers/FormatPrice'
 import { useAuth } from './Auth'
 import { toast } from 'react-toastify'
+import { FaStar } from 'react-icons/fa'
 
 const CardFeature = ({ image, name, price, category, id ,rating}) => {
   // const actualprice =price.props.price
@@ -53,8 +54,14 @@ const {user,saveCartItemsToLS,isLoggedIn} = useAuth()
               <span  style={{paddingLeft:"10px"}}></span>
               <span><FormatPrice price={price}></FormatPrice></span>
             </h5>
-            <h5 style={{position:"absolute" , left:"130px" , bottom:"0.1px" }}> <i className="fa-solid fa-star fa-xs" style={{margin:"6px 30px 0 0" ,color: "#BF3131"}}></i>
-{rating}</h5>
+            {/* <h5 style={{position:"absolute" , left:"130px" , bottom:"0.1px" }}> <i className="fa-solid fa-star fa-xs" style={{margin:"6px 30px 0 0" ,color: "#BF3131"}}></i>
+{rating}</h5> */}
+<div className='rating1' style={{marginTop:"10px"}}>
+                              <FaStar style={{fontSize:"15px", color:"red",marginRight:"2px" , color:"#BF3131"}}/>
+                            <p style={{marginTop:"-2px"}}>
+                              {rating}</p>
+                              {/* <i className="fa-solid fa-star fa-xs"></i> */}
+                          </div>
           </div>
           </NavLink>
           <div style={{display:"flex"}}>

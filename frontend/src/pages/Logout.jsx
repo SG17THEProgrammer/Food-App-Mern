@@ -8,7 +8,7 @@ import { logoutUser } from '../redux/productSlide';
 const Logout = () => {
     const dispatch = useDispatch()
 
-    const { LogoutUser } = useAuth();
+    const { LogoutUser ,isLoggedIn} = useAuth();
     dispatch(logoutUser())
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Logout = () => {
             window.location.reload();
         },2000)
         toast.success("Successfully logged out")
-    }, [LogoutUser]);
+    }, [LogoutUser,isLoggedIn]);
 
 
 

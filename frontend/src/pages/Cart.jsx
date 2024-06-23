@@ -119,9 +119,9 @@ useEffect(() => {
 
                   <div className="mt-3">
                     {productCartItem.length!=0?<NavLink to="/delivery" style={{color:"black"}}>
-                    <a className="btn  w-100  mb-2" onClick={handlePurchase}> Make Purchase </a>
+                    <a className="btn  w-100  mb-2" onClick={handlePurchase}> Proceed To Checkout </a>
                     </NavLink>:<NavLink to="/cart" style={{color:"black"}}>
-                    <a className="btn  w-100  mb-2" onClick={handlePurchase}> Make Purchase </a>
+                    <a className="btn  w-100  mb-2" onClick={handlePurchase}> Proceed To Checkout </a>
                     </NavLink>}
                     <NavLink to="/home" className="btn btn-light w-100 border mt-2"> Back to shop </NavLink>
                   </div>

@@ -111,7 +111,8 @@ const MallMenu = () => {
           <br />
           <span>
           <button className='butn' style={{ width: "100px" , marginRight:"20px" }} onClick={handleBuy}>Buy Now</button>
-          {user.email=="shray@gmail.com"?<NavLink to={`/edit/${productDisplay._id}`}><button className='butn' style={{ width: "120px" }} >Edit Product</button></NavLink>:""}
+          {user.email=="shray@gmail.com"?<NavLink to={`/edit/${productDisplay._id}`}><button className='butn' style={{ width: "fit-content" }} >Edit Product</button></NavLink>:""}
+          {user.email=="shray@gmail.com"?<NavLink to={`/edit/${productDisplay._id}`}><button className='butn' style={{ width: "fit-content" , marginLeft:"20px" }} >Delete Product</button></NavLink>:""}
           </span>
         </div>
       </div>

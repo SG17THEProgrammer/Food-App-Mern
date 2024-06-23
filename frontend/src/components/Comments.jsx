@@ -117,8 +117,8 @@ const Comments = ({productId,message}) => {
                                 {/* <div className="col-6">
                                     <div className="pull-left"> <button className="btn btn-success btn-sm">Cancel</button> </div>
                                 </div> */}
-                                <div className="col-7 ">
-                                    <div className="pull-right"> <button className="     btn-success send btn-sm">Post <i className="fa fa-long-arrow-right ml-2"></i></button> </div>
+                                <div className="col-5" >
+                                    <div className="pull-right"> <button className="     btn-success send btn-sm">Post <i className="fa fa-long-arrow-right ml-2 pr-2"></i></button> </div>
                                 </div>
                             </div>
                         </div>

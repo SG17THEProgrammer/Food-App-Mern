@@ -217,9 +217,9 @@ const FoodMall = () => {
           <div className="righttopdiv">
             <div>
 
-              <a className={grid?'active btn':"btn"} onClick={toggleLayout}>        <IoGrid />
+              <a className={grid?"btn":'active btn'} onClick={toggleLayout}>        <IoGrid />
               </a>
-              <a className={!grid?'active btn':"btn"} onClick={toggleLayout}>        <HiViewList />
+              <a className={grid?'active btn':"btn"} onClick={toggleLayout}>        <HiViewList />
               </a>
 
             </div>

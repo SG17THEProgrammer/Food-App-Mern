@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addCartItem } from '../redux/productSlide'
 import { useAuth } from './Auth'
 import { toast } from 'react-toastify'
+import { FaStar } from 'react-icons/fa'
 
 
 const GridView = ({ name, category, price, rating, image, id }) => {
@@ -51,8 +52,14 @@ const GridView = ({ name, category, price, rating, image, id }) => {
                         </small></p>
 
 
-                        <h5 style={{ position: "absolute", left: "160px", bottom: "80px", fontSize: "16px" }}> <i className="fa-solid fa-star fa-xs" style={{ margin: "5px 25px 0 0", color: "#BF3131" }}></i>
-                            {rating}</h5>
+                        {/* <h5 style={{ position: "absolute", left: "160px", bottom: "80px", fontSize: "16px" }}> <i className="fa-solid fa-star fa-xs" style={{ margin: "5px 25px 0 0", color: "#BF3131" }}></i>
+                            {rating}</h5> */}
+
+                            <div className='rating1' style={{marginTop:"-30px"}} >
+                              <FaStar style={{fontSize:"15px", color:"red",marginRight:"2px"}}/>
+                            <p style={{marginTop:"-1px"}}>
+                              {rating}</p>
+                          </div>
 
 
                         <button className='btn' style={{ marginLeft: "-5px", marginTop: "-14px" }}
@@ -60,6 +67,7 @@ const GridView = ({ name, category, price, rating, image, id }) => {
 
                         <NavLink to="/cart"> <button className='btn' style={{ marginLeft: "4px", marginTop: "-7px", position: "absolute" }}>Go to Cart</button></NavLink>
                         {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{marginLeft:"-5px",marginTop:"5px"}} >Edit Product</button></NavLink>:""}
+                        {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{marginLeft:"5px",marginTop:"5px"}} >Delete</button></NavLink>:""}
                        
                         {/* <p style={{ fontSize: '12px', paddingTop: '20px', bottom: '0px' }}>Prices may vary for different occasions</p> */}
                     </div>

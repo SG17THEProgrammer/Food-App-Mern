@@ -34,7 +34,7 @@ router.get('/getReview',getReview)
 router.get('/distance',distance)
 
 router.delete('/about/delete/:id',deleteUser)
-router.delete('/deleteReview/:id',deleteReview)
+router.delete('/deleteReview/:id/:productId',deleteReview)
 router.patch('/about/update/:id',validate(aboutSchema),updateUser)
 router.patch('/edititem/:id',edititem)
 
