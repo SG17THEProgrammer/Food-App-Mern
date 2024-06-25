@@ -38,6 +38,9 @@ const Review = ({productId,userName}) => {
                 if (response.ok) {
                     setReviews(reviews.filter(review => review._id !== reviewId));
                     toast.success('Review deleted successfully');
+                    setTimeout(() =>{
+                        window.location.reload();
+                    },2000)
                 } else {
                     toast.error(data.message);
                 }

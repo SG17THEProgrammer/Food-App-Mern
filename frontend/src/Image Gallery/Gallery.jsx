@@ -47,12 +47,7 @@ const Gallery = ({ heading }) => {
     }
     // console.log(items)
   
-    const filterSearch = (parameter) => { //parameter mein search input  mein jo likhenge wo pass hoga  
-        const updtdItems = productData.filter((curElem) => {
-            return curElem.name.toLowerCase().includes(parameter)
-        })
-        setItems(updtdItems);
-    }
+   
 
    
     
@@ -61,7 +56,7 @@ const Gallery = ({ heading }) => {
             {/* <h1 style={{ textAlign: 'center', marginTop: '5px' }}>Order Your Favourite Dish</h1>
             <hr /> */}
 
-            <Category allCategories={allCategories} filterItem={filterItem} category={category} heading={heading} filterSearch={filterSearch} />
+            <Category allCategories={allCategories} filterItem={filterItem} category={category} heading={heading}  productData={productData} setItems={setItems}/>
           
 
             <div className='mainDiv'>              

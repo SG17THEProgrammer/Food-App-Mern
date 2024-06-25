@@ -57,7 +57,7 @@ const {user,saveCartItemsToLS,isLoggedIn} = useAuth()
             {/* <h5 style={{position:"absolute" , left:"130px" , bottom:"0.1px" }}> <i className="fa-solid fa-star fa-xs" style={{margin:"6px 30px 0 0" ,color: "#BF3131"}}></i>
 {rating}</h5> */}
 <div className='rating1' style={{marginTop:"10px"}}>
-                              <FaStar style={{fontSize:"15px", color:"red",marginRight:"2px" , color:"#BF3131"}}/>
+                              <FaStar style={{fontSize:"15px",marginRight:"2px" , color:"#BF3131"}}/>
                             <p style={{marginTop:"-2px"}}>
                               {rating}</p>
                               {/* <i className="fa-solid fa-star fa-xs"></i> */}

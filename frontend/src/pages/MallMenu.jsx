@@ -21,7 +21,6 @@ const MallMenu = () => {
   const {user,getCartItems,isLoggedIn} =useAuth()
   const productCartItem = useSelector((state) => state.product.cartItem);
 
-  console.log(id)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -42,8 +41,8 @@ const MallMenu = () => {
     }, "1000")}</>:toast.error("You must be logged in")
   }
 
-  let image = `https://source.unsplash.com/random/400x500?${productDisplay.name}`;
-  const [mainImage, setMainImage] = useState(`${productDisplay.image}`);
+  let image = productDisplay ? `https://source.unsplash.com/random/400x500?${productDisplay.name}`:"";
+  const [mainImage, setMainImage] = useState(productDisplay? `${productDisplay.image}`:"");
 
   useEffect(()=>{
     getCartItems();
@@ -52,7 +51,7 @@ const MallMenu = () => {
   return (
 
     <>
-    <Review productId={id} userName={user.name}></Review>
+    {productDisplay?<><Review productId={id} userName={user.name}></Review>
       <Navbar></Navbar>
       <div className="outer">
         <div className="lftdiv">
@@ -120,8 +119,8 @@ const MallMenu = () => {
       <Comments productId={id}></Comments>
       </div>
 
-    <MallMenuOtherProducts heading={"Other Mall Products"}></MallMenuOtherProducts>
-      <Footer></Footer>
+    <MallMenuOtherProducts heading={"Other Mall Products"} ></MallMenuOtherProducts>
+      <Footer></Footer></>:""}
     </>
 
   )

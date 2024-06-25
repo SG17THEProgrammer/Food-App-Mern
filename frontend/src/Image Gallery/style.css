@@ -26,7 +26,6 @@ img {
 }
 
 .heading {
-  margin: 50px 0px 0px 40px;
   text-decoration: underline;
 }
 
@@ -155,4 +154,13 @@ img {
       font-size: 12px;
       width: 80px;
   }
+}
+
+.head{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 80px 40px 0px 40px;
+
 }

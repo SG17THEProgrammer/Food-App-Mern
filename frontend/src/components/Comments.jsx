@@ -2,8 +2,20 @@ import React, { useState } from 'react'
 import '../css/Comments.css'
 import { useAuth } from './Auth';
 import { toast } from 'react-toastify';
+import { useNavigate, useParams} from 'react-router-dom'
+import { useSelector } from 'react-redux';
 const Comments = ({productId,message}) => {
+    const { id } = useParams();
+
+    const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
+  console.log(mallproductData)
+
+const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
+console.log(productDisplay)
+
+
     const {user} =useAuth()
+    const navigate = useNavigate()
 
     const [review , setReview] = useState({
         rating:0,
@@ -39,9 +51,12 @@ const Comments = ({productId,message}) => {
 
 			if (response.ok) {
                 toast.success(resData.message[0]);
-                // setTimeout(() => {
-                //    window.location.reload(); 
-                // },3000);
+                navigate("/home")
+                setTimeout(() =>{
+                    window.location.reload(); 
+                },2000)
+               productDisplay?navigate(`/mallmenu/${productDisplay._id}`): navigate(`/menu/${productId}`)            
+       
 				setReview({
 					rating: 0,
 					comment:'',

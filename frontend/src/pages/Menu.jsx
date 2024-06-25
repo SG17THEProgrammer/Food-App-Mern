@@ -48,7 +48,7 @@ console.log(productDisplay)
 
   return (
     <>
-      <Review productId={productDisplay._id} userName={user.name}></Review>
+     {productDisplay? <><Review productId={productDisplay._id} userName={user.name}></Review>
       <Navbar></Navbar>
       <div className='upperDiv'>
         <div className="ctnr">
@@ -80,6 +80,7 @@ console.log(productDisplay)
       <Gallery heading={"Related Products"} ></Gallery>
       <Footer></Footer>
 
+    </>:""}
     </>
   )
 }

@@ -12,6 +12,7 @@ import Footer from '../components/Footer';
 import GridView from '../components/GridView';
 import ListView from '../components/ListView';
 import { useAuth } from '../components/Auth';
+import Search from '../components/Search';
 
 const FoodMall = () => {
   const {saveCartItemsToLS,user,getCartItems} = useAuth()
@@ -38,39 +39,7 @@ const FoodMall = () => {
     })
     setItems(updatedItems);
   }
-
-  const filterSearch = (parameter) => { //parameter mein search input  mein jo likhenge wo pass hoga 
-    // if(parameter===''){
-    //   <h5>No product found</h5>  
-    // } 
-    const updtdItems = mallproductData.filter((curElem) => {
-      return curElem.name.toLowerCase().includes(parameter)
-    })
-    setItems(updtdItems);
-  }
-
  
-
-
-  const [search, setSearch] = useState({
-    text: "",
-  })
-
-  const handleInput = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
-
-    setSearch({
-      ...search,
-      [name]: value, //yeh hai dynamic bananae ke liye ; user jo bhi field bharega usme yeh convert ho jayega aur baaki sab as it is rahega  
-    });
-    filterSearch(search.text)
-  }
-
-  useEffect(() => {
-    filterSearch(search.text)
-
-  }, [search.text])
 
   const [grid, setGrid] = useState(true)
 
@@ -181,8 +150,9 @@ const FoodMall = () => {
       <Navbar></Navbar>
       <div className="otrdiv">
         <div className="leftdiv">
-          <input type="text" placeholder='Search' name="text" value={search.text} className='inp2' onChange={handleInput} />
-          <br /><br /><br />
+          {/* <input type="text" placeholder='Search' name="text" value={search.text} className='inp2' onChange={handleInput} /> */}
+          <Search mallproductData={mallproductData} setItems={setItems}></Search>
+          <br /><br />
 
           <h5>Category</h5>
 

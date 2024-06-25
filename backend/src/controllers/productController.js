@@ -1,5 +1,4 @@
 const mallProducts = require('../models/mallproductSchema');
-const mallitems = require('../models/mallproductSchema');
 const Products = require('../models/productSchema');
 const Review = require('../models/reviewSchema');
 
@@ -13,13 +12,12 @@ const addnewitem = async (req, res) => {
         if (req.body.database === "fooditem") {
             delete req.body.database;
             const data = await Products(req.body)
-            const datasave = await data.save()
-            // console.log(datasave)
+            await data.save()
         }
         if (req.body.database === "mallitem") {
             delete req.body.database
-            const data = await mallitems(req.body)
-            const datasave = await data.save()
+          const data = await mallProducts(req.body)
+          await data.save()
 
         }
         res.send({ message: "Upload successfully" })
@@ -45,7 +43,7 @@ const edititem = async (req, res) => {
     }
 }
 if(req.body.database==="mallitem"){
-    const updatedProduct = await mallitems.findByIdAndUpdate(id, updateData);
+    const updatedProduct = await mallProducts.findByIdAndUpdate(id, updateData);
     if (!updatedProduct) {
       return res.status(404).json({ message: "Product not found" });
     }
@@ -105,9 +103,20 @@ const postReview = async (req, res) => {
     // console.log(ratings)
     const ratingSum = ratings.reduce((sum, rate) => sum + rate.rating, 0);
     // console.log(ratingSum)
-    const averageRating = ratingSum / ratings.length;
-    // console.log(averageRating)
-    await Products.findByIdAndUpdate(productId, { rating: averageRating });
+    let averageRating = ratings.length >0 ? ratingSum / ratings.length:0;
+    averageRating = Math.round(averageRating*10) / 10;    
+     console.log(averageRating)
+    const updtProduct = await Products.findByIdAndUpdate(productId, { rating: averageRating });
+  let updtMallProduct
+    if(!updtProduct){
+   updtMallProduct = await mallProducts.findByIdAndUpdate(productId, { rating: averageRating });
+
+      }
+      if(!updtMallProduct && !updtProduct){
+        return res.status(500).json({ message:[ "Product Id not found "] });
+
+      }
+
 
       return res.status(200).json({ message:[ "Review saved successfully"] });
 
@@ -144,9 +153,19 @@ const deleteReview = async (req, res) => {
     // console.log(ratings)
     const ratingSum = ratings.reduce((sum, rate) => sum + rate.rating, 0);
     // console.log(ratingSum)
-    const averageRating = ratings.length >0 ? ratingSum / ratings.length:0;
-    // console.log(averageRating)
-    await Products.findByIdAndUpdate(productId, { rating: averageRating });
+    let averageRating = ratings.length >0 ? ratingSum / ratings.length:0;
+    averageRating = Math.round(averageRating*10) / 10;    
+     console.log(averageRating)
+    const updtProduct = await Products.findByIdAndUpdate(productId, { rating: averageRating });
+  let updtMallProduct
+    if(!updtProduct){
+   updtMallProduct = await mallProducts.findByIdAndUpdate(productId, { rating: averageRating });
+
+      }
+      if(!updtMallProduct && !updtProduct){
+        return res.status(500).json({ message:[ "Product Id not found "] });
+
+      }
     
       return res.status(200).json({ message: "Review deleted successfully" });
       }
