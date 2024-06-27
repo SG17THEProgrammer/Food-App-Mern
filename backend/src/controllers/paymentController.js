@@ -1,32 +1,37 @@
 const Stripe = require('stripe');
 const stripe = Stripe(`${process.env.STRIPE_SECRET_KEY}`);
-const Delivery = require('../models/deliverySchema');
+const delivery_add = require('../models/deliverySchema');
+const order = require('../models/orderSchema');
 
 const payment = async (req, res) => {
     console.log(req.body)
-  const {products,customerInfo,deliveryCharge,tax}=req.body
-
-    if (!Array.isArray(products) || products.length === 0) {
-        return res.status(400).json({ error: 'Invalid product list' });
-    }
+  const {products,customerInfo,deliveryCharge,tax,userId,amount}=req.body
 
     try {
+
+        const newOrder = new order({
+                userId: userId,
+                items: products,
+                amount:amount,
+                address: customerInfo.address
+        })
+        await newOrder.save()
+        // await User.findByIdandUpdate(userId,{cartItems:{}});
+
+
         const lineItems = products.map((item) => {
             const priceInNum = parseInt(item.price, 10);
             if (!item.name || !item.image || isNaN(priceInNum) || !item.qty) {
                 throw new Error('Invalid product data');
             }
-            // let imageUrl = item.image;
-            // if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
-            //     throw new Error(`Invalid image URL: ${imageUrl}`);
-            // }
-
+        
             return {
                 price_data: {
                     currency: 'inr',
                     product_data: {
                         name: item.name,
                         // images: [imageUrl]
+                        // image ka url should start with https://....
                     },
                     unit_amount: priceInNum * 100,
                 },
@@ -69,8 +74,10 @@ const payment = async (req, res) => {
                     
                 }
             },
-            success_url: `http://localhost:5173/success`, 
-            cancel_url: `http://localhost:5173/failed`,
+            // success_url: `http://localhost:5173/success`, 
+            // cancel_url: `http://localhost:5173/failed`,
+            success_url: `http://localhost:5173/verify?success=true&orderId=${newOrder._id}`, 
+            cancel_url: `http://localhost:5173/verify?success=false&orderId=${newOrder._id}`,
         
         };
         const { country } = customerInfo.address;
@@ -116,7 +123,7 @@ const delivery=async(req,res)=>{
                return res.status(400).json({ message: ["Can't proceed without pincode"] });
       
           }
-        const details = new Delivery(delData);
+        const details = new delivery_add(delData);
         await details.save();
         return res.status(200).json({ message:[ "delivery details saved successfully "] });
 

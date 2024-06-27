@@ -15,7 +15,7 @@ const Delivery = () => {
 
   const tax= Math.ceil(totalPrice*0.12,2);
   const finalPrice =Math.ceil(totalPrice+tax,2)
-
+  console.log(cartItems)
 
   let shippingCharges ;
 if(finalPrice==0){
@@ -38,6 +38,8 @@ else{
 }
 
 console.log(shippingCharges)
+
+const totalAmount = finalPrice+shippingCharges;
 
   const [delDetails,setDelDetails ] = useState({
     name:"",
@@ -94,7 +96,7 @@ console.log(shippingCharges)
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({products:cartItems,customerInfo:customerInfo , deliveryCharge:shippingCharges , tax:tax})
+            body: JSON.stringify({products:cartItems,customerInfo:customerInfo , deliveryCharge:shippingCharges , tax:tax,userId:user._id , amount:totalAmount})
           });
           
         if (!response.ok) {

@@ -1,44 +1,102 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/Orders.css'
 import Comments from '../components/Comments'
 import FormatPrice from '../Helpers/FormatPrice'
-const Orders = ({cartItems}) => {
-  return (
-    <>
-    <h1 className='title2'>Your Order</h1>
-    {cartItems && cartItems.length > 0?<div className="projcard-container">
-        {cartItems && cartItems.length > 0 && cartItems.map((item, index) => (
-            <div className="projcard projcard-blue" key={index}>
-                <div className="projcard-innerbox">
-                    <img className="projcard-img" src={`${item.image}`} alt="Card Image" />
-                    <div className="projcard-textbox">
-                        <div><div className="projcard-title">{item.name}</div>
-                        <span className="projcard-subtitle" style={{display:"inline"}}>
-                        <div >{item.category}</div>
-                        <span>{item.rating}⭐</span>
-                        </span>
-                        <div className="projcard-bar"></div>
-                        <div className="projcard-description">
-                            Price : <FormatPrice price={item.price}></FormatPrice>
+import { useAuth } from '../components/Auth'
+const Orders = ({ navbar, title }) => {
+
+    const { user } = useAuth()
+    const [orders, setOrders] = useState();
+    console.log(orders)
+
+    const fetchOrders = async () => {
+        try {
+
+            const response = await fetch("http://localhost:8001/getOrder", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId: user._id })
+            })
+
+            if (response.ok) {
+                const data = await response.json()
+                setOrders(data.data)
+            }
+            else {
+                console.log("Error: " + response)
+            }
+        } catch (error) {
+            console.log("Error while getting orders" + error)
+
+        }
+
+    }
+
+    useEffect(() => {
+        fetchOrders();
+    }, [user._id])
+
+    return (
+        <>
+            <div style={{ marginBottom: "100px" }}>{navbar}</div>
+            <h1 className='title2'>{title ? title : "Your orders"}</h1>
+            <div class="ctn1 mt-5 mb-5" style={{ border: "none" }}>
+                <div class="d-flex justify-content-center row">
+                    <div class="col-md-12">
+                        <div class="rounded">
+                            <div class="table-responsive table-borderless">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+
+                                            <th>S. No</th>
+                                            <th>Order Id</th>
+                                            {title ? <th>Address</th> : ""}
+                                            <th>Order Details</th>
+                                            <th>No. of Items</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-body">
+
+                                        {orders ? orders.map((elem, index) => {
+                                            const { userId, items, amount, address, status, date } = elem;
+                                            const { line1, city, state, postal_code, country } = address;
+                                            return <>
+                                                <tr class="cell-1">
+                                                    <td>{++index}</td>
+                                                    <td>{userId}</td>
+                                                    {title ? <><td style={{textWrap:"nowrap"}}>  <p>{line1 + " " + city + " , " + state}</p>
+                                                        <p>{postal_code + " , " + country}</p>
+                                                    </td></> : ""}
+                                                    <td><p style={{ textWrap: "nowrap" }}>
+                                                        {items ? items.map((item) => {
+                                                            return <>{item.name} x {item.qty} {items.length > 1 ? "," : ""} <br />
+                                                            </>
+                                                        }) : ""}
+                                                    </p></td>
+                                                    <td><p style={{ fontWeight: "bold", textAlign: "center" }}>{orders.length}</p></td>
+                                                    {title?<td><span class="badge badge-success">{status}</span></td>:""}
+                                                    <td><FormatPrice price={amount}></FormatPrice></td>
+                                                    <td>{date ? date.substring(0, 10) : ""}</td>
+                                                    <td>{date ? date.substring(11, 19) : ""}</td>
+                                                </tr>
+                                            </>
+                                        }) : ""}
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div className="projcard-description">
-                            Qunatity : {item.qty}
-                        </div>
-                        <div className="projcard-description">
-                            Total : <FormatPrice price={item.total}> </FormatPrice>
-                        </div>
-                    </div>
-                    <div>
-                        <Comments productId={item._id}></Comments>
-                    </div>
                     </div>
                 </div>
             </div>
-        ))}
-    </div>: <h1 className='title3'>No order placed yet</h1>}
-</>
+        </>
 
-  )
+    )
 }
 
 export default Orders

@@ -15,7 +15,7 @@ const Authorize = () => {
       useEffect(() => {
         setIsLoading(true)
         // setTimeout(() => {
-          toast.error("Pls login to get access")
+        toast.error("Pls login to get access")
           navigate("/login")
         // }, 2000)
         // setIsLoading(false)

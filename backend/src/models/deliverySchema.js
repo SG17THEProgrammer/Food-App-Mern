@@ -8,8 +8,8 @@ const deliverySchema = new Schema({
     state:{ type: String, required: true},
     pincode:{ type: Number, required: true},
     phone:{ type: Number, required: true},
-    message: { type: String, unique: [true,["Do not send same message"]] },
+    message: { type: String},
 });
 // create a new collections(Model) 
-const Delivery = new model("Delivery", deliverySchema);
-module.exports = Delivery;  
+const delivery_add = new model("Delivery", deliverySchema);
+module.exports = delivery_add;  

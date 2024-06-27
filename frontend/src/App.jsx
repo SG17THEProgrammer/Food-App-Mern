@@ -26,6 +26,10 @@ import GoToTopButton from './components/GoToTopButton'
 import EditUser from './pages/EditUser'
 import Delivery from './pages/Delivery'
 import Distance from './components/Distance'
+import VerifyOrder from './pages/VerifyOrder'
+import Orders from './pages/Orders'
+import Navbar from './components/Navbar'
+import HandleOrders from './pages/HandleOrders'
 
 const App = () => {
 
@@ -77,6 +81,9 @@ const App = () => {
             <Route path='/success' element={<Success></Success>}></Route>
             <Route path='/failed' element={<Failed></Failed>}></Route>
             <Route path='/distance' element={<Distance></Distance>}></Route>
+            <Route path='/verify' element={<VerifyOrder></VerifyOrder>}></Route>
+            <Route path='/orders' element={<Orders navbar={<Navbar></Navbar>}></Orders>}></Route>
+            <Route path='/handleOrders' element={<HandleOrders></HandleOrders>}></Route>
             <Route path='*' element={<Error></Error>}></Route>
           </Routes>
 

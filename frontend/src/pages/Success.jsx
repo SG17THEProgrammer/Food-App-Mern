@@ -6,14 +6,7 @@ import { useSelector } from 'react-redux'
 import Orders from './Orders'
 
 const Success = () => {
-  const {user,cartItems,getCartItems}=useAuth()
-  const productCartItem = useSelector((state) => state.product.cartItem);
-
-  useEffect(()=>{
-    getCartItems();
-  },[user,productCartItem])
-
-  console.log(cartItems)
+  
   return (  
     <>
     <div className="">
@@ -30,7 +23,7 @@ be in contact with more details shortly </p>
         </div> 
     </div> 
 </div>
-<Orders cartItems={cartItems}></Orders>
+<Orders title={"Your Order Summary"}></Orders>
     </>
   )
 }

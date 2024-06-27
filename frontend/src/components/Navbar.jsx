@@ -8,20 +8,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from './Auth.jsx'
 import { fetchCartItems } from '../redux/productSlide.js';
 // import { useAuth0 } from "@auth0/auth0-react";
+import { BsList } from "react-icons/bs";
 
 
 
 const Navbar = () => {
+    const [dropdownMenu, setdropdownMenu] = useState(false)
+
 
     //when using Auth0 authentication
     // const { loginWithRedirect,isAuthenticated,logout } = useAuth0();
     // const {user} = useAuth0();
     const productCartItem = useSelector((state) => state.product.cartItem);
-    console.log(productCartItem) 
+    console.log(productCartItem)
 
     const [toggleButton, setToggleButton] = useState(true);
 
-    const { user ,isLoggedIn,cartItems } = useAuth();
+    const { user, isLoggedIn, cartItems } = useAuth();
 
     const dispatch = useDispatch()
 
@@ -36,13 +39,13 @@ const Navbar = () => {
     // console.log(cartItemNumber)
 
 
-useEffect(() => {
+    useEffect(() => {
 
-},[cartItems,user,isLoggedIn])
+    }, [cartItems, user, isLoggedIn])
 
-useEffect(() => {
-    dispatch(fetchCartItems(user._id));
-  }, [dispatch, user._id]);
+    useEffect(() => {
+        dispatch(fetchCartItems(user._id));
+    }, [dispatch, user._id]);
 
     return (
         <>
@@ -78,9 +81,18 @@ useEffect(() => {
                             </li>
                             <li className="nav-item active">
                                 <NavLink className="nav-link ml-2 blink" to='/mallmenu/6676c1731782239b95fa1fb6' style={{ marginRight: "-10px" }}>MallMenu <sup>New</sup><span className="sr-only"></span></NavLink>
-                            </li>   
+                            </li>
                             <li className="nav-item active">
-                                <NavLink className="nav-link ml-2 cart" to='/cart'>                                 <div className='cart'><i className="fa-solid fa-cart-shopping fa-sm  icon" style={{ position: "relative" }} ></i><span className='superscript count'>{cartItems?cartItems.length:0}</span></div>
+                                <BsList style={{ fontSize: "30px", marginTop: "3px"}} onClick={() => setdropdownMenu(!dropdownMenu)} />
+                                {dropdownMenu ? <div className='dropdown2'>
+                                    <NavLink className='navlink' to='/orders'><p className='para4' >Your Orders </p></NavLink>
+                                    {user.email=="shray@gmail.com"?<NavLink className='navlink' to='/handleOrders'><p className='para4' >Handle Orders </p></NavLink>:""}
+                                    <NavLink className='navlink'> <p className='para4'>Address Book</p></NavLink>
+                                    <NavLink className='navlink'> <p className='para4'>Reserve a Table </p> </NavLink>
+                                </div> : ""}
+                            </li>
+                            <li className="nav-item active">
+                                <NavLink className="nav-link ml-2 cart" to='/cart'>                                 <div className='cart'><i className="fa-solid fa-cart-shopping fa-sm  icon" style={{ position: "relative" }} ></i><span className='superscript count'>{cartItems ? cartItems.length : 0}</span></div>
                                     {/* <span className="sr-only">Cart</span> */}
                                 </NavLink>
                             </li>
@@ -92,7 +104,7 @@ useEffect(() => {
 
 
 
-                                {/* new way to login/logout using AuthO */}
+                            {/* new way to login/logout using AuthO */}
                             {/* {isAuthenticated ? <>
                                 <li className="nav-item active">
                                     <button className='btn nav-link  mr-4 ml-1 mt-2'  onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
@@ -110,19 +122,19 @@ useEffect(() => {
 
 
                             {/* standard way to login/logout */}
-                            {isLoggedIn? <>
+                            {isLoggedIn ? <>
                                 <li className="nav-item active">
-                                    <NavLink className="nav-link  mr-4 ml-2" to="/logout"><button className='btn' 
+                                    <NavLink className="nav-link  mr-4 ml-2" to="/logout"><button className='btn'
                                     >Logout</button> <span className="sr-only"></span></NavLink>
                                 </li>
-                            </> :<><li className="nav-item active">
-                                    <NavLink className="nav-link " to='/login' ><button className='btn' >Login</button> <span className="sr-only"></span></NavLink>
-                                </li>
+                            </> : <><li className="nav-item active">
+                                <NavLink className="nav-link " to='/login' ><button className='btn' >Login</button> <span className="sr-only"></span></NavLink>
+                            </li>
                                 <li className="nav-item active">
-                                    <NavLink className="nav-link mr-4" style={{marginLeft:"-18px"}}  to='/register' ><button className='btn' >SignUp</button> <span className="sr-only"></span></NavLink>
+                                    <NavLink className="nav-link mr-4" style={{ marginLeft: "-18px" }} to='/register' ><button className='btn' >SignUp</button> <span className="sr-only"></span></NavLink>
                                 </li>
-                                </>
-                                
+                            </>
+
                             }
 
 

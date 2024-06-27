@@ -11,7 +11,7 @@ const GoToTopButton = () => {
             // total height of the document
             const pageHeight = document.documentElement.scrollHeight;
 
-            if (scrollPosition >= pageHeight / 1.4) {
+            if (scrollPosition >= pageHeight / 2) {
                 setShowSpecialComponent(true);
             }
             else {

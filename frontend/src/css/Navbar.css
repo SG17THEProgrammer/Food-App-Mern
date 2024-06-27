@@ -21,10 +21,10 @@
     border-bottom: 5px solid red;
 } */
 
-
+/* 
 .navbar li:hover{
     color:red !important;
-}
+} */
 
 .title{
     margin-left: 18px;
@@ -139,3 +139,43 @@
     top: 10px;
     margin-right: 20px;
   } */
+
+
+  .dropdown2{
+    position:absolute;
+    background-color: #FDF0D1;
+    padding: 7px;
+    margin-left: -45px;
+    border-radius: 5px;
+    opacity: 0.9;
+    text-decoration: none;
+    margin-left: -20px;
+    width: fit-content;
+    z-index: 99;
+  }
+
+  
+  .para4{
+  width: fit-content;
+  margin-bottom: 5px;
+  padding: 5px;
+  text-decoration: none;
+}
+.para4 :hover{
+  text-decoration: none;
+  background-color: #F1E4C3;
+}
+
+.navlink :hover{
+  background-color: #E5E1DA;
+  width: 100%;
+  border-radius: 5px;
+  padding: 2px;
+  text-decoration: none;
+  color: none;
+}
+
+.navlink{
+  text-decoration: none !important;
+  color:brown;
+}
