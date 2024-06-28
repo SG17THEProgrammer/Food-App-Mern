@@ -30,6 +30,7 @@ import VerifyOrder from './pages/VerifyOrder'
 import Orders from './pages/Orders'
 import Navbar from './components/Navbar'
 import HandleOrders from './pages/HandleOrders'
+import Reservation from './pages/Reservation'
 
 const App = () => {
 
@@ -84,6 +85,7 @@ const App = () => {
             <Route path='/verify' element={<VerifyOrder></VerifyOrder>}></Route>
             <Route path='/orders' element={<Orders navbar={<Navbar></Navbar>}></Orders>}></Route>
             <Route path='/handleOrders' element={<HandleOrders></HandleOrders>}></Route>
+            <Route path='/reservation' element={<Reservation></Reservation>}></Route>
             <Route path='*' element={<Error></Error>}></Route>
           </Routes>
 

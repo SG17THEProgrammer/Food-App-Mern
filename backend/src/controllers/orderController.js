@@ -31,4 +31,17 @@ const getOrder =async(req,res)=>{
     }
 }
 
-module.exports ={verifyOrder,getOrder}
+
+const updateDeliveryStatus =async(req,res)=>{
+    const {orderId ,status}= req.body;
+    try {
+        await order.findByIdAndUpdate(orderId , {status:status})
+        res.json({success:true,message:["Status Changed"]})
+    } catch (error) {
+        console.log(error)
+        res.json({success:false,message:"error"})
+        
+    }
+}
+
+module.exports ={verifyOrder,getOrder,updateDeliveryStatus}

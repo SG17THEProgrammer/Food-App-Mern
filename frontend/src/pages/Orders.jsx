@@ -3,7 +3,7 @@ import '../css/Orders.css'
 import Comments from '../components/Comments'
 import FormatPrice from '../Helpers/FormatPrice'
 import { useAuth } from '../components/Auth'
-const Orders = ({ navbar, title }) => {
+const Orders = ({ navbar, title ,handleStatus}) => {
 
     const { user } = useAuth()
     const [orders, setOrders] = useState();
@@ -36,6 +36,7 @@ const Orders = ({ navbar, title }) => {
         fetchOrders();
     }, [user._id])
 
+
     return (
         <>
             <div style={{ marginBottom: "100px" }}>{navbar}</div>
@@ -51,25 +52,26 @@ const Orders = ({ navbar, title }) => {
 
                                             <th>S. No</th>
                                             <th>Order Id</th>
-                                            {title ? <th>Address</th> : ""}
+                                            {title=="All Orders" ? <th>Address</th> : ""}
                                             <th>Order Details</th>
                                             <th>No. of Items</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Date</th>
                                             <th>Time</th>
+                                            {title=="All Orders"?"":<th></th>}
                                         </tr>
                                     </thead>
                                     <tbody class="table-body">
 
                                         {orders ? orders.map((elem, index) => {
-                                            const { userId, items, amount, address, status, date } = elem;
+                                            const { userId, items, amount, address, status, date ,_id } = elem;
                                             const { line1, city, state, postal_code, country } = address;
                                             return <>
                                                 <tr class="cell-1">
                                                     <td>{++index}</td>
                                                     <td>{userId}</td>
-                                                    {title ? <><td style={{textWrap:"nowrap"}}>  <p>{line1 + " " + city + " , " + state}</p>
+                                                    {title=="All Orders" ? <><td style={{textWrap:"nowrap"}}>  <p>{line1 + " " + city + " , " + state}</p>
                                                         <p>{postal_code + " , " + country}</p>
                                                     </td></> : ""}
                                                     <td><p style={{ textWrap: "nowrap" }}>
@@ -79,10 +81,17 @@ const Orders = ({ navbar, title }) => {
                                                         }) : ""}
                                                     </p></td>
                                                     <td><p style={{ fontWeight: "bold", textAlign: "center" }}>{orders.length}</p></td>
-                                                    {title?<td><span class="badge badge-success">{status}</span></td>:""}
+                                                    {title=="All Orders"?<td>
+                                                        <select onChange={(e)=>handleStatus(e,_id,fetchOrders)} value={status}>
+                                                            <option value="Food Processing">Food Processing</option>
+                                                            <option value="Out for delivery">Out for delivery</option>
+                                                            <option value="Delivered">Delivered</option>
+                                                        </select>
+                                                    </td>:<td><span class="badge badge-success">{status}</span></td>}
                                                     <td><FormatPrice price={amount}></FormatPrice></td>
                                                     <td>{date ? date.substring(0, 10) : ""}</td>
                                                     <td>{date ? date.substring(11, 19) : ""}</td>
+                                                   {title=="All Orders"?"": <td><button className='button2' style={{marginTop:"-5px",width:"100px",height:"30px"}} onClick={fetchOrders}>Track Order</button></td>}
                                                 </tr>
                                             </>
                                         }) : ""}

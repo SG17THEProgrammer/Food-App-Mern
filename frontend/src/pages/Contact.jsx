@@ -43,6 +43,26 @@ const Contact = () => {
 		});
 	};
 
+	const sendEmail = async (event) => {
+		event.preventDefault();
+		const formData = new FormData(event.target);
+	
+		formData.append("access_key", "e8fa7b2e-8a34-499e-b006-8bd583f75a46");
+	
+		const response = await fetch("https://api.web3forms.com/submit", {
+		  method: "POST",
+		  body: formData
+		});
+	
+		const data = await response.json();
+	
+		if (data.success) {
+		  event.target.reset();
+		} else {
+		  console.log("Error", data);
+		}
+	  };
+
 	// handle form on submit
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -62,7 +82,7 @@ const Contact = () => {
 			console.log("response data : ", response);
 			console.log(resData);
 
-			if (response.ok) {
+			if (response.ok) {	
 
 				//storing tokens in LS through context api 
 				// storeTokensInLS(resData.token)
@@ -81,6 +101,8 @@ const Contact = () => {
 					setIsLoading(false);
 					toast.success(resData.message[0]);
 				}, 2000)
+
+				sendEmail(e)
 				
 			} else {
 				toast.error(resData.message[0]);

@@ -11,7 +11,7 @@ const contactSchema = require('../validators/contactSchema')
 const aboutSchema = require('../validators/aboutSchema')
 const { payment, delivery } = require('../controllers/paymentController')
 const { distance } = require('../controllers/locationController')
-const { verifyOrder, getOrder } = require('../controllers/orderController')
+const { verifyOrder, getOrder, updateDeliveryStatus } = require('../controllers/orderController')
 
 
 
@@ -23,6 +23,7 @@ router.post('/postReview',postReview)
 router.post('/delivery',delivery)
 router.post('/verify',verifyOrder)
 router.post('/getOrder',getOrder)
+router.post('/updateDeliveryStatus',updateDeliveryStatus)
 router.post('/contact',validate(contactSchema),contact)
 
 
