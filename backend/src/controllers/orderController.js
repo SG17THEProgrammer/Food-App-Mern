@@ -31,17 +31,20 @@ const getOrder =async(req,res)=>{
     }
 }
 
-
-const updateDeliveryStatus =async(req,res)=>{
-    const {orderId ,status}= req.body;
+const showOrder =async(req,res)=>{
+    const {orderId} = req.body
+    // console.log(orderId)
     try {
-        await order.findByIdAndUpdate(orderId , {status:status})
-        res.json({success:true,message:["Status Changed"]})
+        const response = await order.findOne({_id:orderId})
+        res.json({success:true,data:response})
+        console.log(response)
     } catch (error) {
         console.log(error)
         res.json({success:false,message:"error"})
-        
     }
 }
 
-module.exports ={verifyOrder,getOrder,updateDeliveryStatus}
+
+
+
+module.exports ={verifyOrder,getOrder,showOrder}

@@ -71,7 +71,7 @@ console.log(productDisplay)
             <div className="crd-price"><FormatPrice price={productDisplay.price}></FormatPrice> </div>
           </div>
           <div>
-            <Comments productId={productDisplay._id}></Comments>
+            <Comments productId={productDisplay._id} title={"Menu"}></Comments>
           </div>
 
         </div>

@@ -24,7 +24,7 @@
     margin: auto;
     padding: 40px;
     overflow: hidden;
-    background-image: url('https://i.imgur.com/8z1tx3u.jpg');
+    background-image: url('https://images.unsplash.com/photo-1697350671122-4ffda28f5a85?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
     border-radius: 5px;
     z-index: 20;
@@ -52,12 +52,13 @@
     text-transform: capitalize;
     font-size: 42px;
     margin: 0px;
-    color: #fff;
+    color: #FFA27F;
 }
 
 .booking-form .form-group {
     position: relative;
     margin-bottom: 30px;
+    
 }
 
 .booking-form .form-control {
@@ -79,15 +80,15 @@
     box-shadow: 0px 0px 0px 2px #ff8846;
 }
 
-.booking-form input[type="date"].form-control {
+.booking-form input[type="datetime-local"].form-control {
     padding-top: 16px;
 }
 
-.booking-form input[type="date"].form-control:invalid {
+.booking-form input[type="datetime-local"].form-control:invalid {
     color: rgba(255, 255, 255, 0.5);
 }
 
-.booking-form input[type="date"].form-control + .form-label {
+.booking-form input[type="datetime-local"].form-control + .form-label {
     opacity: 1;
     top: 10px;
 }

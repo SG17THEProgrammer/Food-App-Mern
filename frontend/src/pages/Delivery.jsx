@@ -7,7 +7,14 @@ import { toast } from 'react-toastify'
 import { useSelector } from 'react-redux'
 import FormatPrice from '../Helpers/FormatPrice'
 import { loadStripe } from '@stripe/stripe-js'
-const Delivery = () => {
+import Address from './Address'
+
+// import State_City from '../components/State_City'
+// import City from '../components/City'
+const Delivery = ({title}) => {
+
+  const [delAddress , setDelAddress] = useState();
+
   const {user,cartItems,getCartItems} = useAuth();
   const productCartItem = useSelector((state) => state.product.cartItem);
 
@@ -15,7 +22,7 @@ const Delivery = () => {
 
   const tax= Math.ceil(totalPrice*0.12,2);
   const finalPrice =Math.ceil(totalPrice+tax,2)
-  console.log(cartItems)
+  // console.log(cartItems)
 
   let shippingCharges ;
 if(finalPrice==0){
@@ -37,7 +44,7 @@ else{
 
 }
 
-console.log(shippingCharges)
+// console.log(shippingCharges)
 
 const totalAmount = finalPrice+shippingCharges;
 
@@ -49,7 +56,6 @@ const totalAmount = finalPrice+shippingCharges;
     email:"",
     phone:"",
     state:"",
-    message:""
   })
 
   const [delData, setdelData] = useState(true)
@@ -58,7 +64,6 @@ const totalAmount = finalPrice+shippingCharges;
 			name: user.name,
 			email: user.email,
       phone:user.phone,
-			message: "",
       address:"",
       city:"",
       pincode:"",
@@ -75,7 +80,21 @@ const totalAmount = finalPrice+shippingCharges;
       [name]:value
     })
   }
+  const handleSelectInput = (e) => {
+    const { value } = e.target;
+    setDelDetails((prevDetails) => ({
+      ...prevDetails,
+      address: value,
+    }));
+  };
 
+  const handleCityInput = (e) => {
+    const { value } = e.target;
+    setDelDetails((prevDetails) => ({
+      ...prevDetails,
+      city: value,
+    }));
+  };
 
   const handlePayment = async () => {
     const stripe = await loadStripe('pk_test_51OkP1CSGM4q7z7zWyecwfKJL4fMfVV3dWiTTksC7PFH8LK5Xix3ADEV0C2UxJQBiY8y23JHqztqyNLeC2fkRsbAt00uIZcT3sD');
@@ -112,7 +131,7 @@ const totalAmount = finalPrice+shippingCharges;
 
           const result = await stripe.redirectToCheckout({ sessionId: data.id });
           console.log('Stripe redirect result:', result);
-        },2000 )
+        },1000 )
 
         if (result.error) {
             console.error('Stripe redirect error:', result.error);
@@ -122,7 +141,8 @@ const totalAmount = finalPrice+shippingCharges;
     }
 };
 
-    const handleSubmit=async()=>{
+    const handleSubmit=async(e)=>{
+      e.preventDefault()
       try {
         const response = await fetch(`http://localhost:8001/delivery`, {
           method: "POST",
@@ -139,13 +159,14 @@ const totalAmount = finalPrice+shippingCharges;
           name: user.name,
           email: user.email,
           phone:user.phone,
-          message: "",
           address:"",
           city:"",
           pincode:"",
+          state:""
         });
 
-        handlePayment()
+        {title=="address"? "":handlePayment()}
+        {title=="address"?toast.success(resData.message[0]):""}
       }
       else{
         toast.error(resData.message[0])
@@ -156,20 +177,51 @@ const totalAmount = finalPrice+shippingCharges;
     }
 
 
+    const getDeliveryAddress = async() => {
+      try {
+          const address = await fetch("http://localhost:8001/getDeliveryAddress",{
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({userId:user._id})
+          })
+          // console.log(address)
+
+          const response = await address.json()
+          // console.log(response)
+
+          setDelAddress(response.data)
+          if(response.ok){
+              console.log("Got delivery address successfully")
+          }
+          
+      } catch (error) {
+          console.log("Error in fetching api" +error)
+
+
+      }
+  }   
+
+
     useEffect(()=>{
       getCartItems();
     },[user,productCartItem])
 
+    useEffect(()=>{
+      getDeliveryAddress()
+  },[user._id])
+    
+
   return (
     <div>
     <Navbar></Navbar>
+  {title=="address"?"": <div className='add'> <NavLink to='/address' style={{textDecoration:"none",color:"black"}}><Address title={'del'}></Address></NavLink></div>}
           <div className="centered-container">
-        <div className="row container" style={{backgroundColor:"brown" , width:"80vw" , height:"fit-content" , marginBottom:"100px"}}>
-            <div className="col-md-8 mb-4"  >
-                <div className="card mb-4">
-                    <div className="card-header py-3">
+        <div className={title=="address"? "row ": "row container"} style={{backgroundColor:title=="address"?"#ddd0c8" :"brown" , width:"80vw" , height:"fit-content" , marginBottom:"100px" ,marginTop:title=="address"?"20px":"100px"}}>
+            <div className={title=="address"?"col-md-8 mb-4 popup-background  popup-content":"col-md-8 mb-4"} style={{zIndex:""}}  >
+                <div className="card mb-4 ">
+                    {title=="address" ? "":<div className="card-header py-3 ">
                         <h5 className="mb-0">Billing details</h5>
-                    </div>
+                    </div>}
                     <div className="card-body" style={{backgroundColor:"wheat"}}>
                         <form >
                             <div className="row mb-4">
@@ -183,18 +235,29 @@ const totalAmount = finalPrice+shippingCharges;
                             </div>
                             <div className="row mb-4">
                             <div data-mdb-input-init className="form-outline mb-4">
-                                <label className="form-label" for="form7Example4">Address</label>
+                                <label className="form-label" for="form7Example4">Address</label>&nbsp;&nbsp;
+                                <select name="" id="" onChange={handleSelectInput} value={delDetails.address}>
+                                <option value="">Select address</option>
+                                  {delAddress?delAddress.map((elem,idx)=>{
+                                    return  <option value={elem.address} key={idx}>{elem.address}</option>
+                                   }):""}
+                                </select>
                                 <input type="text" id="form7Example4" className="form-control"  name='address' value={delDetails.address} onChange={handleInput} required/>
                             </div>
                                 <div className="col">
                                 <div data-mdb-input-init className="form-outline">
-                                        <label className="form-label" for="form7Example1">State</label>
+                                        <span className='span'><label className="form-label" for="form7Example1">State</label>
+                                        {/* <State_City onChange={handleSelectInput} setDelDetails={setDelDetails} delDetails={delDetails} name={"state"}></State_City> */}
+                                        </span>
                                         <input type="text" id="form7Example1" className="form-control"  name='state' value={delDetails.state} onChange={handleInput} required/>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div data-mdb-input-init className="form-outline">
-                                        <label className="form-label" for="form7Example1">City</label>
+                                    <span className='span'>
+                                    <label className="form-label" for="form7Example1">City</label>
+                                    {/* <City onChange={handleCityInput} setDelDetails={setDelDetails} delDetails={delDetails} name={"city"}></City> */}
+                                    </span>
                                         <input type="text" id="form7Example1" className="form-control"  name='city' value={delDetails.city} onChange={handleInput} required/>
                                     </div>
                                     
@@ -216,16 +279,19 @@ const totalAmount = finalPrice+shippingCharges;
                                 <label className="form-label" for="form7Example6">Phone</label>
                                 <input type="number" id="form7Example6" className="form-control"  name='phone' value={delDetails.phone} onChange={handleInput} required/>
                             </div>
-                            <div data-mdb-input-init className="form-outline mb-4">
+                            {title=="address" ?<div>
+                                <button className='button1 btn-primary btn-lg btn-block' onClick={handleSubmit}>Add</button>
+                            </div>:""}
+                            {/* <div data-mdb-input-init className="form-outline mb-4">
                                 <label className="form-label" for="form7Example7">Additional information</label>
                                 <textarea className="form-control" id="form7Example7" rows="4" name='message' value={delDetails.message} onChange={handleInput} required></textarea>
-                            </div>
+                            </div> */}
                           
                         </form>
                     </div>
                 </div>
             </div>
-            <div className="col-md-4 mb-4">
+            {title=="address" ?"":<div className="col-md-4 mb-4">
                 <div className="card mb-4">
                     <div className="card-header py-3">
                         <h5 className="mb-0">Summary</h5>
@@ -265,7 +331,7 @@ const totalAmount = finalPrice+shippingCharges;
                   <button className='delBtn' >Go To Cart</button>
                   </NavLink>  
                 </div>
-            </div>
+            </div>}
         </div>
     </div>
     </div>

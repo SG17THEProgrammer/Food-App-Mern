@@ -2,7 +2,6 @@ import { React, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.js'
-import { toast } from 'react-toastify';
 import '../css/Navbar.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from './Auth.jsx'
@@ -87,8 +86,8 @@ const Navbar = () => {
                                 {dropdownMenu ? <div className='dropdown2'>
                                     <NavLink className='navlink' to='/orders'><p className='para4' >Your Orders </p></NavLink>
                                     {user.email=="shray@gmail.com"?<NavLink className='navlink' to='/handleOrders'><p className='para4' >Handle Orders </p></NavLink>:""}
-                                    <NavLink className='navlink'> <p className='para4'>Address Book</p></NavLink>
-                                    <NavLink className='navlink'> <p className='para4'>Reserve a Table </p> </NavLink>
+                                    <NavLink className='navlink' to='/address'> <p className='para4'>Address Book</p></NavLink>
+                                    <NavLink className='navlink' to='/reservation'> <p className='para4'>Reserve a Table </p> </NavLink>
                                 </div> : ""}
                             </li>
                             <li className="nav-item active">

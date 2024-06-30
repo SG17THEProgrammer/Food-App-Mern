@@ -10,7 +10,7 @@ const VerifyOrder = () => {
     const orderId = searchParams.get('orderId')
 
     const verifyPayment =async()=>{
-        const response = await axios.post("http://localhost:8001/verify",{success,orderId  })
+        const response = await axios.post("http://localhost:8001/verify",{success,orderId})
         if(response.data.success){
             navigate('/success')
         }

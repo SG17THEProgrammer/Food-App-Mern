@@ -116,7 +116,7 @@ const MallMenu = () => {
         </div>
       </div>
       <div className='comment'>
-      <Comments productId={id}></Comments>
+      <Comments productId={id} title={"Menu"}></Comments>
       </div>
 
     <MallMenuOtherProducts heading={"Other Mall Products"} ></MallMenuOtherProducts>

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = new express.Router()
-const {contact, team} = require('../controllers/controller')
+const {contact, team, reserveTable} = require('../controllers/controller')
 const auth = require('../middleware/auth')
 const { register, login, user, deleteUser, updateUser, getallusers } = require('../controllers/userController')
 const { addnewitem, getproduct, getMallproduct ,edititem, postReview, getReview, deleteReview} = require('../controllers/productController')
@@ -9,9 +9,10 @@ const signupSchema = require('../validators/signupSchema')
 const loginSchema = require('../validators/loginSchema')
 const contactSchema = require('../validators/contactSchema')
 const aboutSchema = require('../validators/aboutSchema')
-const { payment, delivery } = require('../controllers/paymentController')
+const { payment } = require('../controllers/paymentController')
+const { delivery,updateDeliveryStatus, getDeliveryAddress } = require('../controllers/deliveryController')
 const { distance } = require('../controllers/locationController')
-const { verifyOrder, getOrder, updateDeliveryStatus } = require('../controllers/orderController')
+const { verifyOrder, getOrder, showOrder } = require('../controllers/orderController')
 
 
 
@@ -23,7 +24,10 @@ router.post('/postReview',postReview)
 router.post('/delivery',delivery)
 router.post('/verify',verifyOrder)
 router.post('/getOrder',getOrder)
+router.post('/showOrder',showOrder)
+router.post('/reservation',reserveTable)
 router.post('/updateDeliveryStatus',updateDeliveryStatus)
+router.post('/getDeliveryAddress',getDeliveryAddress)
 router.post('/contact',validate(contactSchema),contact)
 
 

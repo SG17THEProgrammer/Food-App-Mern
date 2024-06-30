@@ -3,6 +3,7 @@ import '../css/Orders.css'
 import Comments from '../components/Comments'
 import FormatPrice from '../Helpers/FormatPrice'
 import { useAuth } from '../components/Auth'
+import { NavLink } from 'react-router-dom'
 const Orders = ({ navbar, title ,handleStatus}) => {
 
     const { user } = useAuth()
@@ -60,6 +61,7 @@ const Orders = ({ navbar, title ,handleStatus}) => {
                                             <th>Date</th>
                                             <th>Time</th>
                                             {title=="All Orders"?"":<th></th>}
+                                            {title=="All Orders"?"":<th></th>}
                                         </tr>
                                     </thead>
                                     <tbody class="table-body">
@@ -75,12 +77,12 @@ const Orders = ({ navbar, title ,handleStatus}) => {
                                                         <p>{postal_code + " , " + country}</p>
                                                     </td></> : ""}
                                                     <td><p style={{ textWrap: "nowrap" }}>
-                                                        {items ? items.map((item) => {
-                                                            return <>{item.name} x {item.qty} {items.length > 1 ? "," : ""} <br />
+                                                        {items ? items.map((item,index) => {
+                                                            return <>{item.name} x {item.qty} {index==items.length-1 ? "" : ","} <br />
                                                             </>
                                                         }) : ""}
                                                     </p></td>
-                                                    <td><p style={{ fontWeight: "bold", textAlign: "center" }}>{orders.length}</p></td>
+                                                    <td><p style={{ fontWeight: "bold", textAlign: "center" }}>{items.length}</p></td>
                                                     {title=="All Orders"?<td>
                                                         <select onChange={(e)=>handleStatus(e,_id,fetchOrders)} value={status}>
                                                             <option value="Food Processing">Food Processing</option>
@@ -92,6 +94,7 @@ const Orders = ({ navbar, title ,handleStatus}) => {
                                                     <td>{date ? date.substring(0, 10) : ""}</td>
                                                     <td>{date ? date.substring(11, 19) : ""}</td>
                                                    {title=="All Orders"?"": <td><button className='button2' style={{marginTop:"-5px",width:"100px",height:"30px"}} onClick={fetchOrders}>Track Order</button></td>}
+                                                   {title=="All Orders"?"": <td><NavLink to={`/showOrder/${_id}`} style={{textDecoration:"none"}}><button className='button2' style={{marginTop:"-5px",width:"100px",height:"30px"}}>Show More</button></NavLink></td>}
                                                 </tr>
                                             </>
                                         }) : ""}

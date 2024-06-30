@@ -33,3 +33,41 @@
   .delBtn:hover{
     background:lightgrey;
   }
+
+  .popup-background {
+    /* position: absolute; */
+    top: 18%;
+    left: 0;
+    width: 100%;
+    height: 580px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: rgba(255, 255, 255, 0.1); */
+    backdrop-filter: blur(10px);
+  }
+  
+  .popup-content {
+    margin-left: 100px;
+    margin-top: -15px;
+    background-color: rgba(245, 245, 220, 0);    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    color: black; /* Ensures text is readable */
+    padding-top: 50px;
+    width:fit-content;
+
+  }
+  
+  
+  .add{
+    position: absolute;
+    z-index: 1000;
+  }
+
+  .span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }

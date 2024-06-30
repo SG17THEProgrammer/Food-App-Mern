@@ -1,6 +1,5 @@
 const Stripe = require('stripe');
 const stripe = Stripe(`${process.env.STRIPE_SECRET_KEY}`);
-const delivery_add = require('../models/deliverySchema');
 const order = require('../models/orderSchema');
 
 const payment = async (req, res) => {
@@ -16,7 +15,6 @@ const payment = async (req, res) => {
                 address: customerInfo.address
         })
         await newOrder.save()
-        // await User.findByIdandUpdate(userId,{cartItems:{}});
 
 
         const lineItems = products.map((item) => {
@@ -98,41 +96,6 @@ const payment = async (req, res) => {
     }
 }
 
-const delivery=async(req,res)=>{
-    try {
-        console.log(req.body)
-        
-        const {delDetails,userId} = req.body
-        const {name,email,phone,address,message,city,pincode,state}  = delDetails
-        const delData = {
-            name,email,phone,address,message,city,pincode,state,userId
-          };
-          if(!delDetails.address){
-               return res.status(400).json({ message: ["Can't proceed without address"] });
-      
-          }
-          if(!delDetails.state){
-               return res.status(400).json({ message: ["Can't proceed without state"] });
-      
-          }
-          if(!delDetails.city){
-               return res.status(400).json({ message: ["Can't proceed without city"] });
-      
-          }
-          if(!delDetails.pincode){
-               return res.status(400).json({ message: ["Can't proceed without pincode"] });
-      
-          }
-        const details = new delivery_add(delData);
-        await details.save();
-        return res.status(200).json({ message:[ "delivery details saved successfully "] });
 
-        
 
-    } catch (error) {
-        return res.status(500).json({ message:[ "Error occurred while placing order"] });
-
-    }
-}
-
-module.exports = {payment , delivery }
+module.exports = {payment }
