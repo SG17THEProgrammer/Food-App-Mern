@@ -14,14 +14,14 @@ const EditProduct = () => {
   const navigate = useNavigate()
   const {user,getCartItems} =useAuth()
   const { id } = useParams();
-  console.log(id)
+  //console.log(id)
   const productCartItem = useSelector((state) => state.product.cartItem);
   const foodproductData = useSelector((state) => state.product.productList)
   const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
   const allproducts = [...foodproductData, ...mallproductData];
 
   const productDisplay = allproducts.filter((elem) => elem._id === id)[0];
-    console.log(productDisplay)
+    //console.log(productDisplay)
 
   const [productData, setProductData] = useState(true)
   const [cardProduct, setcardProduct] = useState({
@@ -46,7 +46,7 @@ const EditProduct = () => {
   }
 
   const handleInput = (e) => {
-      // console.log(e);
+      // //console.log(e);
       let name = e.target.name;
       let value = e.target.value;
 
@@ -60,7 +60,7 @@ const EditProduct = () => {
   
   const uploadImage = async (e) => {
     const imgData = await ImagetoBase64(e.target.files[0])
-    // console.log(imgData)
+    // //console.log(imgData)
 
     setcardProduct((prev) => {
       return {
@@ -71,7 +71,7 @@ const EditProduct = () => {
   }
 
   const handleSubmit = async (e) => {
-    console.log(1)
+    //console.log(1)
     e.preventDefault()
 
     const { name, image, price ,category,description,database} = cardProduct
@@ -86,7 +86,7 @@ const EditProduct = () => {
       })
 
       const res = await response.json()
-      console.log(res)
+      //console.log(res)
       toast.success(res.message)
       setTimeout(() =>{
         window.location.reload()

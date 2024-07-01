@@ -7,7 +7,7 @@ const register = async (req, res) => {
 
     try {
         const { name, email, phone, password, image } = req.body
-        // console.log(req.body);
+        // //console.log(req.body);
 
         const existingUser = await User.findOne({ email })
 
@@ -20,9 +20,9 @@ const register = async (req, res) => {
 
             // const hashPassword = await bcrypt.hash(password,10)
             // 10=>salt round
-            // console.log(hashPassword)
+            // //console.log(hashPassword)
             // const hashCnfrmPassword = await bcrypt.hash(password,10)
-            // console.log(hashCnfrmPassword)
+            // //console.log(hashCnfrmPassword)
             // if (password === confirmpassword) {
             //     const registerUser = new User({
             //         firstname, lastname, email, phone, password:hashPassword, confirmpassword:hashCnfrmPassword
@@ -35,9 +35,9 @@ const register = async (req, res) => {
                 name, email, phone, password, image
             })
 
-            console.log(registerUser)
+            //console.log(registerUser)
             const register = await registerUser.save()
-            // console.log(register);
+            // //console.log(register);
 
 
             res.status(200).json({
@@ -54,23 +54,23 @@ const register = async (req, res) => {
             }   
 
 
-            // console.log(registerUser);
+            // //console.log(registerUser);
 
         }
 
     }
 
     catch (error) {
-        console.log(error)
+        //console.log(error)
     }
 
 }
 
 const user = async (req, res) => {
     try {
-        // console.log(req.user)
+        // //console.log(req.user)
         const userData = req.user;
-        // console.log(userData);
+        // //console.log(userData);
 
         return res.status(200).json({ userData })
         // return res.status(200).json({message:"hi user"})
@@ -95,12 +95,12 @@ const login = async (req, res) => {
     try {
         const email = req.body.email
         const password = req.body.password
-        // console.log(req.body)
-        // console.log("email"+ email)
-        // console.log(password)
+        // //console.log(req.body)
+        // //console.log("email"+ email)
+        // //console.log(password)
 
         const userExist = await User.findOne({ email })
-        // console.log("user" + userExist)
+        // //console.log("user" + userExist)
 
         if (!userExist) {
             res.status(404).json({ message: ["Invalid password or email "] })
@@ -110,7 +110,7 @@ const login = async (req, res) => {
 
         //yahan comparePass is in userSchema file 
         const isMatch = await userExist.comparePass(password)
-        // console.log("ismatch "+ isMatch)
+        // //console.log("ismatch "+ isMatch)
 
         if (isMatch) {
             res.status(200).json({
@@ -140,7 +140,7 @@ const login = async (req, res) => {
 const deleteUser = async (req, res) => {
     try {
         const id = req.params.id;
-        console.log(id)
+        //console.log(id)
         if (id) {
 
             await User.findByIdAndDelete({ _id: id });

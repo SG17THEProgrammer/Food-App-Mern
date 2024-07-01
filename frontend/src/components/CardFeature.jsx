@@ -12,9 +12,9 @@ const CardFeature = ({ image, name, price, category, id ,rating}) => {
   // const actualprice =price.props.price
   
     const productCartItem = useSelector((state) => state.product.cartItem);
-    // console.log(productCartItem)  
+    // //console.log(productCartItem)  
 const {user,saveCartItemsToLS,isLoggedIn} = useAuth()
-// console.log(user)
+// //console.log(user)
 
 
   const dispatch = useDispatch()

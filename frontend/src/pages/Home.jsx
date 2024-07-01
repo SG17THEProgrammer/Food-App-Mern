@@ -16,10 +16,10 @@ const Home = () => {
 
   const { user, getCartItems } = useAuth()
   const productCartItem = useSelector((state) => state.product.cartItem);
-  console.log(productCartItem)
+  //console.log(productCartItem)
 
   const productData = useSelector((state) => state.product.productList)
-  // console.log(productData)
+  // //console.log(productData)
   const homeProductList = productData.slice(0, 6)
 
 

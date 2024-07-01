@@ -42,7 +42,7 @@ const Register = () => {
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
-    console.log(registerUser);
+    //console.log(registerUser);
 
     try {
       const response = await fetch(`http://localhost:8001/register`, {
@@ -52,10 +52,10 @@ const Register = () => {
         },
         body: JSON.stringify(registerUser),
       });
-      console.log("response data : ", response);
+      //console.log("response data : ", response);
       
       const resData = await response.json();
-      console.log(resData);
+      //console.log(resData);
 
       if (response.ok) {
         
@@ -70,29 +70,29 @@ const Register = () => {
         navigate('/home')
         toast.success(resData.message[0]);  
         window.location.reload();
-        console.log(resData);
+        //console.log(resData);
       } else {
         // toast.error(resData.extraDetails?resData.extraDetails:resData.message)
         toast.error(resData.message[0]);  
 
-        console.log("error inside response ", "error");
+        //console.log("error inside response ", "error");
       }
     } catch (error) {
-      console.error("Error", error);
+      //console.error("Error", error);
     }
 
     // try {
     //     const api = "http://localhost:7000/signup"
     //     const response = await axios.get(api)
-    //     console.log(response);
+    //     //console.log(response);
     // } catch (error) {
-    //     console.log(error);
+    //     //console.log(error);
     // }
   };
 
 
   const handleUploadProfileImage = async(e)=>{
-    // console.log(e.target.files[0])
+    // //console.log(e.target.files[0])
     const registerUser = await ImagetoBase64(e.target.files[0])
 
 

@@ -6,7 +6,7 @@ import { useAuth } from '../components/Auth'
 const AboutUs = () => {
 
     const {team} = useAuth()
-    console.log(team)
+    //console.log(team)
   return (
       <>
     <Navbar></Navbar>

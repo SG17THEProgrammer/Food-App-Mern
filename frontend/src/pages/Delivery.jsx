@@ -8,12 +8,18 @@ import { useSelector } from 'react-redux'
 import FormatPrice from '../Helpers/FormatPrice'
 import { loadStripe } from '@stripe/stripe-js'
 import Address from './Address'
-
-// import State_City from '../components/State_City'
-// import City from '../components/City'
+import State from '../components/State'
 const Delivery = ({title}) => {
 
   const [delAddress , setDelAddress] = useState();
+//console.log(delAddress)
+
+ const uniqueDelAddress = Array.from(new Set(delAddress? delAddress.map(item => item.address):""))
+  .map(address => {
+    return delAddress.find(item => item.address === address);
+  });
+
+  //console.log(uniqueDelAddress)
 
   const {user,cartItems,getCartItems} = useAuth();
   const productCartItem = useSelector((state) => state.product.cartItem);
@@ -22,7 +28,7 @@ const Delivery = ({title}) => {
 
   const tax= Math.ceil(totalPrice*0.12,2);
   const finalPrice =Math.ceil(totalPrice+tax,2)
-  // console.log(cartItems)
+  // //console.log(cartItems)
 
   let shippingCharges ;
 if(finalPrice==0){
@@ -44,7 +50,7 @@ else{
 
 }
 
-// console.log(shippingCharges)
+// //console.log(shippingCharges)
 
 const totalAmount = finalPrice+shippingCharges;
 
@@ -95,6 +101,13 @@ const totalAmount = finalPrice+shippingCharges;
       city: value,
     }));
   };
+  const handleStateInput = (e) => {
+    const { value } = e.target;
+    setDelDetails((prevDetails) => ({
+      ...prevDetails,
+      state: value,
+    }));
+  };
 
   const handlePayment = async () => {
     const stripe = await loadStripe('pk_test_51OkP1CSGM4q7z7zWyecwfKJL4fMfVV3dWiTTksC7PFH8LK5Xix3ADEV0C2UxJQBiY8y23JHqztqyNLeC2fkRsbAt00uIZcT3sD');
@@ -125,19 +138,19 @@ const totalAmount = finalPrice+shippingCharges;
         }
 
         const data = await response.json();
-        console.log('Session data:', data);
+        //console.log('Session data:', data);
         toast.success("Redirecting to checkout")
         setTimeout(async()=>{
 
           const result = await stripe.redirectToCheckout({ sessionId: data.id });
-          console.log('Stripe redirect result:', result);
+          //console.log('Stripe redirect result:', result);
         },1000 )
 
         if (result.error) {
-            console.error('Stripe redirect error:', result.error);
+            //console.error('Stripe redirect error:', result.error);
         }
     } catch (error) {
-        console.error('Error during payment handling:', error);
+        //console.error('Error during payment handling:', error);
     }
 };
 
@@ -152,8 +165,8 @@ const totalAmount = finalPrice+shippingCharges;
           body: JSON.stringify({userId:user._id,delDetails})
         });
         const resData = await response.json();
-			console.log("response data : ", response);
-			console.log(resData);
+			//console.log("response data : ", response);
+			//console.log(resData);
       if(response.ok){
         setDelDetails({
           name: user.name,
@@ -184,18 +197,18 @@ const totalAmount = finalPrice+shippingCharges;
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({userId:user._id})
           })
-          // console.log(address)
+          // //console.log(address)
 
           const response = await address.json()
-          // console.log(response)
+          // //console.log(response)
 
           setDelAddress(response.data)
           if(response.ok){
-              console.log("Got delivery address successfully")
+              //console.log("Got delivery address successfully")
           }
           
       } catch (error) {
-          console.log("Error in fetching api" +error)
+          //console.log("Error in fetching api" +error)
 
 
       }
@@ -213,7 +226,7 @@ const totalAmount = finalPrice+shippingCharges;
 
   return (
     <div>
-    <Navbar></Navbar>
+    <div style={{zIndex:"1000"}}><Navbar></Navbar></div>
   {title=="address"?"": <div className='add'> <NavLink to='/address' style={{textDecoration:"none",color:"black"}}><Address title={'del'}></Address></NavLink></div>}
           <div className="centered-container">
         <div className={title=="address"? "row ": "row container"} style={{backgroundColor:title=="address"?"#ddd0c8" :"brown" , width:"80vw" , height:"fit-content" , marginBottom:"100px" ,marginTop:title=="address"?"20px":"100px"}}>
@@ -227,7 +240,7 @@ const totalAmount = finalPrice+shippingCharges;
                             <div className="row mb-4">
                                 <div className="col">
                                     <div data-mdb-input-init className="form-outline">
-                                        <label className="form-label" for="form7Example1">Name</label>
+                                        <label className="form-label" htmlFor="form7Example1">Name</label>
                                         <input type="text" id="form7Example1" className="form-control"  name='name' value={delDetails.name} onChange={handleInput} required/>
                                     </div>
                                 </div>
@@ -235,10 +248,10 @@ const totalAmount = finalPrice+shippingCharges;
                             </div>
                             <div className="row mb-4">
                             <div data-mdb-input-init className="form-outline mb-4">
-                                <label className="form-label" for="form7Example4">Address</label>&nbsp;&nbsp;
+                                <label className="form-label" htmlFor="form7Example4">Address</label>&nbsp;&nbsp;
                                 <select name="" id="" onChange={handleSelectInput} value={delDetails.address}>
                                 <option value="">Select address</option>
-                                  {delAddress?delAddress.map((elem,idx)=>{
+                                  {uniqueDelAddress?uniqueDelAddress.map((elem,idx)=>{
                                     return  <option value={elem.address} key={idx}>{elem.address}</option>
                                    }):""}
                                 </select>
@@ -246,8 +259,8 @@ const totalAmount = finalPrice+shippingCharges;
                             </div>
                                 <div className="col">
                                 <div data-mdb-input-init className="form-outline">
-                                        <span className='span'><label className="form-label" for="form7Example1">State</label>
-                                        {/* <State_City onChange={handleSelectInput} setDelDetails={setDelDetails} delDetails={delDetails} name={"state"}></State_City> */}
+                                        <span className='span'><label className="form-label" htmlFor="form7Example1">State</label>
+                                        <State onChange={handleStateInput}  setDelDetails={setDelDetails} delDetails={delDetails} name={"state"} title={title}></State>
                                         </span>
                                         <input type="text" id="form7Example1" className="form-control"  name='state' value={delDetails.state} onChange={handleInput} required/>
                                     </div>
@@ -255,8 +268,8 @@ const totalAmount = finalPrice+shippingCharges;
                                 <div className="col">
                                     <div data-mdb-input-init className="form-outline">
                                     <span className='span'>
-                                    <label className="form-label" for="form7Example1">City</label>
-                                    {/* <City onChange={handleCityInput} setDelDetails={setDelDetails} delDetails={delDetails} name={"city"}></City> */}
+                                    <label className="form-label" htmlFor="form7Example1">City</label>
+                                  
                                     </span>
                                         <input type="text" id="form7Example1" className="form-control"  name='city' value={delDetails.city} onChange={handleInput} required/>
                                     </div>
@@ -264,7 +277,7 @@ const totalAmount = finalPrice+shippingCharges;
                                 </div>
                                 <div className="col">
                                     <div data-mdb-input-init className="form-outline">
-                                        <label className="form-label" for="form7Example1">Pin Code</label>
+                                        <label className="form-label" htmlFor="form7Example1">Pin Code</label>
                                         <input type="number" id="form7Example1" className="form-control"  name='pincode' value={delDetails.pincode} onChange={handleInput} required/>
                                     </div>
                                 </div>
@@ -272,18 +285,18 @@ const totalAmount = finalPrice+shippingCharges;
                             </div>
                             
                             <div data-mdb-input-init className="form-outline mb-4">
-                                <label className="form-label" for="form7Example5">Email</label>
+                                <label className="form-label" htmlFor="form7Example5">Email</label>
                                 <input type="email" id="form7Example5" className="form-control" name='email' value={delDetails.email} onChange={handleInput} required />
                             </div>
                             <div data-mdb-input-init className="form-outline mb-4">
-                                <label className="form-label" for="form7Example6">Phone</label>
+                                <label className="form-label" htmlFor="form7Example6">Phone</label>
                                 <input type="number" id="form7Example6" className="form-control"  name='phone' value={delDetails.phone} onChange={handleInput} required/>
                             </div>
                             {title=="address" ?<div>
                                 <button className='button1 btn-primary btn-lg btn-block' onClick={handleSubmit}>Add</button>
                             </div>:""}
                             {/* <div data-mdb-input-init className="form-outline mb-4">
-                                <label className="form-label" for="form7Example7">Additional information</label>
+                                <label className="form-label" htmlFor="form7Example7">Additional information</label>
                                 <textarea className="form-control" id="form7Example7" rows="4" name='message' value={delDetails.message} onChange={handleInput} required></textarea>
                             </div> */}
                           

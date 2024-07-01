@@ -39,7 +39,7 @@ const About = () => {
     }
 
     const handleInput = (e) => {
-        // console.log(e);
+        // //console.log(e);
         let name = e.target.name;
         let value = e.target.value;
 
@@ -59,7 +59,7 @@ const About = () => {
 
 
     const deleteUser = async (id) => {
-        console.log(id)
+        //console.log(id)
         try {
             const response = await fetch(`http://localhost:8001/about/delete/${id}`, {
                 method: 'DELETE'
@@ -67,23 +67,23 @@ const About = () => {
             });
 
             const data = await response.json();
-            console.log(data)
+            //console.log(data)
 
             if (response.ok) {
                 toast.success("account deleted successfully")
                 window.location.reload();
             }
             else {
-                console.log('error')
+                //console.log('error')
             }
         }
 
         catch (error) {
-            console.log("Api not found")
+            //console.log("Api not found")
         }
     }
     const updateUser = async (id) => {
-        // console.log(params.id)
+        // //console.log(params.id)
         try {
             const response = await fetch(`http://localhost:8001/about/update/${id}`, {
                 method: 'PATCH',
@@ -91,9 +91,9 @@ const About = () => {
                 body: JSON.stringify(about)
 
             });
-            console.log(response)
+            //console.log(response)
             const data = await response.json();
-            console.log(data)
+            //console.log(data)
 
             if (response.ok) {
                 toast.success(data.message[0])
@@ -110,7 +110,7 @@ const About = () => {
     }
 
     const handleUploadProfileImage = async (e) => {
-        // console.log(e.target.files[0])
+        // //console.log(e.target.files[0])
         const about = await ImagetoBase64(e.target.files[0])
 
 

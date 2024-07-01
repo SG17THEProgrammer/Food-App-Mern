@@ -17,7 +17,7 @@ const validate = (schema) => async (req, res, next) => {
   
     // //   next(extraDetails);
     // // const errMessage  = err.errors[0].message
-    // // console.log(errMessage);
+    // // //console.log(errMessage);
     // // res.status(400).json({msg:errMessage})
     // next(error)
     // }
@@ -26,7 +26,7 @@ const validate = (schema) => async (req, res, next) => {
       req.body = parse;
       next();
   } catch (error) {
-      console.log(error);
+      //console.log(error);
       return res.status(400).json({
           success: false,
           message : error.errors.map(obj=>obj.message)

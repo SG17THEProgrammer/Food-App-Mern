@@ -14,22 +14,22 @@ const Gallery = ({ heading }) => {
     const [page , setPage] = useState(1)
     
     const productData = useSelector((state) => state.product.productList)
-    // console.log("hi", productData)
+    // //console.log("hi", productData)
     
     const productCartItem = useSelector((state) => state.product.cartItem);
-    // console.log(productCartItem)  
+    // //console.log(productCartItem)  
 
     //Rather than creating different buttons for each categories we used set (which consist of only unique values) so that whenver a new categories comes in your api it will fetch it 
     const allCategories = [...new Set(productData.map((curElem) => {
         return curElem.category
     })), 'AllCategories']
     
-    // console.log("1", allCategories)
+    // //console.log("1", allCategories)
     
     //... (spread operator ) iss liye use kiya so that values direct array mein aa jaaye 
     // nhi use krenge toh set ke andar set phir usme enteries aaynegi 
 
-    // console.log(allCategories);
+    // //console.log(allCategories);
     
     const [items, setItems] = useState(productData);
     const [category, setCategory] = useState(allCategories);
@@ -45,7 +45,7 @@ const Gallery = ({ heading }) => {
         })
         setItems(updatedItems);
     }
-    // console.log(items)
+    // //console.log(items)
   
    
 

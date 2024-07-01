@@ -35,7 +35,7 @@ const Admin = () => {
 
   const uploadImage = async (e) => {
     const imgData = await ImagetoBase64(e.target.files[0])
-    // console.log(imgData)
+    // //console.log(imgData)
 
     setFoodData((prev) => {
       return {
@@ -47,7 +47,7 @@ const Admin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(foodData)
+    //console.log(foodData)
 
     const { name, image, category, price ,description , database} = foodData
 
@@ -61,7 +61,7 @@ const Admin = () => {
       })
 
       const res = await response.json()
-      console.log(res)
+      //console.log(res)
       toast.success(res.message)
 
       setFoodData(() => {

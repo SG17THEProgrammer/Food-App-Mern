@@ -17,7 +17,7 @@ const Distance = () => {
 
             setDistance(response.data.distance);
         } catch (error) {
-            console.error(error);
+            //console.error(error);
         }
     };
 

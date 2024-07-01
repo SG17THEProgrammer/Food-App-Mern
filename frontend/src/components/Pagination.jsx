@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import '../css/Pagination.css'
 
 const Pagination = ({page,setPage,items,mallproductData }) => {
-  console.log(page)
+  //console.log(page)
     const productData = useSelector((state) => state.product.productList)
     const handlePage = (selectedPage) => {
       if (selectedPage >= 1 && selectedPage <= (!mallproductData ?!items ? Math.ceil(productData.length / 5) : Math.ceil(items / 5):Math.ceil(mallproductData.length / 5)) && selectedPage !== page) {

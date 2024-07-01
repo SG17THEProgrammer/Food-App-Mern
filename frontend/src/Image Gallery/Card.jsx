@@ -8,22 +8,22 @@ import { useAuth } from '../components/Auth'
 import { toast } from 'react-toastify'
 
 const Card = ({ id, image, name, price, category ,rating }) => {
-    // console.log(items)
-    // console.log(price.props.price)
+    // //console.log(items)
+    // //console.log(price.props.price)
     // const actualprice =price.props.price
 
     const dispatch = useDispatch()
     const {user,saveCartItemsToLS,isLoggedIn} = useAuth()
-    // console.log(user)    
+    // //console.log(user)    
 
     const productCartItem = useSelector((state) => state.product.cartItem);
-    // console.log(productCartItem)
+    // //console.log(productCartItem)
     const productData = useSelector((state) => state.product.productList)
     const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
     const allproducts = [...productData, ...mallproductData];
 
     const productDisplay = allproducts.filter((elem) => elem._id === id)[0];
-//   console.log(productDisplay)
+//   //console.log(productDisplay)
 
     
 

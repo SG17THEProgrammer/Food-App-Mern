@@ -20,14 +20,14 @@ const {isLoggedIn} = useAuth()
   const{getCartItems,user} = useAuth()
   const productCartItem = useSelector((state) => state.product.cartItem);
 
-  // console.log(id)
+  // //console.log(id)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const productData = useSelector((state) => state.product.productList);
-  // console.log(productData)
+  // //console.log(productData)
 
   const productDisplay = productData.filter((elem) => elem._id === id)[0];
-console.log(productDisplay)
+//console.log(productDisplay)
 
   const handleAddCartProduct = (e) => {
     isLoggedIn?dispatch(addCartItem(productDisplay)):toast.error("You must be logged in")

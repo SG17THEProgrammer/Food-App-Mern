@@ -8,10 +8,10 @@ const Comments = ({productId,message , title}) => {
     const { id } = useParams();
 
     const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
-  console.log(mallproductData)
+  //console.log(mallproductData)
 
 const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
-console.log(productDisplay)
+//console.log(productDisplay)
 
 
     const {user} =useAuth()
@@ -47,7 +47,7 @@ console.log(productDisplay)
 				body: JSON.stringify({review:review,userName:user.name  , productId:productId}),
 			});
 			const resData = await response.json();
-			console.log(resData);
+			//console.log(resData);
 
 			if (response.ok) {
                 toast.success(resData.message[0]);

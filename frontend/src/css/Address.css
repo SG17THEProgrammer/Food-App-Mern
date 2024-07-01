@@ -24,8 +24,9 @@
     height: 74vh;
     position: fixed;
     width: fit-content;
-    overflow: scroll;
+    overflow-y: scroll;
     padding: 20px;
+    overflow-x: hidden;
 
 }
 .card4{
@@ -34,14 +35,12 @@
     background-color: #F6E9B2;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     padding: 10px;
-    height: 200px;
+    height: fit-content;
     overflow: scroll;   
-    margin-bottom: 40px;
+    margin-bottom: 180px;
+    width: 72vw;
 }
 
 .card4::-webkit-scrollbar {
-    display: none;
-  }
-  .ctn2::-webkit-scrollbar {
     display: none;
   }

@@ -8,9 +8,9 @@ import Navbar from '../components/navbar'
 const ShowOrders = () => {
 
     const { id } = useParams()
-    console.log(id)
+    //console.log(id)
     const [orders, setOrders] = useState();
-    console.log(orders)
+    //console.log(orders)
     // const {category,image,name,price,qty,rating ,total} = orders.items
 
     const fetchOrders = async () => {
@@ -23,14 +23,14 @@ const ShowOrders = () => {
             })
             if (response.ok) {
                 const data = await response.json()
-                console.log(data)
+                //console.log(data)
                 setOrders(data.data.items)
             }
             else {
-                console.log("Error: " + response)
+                //console.log("Error: " + response)
             }
         } catch (error) {
-            console.log("Error while getting orders" + error)
+            //console.log("Error while getting orders" + error)
 
         }
 

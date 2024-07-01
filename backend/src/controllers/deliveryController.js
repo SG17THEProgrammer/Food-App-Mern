@@ -4,7 +4,7 @@ const order = require("../models/orderSchema")
 
 const delivery=async(req,res)=>{
     try {
-        console.log(req.body)
+        //console.log(req.body)
         
         const {delDetails,userId} = req.body
         const {name,email,phone,address,city,pincode,state}  = delDetails
@@ -46,7 +46,7 @@ const updateDeliveryStatus =async(req,res)=>{
         await order.findByIdAndUpdate(orderId , {status:status})
         res.json({success:true,message:["Status Changed"]})
     } catch (error) {
-        console.log(error)
+        //console.log(error)
         res.json({success:false,message:"error"})
         
     }
@@ -58,7 +58,7 @@ const getDeliveryAddress = async(req,res)=>{
         const response = await delivery_add.find({userId:userId})
         return res.status(200).json({success:true,message:["Delivery Address found"],data:response})
     } catch (error) {
-        console.log(error)
+        //console.log(error)
         return res.status(404).json({success:false,message:["Delivery Address not found"]})
     }
 }

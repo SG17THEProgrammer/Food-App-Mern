@@ -19,7 +19,7 @@ const Navbar = () => {
     // const { loginWithRedirect,isAuthenticated,logout } = useAuth0();
     // const {user} = useAuth0();
     const productCartItem = useSelector((state) => state.product.cartItem);
-    console.log(productCartItem)
+    //console.log(productCartItem)
 
     const [toggleButton, setToggleButton] = useState(true);
 
@@ -31,11 +31,11 @@ const Navbar = () => {
         setToggleButton(false)
     }
 
-    console.log(isLoggedIn);
-    // console.log(cartItems);
+    //console.log(isLoggedIn);
+    // //console.log(cartItems);
 
     // const cartItemNumber = useSelector((state) => state.product.cartItem)
-    // console.log(cartItemNumber)
+    // //console.log(cartItemNumber)
 
 
     useEffect(() => {
@@ -50,7 +50,7 @@ const Navbar = () => {
         <>
             <nav className="navbar navbar-expand-lg  w-100" style={{ borderBottom: "1px solid #F3D7CA", backgroundColor: "#DDD0C8", zIndex: "99", position: "fixed", top: "0", height: "70px" }}>
                 <div className="container-fluid">
-                    <NavLink className="navbar-brand ml-4 pb-2" to='/' href="/"><h5 style={{ height: "15px" }}>Swad-E Hindustan</h5></NavLink>
+                    <NavLink className="navbar-brand ml-4 pb-2" to='/' ><h5 style={{ height: "15px" }}>Swad-E Hindustan</h5></NavLink>
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation" onClick={toggle}>
                         <span className="navbar-toggler-icon"></span>
@@ -82,7 +82,7 @@ const Navbar = () => {
                                 <NavLink className="nav-link ml-2 blink" to='/mallmenu/6676c1731782239b95fa1fb6' style={{ marginRight: "-10px" }}>MallMenu <sup>New</sup><span className="sr-only"></span></NavLink>
                             </li>
                             <li className="nav-item active">
-                                <BsList style={{ fontSize: "30px", marginTop: "3px"}} onClick={() => setdropdownMenu(!dropdownMenu)} />
+                                <BsList style={{ fontSize: "30px", marginTop: "3px" , cursor:"pointer"}} onClick={() => setdropdownMenu(!dropdownMenu)} />
                                 {dropdownMenu ? <div className='dropdown2'>
                                     <NavLink className='navlink' to='/orders'><p className='para4' >Your Orders </p></NavLink>
                                     {user.email=="shray@gmail.com"?<NavLink className='navlink' to='/handleOrders'><p className='para4' >Handle Orders </p></NavLink>:""}

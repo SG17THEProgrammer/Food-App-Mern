@@ -9,15 +9,15 @@ import FormatPrice from '../Helpers/FormatPrice'
 const Slider = () => {
 
   // const productData = useSelector((state)=>state.product.productList)
-  // console.log(productData)
+  // //console.log(productData)
 
   const mallproductData = useSelector((state)=>state.mallproduct.mallproductList)
-  // console.log(mallproductData)
+  // //console.log(mallproductData)
 
 
 
   const homeProductCakeList = mallproductData.filter((elem)=>elem.category === 'Cake',[])
-  // console.log(homeProductCakeList)
+  // //console.log(homeProductCakeList)
 
 
   const slideProductRef = useRef();

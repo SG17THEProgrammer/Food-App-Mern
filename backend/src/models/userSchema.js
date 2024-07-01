@@ -66,12 +66,12 @@ UserSchema.methods.generateToken = async function () {
             }, process.env.SECRET_KEY,{expiresIn:"30d"})
 
         this.tokens = this.tokens.concat({ token })  
-        // console.log(token)
+        // //console.log(token)
         await this.save()
         return token
 
         // const userVerify = await jwt.verify(token, "process.env.SECRET_KEY")
-        //         console.log(userVerify)
+        //         //console.log(userVerify)
 
     } catch (error) {
         res.send("Something went wrong")
@@ -79,8 +79,8 @@ UserSchema.methods.generateToken = async function () {
 }
 
 UserSchema.methods.comparePass = async function(password){
-    // console.log("password" + password)
-    // console.log("this.password " +this.password)  
+    // //console.log("password" + password)
+    // //console.log("this.password " +this.password)  
  return  await bcrypt.compare(password,this.password )
 
 }
@@ -88,12 +88,12 @@ UserSchema.methods.comparePass = async function(password){
 
 //securing password with bcrypt js
 UserSchema.pre("save", async function (next) {
-    // console.log("pre method" +this)
+    // //console.log("pre method" +this)
     if (this.isModified("password")) {
-        // console.log(this.password)
+        // //console.log(this.password)
         this.password = await bcrypt.hash(this.password, 10)
         // this.confirmpassword = await bcrypt.hash(this.confirmpassword, 10)
-        // console.log(`hashed password is ${this.password}`)
+        // //console.log(`hashed password is ${this.password}`)
         // this.confirmpassword=undefined;
     }
     next()

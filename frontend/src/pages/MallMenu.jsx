@@ -25,10 +25,10 @@ const MallMenu = () => {
   const dispatch = useDispatch()
 
   const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
-  console.log(mallproductData)
+  //console.log(mallproductData)
 
   const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
-  console.log(productDisplay)
+  //console.log(productDisplay)
 
   //   const handleAddCartProduct = (e) => {
   //     dispatch(addCartItem(productDisplay))

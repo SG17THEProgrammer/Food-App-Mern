@@ -8,7 +8,7 @@ const Orders = ({ navbar, title ,handleStatus}) => {
 
     const { user } = useAuth()
     const [orders, setOrders] = useState();
-    console.log(orders)
+    //console.log(orders)
 
     const fetchOrders = async () => {
         try {
@@ -24,10 +24,10 @@ const Orders = ({ navbar, title ,handleStatus}) => {
                 setOrders(data.data)
             }
             else {
-                console.log("Error: " + response)
+                //console.log("Error: " + response)
             }
         } catch (error) {
-            console.log("Error while getting orders" + error)
+            //console.log("Error while getting orders" + error)
 
         }
 

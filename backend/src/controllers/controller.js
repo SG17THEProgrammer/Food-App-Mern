@@ -21,9 +21,9 @@ const contact = async (req, res) => {
 
 const team = async (req, res) => {
     try {
-        // console.log('hi')
+        // //console.log('hi')
         const user = await Team.find()
-        // console.log("user data" + user);
+        // //console.log("user data" + user);
         if (!user) {
             res.status(404).send('No Info found')
             return;
@@ -44,8 +44,8 @@ const reserveTable = async (req, res)=>{
         const entryInDate = new Date(entryIn);
   const entryOutDate = new Date(entryOut);
 
-  console.log(entryIn,entryOut) //2024-06-30T14:51 2024-06-30T15:55
-  console.log(entryInDate,entryOutDate) //2024-06-30T09:21:00.000Z 2024-06-30T10:25:00.000Z
+  //console.log(entryIn,entryOut) //2024-06-30T14:51 2024-06-30T15:55
+  //console.log(entryInDate,entryOutDate) //2024-06-30T09:21:00.000Z 2024-06-30T10:25:00.000Z
   
   const openingTime = new Date(entryInDate);
   openingTime.setHours(8, 0, 0, 0); // 8:00 AM
@@ -71,7 +71,7 @@ const reserveTable = async (req, res)=>{
    
 
     } catch (error) {
-            console.log(error)
+            //console.log(error)
             return res.status(500).json({ message:[ "Error occurred while doing reservation"] });
 
     }

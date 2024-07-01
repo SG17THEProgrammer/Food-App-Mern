@@ -6,17 +6,17 @@ import { IoTrashBin } from "react-icons/io5";
 const Review = ({productId,userName}) => {
     const {user } = useAuth();
     const [reviews, setReviews] = useState();
-    console.log(reviews)
+    //console.log(reviews)
     const myReview = reviews && reviews.length>0 ?reviews.filter(review => review.userName===user.name):""
-    console.log(myReview)
+    //console.log(myReview)
     const otherReview = reviews && reviews.length>0 ?reviews.filter(review => review.userName!=user.name):""
-    console.log(otherReview)
+    //console.log(otherReview)
     const getReviews = async () => {
         try {
                 const response = await fetch(`http://localhost:8001/getReview?productId=${productId}&userName=${userName}`);
                 
                 const data = await response.json();
-                console.log(data)
+                //console.log(data)
                 if (!response.ok) {
                     setReviews([]);
                 }
@@ -33,7 +33,7 @@ const Review = ({productId,userName}) => {
                 const response = await fetch(`http://localhost:8001/deleteReview/${reviewId}/${productId}`, {
                     method: 'DELETE',
                 });
-    console.log(response)
+    //console.log(response)
                 const data = await response.json();
                 if (response.ok) {
                     setReviews(reviews.filter(review => review._id !== reviewId));

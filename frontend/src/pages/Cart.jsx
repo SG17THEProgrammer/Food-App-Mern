@@ -23,10 +23,10 @@ const Cart = () => {
 
 
   const {user,getCartItems,cartItems} = useAuth()
-
+  // console.log(cartItems)
 
     const totalPrice = productCartItem.reduce((sum,curr)=>parseFloat(sum) + parseFloat(curr.total),0)
-    // console.log(totalPrice)
+    // //console.log(totalPrice)
 
     const totalPriceceil = Math.ceil(totalPrice)
 
@@ -41,7 +41,7 @@ const Cart = () => {
 
 useEffect(()=>{
   getCartItems();
-},[user,productCartItem])
+},[user._id,productCartItem])
 
 useEffect(() => {
   dispatch(fetchCartItems(user._id));
@@ -62,9 +62,9 @@ useEffect(() => {
                   <button className='btn ' style={{position:"absolute" , right:"0" , top:"3px"}} onClick={()=>dispatch(clearCart(user._id))}>Clear Cart</button>
                   <h4 className="card-title mb-4" style={{ textDecoration: "underline" }}>YOUR SHOPPING CART </h4>
                   <br />
-               {productCartItem[0]?
+               {cartItems && cartItems.length>0?
                   <>
-                 {productCartItem.map((elem)=>{
+                 {cartItems.map((elem)=>{
                   return(
                   <CardProducts
                  
@@ -94,7 +94,8 @@ useEffect(() => {
               <div className="card col-lg-15  ">
                 <div className="card-body">
                   SUMMARY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <span style={{textDecoration:"underline"}}>{productCartItem.length?productCartItem.length:0} items</span>
+                  {/* <span style={{textDecoration:"underline"}}>{productCartItem.length>0 && productCartItem?productCartItem.length:0} items</span> */}
+                  <span style={{textDecoration:"underline"}}>{ cartItems?cartItems.length:0} items</span>
                 </div>
               </div>
               <div className="card shadow-0 border">

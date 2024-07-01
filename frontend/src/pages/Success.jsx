@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import '../css/Success.css'
 import { NavLink } from 'react-router-dom'
-import { useAuth } from '../components/Auth'
-import { useSelector } from 'react-redux'
+
 import Orders from './Orders'
+import { useAuth } from '../components/Auth'
 
 const Success = () => {
+
+const {user} = useAuth()
+  useEffect(() => {
+    localStorage.removeItem(user._id);
+  },[user._id])
   
   return (  
     <>

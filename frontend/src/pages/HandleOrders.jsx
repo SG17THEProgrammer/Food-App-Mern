@@ -11,7 +11,7 @@ const HandleOrders = () => {
         const response = await axios.post('http://localhost:8001/updateDeliveryStatus',{
           orderId,status:e.target.value
         })
-console.log(response)
+//console.log(response)
         if(response.data.success) {
           await fetchOrders()
           toast.success(response.data.message[0]);
@@ -20,10 +20,10 @@ console.log(response)
           // },2000)
         }
         else{
-            console.log("Response Not Found")
+            //console.log("Response Not Found")
         }
     } catch (error) {
-      console.log("Error" + error)
+      //console.log("Error" + error)
     }
   }
   return (

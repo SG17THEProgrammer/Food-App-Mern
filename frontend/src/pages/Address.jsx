@@ -13,7 +13,7 @@ const Address = ({title}) => {
     const handleClick = () => {
       setShowComponent(!showComponent);
     };
-    console.log(delAddress)
+    //console.log(delAddress)
 
     const getDeliveryAddress = async() => {
         try {
@@ -22,18 +22,18 @@ const Address = ({title}) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({userId:user._id})
             })
-            // console.log(address)
+            // //console.log(address)
 
             const response = await address.json()
-            // console.log(response)
+            // //console.log(response)
 
             setDelAddress(response.data)
             if(response.ok){
-                console.log("Got delivery address successfully")
+                //console.log("Got delivery address successfully")
             }
             
         } catch (error) {
-            console.log("Error in fetching api" +error)
+            //console.log("Error in fetching api" +error)
 
 
         }
@@ -55,7 +55,7 @@ const Address = ({title}) => {
             {delAddress ? delAddress.map((elem)=>{
                 const {address,city,state,pincode} = elem
                 return <div className="card4">
-        <h3><b>Address :</b>   {address} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste sint beatae deserunt molestias et? Doloribus, corporis architecto</h3>
+        <h3><b>Address :</b>   {address}</h3>
         <h4 ><b>City :</b>  {city}</h4>
         <h5 ><b>State :</b>  {state}</h5>
         <p ><b>Pincode :</b>  {pincode}</p>

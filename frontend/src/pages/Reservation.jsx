@@ -31,10 +31,10 @@ const Reservation = () => {
                 body: JSON.stringify(formData)
             })
 
-            console.log(response);
+            //console.log(response);
 
             const res = await response.json();
-            console.log(res)
+            //console.log(res)
 
             if(response.ok){
                 setFormData({name: '',
@@ -52,14 +52,14 @@ const Reservation = () => {
             }
 
         } catch (error) {
-                console.log(error)
+                //console.log(error)
         }
     }
 
     return (
         <div>
         <Navbar></Navbar>
-        <div id="booking" className="section" style={{marginBottom:"100px" }}>
+        <div id="booking" className="section" style={{marginBottom:"100px",marginTop:"40px"  }}>
             <div className="section-center">
                 <div className="container" style={{backgroundColor:"#F8C794"}}>
                     <div className="row">

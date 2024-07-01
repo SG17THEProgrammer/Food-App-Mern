@@ -34,8 +34,8 @@ const getCartItems = () => {
 
 
       let isLoggedIn = !!token; //token hai true hojayega isLoggedIn agar nhi hai toh isLoggedIn false ho jayega
-  //  console.log(token);
-   console.log("isLoggedin ", isLoggedIn);  
+  //  //console.log(token);
+   //console.log("isLoggedin ", isLoggedIn);  
  
    const LogoutUser = () => {
      setToken("");
@@ -56,15 +56,15 @@ const getCartItems = () => {
 
       if (response.ok) {
         const data = await response.json();
-        // console.log(data.userData);
+        // //console.log(data.userData);
 
         // our main goal is to get the user data 👇
         setUser(data.userData);
       } else {
-        console.error("Error fetching user data");
+        //console.error("Error fetching user data");
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   }
   };
@@ -78,15 +78,15 @@ const getCartItems = () => {
 
       if (response.ok) {
         const data = await response.json();
-        // console.log(data.user);
+        // //console.log(data.user);
 
         // our main goal is to get the user data 👇
         setTeam(data.user);
       } else {
-        console.error("Error fetching user data");
+        //console.error("Error fetching user data");
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   }
   const getallUsers = async () =>{
@@ -97,15 +97,15 @@ const getCartItems = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
 
         // our main goal is to get the user data 👇
         setAllUsers(data.allUsers);
       } else {
-        console.error("Error fetching user data");
+        //console.error("Error fetching user data");
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   }
 

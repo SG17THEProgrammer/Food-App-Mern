@@ -11,7 +11,7 @@ const MallMenuOtherProducts = ({heading}) => {
   const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
     const productCartItem = useSelector((state) => state.product.cartItem);
     const [items,setItems] = useState()
-  console.log(items)
+  //console.log(items)
     useEffect(()=>{
       user?saveCartItemsToLS(productCartItem,user._id):""
     },[productCartItem])

@@ -28,10 +28,10 @@ export const productSlice = createSlice({
     
       const priceInNumber =  parseFloat(action.payload.price)
       // const priceTill3Decimal = priceInNumber.toFixed(3)
-      console.log(action.payload.price)
+      //console.log(action.payload.price)
       // const price = action.payload.price
 
-      // console.log(action)
+      // //console.log(action)
       const check = state.cartItem.some((el) => el._id === action.payload._id);
       if (check) {
         toast.error("Already Item in Cart");
@@ -46,7 +46,7 @@ export const productSlice = createSlice({
       }
     },
     deleteCartItem: (state, action) => {
-      console.log(action.payload)
+      //console.log(action.payload)
       const userId = action.payload[1];
       const itemId = action.payload[0];
       let cartItem= JSON.parse(localStorage.getItem(userId));
@@ -63,23 +63,23 @@ export const productSlice = createSlice({
       let cartItem= JSON.parse(localStorage.getItem(userId));
 
       const index = cartItem.findIndex((elem) => elem._id === itemId);
-      console.log(index)
+      //console.log(index)
       let qty = cartItem[index].qty;
-      // console.log(qty)
+      // //console.log(qty)
       const qtyInc = ++qty;
-      // console.log(qtyInc)
+      // //console.log(qtyInc)
       cartItem[index].qty = qtyInc;
-      // console.log(qty)
+      // //console.log(qty)
 
 
       const price = cartItem[index].price;
-      console.log(price)
+      //console.log(price)
       const priceInNumber =  parseFloat(price)
-      // console.log(priceInNumber)
+      // //console.log(priceInNumber)
       // const priceTill3Decimal = priceInNumber.toFixed(3)
       
       const total = priceInNumber * qtyInc;
-      console.log(total)
+      //console.log(total)
       cartItem[index].total = total;
       localStorage.setItem(userId, JSON.stringify(cartItem));
       window.location.reload();
@@ -101,7 +101,7 @@ export const productSlice = createSlice({
         // const priceTill3Decimal = priceInNumber.toFixed(3)
 
         const total = priceInNumber * qtyDec;
-        console.log(total)
+        //console.log(total)
 
         cartItem[index].total = total;
         localStorage.setItem(userId, JSON.stringify(cartItem));
@@ -110,7 +110,7 @@ export const productSlice = createSlice({
       }
     },
     clearCart:(state,action) => {
-      console.log(action.payload)
+      //console.log(action.payload)
       if(localStorage.getItem(action.payload)===null){
         toast.error("Cart is already empty");
       }
@@ -155,7 +155,7 @@ export const {
 
 export const fetchCartItems = (userId) => (dispatch) => {
   if (!userId) {
-    console.error("User ID not provided");
+    //console.error("User ID not provided");
     return;
   }
 

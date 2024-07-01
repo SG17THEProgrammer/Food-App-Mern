@@ -43,7 +43,7 @@ const App = () => {
     (async()=>{
       const res = await fetch(`http://localhost:8001/getproduct/`)
       const resData = await res.json()
-      // console.log(resData)
+      // //console.log(resData)
       dispatch(setDataProduct(resData))
     })()
   },[])
@@ -52,7 +52,7 @@ const App = () => {
     (async()=>{
       const res = await fetch(`http://localhost:8001/getMallproduct/`)
       const resData = await res.json()
-      // console.log(resData)
+      // //console.log(resData)
       dispatch(setmallDataProduct(resData))
     })()
   },[])

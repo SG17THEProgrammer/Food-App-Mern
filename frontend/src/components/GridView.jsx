@@ -25,7 +25,7 @@ const GridView = ({ name, category, price, rating, image, id }) => {
     }
     const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
     const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
-// console.log(productDisplay)
+// //console.log(productDisplay)
     return (
         <>
             <div className="card mb-4  " key={id} style={{ maxWidth: '245px', height: "340px", boxShadow: '10px 10px 8px #888888', margin: "10px 0 0px 20px", backgroundColor: "#FFF7D4" }}>

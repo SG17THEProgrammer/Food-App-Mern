@@ -27,7 +27,7 @@ const EditUser = () => {
     }
 
     const handleInput = (e) => {
-        // console.log(e);
+        // //console.log(e);
         let name = e.target.name;
         let value = e.target.value;
 
@@ -39,7 +39,7 @@ const EditUser = () => {
 
 
     const updateUser = async (id) => {
-        // console.log(params.id)
+        // //console.log(params.id)
         try {
             const response = await fetch(`http://localhost:8001/about/update/${id}`, {
                 method: 'PATCH',
@@ -47,9 +47,9 @@ const EditUser = () => {
                 body: JSON.stringify(user)
 
             });
-            console.log(response)
+            //console.log(response)
             const data = await response.json();
-            console.log(data)
+            //console.log(data)
 
             if (response.ok) {
                 toast.success(data.message[0])

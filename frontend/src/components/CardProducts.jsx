@@ -8,9 +8,9 @@ import { useAuth } from './Auth'
 
 const CardProducts = ({qty,total,price,id,name,category,image}) => {
     const dispatch = useDispatch()
-  //   console.log(price.props.price)
+  //   //console.log(price.props.price)
   // const actualprice =price.props.price;
-// console.log(total)
+// //console.log(total)
   const {user} = useAuth();
 
 
@@ -18,10 +18,10 @@ const CardProducts = ({qty,total,price,id,name,category,image}) => {
 
     
     const priceInNumber = parseFloat(price)
-    // console.log(priceInNumber)
+    // //console.log(priceInNumber)
     // const priceTill3Dec = priceInNumber.toFixed(2)
-    // // console.log(priceNo)
-    // console.log(typeof(priceInNumber))
+    // // //console.log(priceNo)
+    // //console.log(typeof(priceInNumber))
 
   return (
     <>

@@ -23,7 +23,7 @@ const ListView = ({ id, name, image, category, price, rating, description }) => 
       })):toast.error("You must be logged in")}
       const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
       const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
-console.log(productDisplay)
+//console.log(productDisplay)
 
   return (
     <>

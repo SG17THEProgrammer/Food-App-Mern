@@ -17,7 +17,7 @@ import Search from '../components/Search';
 const FoodMall = () => {
   const {saveCartItemsToLS,user,getCartItems} = useAuth()
   const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
-  console.log(mallproductData)
+  //console.log(mallproductData)
 
   const productCartItem = useSelector((state) => state.product.cartItem);
 
@@ -52,7 +52,7 @@ const FoodMall = () => {
   const sorting = (e) => {
     // let option = document.getElementById('sort')  
     // let sortVal = option.options[option.selectedIndex].value;
-    // console.log(sortVal)
+    // //console.log(sortVal)
     let sortVal = e.target.value;
     setValue(sortVal)
   }
@@ -99,7 +99,7 @@ const FoodMall = () => {
   //   return item.price
   // })
 
-  // // console.log(Math.max(...priceArr))
+  // // //console.log(Math.max(...priceArr))
   // const maxPrice = Math.max(...priceArr)
   // const minPrice = Math.min(...priceArr)
 
@@ -111,8 +111,8 @@ const FoodMall = () => {
   
   // const updatePriceFilter = (e) => {
   //   const { name, value } = e.target;
-  //   console.log(name)
-  //   console.log(value)
+  //   //console.log(name)
+  //   //console.log(value)
   //   setSliderValue({
   //     ...sliderValue,
   //     [name]: value
@@ -122,7 +122,7 @@ const FoodMall = () => {
   
   // const sortedProducts = items==0?mallproductData.filter(curElem => parseFloat(curElem.price) <= parseFloat(sliderValue.price)):items.filter(curElem => parseFloat(curElem.price) <= parseFloat(sliderValue.price))
   
-  // console.log(sortedProducts)
+  // //console.log(sortedProducts)
 
   // useEffect(() => {
   // }, [sliderValue.price])

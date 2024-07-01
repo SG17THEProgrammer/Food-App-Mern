@@ -28,19 +28,19 @@
     initialState,
     reducers: {
       setmallDataProduct: (state, action) => {
-        // console.log(action)
+        // //console.log(action)
         // state.productList = [...action.payload];
-        // console.log(action)
+        // //console.log(action)
         state.mallproductList = [...action.payload];
       }
       ,
       addCartItem: (state, action) => {
         const priceInNumber =  parseFloat(action.payload.price)
       // const priceTill3Decimal = priceInNumber.toFixed(3)
-      console.log(action.payload.price)
+      //console.log(action.payload.price)
       // const price = action.payload.price
 
-      // console.log(action)
+      // //console.log(action)
       const check = state.cartItem.some((el) => el._id === action.payload._id);
       if (check) {
         toast.error("Already Item in Cart");
@@ -58,29 +58,29 @@
         toast.success("Item Deleted");
         const index = state.cartItem.findIndex((elem) => elem._id === action.payload);
         state.cartItem.splice(index, 1);
-        console.log(index);
+        //console.log(index);
       },
       increaseQty: (state, action) => {
-        console.log(action.payload)
-      console.log(state.cartItem)
+        //console.log(action.payload)
+      //console.log(state.cartItem)
       const index = state.cartItem.findIndex((elem) => elem._id === action.payload);
-      console.log(index)
+      //console.log(index)
       let qty = state.cartItem[index].qty;
-      // console.log(qty)
+      // //console.log(qty)
       const qtyInc = ++qty;
-      // console.log(qtyInc)
+      // //console.log(qtyInc)
       state.cartItem[index].qty = qtyInc;
-      // console.log(qty)
+      // //console.log(qty)
 
 
       const price = state.cartItem[index].price;
-      console.log(price)
+      //console.log(price)
       const priceInNumber =  parseFloat(price)
-      // console.log(priceInNumber)
+      // //console.log(priceInNumber)
       // const priceTill3Decimal = priceInNumber.toFixed(3)
 
       const total = priceInNumber * qtyInc;
-      console.log(total)
+      //console.log(total)
       state.cartItem[index].total = total;
       },
       decreaseQty: (state, action) => {
@@ -96,7 +96,7 @@
           // const priceTill3Decimal = priceInNumber.toFixed(3)
   
           const total = priceInNumber * qtyDec;
-          console.log(total)
+          //console.log(total)
   
           state.cartItem[index].total = total;
         }

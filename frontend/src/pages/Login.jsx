@@ -24,7 +24,7 @@ const Login = () => {
   })
 
   // const userData = useSelector(state => state)
-// console.log(userData)
+// //console.log(userData)
 
   // const dispatch = useDispatch()
 
@@ -38,7 +38,7 @@ const Login = () => {
   }
 
     const handleInput=(e) => {
-      // console.log(e);
+      // //console.log(e);
       let name = e.target.name;
       let value = e.target.value;
 
@@ -50,7 +50,7 @@ const Login = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log( JSON.stringify(loginUser));
+    //console.log( JSON.stringify(loginUser));
 
     try {
       setIsLoading(true);
@@ -61,10 +61,10 @@ const Login = () => {
         },
         body: JSON.stringify(loginUser),
       });
-      console.log("response data : ", response);
+      //console.log("response data : ", response);
       
       const resData = await response.json();
-      console.log(resData); 
+      //console.log(resData); 
 
       if (response.ok) {
         //storing tokens in LS through context api 
@@ -86,7 +86,7 @@ const Login = () => {
         toast.error(resData.message[0]);
         setIsLoading(false);
 
-        // console.log("error inside response ", "error");
+        // //console.log("error inside response ", "error");
       }
     } catch (error) {
       toast.error('Error fetching Api')

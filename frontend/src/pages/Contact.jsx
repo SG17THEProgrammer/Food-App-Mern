@@ -33,7 +33,7 @@ const Contact = () => {
 	}
 
 	const handleInput = (e) => {
-		// console.log(e);
+		// //console.log(e);
 		let name = e.target.name;
 		let value = e.target.value;
 
@@ -59,14 +59,14 @@ const Contact = () => {
 		if (data.success) {
 		  event.target.reset();
 		} else {
-		  console.log("Error", data);
+		  //console.log("Error", data);
 		}
 	  };
 
 	// handle form on submit
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(contact);
+		//console.log(contact);
 
 
 		try {
@@ -79,8 +79,8 @@ const Contact = () => {
 				body: JSON.stringify(contact),
 			});
 			const resData = await response.json();
-			console.log("response data : ", response);
-			console.log(resData);
+			//console.log("response data : ", response);
+			//console.log(resData);
 
 			if (response.ok) {	
 
@@ -96,7 +96,7 @@ const Contact = () => {
 					email: user.email, message: ""
 				});
 				// navigate('/home')
-				console.log(resData);
+				//console.log(resData);
 				setTimeout(() => {
 					setIsLoading(false);
 					toast.success(resData.message[0]);

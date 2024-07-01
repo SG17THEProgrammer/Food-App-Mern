@@ -7,8 +7,8 @@ const Review = require('../models/reviewSchema');
 
 const addnewitem = async (req, res) => {
     try {
-        console.log(req.body)
-        console.log(req.body.database)
+        //console.log(req.body)
+        //console.log(req.body.database)
         if (req.body.database === "fooditem") {
             delete req.body.database;
             const data = await Products(req.body)
@@ -58,13 +58,13 @@ if(req.body.database==="mallitem"){
 
 
 const getproduct = async (req, res) => {
-  // console.log(req.query)
+  // //console.log(req.query)
   // let skip = Number(req.query.skip);
   // let limit = Number(req.query.limit) ||5;
 
     // const productData = await Products.find().skip(skip).limit(limit)
     const productData = await Products.find()
-    // console.log(productData)
+    // //console.log(productData)
     res.send(JSON.stringify(productData))
 }
 
@@ -78,7 +78,7 @@ const getMallproduct = async (req, res) => {
 
 const postReview = async (req, res) => {
   try {
-    console.log(req.body)
+    //console.log(req.body)
     const { review, userName ,productId} = req.body;
     const { rating, comment } = review;
     
@@ -100,12 +100,12 @@ const postReview = async (req, res) => {
     await newReview.save();
 
     const ratings = await Review.find({ productId });
-    // console.log(ratings)
+    // //console.log(ratings)
     const ratingSum = ratings.reduce((sum, rate) => sum + rate.rating, 0);
-    // console.log(ratingSum)
+    // //console.log(ratingSum)
     let averageRating = ratings.length >0 ? ratingSum / ratings.length:0;
     averageRating = Math.round(averageRating*10) / 10;    
-     console.log(averageRating)
+     //console.log(averageRating)
     const updtProduct = await Products.findByIdAndUpdate(productId, { rating: averageRating });
   let updtMallProduct
     if(!updtProduct){
@@ -144,18 +144,18 @@ const deleteReview = async (req, res) => {
   try {
     const {id,productId} = req.params
       const review = await Review.findByIdAndDelete({ _id: id });
-      console.log(review)
+      //console.log(review)
       if (!review) {
           return res.status(404).json({ message: "Review not found" });
       }
       else{
         const ratings = await Review.find({ productId });
-    // console.log(ratings)
+    // //console.log(ratings)
     const ratingSum = ratings.reduce((sum, rate) => sum + rate.rating, 0);
-    // console.log(ratingSum)
+    // //console.log(ratingSum)
     let averageRating = ratings.length >0 ? ratingSum / ratings.length:0;
     averageRating = Math.round(averageRating*10) / 10;    
-     console.log(averageRating)
+     //console.log(averageRating)
     const updtProduct = await Products.findByIdAndUpdate(productId, { rating: averageRating });
   let updtMallProduct
     if(!updtProduct){

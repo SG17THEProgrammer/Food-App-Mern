@@ -3,7 +3,7 @@ const stripe = Stripe(`${process.env.STRIPE_SECRET_KEY}`);
 const order = require('../models/orderSchema');
 
 const payment = async (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
   const {products,customerInfo,deliveryCharge,tax,userId,amount}=req.body
 
     try {
@@ -80,7 +80,7 @@ const payment = async (req, res) => {
         };
         const { country } = customerInfo.address;
         if (country && country !== 'IN') {
-            console.log('Shipping address country:', country); // Log the shipping address country for debugging
+            //console.log('Shipping address country:', country); // Log the shipping address country for debugging
 
             params.billing_address_collection = 'required';
             params.shipping_address_collection = {
@@ -88,10 +88,10 @@ const payment = async (req, res) => {
             };
         }
         const session = await stripe.checkout.sessions.create(params);
-        console.log('Created session:', session);
+        //console.log('Created session:', session);
         res.status(200).json({ id: session.id });
     } catch (err) {
-        console.error('Error creating session:', err);
+        //console.error('Error creating session:', err);
         res.status(err.statusCode || 500).json({ error: err.message });
     }
 }
