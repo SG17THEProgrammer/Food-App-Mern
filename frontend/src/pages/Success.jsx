@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../css/Success.css'
 import { NavLink } from 'react-router-dom'
 
-import Orders from './Orders'
+import Orders from '../pages/Orders/Orders'
 import { useAuth } from '../components/Auth'
 
 const Success = () => {

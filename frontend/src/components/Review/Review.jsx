@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import '../css/Review.css'
+import '../../css/Review.css'
 import { toast } from 'react-toastify';
-import { useAuth } from './Auth';
+import { useAuth } from '../Auth';
 import { IoTrashBin } from "react-icons/io5";
 const Review = ({productId,userName}) => {
     const {user } = useAuth();

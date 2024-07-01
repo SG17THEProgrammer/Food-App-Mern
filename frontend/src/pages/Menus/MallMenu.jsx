@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import Navbar from '../components/navbar';
-import FormatPrice from '../Helpers/FormatPrice';
-import '../css/MallMenu.css'
-import Star from '../Helpers/Star';
-import Footer from '../components/Footer';
-import { addCartItem } from '../redux/productSlide';
-import MallMenuOtherProducts from '../components/MallMenuOtherProducts';
-import { useAuth } from '../components/Auth';
+import Navbar from '../../components/navbar';
+import FormatPrice from '../../Helpers/FormatPrice';
+import '../../css/Menu/MallMenu.css'
+import Star from '../../Helpers/Star';
+import Footer from '../../components/Footer';
+import { addCartItem } from '../../redux/productSlide';
+import MallMenuOtherProducts from '../../components/MallMenuOtherProducts';
+import { useAuth } from '../../components/Auth';
 import { toast } from 'react-toastify';
-import Review from '../components/Review';
-import Comments from '../components/Comments';
+import Review from '../../components/Review/Review';
+import Comments from '../../components/Review/Comments';
 
 
 const MallMenu = () => {

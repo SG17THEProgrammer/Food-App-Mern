@@ -2,7 +2,7 @@ import React from 'react';
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
-import '../css/MallMenu.css'
+import '../css/Menu/MallMenu.css'
 
 const Star = ({ rating }) => {
   let ratingNum = parseFloat(rating);

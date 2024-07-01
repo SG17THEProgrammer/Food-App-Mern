@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
-import Navbar from '../components/navbar'
+import Navbar from '../../components/navbar'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import '../css/Menu.css'
-import Gallery from '../Image Gallery/Gallery';
-import Footer from '../components/Footer';
-import { addCartItem } from '../redux/productSlide';
-import FormatPrice from '../Helpers/FormatPrice';
-import Star from '../Helpers/Star';
-import { useAuth } from '../components/Auth';
+import '../../css/Menu/Menu.css'
+import Gallery from '../../Image Gallery/Gallery';
+import Footer from '../../components/Footer';
+import { addCartItem } from '../../redux/productSlide';
+import FormatPrice from '../../Helpers/FormatPrice';
+import Star from '../../Helpers/Star';
+import { useAuth } from '../../components/Auth';
 import { toast } from 'react-toastify';
-import Review from '../components/Review';
-import Comments from '../components/Comments';
+import Review from '../../components/Review/Review';
+import Comments from '../../components/Review/Comments';
 
 const Menu = () => {
 const {isLoggedIn} = useAuth()

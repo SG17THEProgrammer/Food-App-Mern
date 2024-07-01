@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { FaPlus } from "react-icons/fa";
-import Navbar from '../components/navbar';
-import '../css/Address.css'
+import Navbar from '../../components/navbar';
+import '../../css/Delivery/Address.css'
 import { IoIosArrowForward } from "react-icons/io";
-import Delivery from '../pages/delivery';
-import { useAuth } from '../components/Auth';
+import Delivery from '../../pages/Delivery/Delivery';
+import { useAuth } from '../../components/Auth';
 
 const Address = ({title}) => {
     const {user} = useAuth()

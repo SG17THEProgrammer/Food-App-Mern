@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import '../css/Login.css'
-import Navbar from '../components/navbar'
+import '../../css/Auth/Login.css'
+import Navbar from '../../components/navbar'
 // import img from '../images/all.avif'
 import { NavLink, useNavigate } from 'react-router-dom'
 import {  toast } from 'react-toastify';
 // import { useDispatch, useSelector } from 'react-redux'
 // import { loginRedux } from '../redux/userSlice'
-import { useAuth } from '../components/Auth';
-import Authorize from '../components/Authorize';
-import Loader from '../components/Loader';
+import { useAuth } from '../../components/Auth';
+import Authorize from '../../components/Authorize';
+import Loader from '../../components/Loader';
 
 
 const Login = () => {

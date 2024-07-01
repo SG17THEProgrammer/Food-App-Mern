@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import Navbar from '../components/navbar'
-import '../css/Login.css'
-import '../css/Register.css'
+import Navbar from '../../components/navbar'
+import '../../css/Auth/Login.css'
+import '../../css/Auth/Register.css'
 // import img from '../images/bg-registration-form-3.jpg'
 import { NavLink, useNavigate } from 'react-router-dom'
 // import img2 from '../images/profile-user.jpg'
-import {ImagetoBase64} from '../utility/ImagetoBase64'
+import {ImagetoBase64} from '../../utility/ImagetoBase64'
 import { toast } from 'react-toastify'
-import { useAuth } from '../components/Auth'
-import Authorize from '../components/Authorize'
+import { useAuth } from '../../components/Auth'
+import Authorize from '../../components/Authorize'
 
 const Register = () => {
 

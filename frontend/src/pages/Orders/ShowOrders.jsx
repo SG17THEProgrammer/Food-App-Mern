@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import '../css/ShowOrders.css'
+import '../../css/Orders/ShowOrders.css'
 import { useParams } from 'react-router-dom'
-import FormatPrice from '../Helpers/FormatPrice'
-import Comments from '../components/Comments'
-import Navbar from '../components/navbar'
+import FormatPrice from '../../Helpers/FormatPrice'
+import Comments from '../../components/Review/Comments'
+import Navbar from '../../components/navbar'
 
 const ShowOrders = () => {
 

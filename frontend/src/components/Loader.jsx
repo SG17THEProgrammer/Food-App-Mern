@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/Register.css'
+import '../css/Auth/Register.css'
 import { RotatingTriangles } from 'react-loader-spinner'
 
 const Loader = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import '../css/Comments.css'
-import { useAuth } from './Auth';
+import '../../css/Comments.css'
+import { useAuth } from '../Auth';
 import { toast } from 'react-toastify';
 import { useNavigate, useParams} from 'react-router-dom'
 import { useSelector } from 'react-redux';

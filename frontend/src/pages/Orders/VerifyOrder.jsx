@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Loader from '../components/Loader'
+import Loader from '../../components/Loader'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import axios from 'axios'
 const VerifyOrder = () => {

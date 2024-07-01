@@ -1,6 +1,6 @@
 import React from 'react'
 import Orders from './Orders'
-import Navbar from '../components/Navbar'
+import Navbar from '../../components/Navbar'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 

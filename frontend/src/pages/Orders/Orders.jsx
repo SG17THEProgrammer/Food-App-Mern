@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import '../css/Orders.css'
-import Comments from '../components/Comments'
-import FormatPrice from '../Helpers/FormatPrice'
-import { useAuth } from '../components/Auth'
+import '../../css/Orders/Orders.css'
+import FormatPrice from '../../Helpers/FormatPrice'
+import { useAuth } from '../../components/Auth'
 import { NavLink } from 'react-router-dom'
 const Orders = ({ navbar, title ,handleStatus}) => {
 

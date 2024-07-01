@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import '../css/Delivery.css'
-import Navbar from '../components/navbar'
+import '../../css/Delivery/Delivery.css'
+import Navbar from '../../components/navbar'
 import { NavLink } from 'react-router-dom'
-import { useAuth } from '../components/Auth'
+import { useAuth } from '../../components/Auth'
 import { toast } from 'react-toastify'
 import { useSelector } from 'react-redux'
-import FormatPrice from '../Helpers/FormatPrice'
+import FormatPrice from '../../Helpers/FormatPrice'
 import { loadStripe } from '@stripe/stripe-js'
 import Address from './Address'
-import State from '../components/State'
+import State from '../../components/Location/State'
 const Delivery = ({title}) => {
 
   const [delAddress , setDelAddress] = useState();
