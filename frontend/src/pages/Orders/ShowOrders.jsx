@@ -44,9 +44,8 @@ const ShowOrders = () => {
     return (
         <div>
             <Navbar></Navbar>
-            {orders && orders.length > 0 ? (
                 <div className="projcard-container" style={{ marginTop: "100px" }}>
-                    {orders.map((elem, index) => (
+                    {orders?.map((elem, index) => (
                         <div className="projcard projcard-blue" key={index}>
                                 <div className="projcard-innerbox" key={elem._id}>
                                     <img className="projcard-img" src={`${elem.image}`} alt="Card Image" />
@@ -76,9 +75,7 @@ const ShowOrders = () => {
                         </div>
                     ))}
                 </div>
-            ) : (
-                <h1 className="title3">No order placed yet</h1>
-            )}
+        
 
         </div>
     )

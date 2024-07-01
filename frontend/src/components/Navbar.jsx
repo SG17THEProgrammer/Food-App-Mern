@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react'
+import { React, useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.js'
@@ -13,6 +13,24 @@ import { BsList } from "react-icons/bs";
 
 const Navbar = () => {
     const [dropdownMenu, setdropdownMenu] = useState(false)
+    const dropdownRef = useRef(null);
+
+    const handleDocumentClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setdropdownMenu(false);
+      }
+    };
+  
+    useEffect(() => {
+      if (dropdownMenu) {
+        document.addEventListener('mousedown', handleDocumentClick);
+      } else {
+        document.removeEventListener('mousedown', handleDocumentClick);
+      }
+      return () => {
+        document.removeEventListener('mousedown', handleDocumentClick);
+      };
+    }, [dropdownMenu]);
 
 
     //when using Auth0 authentication
@@ -83,7 +101,7 @@ const Navbar = () => {
                             </li>
                             <li className="nav-item active">
                                 <BsList style={{ fontSize: "30px", marginTop: "3px" , cursor:"pointer"}} onClick={() => setdropdownMenu(!dropdownMenu)} />
-                                {dropdownMenu ? <div className='dropdown2'>
+                                {dropdownMenu ? <div className='dropdown2' ref={dropdownRef}>
                                     <NavLink className='navlink' to='/orders'><p className='para4' >Your Orders </p></NavLink>
                                     {user.email=="shray@gmail.com"?<NavLink className='navlink' to='/handleOrders'><p className='para4' >Handle Orders </p></NavLink>:""}
                                     <NavLink className='navlink' to='/address'> <p className='para4'>Address Book</p></NavLink>

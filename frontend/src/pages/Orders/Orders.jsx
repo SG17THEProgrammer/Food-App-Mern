@@ -3,7 +3,8 @@ import '../../css/Orders/Orders.css'
 import FormatPrice from '../../Helpers/FormatPrice'
 import { useAuth } from '../../components/Auth'
 import { NavLink } from 'react-router-dom'
-const Orders = ({ navbar, title ,handleStatus}) => {
+import OrderBody from './OrderBody'
+const Orders = ({ navbar, title, handleStatus }) => {
 
     const { user } = useAuth()
     const [orders, setOrders] = useState();
@@ -31,6 +32,14 @@ const Orders = ({ navbar, title ,handleStatus}) => {
         }
 
     }
+    const totalQuantities = orders ? orders.map(order => {
+        const totalQty = order.items.reduce((acc, item) => acc + item.qty, 0);
+        return {
+            totalQty
+        };
+    }) : "";
+    console.log(totalQuantities)
+
 
     useEffect(() => {
         fetchOrders();
@@ -42,61 +51,61 @@ const Orders = ({ navbar, title ,handleStatus}) => {
             <div style={{ marginBottom: "100px" }}>{navbar}</div>
             <h1 className='title2'>{title ? title : "Your orders"}</h1>
             <div class="ctn1 mt-5 mb-5" style={{ border: "none" }}>
-                <div class="d-flex justify-content-center row">
-                    <div class="col-md-12">
+                <div class="">
+                    <div class="" style={{ width: "78vw" }}>
                         <div class="rounded">
                             <div class="table-responsive table-borderless">
                                 <table class="table">
+                                    {/* table head is in orderbody */}
                                     <thead>
                                         <tr>
 
                                             <th>S. No</th>
                                             <th>Order Id</th>
-                                            {title=="All Orders" ? <th>Address</th> : ""}
+                                            {title == "All Orders" ? <th>Address</th> : ""}
                                             <th>Order Details</th>
                                             <th>No. of Items</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Date</th>
                                             <th>Time</th>
-                                            {title=="All Orders"?"":<th></th>}
-                                            {title=="All Orders"?"":<th></th>}
+                                            {/* { title=="All Orders"?"":<th></th>} */}
+                                            {title == "All Orders" ? "" : <th></th>}
                                         </tr>
                                     </thead>
                                     <tbody class="table-body">
-
-                                        {orders ? orders.map((elem, index) => {
-                                            const { userId, items, amount, address, status, date ,_id } = elem;
-                                            const { line1, city, state, postal_code, country } = address;
-                                            return <>
-                                                <tr class="cell-1">
-                                                    <td>{++index}</td>
-                                                    <td>{userId}</td>
-                                                    {title=="All Orders" ? <><td style={{textWrap:"nowrap"}}>  <p>{line1 + " " + city + " , " + state}</p>
-                                                        <p>{postal_code + " , " + country}</p>
-                                                    </td></> : ""}
-                                                    <td><p style={{ textWrap: "nowrap" }}>
-                                                        {items ? items.map((item,index) => {
-                                                            return <>{item.name} x {item.qty} {index==items.length-1 ? "" : ","} <br />
-                                                            </>
-                                                        }) : ""}
-                                                    </p></td>
-                                                    <td><p style={{ fontWeight: "bold", textAlign: "center" }}>{items.length}</p></td>
-                                                    {title=="All Orders"?<td>
-                                                        <select onChange={(e)=>handleStatus(e,_id,fetchOrders)} value={status}>
-                                                            <option value="Food Processing">Food Processing</option>
-                                                            <option value="Out for delivery">Out for delivery</option>
-                                                            <option value="Delivered">Delivered</option>
-                                                        </select>
-                                                    </td>:<td><span class="badge badge-success">{status}</span></td>}
-                                                    <td><FormatPrice price={amount}></FormatPrice></td>
-                                                    <td>{date ? date.substring(0, 10) : ""}</td>
-                                                    <td>{date ? date.substring(11, 19) : ""}</td>
-                                                   {title=="All Orders"?"": <td><button className='button2' style={{marginTop:"-5px",width:"100px",height:"30px"}} onClick={fetchOrders}>Track Order</button></td>}
-                                                   {title=="All Orders"?"": <td><NavLink to={`/showOrder/${_id}`} style={{textDecoration:"none"}}><button className='button2' style={{marginTop:"-5px",width:"100px",height:"30px"}}>Show More</button></NavLink></td>}
-                                                </tr>
-                                            </>
-                                        }) : ""}
+                                        {title === "All Orders" ? (
+                                                orders?.slice().reverse().map((elem, index) => {
+                                                    let idx = index;
+                                                    const { address } = elem;
+                                                    return (
+                                                        <tr className="cell-1" key={idx}>
+                                                            <OrderBody elem={elem} address={address} idx={idx} title={title} handleStatus={handleStatus} totalQuantities={totalQuantities} fetchOrders={fetchOrders}  />
+                                                        </tr>
+                                                    );
+                                                })
+                                           
+                                        ) : title === "Your Order Summary" ? (
+                                          
+                                                orders?.slice().reverse().slice(0,1).map((elem, index) => {
+                                                    let idx = index;
+                                                    const { address } = elem;
+                                                    return (
+                                                        <tr className="cell-1" key={idx}>
+                                                            <OrderBody elem={elem} address={address} idx={idx} totalQuantities={totalQuantities} />
+                                                        </tr>
+                                                    );
+                                                })
+                                            ) 
+                                         : orders?.slice().reverse().map((elem, index) => {
+                                                    let idx = index;
+                                                    const { address } = elem;
+                                                    return (
+                                                        <tr className="cell-1" key={idx}>
+                                                            <OrderBody elem={elem} address={address} idx={idx} totalQuantities={totalQuantities} />
+                                                        </tr>
+                                                    );
+                                                })}
 
                                     </tbody>
                                 </table>
