@@ -12,7 +12,7 @@ const VerifyOrder = () => {
     const verifyPayment =async()=>{
         const response = await axios.post("http://localhost:8001/verify",{success,orderId})
         if(response.data.success){
-            navigate('/success')
+            navigate(`/success/${orderId}`)
         }
         else{
             navigate('/failed')

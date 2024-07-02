@@ -81,7 +81,7 @@ const App = () => {
             <Route path='/logout' element={<Logout></Logout>}></Route>
             <Route path='/edit/:id' element={<EditProduct></EditProduct>}></Route>
             <Route path='/editUser/:id' element={<EditUser></EditUser>}></Route>
-            <Route path='/success' element={<Success></Success>}></Route>
+            <Route path='/success/:id' element={<Success></Success>}></Route>
             <Route path='/failed' element={<Failed></Failed>}></Route>
             <Route path='/distance' element={<Distance></Distance>}></Route>
             <Route path='/verify' element={<VerifyOrder></VerifyOrder>}></Route>

@@ -4,7 +4,7 @@ import FormatPrice from '../../Helpers/FormatPrice'
 import { useAuth } from '../../components/Auth'
 import { NavLink } from 'react-router-dom'
 import OrderBody from './OrderBody'
-const Orders = ({ navbar, title, handleStatus }) => {
+const Orders = ({ navbar, title, handleStatus,btn }) => {
 
     const { user } = useAuth()
     const [orders, setOrders] = useState();
@@ -49,7 +49,10 @@ const Orders = ({ navbar, title, handleStatus }) => {
     return (
         <>
             <div style={{ marginBottom: "100px" }}>{navbar}</div>
+            <span>
             <h1 className='title2'>{title ? title : "Your orders"}</h1>
+            {title=="Your Order Summary"?btn:""}
+            </span>
             <div class="ctn1 mt-5 mb-5" style={{ border: "none" }}>
                 <div class="">
                     <div class="" style={{ width: "78vw" }}>
@@ -60,7 +63,7 @@ const Orders = ({ navbar, title, handleStatus }) => {
                                     <thead>
                                         <tr>
 
-                                            <th>S. No</th>
+                                            {<th>S. No</th>}
                                             <th>Order Id</th>
                                             {title == "All Orders" ? <th>Address</th> : ""}
                                             <th>Order Details</th>

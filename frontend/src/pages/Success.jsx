@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import '../css/Success.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 
 import Orders from '../pages/Orders/Orders'
 import { useAuth } from '../components/Auth'
+import Invoice from './Orders/Invoice'
 
 const Success = () => {
 
@@ -11,6 +12,8 @@ const {user} = useAuth()
   useEffect(() => {
     localStorage.removeItem(user._id);
   },[user._id])
+
+  const {id}= useParams() 
   
   return (  
     <>
@@ -28,7 +31,7 @@ be in contact with more details shortly </p>
         </div> 
     </div> 
 </div>
-<Orders title={"Your Order Summary"}></Orders>
+<Orders title={"Your Order Summary"} btn={<Invoice id={id}></Invoice>}></Orders>
     </>
   )
 }

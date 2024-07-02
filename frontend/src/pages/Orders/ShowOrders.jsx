@@ -10,7 +10,7 @@ const ShowOrders = () => {
     const { id } = useParams()
     //console.log(id)
     const [orders, setOrders] = useState();
-    //console.log(orders)
+    console.log(orders)
     // const {category,image,name,price,qty,rating ,total} = orders.items
 
     const fetchOrders = async () => {
@@ -23,8 +23,8 @@ const ShowOrders = () => {
             })
             if (response.ok) {
                 const data = await response.json()
-                //console.log(data)
-                setOrders(data.data.items)
+                console.log(data)
+                setOrders(data.data)
             }
             else {
                 //console.log("Error: " + response)
@@ -44,37 +44,41 @@ const ShowOrders = () => {
     return (
         <div>
             <Navbar></Navbar>
-                <div className="projcard-container" style={{ marginTop: "100px" }}>
                     {orders?.map((elem, index) => (
-                        <div className="projcard projcard-blue" key={index}>
-                                <div className="projcard-innerbox" key={elem._id}>
-                                    <img className="projcard-img" src={`${elem.image}`} alt="Card Image" />
+                <div className="projcard-container" style={{ marginTop: "100px" }}>
+                                    {elem.items?.map((item)=>{
+                                        return <div className="projcard projcard-blue" key={index}>
+                                         <div className="projcard-innerbox" key={item._id}>
+                                         <>
+                                        <img className="projcard-img" src={`${item.image}`} alt="Card Image" />
                                     <div className="projcard-textbox">
                                         <div>
-                                            <div className="projcard-title">{elem.name}</div>
+                                            <div className="projcard-title">{item.name}</div>
                                             <span className="projcard-subtitle" style={{ display: "inline" }}>
-                                                <div>{elem.category}</div>
-                                                <span>{elem.rating}⭐</span>
+                                                <div>{item.category}</div>
+                                                <span>{item.rating}⭐</span>
                                             </span>
                                             <div className="projcard-bar"></div>
                                             <div className="projcard-description">
-                                                Price: <FormatPrice price={elem.price}></FormatPrice>
+                                                Price: <FormatPrice price={item.price}></FormatPrice>
                                             </div>
                                             <div className="projcard-description">
-                                                Quantity: {elem.qty}
+                                                Quantity: {item.qty}
                                             </div>
                                             <div className="projcard-description">
-                                                Total: <FormatPrice price={elem.total}></FormatPrice>
+                                                Total: <FormatPrice price={item.total}></FormatPrice>
                                             </div>
                                         </div>
                                         <div>
-                                            <Comments productId={elem._id}></Comments>
+                                            <Comments productId={item._id}></Comments>
                                         </div>
                                     </div>
+                                        </>
                                 </div>
                         </div>
-                    ))}
+                                    })}
                 </div>
+                    ))}
         
 
         </div>

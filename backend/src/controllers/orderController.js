@@ -33,9 +33,10 @@ const getOrder =async(req,res)=>{
 
 const showOrder =async(req,res)=>{
     const {orderId} = req.body
-    // //console.log(orderId)
+    // console.log(orderId)    
     try {
-        const response = await order.findOne({_id:orderId})
+        const response = await order.find({_id:orderId})
+        // console.log(response)
         res.json({success:true,data:response})
         //console.log(response)
     } catch (error) {
