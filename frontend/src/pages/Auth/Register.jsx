@@ -68,8 +68,10 @@ const Register = () => {
         
         // setregisterUser({ name:"", email: "", phone: "", password: "",image:""});
         navigate('/home')
-        toast.success(resData.message[0]);  
-        window.location.reload();
+        toast.success(resData.message[0]); 
+         setTimeout(()=>{
+           window.location.reload();
+         },2000)
         //console.log(resData);
       } else {
         // toast.error(resData.extraDetails?resData.extraDetails:resData.message)

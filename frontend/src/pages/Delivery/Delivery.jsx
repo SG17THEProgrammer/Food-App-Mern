@@ -122,13 +122,17 @@ const totalAmount = finalPrice+shippingCharges;
           country: 'IN'
       }
   };
+
+  const bodyData = {
+    products:cartItems,customerInfo:customerInfo , deliveryCharge:shippingCharges , tax:tax,userId:user._id , amount:totalAmount
+  }
     try {
         const response = await fetch('http://localhost:8001/payment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({products:cartItems,customerInfo:customerInfo , deliveryCharge:shippingCharges , tax:tax,userId:user._id , amount:totalAmount})
+            body: JSON.stringify({bodyData})
           });
           
         if (!response.ok) {
@@ -188,7 +192,6 @@ const totalAmount = finalPrice+shippingCharges;
         toast.error("Couldn't place order ");
       }
     }
-
 
     const getDeliveryAddress = async() => {
       try {

@@ -13,6 +13,7 @@ const { payment } = require('../controllers/paymentController')
 const { delivery,updateDeliveryStatus, getDeliveryAddress } = require('../controllers/deliveryController')
 const { distance } = require('../controllers/locationController')
 const { verifyOrder, getOrder, showOrder } = require('../controllers/orderController')
+const { getImage, uploadImage } = require('../controllers/imageController')
 // const { generateInvoice } = require('../controllers/invoiceController')
 
 
@@ -29,6 +30,8 @@ router.post('/showOrder',showOrder)
 router.post('/reservation',reserveTable)
 router.post('/updateDeliveryStatus',updateDeliveryStatus)
 router.post('/getDeliveryAddress',getDeliveryAddress)
+router.post('/getImage',getImage)
+router.post('/uploadImage',uploadImage)
 // router.post('/generateInvoice',generateInvoice)
 router.post('/contact',validate(contactSchema),contact)
 

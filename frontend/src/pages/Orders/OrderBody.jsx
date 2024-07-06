@@ -1,11 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import FormatPrice from '../../Helpers/FormatPrice'
 import { NavLink } from 'react-router-dom'
 import '../../css/Orders/Orders.css'
-const OrderBody = ({elem,address,idx,handleStatus,totalQuantities,title,fetchOrders}) => {
-    // console.log(totalQuantities[3].totalQty)
+import { useAuth } from '../../components/Auth'
+import { toast } from 'react-toastify'
+
+const OrderBody = ({elem,address,idx,handleStatus,totalQuantities,title,fetchOrders,orders}) => {
+    const {user,getCartItems} = useAuth()
+    const [cartItem , setCartItem] = useState()
+    
     let index = idx
-  return (
+        
+        
+        const addToCart = (index1) => {
+            try {
+                //console.log(index1)
+            let existingItems = JSON.parse(localStorage.getItem(user._id)) || [];
+            let allItems=[];
+            [orders[index1]].map((elem)=>{
+                elem?.items?.map((item)=>{
+                    allItems.push(item)
+                })
+            })
+            const updatedItems = existingItems.concat(allItems);
+            setCartItem(updatedItems)
+            localStorage.setItem(`${user._id}`,JSON.stringify(updatedItems))
+            toast.success("Item added to Cart successfully")
+            
+        } catch (error) {
+            //console.log(error)
+            toast.error("Something went wrong")
+        }
+    }
+    
+    
+    useEffect(()=>{
+        getCartItems();
+      },[user._id,cartItem])
+
+      
+    return (
     <>
     
                                                     <td>{++index}</td>
@@ -32,6 +66,7 @@ const OrderBody = ({elem,address,idx,handleStatus,totalQuantities,title,fetchOrd
                                                     <td>{ elem.date?.substring(11, 19) }</td>
                                                    {/* { title=="All Orders"?"": <td><button className='button2' style={{marginTop:"-5px",width:"100px",height:"30px"}} onClick={fetchOrders}>Track Order</button></td>} */}
                                                    {title=="All Orders"?"": <td><NavLink to={`/showOrder/${elem._id}`} style={{textDecoration:"none"}}><button className='button2' style={{marginTop:"-5px",width:"100px",height:"30px"}}>Show More</button></NavLink></td>}
+                                                   {title=="Your Order Summary"?"": <td><button className='button2' style={{marginTop:"-5px",width:"100px",height:"30px"}} onClick={()=>addToCart(`${orders.length - 1 - idx}`)}>Add to Cart</button></td>}
     </>
   )
 }

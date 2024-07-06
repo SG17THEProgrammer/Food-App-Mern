@@ -99,7 +99,7 @@ const Navbar = () => {
                             <li className="nav-item active">
                                 <NavLink className="nav-link ml-2 blink" to='/mallmenu/6676c1731782239b95fa1fb6' style={{ marginRight: "-10px" }}>MallMenu <sup>New</sup><span className="sr-only"></span></NavLink>
                             </li>
-                            <li className="nav-item active">
+                            {isLoggedIn?<li className="nav-item active">
                                 <BsList style={{ fontSize: "30px", marginTop: "3px" , cursor:"pointer"}} onClick={() => setdropdownMenu(!dropdownMenu)} />
                                 {dropdownMenu ? <div className='dropdown2' ref={dropdownRef}>
                                     <NavLink className='navlink' to='/orders'><p className='para4' >Your Orders </p></NavLink>
@@ -107,7 +107,7 @@ const Navbar = () => {
                                     <NavLink className='navlink' to='/address'> <p className='para4'>Address Book</p></NavLink>
                                     <NavLink className='navlink' to='/reservation'> <p className='para4'>Reserve a Table </p> </NavLink>
                                 </div> : ""}
-                            </li>
+                            </li>:""}
                             <li className="nav-item active">
                                 <NavLink className="nav-link ml-2 cart" to='/cart'>                                 <div className='cart'><i className="fa-solid fa-cart-shopping fa-sm  icon" style={{ position: "relative" }} ></i><span className='superscript count'>{cartItems ? cartItems.length : 0}</span></div>
                                     {/* <span className="sr-only">Cart</span> */}

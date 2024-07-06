@@ -3,6 +3,7 @@ import '../../css/Review.css'
 import { toast } from 'react-toastify';
 import { useAuth } from '../Auth';
 import { IoTrashBin } from "react-icons/io5";
+import { FaStar } from "react-icons/fa";
 const Review = ({productId,userName}) => {
     const {user } = useAuth();
     const [reviews, setReviews] = useState();
@@ -38,9 +39,9 @@ const Review = ({productId,userName}) => {
                 if (response.ok) {
                     setReviews(reviews.filter(review => review._id !== reviewId));
                     toast.success('Review deleted successfully');
-                    setTimeout(() =>{
-                        window.location.reload();
-                    },2000)
+                    // setTimeout(() =>{
+                    //     window.location.reload();
+                    // },2000)
                 } else {
                     toast.error(data.message);
                 }
@@ -57,18 +58,18 @@ useEffect(() => {
     return (
     <div className="floating-review-button">
             <div className="button-text">REVIEwS</div>
-            <div className="reviews-popup">
-            <div className='myReview'>
-            <h5 style={{textDecoration:"underline",margin:"0 0 13px 3px"}}>Your review :  {myReview && myReview.length>0?myReview.length:0} </h5>
+            <div className="reviews-popup glowing-border ">
+            <div className='myReview '>
+            <h5 style={{textDecoration:"underline",margin:"0 0 13px 3px" ,fontFamily:"cursive", fontWeight:"bolder"}}>Your review :  {myReview && myReview.length>0?myReview.length:0} </h5>
 
             { myReview && myReview.length===0? (
-                    <p style={{fontWeight:"900",marginLeft:"5px"}}>No reviews found </p>
+                    <p style={{fontWeight:"900",marginLeft:"5px",fontFamily:"cursive"}}>No reviews found </p>
                 ) : (
                     myReview && myReview.map(myReview => (<>
                         <div key={myReview._id} className='review'>
                         <IoTrashBin className='icn' title='Delete Comment' onClick={()=>deleteReview(myReview._id)}/>
-                            <p style={{marginBottom:"4px"}}>Rating: {myReview.rating}⭐</p>
-                            <p>Comment: {myReview.comment}</p>
+                            <p style={{marginBottom:"4px"}}> <b>Rating: {myReview.rating}</b> <FaStar style={{marginTop:"-1px",fontSize:"13px" ,color:"#EF9C66"}} /></p>
+                            <p> <b>Comment: </b> {myReview.comment} </p>
                             
                         </div>
                         

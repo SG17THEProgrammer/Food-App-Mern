@@ -8,7 +8,7 @@ const Orders = ({ navbar, title, handleStatus,btn }) => {
 
     const { user } = useAuth()
     const [orders, setOrders] = useState();
-    //console.log(orders)
+    console.log(orders)
 
     const fetchOrders = async () => {
         try {
@@ -62,7 +62,7 @@ const Orders = ({ navbar, title, handleStatus,btn }) => {
                                     {/* table head is in orderbody */}
                                     <thead>
                                         <tr>
-
+{orders?.length>0?<>
                                             {<th>S. No</th>}
                                             <th>Order Id</th>
                                             {title == "All Orders" ? <th>Address</th> : ""}
@@ -74,6 +74,7 @@ const Orders = ({ navbar, title, handleStatus,btn }) => {
                                             <th>Time</th>
                                             {/* { title=="All Orders"?"":<th></th>} */}
                                             {title == "All Orders" ? "" : <th></th>}
+                                            {title == "Your Order Summary" ? "" : <th></th>} </>:<h2>No orders found</h2>}
                                         </tr>
                                     </thead>
                                     <tbody class="table-body">
@@ -83,7 +84,7 @@ const Orders = ({ navbar, title, handleStatus,btn }) => {
                                                     const { address } = elem;
                                                     return (
                                                         <tr className="cell-1" key={idx}>
-                                                            <OrderBody elem={elem} address={address} idx={idx} title={title} handleStatus={handleStatus} totalQuantities={totalQuantities} fetchOrders={fetchOrders}  />
+                                                            <OrderBody elem={elem} address={address} idx={idx} title={title} handleStatus={handleStatus} totalQuantities={totalQuantities} fetchOrders={fetchOrders}  /> 
                                                         </tr>
                                                     );
                                                 })
@@ -95,7 +96,7 @@ const Orders = ({ navbar, title, handleStatus,btn }) => {
                                                     const { address } = elem;
                                                     return (
                                                         <tr className="cell-1" key={idx}>
-                                                            <OrderBody elem={elem} address={address} idx={idx} totalQuantities={totalQuantities} />
+                                                            <OrderBody elem={elem} address={address} idx={idx} totalQuantities={totalQuantities}  title={title}/>
                                                         </tr>
                                                     );
                                                 })
@@ -105,7 +106,7 @@ const Orders = ({ navbar, title, handleStatus,btn }) => {
                                                     const { address } = elem;
                                                     return (
                                                         <tr className="cell-1" key={idx}>
-                                                            <OrderBody elem={elem} address={address} idx={idx} totalQuantities={totalQuantities} />
+                                                            <OrderBody elem={elem} address={address} idx={idx} totalQuantities={totalQuantities} orders={orders} title={title}/>
                                                         </tr>
                                                     );
                                                 })}

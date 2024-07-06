@@ -177,7 +177,7 @@ const FoodMall = () => {
           <br /><br />
           <button className='butn' style={{ backgroundColor: "#FF407D" }} onClick={refreshPage}> Clear Filters</button>
           <br /><br />
-          <NavLink to="/mallmenu/65eff59f41232f736a963d5c">
+          <NavLink to="/mallmenu/6676c1731782239b95fa1fb6">
           <button className='butn blinking-button blink' > Mall Menu<sup className='sup'>New</sup></button>
           </NavLink>
 

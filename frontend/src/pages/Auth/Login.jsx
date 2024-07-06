@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../css/Auth/Login.css'
 import Navbar from '../../components/navbar'
 // import img from '../images/all.avif'
@@ -143,7 +143,14 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div></>:<Authorize></Authorize>}
+      </div></>:
+      useEffect(()=>{
+           toast.error("You are already logged in")
+           navigate("/")
+        
+   },[])
+      
+      }
       {isLoading ?<Loader></Loader>:""}
       </>
   )

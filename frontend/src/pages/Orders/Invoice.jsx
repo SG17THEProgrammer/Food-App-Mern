@@ -76,14 +76,14 @@ const Invoice = ({id}) => {
                 "country": "India"
             },
             "client": {
-                "address":orders[0]?.address?.line1,
-                "zip": orders[0]?.address?.postal_code,
-                "city": orders[0]?.address?.city,
-                "state": orders[0]?.address?.state,
-                "country": orders[0]?.address?.country
+                "address":orderBill[0]?.address?.line1,
+                "zip": orderBill[0]?.address?.postal_code,
+                "city": orderBill[0]?.address?.city,
+                "state": orderBill[0]?.address?.state,
+                "country": orderBill[0]?.address?.country
             },
             "invoiceNumber": `2021.${Math.floor(Math.random() * 10000).toString().padStart(4, '0')}`,
-            "invoiceDate": orders[0]?.date?.substring(0,11),
+            "invoiceDate": orderBill[0]?.date?.substring(0,11),
             "products": formattedProducts,
             "bottomNotice": "Happy Shopping"
         };
@@ -118,7 +118,7 @@ const Invoice = ({id}) => {
   
   return (
     <div>   
-  {!loading?<button onClick={generateInvoice} className='butn download' >Generate Bill</button>:<button onClick={generateInvoice} className='butn download' >Generating Bill...</button>}    
+  {!loading?<button onClick={generateInvoice} style={{marginLeft:"30px"}} className='butn download' >Generate Bill</button>:<button onClick={generateInvoice} style={{marginLeft:"30px"}}  className='butn download' >Generating Bill...</button>}    
   </div>
   
   )

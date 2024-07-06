@@ -51,8 +51,8 @@ const Address = ({title}) => {
             </div>
             {showComponent && <Delivery title={"address"}/>}
             
-    { title==undefined ?       <div className="ctn2">
-            {delAddress ? delAddress.map((elem)=>{
+    { title===undefined ?       <div className="ctn2">
+            {delAddress?.length>0 ? delAddress.map((elem)=>{
                 const {address,city,state,pincode} = elem
                 return <div className="card4">
         <h3><b>Address :</b>   {address}</h3>
@@ -60,7 +60,7 @@ const Address = ({title}) => {
         <h5 ><b>State :</b>  {state}</h5>
         <p ><b>Pincode :</b>  {pincode}</p>
   </div> 
-            }):""}
+            }): <h2 style={{width:"70vw",textAlign:"center",textDecoration:"underline"}}>No address found</h2>}
    
   
 </div>:""}

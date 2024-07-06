@@ -29,7 +29,14 @@ const MallMenu = () => {
 
   const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
   //console.log(productDisplay)
+  const [mainImage, setMainImage] = useState(null);
+  const [images, setImages] = useState([]);
 
+  useEffect(() => {
+    if (productDisplay?._id) {
+      getImage();
+    }
+  }, [productDisplay?._id]);
   //   const handleAddCartProduct = (e) => {
   //     dispatch(addCartItem(productDisplay))
   //   }; 
@@ -41,12 +48,38 @@ const MallMenu = () => {
     }, "1000")}</>:toast.error("You must be logged in")
   }
 
-  let image = productDisplay ? `https://source.unsplash.com/random/400x500?${productDisplay.name}`:"";
-  const [mainImage, setMainImage] = useState(productDisplay? `${productDisplay.image}`:"");
+  const getImage = async() =>{
+    try {
+        const image = await fetch("http://localhost:8001/getImage",{
+          method: "POST",
+          headers: {'Content-Type': "application/json"},
+          body: JSON.stringify({productId: productDisplay?._id})
+        })
+        console.log(image)
+
+        const  res = await image.json()
+        console.log(res)
+        
+        if(image.ok){
+          setImages(res.images);
+        setMainImage(res.images[0]?.img1);
+          console.log('Images retrieved successfully')
+        }
+        else{
+          console.log("Error retrieving images")
+        }
+    } catch (error) {
+      console.log("Error in fetching api " + error)
+      
+    }
+  }
+
+ 
 
   useEffect(()=>{
     getCartItems();
   },[user,productCartItem])
+
 
   return (
 
@@ -55,15 +88,49 @@ const MallMenu = () => {
       <Navbar></Navbar>
       <div className="outer">
         <div className="lftdiv">
-          <div className="vertical">
-            <img src={`${productDisplay.image}`} alt="error" className='img' style={{ width: "106px", marginBottom: "10px", marginRight: "10px" }} onClick={() => setMainImage(`${productDisplay.image}`)} />
-            <img src={`${image}`} alt="error" className='img' style={{ marginRight: "10px" }} onClick={() => setMainImage(image)} />
-            <img src={`${image}`} alt="error" className='img' style={{ margin: "10px 10px" }} onClick={() => setMainImage(image)} />
-            <img src={`${image}`} alt="error" className='img' style={{ marginRight: "10px" }} onClick={() => setMainImage(image)} />
-          </div>
-          <div className="horizontal">
-            <img src={`${mainImage}`} alt="error" className='img1' />
-          </div>
+        <div className="vertical">
+        {productDisplay?.image && (
+          <img
+            src={productDisplay.image}
+            alt="error"
+            className='img'
+            style={{ width: "106px", marginBottom: "10px", marginRight: "10px" }}
+            onClick={() => setMainImage(productDisplay.image)}
+          />
+        )}
+        {images[0]?.img1 && (
+          <img
+            src={images[0].img1}
+            alt="error"
+            className='img'
+            style={{ marginRight: "10px", width: "106px" }}
+            onClick={() => setMainImage(images[0].img1)}
+          />
+        )}
+        {images[0]?.img2 && (
+          <img
+            src={images[0].img2}
+            alt="error"
+            className='img'
+            style={{ margin: "10px 10px", width: "106px" }}
+            onClick={() => setMainImage(images[0].img2)}
+          />
+        )}
+        {images[0]?.img3 && (
+          <img
+            src={images[0].img3}
+            alt="error"
+            className='img'
+            style={{ marginRight: "10px", width: "106px" }}
+            onClick={() => setMainImage(images[0].img3)}
+          />
+        )}
+      </div>
+      <div className="horizontal">
+        {mainImage && (
+          <img src={mainImage} alt="error" className='img1' style={{height:"250px",marginTop:"10px"}}/>
+        )}
+      </div>
         </div>
         
         <div className="rgtdiv">
