@@ -12,6 +12,8 @@ import State from '../../components/Location/State'
 const Delivery = ({title}) => {
 
   const [delAddress , setDelAddress] = useState();
+  const [delMan, setdelMan] = useState();
+
 //console.log(delAddress)
 
  const uniqueDelAddress = Array.from(new Set(delAddress? delAddress.map(item => item.address):""))
@@ -109,6 +111,33 @@ const totalAmount = finalPrice+shippingCharges;
     }));
   };
 
+  
+  const fetchDelMan = async () => {
+    try {
+
+        const response = await fetch("http://localhost:8001/deliveryMan", {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        })
+
+        if (response.ok) {
+            const data = await response.json()
+            setdelMan(data.data)
+        }
+        else {
+            console.log("Error: " + response)
+        }
+    } catch (error) {
+        console.log("Error while getting orders" + error)
+
+    }
+
+}
+
+
+     const randomIndex = delMan?.length ? Math.floor(Math.random() * delMan?.length) : 0;  
+
+
   const handlePayment = async () => {
     const stripe = await loadStripe('pk_test_51OkP1CSGM4q7z7zWyecwfKJL4fMfVV3dWiTTksC7PFH8LK5Xix3ADEV0C2UxJQBiY8y23JHqztqyNLeC2fkRsbAt00uIZcT3sD');
 
@@ -123,16 +152,15 @@ const totalAmount = finalPrice+shippingCharges;
       }
   };
 
-  const bodyData = {
-    products:cartItems,customerInfo:customerInfo , deliveryCharge:shippingCharges , tax:tax,userId:user._id , amount:totalAmount
-  }
+
     try {
         const response = await fetch('http://localhost:8001/payment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({bodyData})
+            body: JSON.stringify({products:cartItems,customerInfo:customerInfo , deliveryCharge:shippingCharges , tax:tax,userId:user._id , amount:totalAmount , delManDetails:delMan[randomIndex]
+            })
           });
           
         if (!response.ok) {
@@ -224,6 +252,7 @@ const totalAmount = finalPrice+shippingCharges;
 
     useEffect(()=>{
       getDeliveryAddress()
+      fetchDelMan()
   },[user._id])
     
 

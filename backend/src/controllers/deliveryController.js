@@ -1,5 +1,6 @@
 const delivery_add = require('../models/deliverySchema');
 const order = require("../models/orderSchema")
+const delivery_man = require("../models/deliveryManSchema");
 
 
 const delivery=async(req,res)=>{
@@ -63,4 +64,16 @@ const getDeliveryAddress = async(req,res)=>{
     }
 }
 
-module.exports = {delivery ,updateDeliveryStatus,getDeliveryAddress}
+
+const deliveryMan = async(req,res)=>{
+    try {
+        const delMan = await delivery_man.find()
+        res.status(200).json({success:true,data:delMan})
+
+    } catch (error) {
+        res.status(400).json({success:false,message:"error"})
+
+    }
+}
+
+module.exports = {delivery ,updateDeliveryStatus,getDeliveryAddress,deliveryMan}

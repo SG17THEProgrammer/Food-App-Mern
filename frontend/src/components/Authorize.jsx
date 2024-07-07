@@ -12,22 +12,18 @@ const Authorize = () => {
 
   {
     !isLoggedIn ?
-      useEffect(() => {
-        setIsLoading(true)
-        // setTimeout(() => {
-        toast.error("Pls login to get access")
-          navigate("/login")
-        // }, 2000)
-        // setIsLoading(false)
-      }, [isLoggedIn])
+      setTimeout(()=>{
+        useEffect(() => {
+          setIsLoading(true)
+          toast.error("Pls login to get access")
+            navigate("/login")
+        }, [isLoggedIn])
+      },2000)
       :
       useEffect(() => {
         setIsLoading(true)
-        // setTimeout(() => {
           toast.error("You are already logged in")
           navigate("/")
-        // }, 2000)
-        // setIsLoading(false)
       }, [isLoggedIn])
   }
 

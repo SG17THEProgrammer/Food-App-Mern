@@ -4,11 +4,14 @@ import FormatPrice from '../../Helpers/FormatPrice'
 import { useAuth } from '../../components/Auth'
 import { NavLink } from 'react-router-dom'
 import OrderBody from './OrderBody'
-const Orders = ({ navbar, title, handleStatus,btn }) => {
+const Orders = ({ navbar, title, handleStatus, btn }) => {
 
     const { user } = useAuth()
     const [orders, setOrders] = useState();
-    console.log(orders)
+    const [allOrders, setAllOrders] = useState();
+    // console.log(orders)
+    console.log(allOrders)
+    // console.log(delMan)
 
     const fetchOrders = async () => {
         try {
@@ -24,14 +27,39 @@ const Orders = ({ navbar, title, handleStatus,btn }) => {
                 setOrders(data.data)
             }
             else {
-                //console.log("Error: " + response)
+                console.log("Error: " + response)
             }
         } catch (error) {
-            //console.log("Error while getting orders" + error)
+            console.log("Error while getting orders" + error)
 
         }
 
     }
+
+    const fetchAllOrders = async () => {
+        try {
+
+            const response = await fetch("http://localhost:8001/getAllOrders", {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            })
+
+            if (response.ok) {
+                const data = await response.json()
+                setAllOrders(data.data)
+            }
+            else {
+                console.log("Error: " + response)
+            }
+        } catch (error) {
+            console.log("Error while getting orders" + error)
+
+        }
+
+    }
+
+
+
     const totalQuantities = orders ? orders.map(order => {
         const totalQty = order.items.reduce((acc, item) => acc + item.qty, 0);
         return {
@@ -43,76 +71,91 @@ const Orders = ({ navbar, title, handleStatus,btn }) => {
 
     useEffect(() => {
         fetchOrders();
+        fetchAllOrders();
     }, [user._id])
 
-
+    console.log(orders)
     return (
         <>
-            <div style={{ marginBottom: "100px" }}>{navbar}</div>
+            <div style={{ marginBottom: "85px" }}>{navbar}</div>
             <span>
-            <h1 className='title2'>{title ? title : "Your orders"}</h1>
-            {title=="Your Order Summary"?btn:""}
+                <h1 className='title2'>{title ? title : "Your orders"}</h1>
+                {title == "Your Order Summary" ? btn : ""}
             </span>
-            <div class="ctn1 mt-5 mb-5" style={{ border: "none" }}>
-                <div class="">
-                    <div class="" style={{ width: "78vw" }}>
-                        <div class="rounded">
+            <div class="ctn1 mt-3 mb-5 " style={{ border: "none" }}>
+                <div class="" style={{ marginBottom: "200px" }}>
+                    <div class="" style={{ width: "82vw" }}>
+                        <div class="rounded" >
                             <div class="table-responsive table-borderless">
-                                <table class="table">
+                                <table class="table" >
                                     {/* table head is in orderbody */}
                                     <thead>
                                         <tr>
-{orders?.length>0?<>
-                                            {<th>S. No</th>}
-                                            <th>Order Id</th>
-                                            {title == "All Orders" ? <th>Address</th> : ""}
-                                            <th>Order Details</th>
-                                            <th>No. of Items</th>
-                                            <th>Status</th>
-                                            <th>Total</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            {/* { title=="All Orders"?"":<th></th>} */}
-                                            {title == "All Orders" ? "" : <th></th>}
-                                            {title == "Your Order Summary" ? "" : <th></th>} </>:<h2>No orders found</h2>}
+                                            {orders?.length > 0 ? <>
+                                                {<th>S. No</th>}
+                                                <th>Order Id</th>
+                                                {title == "All Orders" ? <th>Address</th> : ""}
+                                                <th>Order Details</th>
+                                                <th>No. of Items</th>
+                                                <th>Status</th>
+                                                <th>Total</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                {/* {title == "All Orders" ? <th></th> : ""} */}
+                                                {title == "All Orders" ? "" : <th></th>}
+                                                {/* {title == "All Orders" ? "" : <th></th>} */}
+                                                {title == "Your Order Summary" ? "" : <th></th>} </> : <h2>No orders found</h2>}
                                         </tr>
                                     </thead>
                                     <tbody class="table-body">
                                         {title === "All Orders" ? (
-                                                orders?.slice().reverse().map((elem, index) => {
-                                                    let idx = index;
-                                                    const { address } = elem;
-                                                    return (
+                                            allOrders?.slice().reverse().map((elem, index) => {
+                                                let idx = index;
+                                                const { address } = elem;
+                                                return (
+                                                    <>
                                                         <tr className="cell-1" key={idx}>
-                                                            <OrderBody elem={elem} address={address} idx={idx} title={title} handleStatus={handleStatus} totalQuantities={totalQuantities} fetchOrders={fetchOrders}  /> 
+                                                            <OrderBody elem={elem} address={address} idx={idx} title={title} handleStatus={handleStatus} totalQuantities={totalQuantities} fetchOrders={fetchOrders} />
                                                         </tr>
-                                                    );
-                                                })
-                                           
+                                                                                 </>
+                                                );
+                                            })
+
                                         ) : title === "Your Order Summary" ? (
-                                          
-                                                orders?.slice().reverse().slice(0,1).map((elem, index) => {
-                                                    let idx = index;
-                                                    const { address } = elem;
-                                                    return (
+
+                                            orders?.slice().reverse().slice(0, 1).map((elem, index) => {
+                                                let idx = index;
+                                                const { address } = elem;
+                                                return (
+                                                    <>
+                                                    <tr className="cell-1" key={idx}>
+                                                        <OrderBody elem={elem} address={address} idx={idx} totalQuantities={totalQuantities} title={title} />
+                                                    </tr>
+                                                    
+                                                   
+                                                    </>
+                                                    
+                                                );
+                                            })
+                                        )
+                                            : orders?.slice().reverse().map((elem, index) => {
+                                                let idx = index;
+                                                const { address } = elem;
+                                                return (
+                                                    <>
                                                         <tr className="cell-1" key={idx}>
-                                                            <OrderBody elem={elem} address={address} idx={idx} totalQuantities={totalQuantities}  title={title}/>
+                                                            <OrderBody elem={elem} address={address} idx={idx} totalQuantities={totalQuantities} orders={orders} title={title} />
                                                         </tr>
-                                                    );
-                                                })
-                                            ) 
-                                         : orders?.slice().reverse().map((elem, index) => {
-                                                    let idx = index;
-                                                    const { address } = elem;
-                                                    return (
-                                                        <tr className="cell-1" key={idx}>
-                                                            <OrderBody elem={elem} address={address} idx={idx} totalQuantities={totalQuantities} orders={orders} title={title}/>
-                                                        </tr>
-                                                    );
-                                                })}
+                                                        
+                                                        
+                                                            
+                                                    </>
+                                                );
+                                            })}
 
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>

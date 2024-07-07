@@ -12,6 +12,7 @@ import { fetchCartItems } from '../redux/productSlide'
 import { useAuth } from '../components/Auth'
 // import Menu from './Menu'
 import { FaStar } from "react-icons/fa";
+import Loader from '../components/Loader'
 const Home = () => {
 
   const { user, getCartItems } = useAuth()

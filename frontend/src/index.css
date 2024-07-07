@@ -90,6 +90,8 @@ button:focus-visible {
   background-size:fill;
   background-repeat: no-repeat;
   filter: blur(3px);
+  position: fixed;
+  z-index: 99;
 }
 .button3 {
   z-index: 99;

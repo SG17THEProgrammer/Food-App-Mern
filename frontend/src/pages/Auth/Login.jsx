@@ -15,6 +15,7 @@ const Login = () => {
 
   const navigate = useNavigate()
   const [isLoading ,setIsLoading] = useState(false)
+  const [hasCheckedLogin, setHasCheckedLogin] = useState(false);
   const {storeTokensInLS,isLoggedIn} = useAuth() 
 
 
@@ -48,57 +49,64 @@ const Login = () => {
       });
     }
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-    //console.log( JSON.stringify(loginUser));
-
-    try {
-      setIsLoading(true);
-      const response = await fetch(`http://localhost:8001/login`,{
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginUser),
-      });
-      //console.log("response data : ", response);
-      
-      const resData = await response.json();
-      //console.log(resData); 
-
-      if (response.ok) {
-        //storing tokens in LS through context api 
-        storeTokensInLS(resData.token)
-        
-
-        //storing tokens in LS in simple way
-        // localStorage.setItem('token',resData.token);
-        
-        toast.success(resData.message[0]);
-        setTimeout(() =>{
-          setloginUser({ email: "",password: "" });
-          navigate('/home')
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+    
+      try {
+        setIsLoading(true);
+        const response = await fetch(`http://localhost:8001/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginUser),
+        });
+    
+        const resData = await response.json();
+    
+        if (response.ok) {
+          // Storing tokens in LS through context API 
+          storeTokensInLS(resData.token);
+    
+          // Storing tokens in LS in simple way
+          // localStorage.setItem('token', resData.token);
+          
+          toast.success(resData.message[0]);
+          setloginUser({ email: "", password: "" });
+    
+          // Navigate to the home page without reloading
+          setTimeout(() => {
+            window.location.reload();
+            navigate('/home');
+          }, 3000); // Adjust the timeout as needed
           setIsLoading(false);
-          window.location.reload();
-        },3000)
-      } else {
-        // toast.error(`${resData.extraDetails?resData.extraDetails:resData.msg}`)
-        toast.error(resData.message[0]);
+        } else {
+          toast.error(resData.message[0]);
+          setIsLoading(false);
+        }
+      } catch (error) {
+        toast.error('Error fetching API');
         setIsLoading(false);
-
-        // //console.log("error inside response ", "error");
       }
-    } catch (error) {
-      toast.error('Error fetching Api')
-      setIsLoading(false);
+    };
 
+    useEffect(() => {
+      if (isLoggedIn && !hasCheckedLogin) {
+        toast.error("You are already logged in");
+        navigate("/");
+      }
+      setHasCheckedLogin(true);
+    }, [isLoggedIn, hasCheckedLogin, navigate]);
+  
+    if (isLoggedIn) {
+      return null; // Don't render anything if the user is already logged in
     }
-  };
+    
 
   
   return (
     <>
-   { !isLoggedIn?<><Navbar></Navbar>
+<Navbar></Navbar>
       <div className="container">
         <input type="checkbox" id="flip" />
         <div className="cover">
@@ -143,14 +151,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div></>:
-      useEffect(()=>{
-           toast.error("You are already logged in")
-           navigate("/")
-        
-   },[])
-      
-      }
+      </div>
       {isLoading ?<Loader></Loader>:""}
       </>
   )

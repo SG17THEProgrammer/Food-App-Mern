@@ -45,7 +45,17 @@ const showOrder =async(req,res)=>{
     }
 }
 
+const getAllOrders = async(req,res)=>{
+    try {
+        const allOrders = await order.find()
+        res.status(200).json({success:true,data:allOrders})
+    } catch (error) {
+        res.json({success:false,message:"error"})
+
+    }
+}
 
 
 
-module.exports ={verifyOrder,getOrder,showOrder}
+
+module.exports ={verifyOrder,getOrder,showOrder,getAllOrders}

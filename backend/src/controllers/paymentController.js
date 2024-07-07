@@ -4,7 +4,7 @@ const order = require('../models/orderSchema');
 
 const payment = async (req, res) => {
     //console.log(req.body)
-  const {products,customerInfo,deliveryCharge,tax,userId,amount}=req.body
+  const {products,customerInfo,deliveryCharge,tax,userId,amount,delManDetails}=req.body
 
     try {
 
@@ -12,7 +12,8 @@ const payment = async (req, res) => {
                 userId: userId,
                 items: products,
                 amount:amount,
-                address: customerInfo.address
+                address: customerInfo.address,
+                delManDetails:delManDetails
         })
         await newOrder.save()
 
