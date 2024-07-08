@@ -33,6 +33,7 @@ import HandleOrders from './pages/Orders/HandleOrders'
 import Reservation from './pages/Reservation'
 import ShowOrders from './pages/Orders/ShowOrders'
 import Address from './pages/Delivery/Address'
+import Location from './pages/Delivery/Location'
 
 const App = () => {
 
@@ -73,7 +74,6 @@ const App = () => {
             <Route path='/contact' element={<Contact></Contact>}></Route>
             <Route path='/cart' element={<Cart></Cart>}></Route>
             <Route path='/delivery' element={<Delivery></Delivery>}></Route>
-            {/* <Route path='/orders' element={<Orders></Orders>}></Route> */}
             <Route path='/foodmall' element={<FoodMall></FoodMall>}></Route>
             <Route path='/profile' element={<Profile></Profile>}></Route>
             <Route path='/login' element={<Login></Login>}></Route>
@@ -89,6 +89,7 @@ const App = () => {
             <Route path='/handleOrders' element={<HandleOrders></HandleOrders>}></Route>
             <Route path='/reservation' element={<Reservation></Reservation>}></Route>
             <Route path='/address' element={<Address></Address>}></Route>
+            <Route path='/location' element={<Location></Location>}></Route>
             <Route path='/showOrder/:id' element={<ShowOrders></ShowOrders>}></Route>
             <Route path='*' element={<Error></Error>}></Route>
           </Routes>

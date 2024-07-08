@@ -60,7 +60,7 @@ const Orders = ({ navbar, title, handleStatus, btn }) => {
 
 
 
-    const totalQuantities = orders ? orders.map(order => {
+    const totalQuantities = allOrders ? allOrders.map(order => {
         const totalQty = order.items.reduce((acc, item) => acc + item.qty, 0);
         return {
             totalQty
@@ -103,7 +103,8 @@ const Orders = ({ navbar, title, handleStatus, btn }) => {
                                                 <th>Time</th>
                                                 {/* {title == "All Orders" ? <th></th> : ""} */}
                                                 {title == "All Orders" ? "" : <th></th>}
-                                                {/* {title == "All Orders" ? "" : <th></th>} */}
+                                                {title == "All Orders" ? "" : <th></th>}
+                                                {title == "All Orders" ? "" : <th></th>}
                                                 {title == "Your Order Summary" ? "" : <th></th>} </> : <h2>No orders found</h2>}
                                         </tr>
                                     </thead>
@@ -115,7 +116,7 @@ const Orders = ({ navbar, title, handleStatus, btn }) => {
                                                 return (
                                                     <>
                                                         <tr className="cell-1" key={idx}>
-                                                            <OrderBody elem={elem} address={address} idx={idx} title={title} handleStatus={handleStatus} totalQuantities={totalQuantities} fetchOrders={fetchOrders} />
+                                                            <OrderBody elem={elem} address={address} idx={idx} title={title} handleStatus={handleStatus} totalQuantities={totalQuantities} fetchOrders={fetchOrders}  allOrders={allOrders}/>
                                                         </tr>
                                                                                  </>
                                                 );

@@ -14,6 +14,7 @@ const { delivery,updateDeliveryStatus, getDeliveryAddress,deliveryMan } = requir
 const { distance } = require('../controllers/locationController')
 const { verifyOrder, getOrder, showOrder, getAllOrders } = require('../controllers/orderController')
 const { getImage, uploadImage } = require('../controllers/imageController')
+const { sendEmail } = require('../controllers/emailController')
 // const { generateInvoice } = require('../controllers/invoiceController')
 
 
@@ -32,6 +33,7 @@ router.post('/updateDeliveryStatus',updateDeliveryStatus)
 router.post('/getDeliveryAddress',getDeliveryAddress)
 router.post('/getImage',getImage)
 router.post('/uploadImage',uploadImage)
+router.post('/sendEmail',sendEmail)
 // router.post('/generateInvoice',generateInvoice)
 router.post('/contact',validate(contactSchema),contact)
 

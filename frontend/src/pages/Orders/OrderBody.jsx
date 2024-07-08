@@ -5,7 +5,7 @@ import '../../css/Orders/Orders.css'
 import { useAuth } from '../../components/Auth'
 import { toast } from 'react-toastify'
 
-const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, fetchOrders, orders }) => {
+const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, fetchOrders, orders, allOrders }) => {
     const { user, getCartItems } = useAuth()
     const [cartItem, setCartItem] = useState()
     const [delDetails, setDelDetails] = useState(false)
@@ -17,7 +17,7 @@ const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, f
         try {
             // Get existing items from localStorage
             let existingItems = JSON.parse(localStorage.getItem(user._id)) || [];
-    
+
             // Get new items to be added from orders
             let allItems = [];
             [orders[index1]].forEach((elem) => {
@@ -25,10 +25,10 @@ const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, f
                     allItems.push(item);
                 });
             });
-    
+
             // Combine existing items and new items
             const combinedItems = existingItems.concat(allItems);
-    
+
             // Filter out duplicates by item ID
             const uniqueItemsMap = new Map();
             combinedItems.forEach(item => {
@@ -36,17 +36,17 @@ const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, f
                     uniqueItemsMap.set(item._id, item);
                 }
             });
-    
+
             // Convert the map back to an array of unique items
             const uniqueItems = Array.from(uniqueItemsMap.values());
-    
+
             // Determine if any new items were added
             const newItemsAdded = uniqueItems.length > existingItems.length;
-    
+
             // Update the cart state and localStorage with unique items
             setCartItem(uniqueItems);
             localStorage.setItem(`${user._id}`, JSON.stringify(uniqueItems));
-    
+
             // Show appropriate toast message
             if (newItemsAdded) {
                 toast.success("Item added to Cart successfully");
@@ -57,7 +57,7 @@ const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, f
             toast.error("Something went wrong");
         }
     }
-    
+
 
 
     useEffect(() => {
@@ -79,7 +79,16 @@ const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, f
                     </>
                 })}
             </p></td>
-            <td><p style={{ fontWeight: "bold", textAlign: "center" }}>{totalQuantities[idx]?.totalQty}</p></td>
+            <td>
+                <p style={{ fontWeight: "bold", textAlign: "center" }}>
+                    {title === "All Orders"
+                        ? totalQuantities[allOrders?.length - 1 - idx]?.totalQty
+                        : title === "Your Order Summary"
+                            ? totalQuantities[idx]?.totalQty
+                            : totalQuantities[orders?.length - 1 - idx]?.totalQty}
+                </p>
+            </td>
+
             {title == "All Orders" ? <td>
                 <select onChange={(e) => handleStatus(e, elem._id, fetchOrders)} value={elem.status}>
                     <option value="Food Processing">Food Processing</option>
@@ -100,32 +109,34 @@ const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, f
 
 
             {title == "Your Order Summary" ? "" : <td><button className='button2' style={{ marginTop: "-5px", width: "100px", height: "30px" }} onClick={() => addToCart(`${orders.length - 1 - idx}`)}>Add to Cart</button></td>}
-            
 
-{ orders && orders[orders.length - 1 - idx].status === "Out for delivery" ?            <td><button className='button2' style={{ marginTop: "-5px", width: "100px", height: "30px" }} onClick={()=>setDelDetails(!delDetails)}>Track Order</button></td>:""}
+
+            {orders && orders[orders.length - 1 - idx].status === "Out for delivery" ? <td><button className='button2' style={{ marginTop: "-5px", width: "100px", height: "30px" }} onClick={() => setDelDetails(!delDetails)}>Track Order</button></td> : <td></td>}
 
 
             {
-  title === "All Orders" ? (
-    ""
-  ) : (
-    <>
-      {delDetails && orders && orders[orders.length - 1 - idx].status === "Out for delivery" ? (
-        <td className='delmandet'>
-          <span className='delmandet'>
-            <p className='para5'>Delivery Man Name: {orders[idx]?.delManDetails?.name?orders[idx]?.delManDetails?.name:'Not found'}</p>
-            <p className='para5'>Phone No: {orders[idx]?.delManDetails?.phone?orders[idx]?.delManDetails?.phone:"Not Found"}</p>
-            <button className='button2' style={{ height: "30px", marginTop: "-5px", width: "100px" }}>
-              See location
-            </button>
-          </span>
-        </td>
-      ) : (
-        ""
-      )}
-    </>
-  )
-}
+                title === "All Orders" ? (
+                    ""
+                ) : (
+                    <>
+                        {delDetails && orders && orders[orders.length - 1 - idx].status === "Out for delivery" ? (
+                            <td className='delmandet'>
+                                <span className='delmandet'>
+                                    <p className='para5'>Delivery Man Name: {orders[idx]?.delManDetails?.name ? orders[idx]?.delManDetails?.name : 'Not found'}</p>
+                                    <p className='para5'>Phone No: {orders[idx]?.delManDetails?.phone ? orders[idx]?.delManDetails?.phone : "Not Found"}</p>
+                                    <NavLink style={{ textDecoration: "none" }} to='/location'>
+                                        <button className='button2' style={{ height: "30px", marginTop: "-5px", width: "100px" }}>
+                                            See location
+                                        </button>
+                                    </NavLink>
+                                </span>
+                            </td>
+                        ) : (
+                            <td></td>
+                        )}
+                    </>
+                )
+            }
 
 
         </>

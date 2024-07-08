@@ -51,7 +51,7 @@ thead {
 
 .delmandet{
   border: 1px solid whitesmoke;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 .para5{
   margin-top: -25px;
