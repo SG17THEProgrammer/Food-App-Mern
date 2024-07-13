@@ -50,7 +50,7 @@ const MallMenu = () => {
 
   const getImage = async() =>{
     try {
-        const image = await fetch("http://localhost:8001/getImage",{
+        const image = await fetch(`${import.meta.env.VITE_BACKEND_API}/getImage`,{
           method: "POST",
           headers: {'Content-Type': "application/json"},
           body: JSON.stringify({productId: productDisplay?._id})
@@ -76,9 +76,9 @@ const MallMenu = () => {
 
  
 
-  useEffect(()=>{
-    getCartItems();
-  },[user,productCartItem])
+    useEffect(()=>{
+      getCartItems();
+    },[user,productCartItem])
 
 
   return (

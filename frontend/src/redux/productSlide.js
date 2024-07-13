@@ -25,7 +25,6 @@ export const productSlice = createSlice({
     }
     ,
     addCartItem: (state, action) => {
-    
       const priceInNumber =  parseFloat(action.payload.price)
       // const priceTill3Decimal = priceInNumber.toFixed(3)
       //console.log(action.payload.price)

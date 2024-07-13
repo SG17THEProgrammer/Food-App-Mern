@@ -71,7 +71,7 @@ const Contact = () => {
 
 		try {
 			setIsLoading(true)
-			const response = await fetch(`http://localhost:8001/contact`, {
+			const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/contact`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

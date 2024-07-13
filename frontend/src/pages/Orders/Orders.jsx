@@ -16,7 +16,7 @@ const Orders = ({ navbar, title, handleStatus, btn }) => {
     const fetchOrders = async () => {
         try {
 
-            const response = await fetch("http://localhost:8001/getOrder", {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/getOrder`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId: user._id })
@@ -39,7 +39,7 @@ const Orders = ({ navbar, title, handleStatus, btn }) => {
     const fetchAllOrders = async () => {
         try {
 
-            const response = await fetch("http://localhost:8001/getAllOrders", {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/getAllOrders`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             })

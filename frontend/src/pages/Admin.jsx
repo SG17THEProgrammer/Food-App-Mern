@@ -52,7 +52,7 @@ const Admin = () => {
     const { name, image, category, price ,description , database} = foodData
 
     if (name && image && category && price && description && database) {
-      const response = await fetch(`http://localhost:8001/addnewitem`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/addnewitem`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

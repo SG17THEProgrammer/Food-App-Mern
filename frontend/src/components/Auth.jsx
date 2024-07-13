@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [cartItems,setCartItems] =useState()
 
 
+
     const storeTokensInLS = (serverToken) => {
         setToken(serverToken)
         return localStorage.setItem("token", serverToken);
@@ -47,7 +48,7 @@ const getCartItems = () => {
 
     if (isLoggedIn){
       try {
-        const response = await fetch(`http://localhost:8001/user`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/user`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -72,7 +73,7 @@ const getCartItems = () => {
   
   const getTeam = async () =>{
     try {
-      const response = await fetch(`http://localhost:8001/team`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/team`, {
         method: "GET",
       });
 
@@ -91,7 +92,7 @@ const getCartItems = () => {
   }
   const getallUsers = async () =>{
     try {
-      const response = await fetch(`http://localhost:8001/allusers`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/allusers`, {
         method: "GET",
       });
 

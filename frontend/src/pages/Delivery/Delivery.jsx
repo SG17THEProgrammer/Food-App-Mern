@@ -10,6 +10,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import Address from './Address'
 import State from '../../components/Location/State'
 const Delivery = ({title}) => {
+  
 
   const [delAddress , setDelAddress] = useState();
   const [delMan, setdelMan] = useState();
@@ -115,7 +116,7 @@ const totalAmount = finalPrice+shippingCharges;
   const fetchDelMan = async () => {
     try {
 
-        const response = await fetch("http://localhost:8001/deliveryMan", {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/deliveryMan`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         })
@@ -139,7 +140,7 @@ const totalAmount = finalPrice+shippingCharges;
 
 
   const handlePayment = async () => {
-    const stripe = await loadStripe('pk_test_51OkP1CSGM4q7z7zWyecwfKJL4fMfVV3dWiTTksC7PFH8LK5Xix3ADEV0C2UxJQBiY8y23JHqztqyNLeC2fkRsbAt00uIZcT3sD');
+    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
     const customerInfo = {
       name: user.name,
@@ -154,7 +155,7 @@ const totalAmount = finalPrice+shippingCharges;
 
 
     try {
-        const response = await fetch('http://localhost:8001/payment', {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/payment`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -189,7 +190,7 @@ const totalAmount = finalPrice+shippingCharges;
     const handleSubmit=async(e)=>{
       e.preventDefault()
       try {
-        const response = await fetch(`http://localhost:8001/delivery`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/delivery`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -223,7 +224,7 @@ const totalAmount = finalPrice+shippingCharges;
 
     const getDeliveryAddress = async() => {
       try {
-          const address = await fetch("http://localhost:8001/getDeliveryAddress",{
+          const address = await fetch(`${import.meta.env.VITE_BACKEND_API}/getDeliveryAddress`,{
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({userId:user._id})

@@ -19,10 +19,10 @@ const sendEmail =async(req,res)=>{
             from: process.env.Email,
             // to: email, 
             subject: "Table Reservation Confirmation ", 
-            text: `Hello ${name}  , Hope you are sound and prospering !! `,
+            // text: `Hello ${name}  , Hope you are sound and prospering !! `,
             html: `
             <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-              <h1 style="color: #333;">Hi ${name},</h1>
+              <h1 style="color: #333;">Hello ${name}  , Hope you are sound and prospering !! </h1>
               <p>Your reservation for <strong>${entryIn}</strong> at <strong>${new Date().toLocaleString()}</strong> is confirmed.</p>
               <p>Your outing time is <strong>${entryOut}</strong>.</p>
               <p>You booked <strong>${tables}</strong> table(s) for <strong>${members}</strong> member(s).</p>

@@ -77,7 +77,7 @@ const EditProduct = () => {
     const { name, image, price ,category,description,database} = cardProduct
 
     if (name && image && category && price && description && database ) {
-      const response = await fetch(`http://localhost:8001/edititem/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/edititem/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"

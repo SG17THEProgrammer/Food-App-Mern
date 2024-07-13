@@ -34,6 +34,7 @@ import Reservation from './pages/Reservation'
 import ShowOrders from './pages/Orders/ShowOrders'
 import Address from './pages/Delivery/Address'
 import Location from './pages/Delivery/Location'
+import Recommend from './components/Recommend'
 
 const App = () => {
 
@@ -42,7 +43,7 @@ const App = () => {
 
   useEffect(()=>{
     (async()=>{
-      const res = await fetch(`http://localhost:8001/getproduct/`)
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/getproduct/`)
       const resData = await res.json()
       // //console.log(resData)
       dispatch(setDataProduct(resData))
@@ -51,7 +52,7 @@ const App = () => {
 
   useEffect(()=>{
     (async()=>{
-      const res = await fetch(`http://localhost:8001/getMallproduct/`)
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/getMallproduct/`)
       const resData = await res.json()
       // //console.log(resData)
       dispatch(setmallDataProduct(resData))
@@ -89,6 +90,7 @@ const App = () => {
             <Route path='/handleOrders' element={<HandleOrders></HandleOrders>}></Route>
             <Route path='/reservation' element={<Reservation></Reservation>}></Route>
             <Route path='/address' element={<Address></Address>}></Route>
+            <Route path='/recommend' element={<Recommend></Recommend>}></Route>
             <Route path='/location' element={<Location></Location>}></Route>
             <Route path='/showOrder/:id' element={<ShowOrders></ShowOrders>}></Route>
             <Route path='*' element={<Error></Error>}></Route>

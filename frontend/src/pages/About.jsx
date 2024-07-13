@@ -61,7 +61,7 @@ const About = () => {
     const deleteUser = async (id) => {
         //console.log(id)
         try {
-            const response = await fetch(`http://localhost:8001/about/delete/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/about/delete/${id}`, {
                 method: 'DELETE'
 
             });
@@ -85,7 +85,7 @@ const About = () => {
     const updateUser = async (id) => {
         // //console.log(params.id)
         try {
-            const response = await fetch(`http://localhost:8001/about/update/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/about/update/${id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(about)

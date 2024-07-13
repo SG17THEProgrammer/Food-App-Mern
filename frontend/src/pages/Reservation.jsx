@@ -35,7 +35,7 @@ const Reservation = () => {
 
     const sendEmail = async (e) => {
         try {
-            const res = await fetch('http://localhost:8001/sendEmail', {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/sendEmail`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ reservationData: formData })
@@ -63,7 +63,7 @@ const Reservation = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch(`http://localhost:8001/reservation`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/reservation`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)

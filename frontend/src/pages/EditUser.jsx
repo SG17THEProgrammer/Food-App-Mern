@@ -41,7 +41,7 @@ const EditUser = () => {
     const updateUser = async (id) => {
         // //console.log(params.id)
         try {
-            const response = await fetch(`http://localhost:8001/about/update/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/about/update/${id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(user)

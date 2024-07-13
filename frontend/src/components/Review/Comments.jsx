@@ -39,7 +39,7 @@ const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
       const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await fetch(`http://localhost:8001/postReview`, {
+			const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/postReview`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

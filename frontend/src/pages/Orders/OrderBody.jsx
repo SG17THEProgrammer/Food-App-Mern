@@ -15,10 +15,8 @@ const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, f
 
     const addToCart = (index1) => {
         try {
-            // Get existing items from localStorage
             let existingItems = JSON.parse(localStorage.getItem(user._id)) || [];
 
-            // Get new items to be added from orders
             let allItems = [];
             [orders[index1]].forEach((elem) => {
                 elem?.items?.forEach((item) => {
@@ -26,7 +24,6 @@ const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, f
                 });
             });
 
-            // Combine existing items and new items
             const combinedItems = existingItems.concat(allItems);
 
             // Filter out duplicates by item ID
@@ -47,7 +44,6 @@ const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, f
             setCartItem(uniqueItems);
             localStorage.setItem(`${user._id}`, JSON.stringify(uniqueItems));
 
-            // Show appropriate toast message
             if (newItemsAdded) {
                 toast.success("Item added to Cart successfully");
             } else {
@@ -122,8 +118,9 @@ const OrderBody = ({ elem, address, idx, handleStatus, totalQuantities, title, f
                         {delDetails && orders && orders[orders.length - 1 - idx].status === "Out for delivery" ? (
                             <td className='delmandet'>
                                 <span className='delmandet'>
-                                    <p className='para5'>Delivery Man Name: {orders[idx]?.delManDetails?.name ? orders[idx]?.delManDetails?.name : 'Not found'}</p>
-                                    <p className='para5'>Phone No: {orders[idx]?.delManDetails?.phone ? orders[idx]?.delManDetails?.phone : "Not Found"}</p>
+                                {/* <p>{orders.length - 1 - idx}</p> */}
+                                    <p className='para5'>Delivery Man Name: {orders[orders.length - 1 - idx]?.delManDetails?.name ? orders[orders.length - 1 - idx].delManDetails.name : 'Not found'}</p>
+                                    <p className='para5'>Phone No: {orders[orders.length - 1 - idx]?.delManDetails?.phone ? orders[orders.length - 1 - idx]?.delManDetails?.phone : "Not Found"}</p>
                                     <NavLink style={{ textDecoration: "none" }} to='/location'>
                                         <button className='button2' style={{ height: "30px", marginTop: "-5px", width: "100px" }}>
                                             See location

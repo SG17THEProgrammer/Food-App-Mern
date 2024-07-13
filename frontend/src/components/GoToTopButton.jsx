@@ -11,7 +11,9 @@ const GoToTopButton = () => {
             // total height of the document
             const pageHeight = document.documentElement.scrollHeight;
 
-            if (scrollPosition >= pageHeight / 2) {
+            const triggerThreshold = pageHeight * 0.6;
+
+            if (scrollPosition > triggerThreshold) {
                 setShowSpecialComponent(true);
             }
             else {
@@ -25,6 +27,8 @@ const GoToTopButton = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    
   return (
     <>
        <div className={`button3 ${showSpecialComponent ? 'show' : ''}`} onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>

@@ -8,7 +8,7 @@ const HandleOrders = () => {
 
   const handleStatus=async(e,orderId,fetchOrders)=>{
     try {
-        const response = await axios.post('http://localhost:8001/updateDeliveryStatus',{
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_API}/updateDeliveryStatus`,{
           orderId,status:e.target.value
         })
 //console.log(response)

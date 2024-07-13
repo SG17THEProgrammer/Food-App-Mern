@@ -8,7 +8,7 @@ const Distance = () => {
 
     const calculateDistance = async () => {
         try {
-            const response = await axios.get('http://localhost:8001/distance', {
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_API}/distance`, {
                 params: {
                     startAddress,
                     endAddress

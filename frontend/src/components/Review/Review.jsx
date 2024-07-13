@@ -14,7 +14,7 @@ const Review = ({productId,userName}) => {
     //console.log(otherReview)
     const getReviews = async () => {
         try {
-                const response = await fetch(`http://localhost:8001/getReview?productId=${productId}&userName=${userName}`);
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/getReview?productId=${productId}&userName=${userName}`);
                 
                 const data = await response.json();
                 //console.log(data)
@@ -31,7 +31,7 @@ const Review = ({productId,userName}) => {
 
         const deleteReview = async (reviewId) => {
             try {
-                const response = await fetch(`http://localhost:8001/deleteReview/${reviewId}/${productId}`, {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/deleteReview/${reviewId}/${productId}`, {
                     method: 'DELETE',
                 });
     //console.log(response)

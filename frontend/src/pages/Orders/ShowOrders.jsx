@@ -16,7 +16,7 @@ const ShowOrders = () => {
     const fetchOrders = async () => {
         try {
 
-            const response = await fetch("http://localhost:8001/showOrder", {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/showOrder`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ orderId: id })

@@ -1,0 +1,448 @@
+Q1. Explain the MVC architecture.
+The MVC, also known as Model-View-Controller architecture, is a framework that divides an application into three main components:
+1. Model -- responsible for the application's data logic and storing and retrieving data from back-end data stores.
+2. View
+3. Controller
+
+
+
+
+Q2. What is Reconciliation in React JS?
+Reconciliation in ReactJS is the process in which the diffing algorithm is used on the virtual DOM tree and the browser DOM is updated.
+diffing algorithm -- What is the difference between new file and the existing file 
+                                                        OR
+When a component’s props or state change, React decides whether an actual DOM update is necessary by comparing the newly returned element with the previously rendered one. When they are not equal, React will update the DOM. This process is called reconciliation.
+
+
+
+
+
+Q3. What is Sharding in MongoDB?
+One way that sharding works in MongoDB is to break a large database up into smaller pieces, referred to as data shards, with each piece being dispersed over several computers.
+
+As the data will  grow in our mongod instance we need to add extra Ram , storage , Cpu to the particular server -- this scaling is called vertical scaling when we keep on adding resources as the data grows.
+
+Now if we can also divide our documents into different servers, such that each of the server require less no. of documents
+This scaling is called horizontal scaling (Sharding in MongoDB)
+
+
+
+
+
+
+
+Q4. What is meant by “Callback” in Node JS?
+Callback in Node.js is a function that is passed as an argument to another function, which is executed later on. This is usually done after the asynchronous operation or some other event is completed.
+
+
+
+
+
+
+Q5.What is prop drilling?
+Prop drilling is the process of passing a prop from one component to the next. The data is passed over from the component much higher in the hierarchy to the one that is deeply nested.
+
+Suppose we have 3 components all are interconnected (i.e second mein 1st render ho rha aur 3rd mein 2nd ): 
+Now I want to show something in comp. 3rd  that is written in comp.1st -- so for that I need to first pass data of comp 1st to 2nd then 3rd to do my job 
+This is called prop drilling 
+
+To overcome this we have ContextAPI-- 
+1>context bana0 
+2>provider 
+3>consumer (we use useContext)
+
+
+
+
+
+
+
+
+Q.6 . Explain the event loop in Node JS.
+The event loop in Node.js is a mechanism that handles asynchronous operations. It allows Node.js to perform non-blocking I/O operations by offloading tasks to the system kernel whenever possible. The event loop continuously checks for completed operations and executes the associated callbacks, ensuring that the main thread is free to handle other tasks. This makes Node.js efficient and capable of handling multiple operations concurrently.
+
+Key Points:
+Non-blocking I/O-Enables Node.js to handle multiple operations without waiting for any single operation to complete.
+Phases- The event loop has several phases (e.g., timers, I/O callbacks, idle, poll, check, and close callbacks) that process different types of callbacks.
+Callbacks-Functions are executed once their corresponding operations are completed.
+
+
+
+
+
+
+Q7. What are Node JS buffers?
+Buffers in Node.js are used to handle binary data. It stores and manipulates data like images, audio and video files, etc.
+
+
+
+
+
+
+Q.8 What is the difference between ShadowDOM and VirtualDOM?
+
+VirtualDOM	                                                        ShadowDOM
+A lightweight representation of the actual DOM in memory.	        Browser technology that encapsulates a DOM subtree within a scoped 
+                                                                    shadow root.
+Allows React to efficiently update and render UI changes.	        Enables modular and reusable components with isolated styles and   
+                                                                    behavior.    
+Managed by React to optimize DOM updates.	                        Utilized in web components to encapsulate styles and functionality.
+Maintained by React library for UI rendering.	                    Implemented natively by browsers supporting web components.
+
+
+
+
+
+
+
+Q.9 What do you mean by Temporal Dead Zone in ES6?
+The Temporal Dead Zone (TDZ) in ES6 refers to the period between entering scope and variable declaration where variables exist but cannot be accessed. It occurs with 'let' and 'const' declarations before they are initialized. Accessing variables in this zone results in a ReferenceError. This behavior encourages cleaner code by enforcing variables to be declared before use.
+
+
+
+
+Q.10 What are Higher-Order Components (HOC) in React?
+Higher-order components (HOCs) are a design pattern in React where a function takes a component and returns a new enhanced component. HOCs are used to share behavior between components without repeating code. They enable features like code reuse, state abstraction (via render props or hooks), and cross-cutting concerns such as logging, authentication, or data fetching across multiple components.
+
+
+
+
+
+Q.11 How can you use the like operator to query MongoDB?
+In MongoDB, the 'like' operator equivalent is achieved using regular expressions ($regex). For instance, to find documents where a field contains a substring case-insensitively, you can use { field: { $regex: 'substring', $options: 'i' } }. Here, '$regex' specifies the regex pattern, and '$options: 'i'' makes the search case-insensitive.
+
+
+
+
+
+Q.12 explain CORS?
+This is a security feature called Cross-Origin Resource Sharing (CORS) that is implemented in web browsers to allow servers to determine who can access their resources. It avoids unauthorized cross-origin HTTP requests that are initiated by scripts running on the client side. Configuring CORS headers on the server is necessary for it to indicate the origins allowed to access its resources; this will increase safety as well as prevent any bad intent from happening.
+
+
+
+
+
+Q.13  What is DOM diffing?
+DOM diffing (or reconciliation) is the process in React where it compares the current Virtual DOM representation with the previous one. React identifies the differences (or "diffs") between the two and updates only the necessary parts of the actual DOM to reflect these changes efficiently. This approach optimizes performance by minimizing DOM manipulations, leading to faster rendering and improved user experience.
+
+
+
+
+
+Q.14 How does React work
+React creates a virtual DOM. When state changes in a component it firstly runs a "diffing" algorithm, which identifies what has changed in the virtual DOM. The second step is reconciliation, where it updates the DOM with the results of diff.
+
+
+
+
+Q.15  What Is Replication In MongoDB
+Replication is the process of synchronizing data across multiple servers. Replication provides redundancy and increases data availability. With multiple copies of data on different database servers, replication protects a database from the loss of a single server. Replication also allows you to recover from hardware failure and service interruptions.
+
+
+
+
+
+Q.16 What is Callback Hell
+The asynchronous function requires callbacks as a return parameter. When multiple asynchronous functions are chained together then callback hell situation comes up.
+
+
+
+
+Q.17 What is Stream and what are types of Streams available in Node.js
+Streams are a collection of data that might not be available all at once and don’t have to fit in memory. Streams provide chunks of data in a continuous manner. It is useful to read a large set of data and process it. There is four fundamental type of streams: Readable, Writeable, Duplex and Transform
+
+
+
+Q.18 What is Key
+A key is a special string attribute you need to include when creating lists of elements. Keys help React identify which items have changed, are added, or are removed.
+
+
+
+
+Q.19 What is Mongoose
+Mongoose is an Object Document Mapper (ODM), which means that by using Mongoose, you can define objects with a strongly-typed schema that can be further mapped to a MongoDB document. It offers a schema-based solution for modeling application data. Mongoose comes with built-in typecasting, validation, query building, business logic hooks, and many more out-of-the-box features.
+
+
+
+
+Q.20 How to check if an object is an array or not in JavaScript
+The best way to find whether an object is instance of a particular class or not using toString method from Object.prototype
+
+
+
+
+
+Q.21 What are the advantages of ReactJS?
+Increases the application’s performance with Virtual DOM
+JSX makes code is easy to read and write
+It renders both on client and server side
+Easy to integrate with other frameworks (Angular, BackboneJS) since it is only a view library
+Easy to write UI Test cases and integration with tools such as JEST.
+
+
+
+
+Q.22 What are the limitations of React?
+React is just a view library, not a full-blown framework
+There is a learning curve for beginners who are new to web development.
+Integrating React.js into a traditional MVC framework requires some additional configuration
+The code complexity increases with inline templating and JSX.
+Too many smaller components leading to over-engineering or boilerplate
+
+
+
+
+
+
+
+Q.23 Explain advantages of BSON over JSON in MongoDB?
+
+JSON stands for JavaScript Object Notation. BSON stands for Binary JavaScript Object Notation.
+
+BSON is designed to be efficient in space, but in some cases is not much more efficient than JSON. In some cases BSON uses even more space than JSON. The reason for this is another of the BSON design goals: traversability. BSON adds some "extra" information to documents, like length of strings and subobjects. This makes traversal faster.
+BSON is also designed to be fast to encode and decode. For example, integers are stored as 32 (or 64) bit integers, so they don't need to be parsed to and from text. This uses more space than JSON for small integers, but is much faster to parse.
+In addition to compactness, BSON adds additional data types unavailable in JSON, notably the BinData and Date data types.
+
+
+
+
+
+Q.24 What's the difference between useRef and createRef?
+createRef will always create a new ref. In a class-based component, you would typically put the ref in an instance property during construction (e.g. this.input = createRef()). You don't have this option in a function component.
+useRef takes care of returning the same ref each time as on the initial rendering.
+
+
+
+
+
+Q.25 Is Node.js entirely single-threaded?
+No, Node.js is not entirely single-threaded. It uses an event-driven, non-blocking I/O model that allows multiple operations to be processed simultaneously. However, the execution of JavaScript code is single-threaded.
+
+Q. 34 Why is Node.js Single-threaded?
+Node.js is single-threaded for async processing. By doing async processing on a single-thread under typical web loads, more performance and scalability can be achieved instead of the typical thread-based implementation.
+
+
+
+Q.26  How can you apply validation on props in ReactJS?
+You can apply validation on props in ReactJS by using propTypes. PropTypes is a type-checking library that allows you to specify the type of props expected by a component. It helps to ensure that the right props are passed to a component and provides an error message if the type of props is incorrect.
+
+
+
+
+Q.27 What is the purpose of super(props) in React?
+The purpose of super(props) in a React component is to call the constructor of the parent class with the props object passed as an argument. This is necessary if you want to access the props object inside the constructor of your component.
+
+
+
+
+Q.28 What is the drawback of creating true private in JavaScript?
+One of the drawback of creating a true private method in JavaScript is that they are very memory inefficient because a new copy of the method would be created for each instance.
+
+
+
+
+
+
+Q.29 What will be the output of the following code?
+
+var Employee = {
+  company: 'xyz'
+}
+var emp1 = Object.create(Employee);
+delete emp1.company
+console.log(emp1.company);
+
+
+Above code will output xyz as output. Here emp1 object got company as prototype property. delete operator doesn't delete prototype property .  delete operator is used to delete property from object.
+
+emp1 object doesn't have company as its own property. you can test it console.log(emp1.hasOwnProperty('company')); //output : false However, we can delete company property directly from Employee object using delete Employee.company or we can also delete from emp1 object using __proto__ property delete emp1.__proto__.company.
+
+
+
+
+
+
+
+
+Q.30   What will be the output of the following code?
+var bar = true;
+console.log(bar + 0);
+console.log(bar + "xyz");
+console.log(bar + true);
+console.log(bar + false);
+
+Above code will output 1, "truexyz", 2, 1 as output. General guideline for addition of operator:
+
+Number + Number -> Addition
+Boolean + Number -> Addition
+Number + String -> Concatenation
+String + Boolean -> Concatenation
+String + String -> Concatenation
+
+
+
+
+
+Q.31  Explain the difference between embedded documents and referenced documents in MongoDB.
+Embedded documents store related data within the same document, while referenced documents store references to related data in separate documents.
+
+
+
+Q.32 What is server-side rendering (SSR) in React?
+SSR is the process of rendering a React application on the server and sending the fully rendered page to the client, improving performance and SEO.
+
+
+Q.33 How do you implement SSR in a MERN stack application?
+Using frameworks like Next.js or integrating React components into an Express.js server to render HTML on the server.
+
+
+
+Q.34  -- see above 
+Q.35 What are the advantages of using promises instead of callbacks?
+The control flow of asynchronous logic is more specified and structured.
+The coupling is low.
+We've built-in error handling.
+Improved readability.
+
+
+
+Q.36 What are the pros and cons of Node.js?
+
+Node.js Pros
+Fast processing and an event-based model
+Uses JavaScript, which is well-known amongst developers
+Node Package Manager has over 50,000 packages that provide the functionality to an application
+Best suited for streaming huge amounts of data and I/O intensive operations
+
+
+Node.js Cons
+Not suitable for heavy computational tasks
+Using callback is complex since you end up with several nested callbacks
+Dealing with relational databases is not a good option for Node.js
+Since Node.js is single-threaded, CPU intensive tasks are not its strong suit
+
+
+
+
+Q.37 What is piping in Node.js?
+Piping is a mechanism used to connect the output of one stream to another stream. It is normally used to retrieve data from one stream and pass output to another stream
+
+
+
+
+Q.38 Explain the concept of middleware in Node.js.
+
+Middleware is a function that receives the request and response objects. Most tasks that the middleware functions perform are:  
+Execute any code
+Update or modify the request and the response objects
+Finish the request-response cycle
+Invoke the next middleware in the stack 
+
+
+
+
+
+Q.39 What is a first-class function in Javascript?
+First-class functions are a powerful feature of JavaScript that allows you to write more flexible and reusable code. In Node.js, first-class functions are used extensively in asynchronous programming to write non-blocking code.
+
+
+
+
+
+Q.40  What are the asynchronous tasks that should occur in an event loop?
+Asynchronous tasks that should occur in an event loop in Node.js include I/O operations, timers, and callback functions. By performing these tasks asynchronously, Node.js can handle a large number of concurrent requests without blocking the event loop.
+
+
+
+
+Q.41 What is "non-blocking" in node.js?
+In Node.js, non-blocking refers to the ability of the runtime environment to execute multiple tasks simultaneously without waiting for the completion of one task before starting the next. This is achieved through the use of asynchronous I/O operations, which allow Node.js to handle multiple requests concurrently. 
+
+
+
+
+
+Q.42 How does Node.js overcome the problem of blocking I/O operations?
+Node.js uses an event-driven, non-blocking I/O model that allows it to handle I/O operations more efficiently. By using callbacks, Node.js can continue processing other tasks while waiting for I/O operations to complete. This means that Node.js can handle multiple requests simultaneously without causing any delays. Additionally, Node.js uses a single-threaded event loop architecture, which allows it to handle a high volume of requests without any issues.
+
+
+
+Q.43  What do you understand about ESLint?
+ESLint is a popular open-source tool that is used to analyze and flag errors and potential problems in JavaScript code.
+
+
+
+Q.44 What is an Event Emitter in Node.js?
+An Event Emitter is a Node.js module that facilitates communication between objects in a Node.js application. It is an instance of the EventEmitter class, which provides a set of methods to listen for and emit events. In Node.js, events are a core part of the platform, and they are used to handle asynchronous operations.
+
+
+
+Q.45  What is a passport in Node.js?
+Passport is a popular authentication middleware for Node.js. It provides a simple and modular way to implement authentication in Node.js applications. Passport supports many authentication mechanisms, including username/password, social logins like Facebook and Google, and JSON Web Tokens (JWTs).
+
+
+
+
+Q.46 What is the difference between setImmediate() and setTimeout()?
+The setTimeout() method schedules code execution after a specified delay, measured in milliseconds. On the other hand, the setImmediate() method schedules code execution to occur immediately after the current event loop iteration completes. This means that setImmediate() has a higher priority than setTimeout().
+
+
+
+
+Q.47  Explain the differences between SQL and NoSQL databases, and when would you prefer one over the other in a MERN project?
+
+Both SQL and NoSQL are broad categories and you can choose any one of them for your MERN project by knowing the proper difference between them.
+
+SQL	                                                                    NoSQL
+These databases are table-based	                                        These databases can be object-oriented or graph-structured
+Vertical Scalability	                                                Horizontal Scalability
+Use SQL	                                                                Use JSON
+Support is available through various database systems	                Support is not available through various database systems
+
+
+
+
+
+Q.48 Explain the concept of RESTful API and its usage.
+A RESTful API (Representational State Transfer) is an architectural style that defines a set of constraints for creating web services. It is based on the principles of simplicity, scalability, and statelessness.
+
+A RESTful API allows clients to interact with a server by sending HTTP requests and receiving responses. It operates on the following principles:
+
+Resource-based: A RESTful API treats everything as a resource, which can be accessed and manipulated using standard HTTP methods (GET, POST, PUT, DELETE).
+Stateless: The server does not maintain any client state between requests. Each request from the client must contain all the necessary information for the server to process it.
+Uniform Interface: A RESTful API has a standardized set of methods (GET, POST, PUT, DELETE) and response codes (200, 201, 400, 404, etc.) that are used consistently across all resources.
+Cacheable: Responses from a RESTful API can be cached by the client to improve performance and reduce server load.
+RESTful APIs are widely used in web development for creating scalable and interoperable web services. They provide a flexible and efficient way to expose data and functionality to clients.
+
+
+
+
+
+Q.49 What is the purpose of the “use strict” directive in JavaScript?
+The “use strict” directive is a feature introduced in ECMAScript 5 (ES5) that enables strict mode in JavaScript. When strict mode is enabled, JavaScript code is executed in a more secure and error-prone manner.
+
+Some key benefits and features of strict mode include:
+
+Prevents the use of undeclared variables: In strict mode, using a variable without declaring it first will throw an error. This helps catch typographical errors and encourages proper variable declaration.
+Eliminates the use of implicit global variables: In non-strict mode, assigning a value to an undeclared variable creates a new global variable. Strict mode prevents this behavior, helping to avoid unintended global variable pollution.
+Disallows duplicate parameter names: In strict mode, using duplicate parameter names in function declarations or expressions will throw an error. This promotes cleaner and more maintainable code.
+Prohibits the use of certain JavaScript features: Strict mode disables or modifies some features that are considered error-prone or potentially problematic. For example, octal literals (e.g., 0123) are not allowed in strict mode.
+
+
+
+
+
+
+Q.50 Explain the meaning of multithreading.State some advantages of it .
+The thread is an independent part or unit of a process (or an application) that is being executed. Whenever multiple threads execute in a process at the same time, we call this "multithreading". You can think of it as a way for an application to multitask.
+
+Advantages:
+
+By multithreading, computing resources are also minimized and used more effectively.
+The response time of the application is improved since requests from one thread do not block requests from other threads.
+Consequently, if one of the threads encounters an exception, it will not affect the other threads.
+Multithreading, on the other hand, uses fewer resources than running multiple processes simultaneously.
+The overhead, time usage, and management associated with creating processes are much higher when compared to creating and managing threads.
+
+
+

@@ -106,6 +106,7 @@ const Navbar = () => {
                                     {user.email=="shray@gmail.com"?<NavLink className='navlink' to='/handleOrders'><p className='para4' >Handle Orders </p></NavLink>:""}
                                     <NavLink className='navlink' to='/address'> <p className='para4'>Address Book</p></NavLink>
                                     <NavLink className='navlink' to='/reservation'> <p className='para4'>Reserve a Table </p> </NavLink>
+                                    <NavLink className='navlink blink' to='/recommend'> <p className='para4'>Food Recommendation <sup>Premium</sup> </p> </NavLink>
                                 </div> : ""}
                             </li>:""}
                             <li className="nav-item active">

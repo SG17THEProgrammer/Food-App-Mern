@@ -17,7 +17,7 @@ const Address = ({title}) => {
 
     const getDeliveryAddress = async() => {
         try {
-            const address = await fetch("http://localhost:8001/getDeliveryAddress",{
+            const address = await fetch(`${import.meta.env.VITE_BACKEND_API}/getDeliveryAddress`,{
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({userId:user._id})
