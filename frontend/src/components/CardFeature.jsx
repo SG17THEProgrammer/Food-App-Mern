@@ -71,7 +71,7 @@ const {user,saveCartItemsToLS,isLoggedIn} = useAuth()
           >
             Add Cart
           </button></span>
-          <NavLink to="/cart"><span><button className="btn" style={{margin:"10px 0px 5px 4px"}}> Go to Cart </button></span></NavLink>
+          <NavLink to="/cart"><span><button className="btn" style={{margin:"10px 0px 5px 4px"}} onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}> Go to Cart </button></span></NavLink>
           </div>  
     
     </div>

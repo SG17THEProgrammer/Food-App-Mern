@@ -47,7 +47,7 @@ const ListView = ({ id, name, image, category, price, rating, description }) => 
                         </div>
                         <p className="card-text">{description}</p>
                         <button className='btn' onClick={handleAddCartProduct} >Add to Cart</button> &nbsp;
-                        <NavLink to='/cart'><button className='btn' >Go to Cart</button> </NavLink> &nbsp;
+                        <NavLink to='/cart'><button className='btn' onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>Go to Cart</button> </NavLink> &nbsp;
                         <NavLink to={`/mallmenu/${id}`}>
                         <button className='btn'>Read More</button>
                         </NavLink>&nbsp;&nbsp;

@@ -78,7 +78,7 @@ const Card = ({ id, image, name, price, category ,rating }) => {
 
                                 <NavLink to="/cart"><button className='btn' style={{ marginLeft: "10px",marginBottom:"10px" }}
 
->Go to Cart</button></NavLink>
+onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>Go to Cart</button></NavLink>
 {user.email==="shray@gmail.com"?
                                 <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{ marginLeft: "-8px" }}
 

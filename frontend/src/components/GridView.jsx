@@ -65,7 +65,7 @@ const GridView = ({ name, category, price, rating, image, id }) => {
                         <button className='btn' style={{ marginLeft: "-5px", marginTop: "-14px" }}
                             onClick={handleAddCartProduct}>Add to Cart</button>
 
-                        <NavLink to="/cart"> <button className='btn' style={{ marginLeft: "4px", marginTop: "-7px", position: "absolute" }}>Go to Cart</button></NavLink>
+                        <NavLink to="/cart"> <button className='btn' style={{ marginLeft: "4px", marginTop: "-7px", position: "absolute" }} onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>Go to Cart</button></NavLink>
                         {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{marginLeft:"-5px",marginTop:"5px"}} >Edit Product</button></NavLink>:""}
                         {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{marginLeft:"5px",marginTop:"5px"}} >Delete</button></NavLink>:""}
                        

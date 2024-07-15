@@ -374,7 +374,7 @@ const totalAmount = finalPrice+shippingCharges;
                   <button className='delBtn' style={{borderRight:"1px solid white"}} >Go to Home</button>
                   </NavLink>
                   <NavLink to="/cart" style={{textDecoration:"none"}}>
-                  <button className='delBtn' >Go To Cart</button>
+                  <button className='delBtn' onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>Go To Cart</button>
                   </NavLink>  
                 </div>
             </div>}

@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCartItem } from '../redux/productSlide'
 import { useAuth } from './Auth'
+import { NavLink } from 'react-router-dom'
 
 const Recommend = () => {
   const {isLoggedIn,user,getCartItems,saveCartItemsToLS,cartItems} = useAuth();
@@ -117,8 +118,8 @@ useEffect(()=>{
       </p>
     </div>
     <span className='span' >
-    <button className="card1__button" style={{marginRight:"20px"}}>Read more</button>
-    <button className="card1__button" onClick={()=>addToCart(_id)}>Add to Cart</button>
+    <button className="card1__button" onClick={()=>addToCart(_id)} style={{marginRight:"20px"}}>Add to Cart</button>
+    <NavLink style={{textDecoration:"none"}} to='/cart' onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}><button className="card1__button">Go to Cart</button></NavLink>
     </span>
   </div>
 </div>

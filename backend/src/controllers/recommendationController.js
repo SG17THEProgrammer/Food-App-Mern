@@ -1,7 +1,7 @@
 const recommendedProducts = require('../models/recommendedFoodSchema')
 
 const ageGroups = {
-    '0-9': ['Fruit Chaat', 'Vegetable Upma', 'Moong Dal Chilla', 'Paneer Tikka', 'Idli with Sambar', 'Poha', 'Mixed Nuts', 'Yogurt with Honey', 'Masala Oats', 'Baked Sweet Potato Fries'],
+    '0-9': ['Fruit Chaat', 'Vegetable Upma', 'Oatmeal','Chicken', 'Whole Grain Bread', 'Poha', 'Mixed Nuts', 'Yogurt with Honey', 'Masala Oats', 'Baked Sweet Potato Fries'],
     '10-19': ['Vegetable Pulao', 'Grilled Chicken Tikka', 'Vegetable Kebabs', 'Quinoa Upma', 'Mango Lassi', 'Sprouts Chaat', 'Whole Wheat Chapati with Dal', 'Hummus with Veggie Sticks', 'Chana Chaat', 'Stuffed Paratha with Yogurt'],
     '20-29': ['Grilled Fish Curry', 'Tandoori Chicken Salad', 'Palak Paneer', 'Masoor Dal', 'Quinoa Salad with Chickpeas', 'Bhindi Masala', 'Whole Wheat Roti', 'Baingan Bharta', 'Mixed Vegetable Sabzi', 'Chia Seed Smoothies', 'Masala Oats'],
     '30-39': ['Lean Chicken Curry', 'Whole Wheat Chapati with Mixed Dal', 'Stir Fried Vegetables with Tofu', 'Brown Rice Pulao', 'Chickpea Salad', 'Vegetable Upma', 'Sprouts Chaat', 'Fruit Chaat', 'Yogurt with Berries', 'Almond Milk Lassi'],
