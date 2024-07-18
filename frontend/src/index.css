@@ -82,6 +82,16 @@ button:focus-visible {
   left: 49%;
   top: 50%;
 } 
+.loader2{
+    /* border: 1px solid red ; */
+    margin: 20px 10px;
+    position: absolute;
+    display: flex;
+    width: 400px;
+    height: 210px;
+    justify-content: center;
+    align-items: center;
+}
 .container1{
   width: 100vw;
   height: 100vh;

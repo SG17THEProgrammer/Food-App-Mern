@@ -35,6 +35,7 @@ import ShowOrders from './pages/Orders/ShowOrders'
 import Address from './pages/Delivery/Address'
 import Location from './pages/Delivery/Location'
 import Recommend from './components/Recommend'
+import ChatBot from './components/ChatBot'
 
 const App = () => {
 
@@ -61,6 +62,7 @@ const App = () => {
   
   return (
     <>
+    <ChatBot></ChatBot>
     <GoToTopButton></GoToTopButton>
       <BrowserRouter>
           <Routes>

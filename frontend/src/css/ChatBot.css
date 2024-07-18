@@ -1,0 +1,44 @@
+.image4{
+    background-color: none;
+    height: 45px;
+    border-radius: 30px;
+}
+.btn6{
+    position: fixed;
+    left: 37px;
+    top: 90%;
+    cursor: pointer;
+}
+.floatDiv{
+    border: 1px solid red;
+    z-index: 1000;
+    position: fixed;
+    left: 57px;
+    top: 35%;
+    width: 500px;
+    height: 400px;
+    background-color:antiquewhite;
+    padding: 20px;
+    border-radius: 20px;
+
+}
+
+.content1{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 250px;
+    margin: 20px 10px;
+}
+
+/* .content1::-webkit-scrollbar {
+    display: none;
+  } */
+
+.icon2{
+    position: absolute;
+    font-size: 30px;
+    right: 7%;
+    margin-top: 5px;
+    color: lightseagreen;
+    cursor: pointer;
+}
