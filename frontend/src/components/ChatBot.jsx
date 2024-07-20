@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../css/ChatBot.css'
 import axios from "axios"
 import { IoMdSend } from "react-icons/io";
@@ -8,6 +8,25 @@ const ChatBot = () => {
     const [showChatBot , setShowChatBot ] = useState(false)
     const [question, setQuestion] = useState();
     const [isLoading, setIsLoading] = useState(false);
+
+    const chatBotRef = useRef(null);
+
+    const handleDocumentClick = (event) => {
+      if (chatBotRef.current && !chatBotRef.current.contains(event.target)) {
+        setShowChatBot(false);
+      }
+    };
+  
+    useEffect(() => {
+      if (showChatBot) {
+        document.addEventListener('mousedown', handleDocumentClick);
+      } else {
+        document.removeEventListener('mousedown', handleDocumentClick);
+      }
+      return () => {
+        document.removeEventListener('mousedown', handleDocumentClick);
+      };
+    }, [showChatBot]);
 
     const genAnswer =async()=>{
         setIsLoading(true)
@@ -45,7 +64,7 @@ const ChatBot = () => {
     <div style={{zIndex:"1000"}} className='btn6' title='ChatBot'>
         <img src="Gemini1.png" alt="gemini_logo"  className='image4' onClick={toggleComp}/>
     </div>
-    {showChatBot?<div className='floatDiv'>
+    {showChatBot?<div className='floatDiv' ref={chatBotRef}>
         <h3 style={{textAlign:"center",marginBottom:"10px",textDecoration:"underline"}}> <b>Ask Me Anything</b>  </h3>
         <input type="text" placeholder='Write....' className='inp3' onChange={handleInput} value={question} name='question'/>  
 

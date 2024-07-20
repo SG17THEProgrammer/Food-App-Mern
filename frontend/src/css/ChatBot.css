@@ -1,11 +1,11 @@
 .image4{
     background-color: none;
-    height: 45px;
+    height: 35px;
     border-radius: 30px;
 }
 .btn6{
     position: fixed;
-    left: 37px;
+    left: 35px;
     top: 90%;
     cursor: pointer;
 }
@@ -14,7 +14,7 @@
     z-index: 1000;
     position: fixed;
     left: 57px;
-    top: 35%;
+    top: 36%;
     width: 500px;
     height: 400px;
     background-color:antiquewhite;
