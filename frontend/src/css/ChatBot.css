@@ -1,20 +1,36 @@
 .image4{
     background-color: none;
-    height: 35px;
-    border-radius: 30px;
+    height: 45px;
 }
 .btn6{
     position: fixed;
-    left: 35px;
-    top: 90%;
+    left: 38px;
+    top: 87%;
     cursor: pointer;
 }
+
+.btn6 {
+    animation: water-wave 3s linear infinite;
+  }
+  
+  @keyframes water-wave {
+    0% {
+      border-radius: 56% 44% 70% 30% / 30% 54% 46% 70%;
+    }
+    50% {
+      border-radius: 3% 97% 15% 85% / 72% 0% 100% 28%;
+    }
+    100% {
+      border-radius: 56% 44% 70% 30% / 30% 54% 46% 70%;
+    }
+  }
+
 .floatDiv{
     border: 1px solid red;
     z-index: 1000;
     position: fixed;
     left: 57px;
-    top: 36%;
+    top: 32.5%;
     width: 500px;
     height: 400px;
     background-color:antiquewhite;

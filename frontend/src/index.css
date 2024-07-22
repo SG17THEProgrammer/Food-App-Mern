@@ -136,3 +136,20 @@ button:focus-visible {
   right: 50px;
   top: -20px;
 }
+
+.button3 {
+  animation: water-wave 3s linear infinite;
+  cursor: pointer;
+}
+
+@keyframes water-wave {
+  0% {
+    border-radius: 56% 44% 70% 30% / 30% 54% 46% 70%;
+  }
+  50% {
+    border-radius: 3% 97% 15% 85% / 72% 0% 100% 28%;
+  }
+  100% {
+    border-radius: 56% 44% 70% 30% / 30% 54% 46% 70%;
+  }
+}
