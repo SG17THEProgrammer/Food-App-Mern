@@ -141,7 +141,9 @@ const Login = () => {
                   
                     
                   </div>
-                  <div className="text" ><a   style={{color:"#B19470"}} href="#">Forgot password?</a></div>
+                  <div className="text" ><NavLink to='/forgotpassword'>
+                  <a   style={{color:"#B19470"}}>Forgot password?</a>
+                  </NavLink></div>
                   <div className="button input-box">
                     <input type="submit" value="Login"  />
                   </div>

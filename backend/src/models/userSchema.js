@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
+const  crypto =require( "crypto")
 
 
 const UserSchema = new mongoose.Schema({
@@ -33,8 +33,8 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    tokens:[{
-        token:{
+    tokens: [{
+        token: {
             type: String,
             required: true
         }
@@ -43,16 +43,17 @@ const UserSchema = new mongoose.Schema({
     //     type: Boolean,
     //     default: false
     // },
-    image:{
-        type:String,
+    image: {
+        type: String,
         required: true,
         contentType: String
     },
     date: {
         type: Date,
         default: Date.now
-    }
-
+    },
+    resetPasswordToken: { type: String },
+    resetPasswordExpires: { type: String }
 
 })
 
@@ -60,12 +61,12 @@ UserSchema.methods.generateToken = async function () {
     try {
         const token = await jwt.sign(
             {
-                userID: this._id.toString(), 
+                userID: this._id.toString(),
                 email: this.email
                 // isAdmin: this.isAdmin
-            }, process.env.SECRET_KEY,{expiresIn:"30d"})
+            }, process.env.SECRET_KEY, { expiresIn: "30d" })
 
-        this.tokens = this.tokens.concat({ token })  
+        this.tokens = this.tokens.concat({ token })
         // //console.log(token)
         await this.save()
         return token
@@ -78,11 +79,22 @@ UserSchema.methods.generateToken = async function () {
     }
 }
 
-UserSchema.methods.comparePass = async function(password){
+UserSchema.methods.comparePass = async function (password) {
     // //console.log("password" + password)
     // //console.log("this.password " +this.password)  
- return  await bcrypt.compare(password,this.password )
+    return await bcrypt.compare(password, this.password)
 
+}
+
+UserSchema.methods.getResetToken = async function () {
+    const resetToken = crypto.randomBytes(20).toString("hex");
+// sha256 -- algorithm ka naam hai
+    this.resetPasswordToken = crypto.createHash("sha256").update(resetToken).digest("hex");
+
+    this.resetPasswordExpires = Date.now() + 5*60*1000
+    // 5 mins 
+
+    return await resetToken
 }
 
 

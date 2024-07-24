@@ -36,6 +36,8 @@ import Address from './pages/Delivery/Address'
 import Location from './pages/Delivery/Location'
 import Recommend from './components/Recommend'
 import ChatBot from './components/ChatBot'
+import ForgotPassword from './components/ForgotPassword'
+import ResetPassword from './components/ResetPassword'
 
 const App = () => {
 
@@ -94,7 +96,9 @@ const App = () => {
             <Route path='/address' element={<Address></Address>}></Route>
             <Route path='/recommend' element={<Recommend></Recommend>}></Route>
             <Route path='/location' element={<Location></Location>}></Route>
+            <Route path='/forgotpassword' element={<ForgotPassword></ForgotPassword>}></Route>
             <Route path='/showOrder/:id' element={<ShowOrders></ShowOrders>}></Route>
+            <Route path='/resetpassword/:token' element={<ResetPassword></ResetPassword>}></Route>
             <Route path='*' element={<Error></Error>}></Route>
           </Routes>
 

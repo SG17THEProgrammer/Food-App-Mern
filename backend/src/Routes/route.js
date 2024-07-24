@@ -17,6 +17,7 @@ const { getImage, uploadImage } = require('../controllers/imageController')
 const { sendEmail } = require('../controllers/emailController')
 // const { chat } = require('../controllers/chatbotController')
 const { recommendations, getRecommendedProducts } = require('../controllers/recommendationController')
+const { resetPassword, forgotPassword } = require('../controllers/passwordController')
 // const { generateInvoice } = require('../controllers/invoiceController')
 
 
@@ -38,6 +39,7 @@ router.post('/uploadImage',uploadImage)
 router.post('/sendEmail',sendEmail)
 // router.post('/chat',chat)
 router.post('/recommendations',recommendations)
+router.post('/forgotpassword',forgotPassword)
 // router.post('/generateInvoice',generateInvoice)
 router.post('/contact',validate(contactSchema),contact)
 
@@ -57,9 +59,11 @@ router.get('/recommndProducts',getRecommendedProducts)
 
 router.delete('/about/delete/:id',deleteUser)
 router.delete('/deleteReview/:id/:productId',deleteReview)
+
 router.patch('/about/update/:id',validate(aboutSchema),updateUser)
 router.patch('/edititem/:id',edititem)
 
+router.put('/resetpassword/:token',resetPassword)
 
 
 module.exports = router

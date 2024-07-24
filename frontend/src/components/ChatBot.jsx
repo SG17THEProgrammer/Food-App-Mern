@@ -62,7 +62,7 @@ const ChatBot = () => {
   return (
     <>
     <div style={{zIndex:"1000"}} className='btn6' title='ChatBot'>
-        <img src="Gemini1.png" alt="gemini_logo"  className='image4 btn6' onClick={toggleComp}/>
+        <img src={`Gemini1.png`} alt="gemini_logo"  className='image4 btn6' onClick={toggleComp}/>
     </div>
     {showChatBot?<div className='floatDiv' ref={chatBotRef}>
         <h3 style={{textAlign:"center",marginBottom:"10px",textDecoration:"underline"}}> <b>Ask Me Anything</b>  </h3>
