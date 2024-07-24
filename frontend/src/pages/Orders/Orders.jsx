@@ -82,9 +82,9 @@ const Orders = ({ navbar, title, handleStatus, btn }) => {
                 <h1 className='title2'>{title ? title : "Your orders"}</h1>
                 {title == "Your Order Summary" ? btn : ""}
             </span>
-            <div class="ctn1 mt-3 mb-5 " style={{ border: "none" }}>
+            <div class="ctn3 mt-3 mb-5 " style={{ border: "none" }}>
                 <div class="" style={{ marginBottom: "200px" }}>
-                    <div class="" style={{ width: "82vw" }}>
+                    <div class="" style={{ width: "84vw" }}>
                         <div class="rounded" >
                             <div class="table-responsive table-borderless">
                                 <table class="table" >

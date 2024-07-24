@@ -69,8 +69,8 @@ const Contact = () => {
 		//console.log(contact);
 
 
+		setIsLoading(true)
 		try {
-			setIsLoading(true)
 			const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/contact`, {
 				method: "POST",
 				headers: {
@@ -98,21 +98,22 @@ const Contact = () => {
 				// navigate('/home')
 				//console.log(resData);
 				setTimeout(() => {
-					setIsLoading(false);
 					toast.success(resData.message[0]);
 				}, 2000)
 
-				sendEmail(e)
+				sendEmail(e);
 				
 			} else {
 				toast.error(resData.message[0]);
-				setIsLoading(false);
 			}
 		} catch (error) {
 			toast.error("Couldn't send the message ");
+			
+			//   res.status(400).send(error)
+		}
+		finally{
 			setIsLoading(false);
 
-			//   res.status(400).send(error)
 		}
 	};
 
@@ -122,9 +123,9 @@ const Contact = () => {
 		getCartItems();
 	}, [user, productCartItem])
 
-	useEffect(() => {
+	// useEffect(() => {
 
-	}, [userData, user])
+	// }, [userData, user])
 
 
 	return (

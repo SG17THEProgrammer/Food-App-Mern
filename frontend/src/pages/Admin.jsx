@@ -158,7 +158,7 @@ const Admin = () => {
                             <p className='para'>Tap to insert the image </p>
                           </div>
                       }
-                      <input type="file" accept="image/*" id="image" onChange={uploadImage} required className="hidden" />
+                      <input type="file" accept="image/*" id="image" onChange={uploadImage}  className="hidden" />
                     </div>
                   </label>
                 </li>

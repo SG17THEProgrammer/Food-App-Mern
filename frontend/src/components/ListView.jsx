@@ -52,7 +52,7 @@ const ListView = ({ id, name, image, category, price, rating, description }) => 
                         <button className='btn'>Read More</button>
                         </NavLink>&nbsp;&nbsp;
                         {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' >Edit Product</button></NavLink>:""}
-                        {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{marginLeft:"10px"}}>Delete Product</button></NavLink>:""}
+                        {/* {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{marginLeft:"10px"}}>Delete Product</button></NavLink>:""} */}
 
                       </div>
                     </div>

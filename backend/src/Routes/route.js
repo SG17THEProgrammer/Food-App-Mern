@@ -3,7 +3,7 @@ const router = new express.Router()
 const {contact, team, reserveTable} = require('../controllers/controller')
 const auth = require('../middleware/auth')
 const { register, login, user, deleteUser, updateUser, getallusers } = require('../controllers/userController')
-const { addnewitem, getproduct, getMallproduct ,edititem, postReview, getReview, deleteReview} = require('../controllers/productController')
+const { addnewitem, getproduct, getMallproduct ,edititem, deleteProduct, deleteMallProduct} = require('../controllers/productController')
 const validate = require('../middleware/validate') 
 const signupSchema = require('../validators/signupSchema')
 const loginSchema = require('../validators/loginSchema')
@@ -18,6 +18,7 @@ const { sendEmail } = require('../controllers/emailController')
 // const { chat } = require('../controllers/chatbotController')
 const { recommendations, getRecommendedProducts } = require('../controllers/recommendationController')
 const { resetPassword, forgotPassword } = require('../controllers/passwordController')
+const { postReview, getReview, deleteReview } = require('../controllers/reviewController')
 // const { generateInvoice } = require('../controllers/invoiceController')
 
 
@@ -42,6 +43,8 @@ router.post('/recommendations',recommendations)
 router.post('/forgotpassword',forgotPassword)
 // router.post('/generateInvoice',generateInvoice)
 router.post('/contact',validate(contactSchema),contact)
+router.post('/deleteProduct',deleteProduct)
+router.post('/deleteMallProduct',deleteMallProduct)
 
 
 
@@ -60,8 +63,12 @@ router.get('/recommndProducts',getRecommendedProducts)
 router.delete('/about/delete/:id',deleteUser)
 router.delete('/deleteReview/:id/:productId',deleteReview)
 
+
+
 router.patch('/about/update/:id',validate(aboutSchema),updateUser)
 router.patch('/edititem/:id',edititem)
+
+
 
 router.put('/resetpassword/:token',resetPassword)
 

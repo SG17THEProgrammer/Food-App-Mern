@@ -1,0 +1,34 @@
+.allProdDiv{
+    margin: 100px 40px;
+}
+.freshfood{
+    border: 1px solid red;
+    margin-bottom: 100px;
+}
+.packfood{
+    border: 1px solid red;
+}
+
+.tblforFreshfood{
+    
+}
+.tblforPackfood{
+
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    padding: 5px 10px;
+  }
+  th, td {
+    background-color: #E7D4B5;
+  }
+
+  .searchItems{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid red; */
+    padding-bottom: 15px;
+  }

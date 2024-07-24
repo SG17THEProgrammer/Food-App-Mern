@@ -81,7 +81,7 @@ useEffect(()=>{
         type="number"
         value={age}
         onChange={handleInputChange}
-        placeholder="Enter your age" className='inp3'
+        placeholder="Enter your age" className='inp3' onKeyDown={(e)=>e.key==="Enter" ?fetchRecommendations():"" }
       />
       <button onClick={fetchRecommendations} className='btn5'>Get Recommendations</button>
       </div>

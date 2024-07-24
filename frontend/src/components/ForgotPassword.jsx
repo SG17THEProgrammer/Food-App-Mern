@@ -4,8 +4,11 @@ import '../css/ForgotPassword.css'
 import { FaLock } from "react-icons/fa";
 import { MdForwardToInbox } from "react-icons/md";
 import { toast } from 'react-toastify';
+import Loader from '../components/Loader'
 
 const ForgotPassword = () => {
+
+    const [isLoading , setisLoading] = useState(false)
 
     const [email,setEmail] = useState({
         email: "",
@@ -21,6 +24,7 @@ const ForgotPassword = () => {
     }
 
     const handleSubmit= async()=>{
+        setisLoading(true)
         try {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/forgotPassword`,{
                 method: 'POST',
@@ -37,12 +41,17 @@ const ForgotPassword = () => {
             }
 
             else{
-                toast.success(data.msg)
                 setEmail("")
-            }
 
+                toast.success(data.msg)
+            }
+            
         } catch (error) {
             console.log(error)
+        }
+        finally{
+            setEmail("")
+            setisLoading(false)
         }
     }
 
@@ -59,9 +68,10 @@ const ForgotPassword = () => {
 }} placeholder="Email address" name='email' value={email.email} onChange={handleInput}/>
         <MdForwardToInbox className='icn1'></MdForwardToInbox>
         </span>
-        <button className='button4' onClick={handleSubmit}>Send My Password</button>
+        <button className='button4' onClick={handleSubmit}>Send Mail</button>
     </div>
     </div>
+    {isLoading?<Loader></Loader>:""}
     </>
   )
 }
