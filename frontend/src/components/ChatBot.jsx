@@ -8,6 +8,7 @@ const ChatBot = () => {
     const [showChatBot , setShowChatBot ] = useState(false)
     const [question, setQuestion] = useState();
     const [isLoading, setIsLoading] = useState(false);
+    const [allquestion, setAllquestion] = useState();
 
     const chatBotRef = useRef(null);
 
@@ -27,6 +28,29 @@ const ChatBot = () => {
         document.removeEventListener('mousedown', handleDocumentClick);
       };
     }, [showChatBot]);
+
+    useEffect(() => {
+      const fetchQuestions = async () => {
+        try {
+          const response = await axios.get(`${import.meta.env.VITE_BACKEND_API}/question`);
+          console.log(response);
+          setAllquestion(response.data.ques);
+        } catch (error) {
+          console.error('Error fetching questions', error);
+        }
+      };
+  
+      fetchQuestions();
+    }, []);
+
+    const getpredefAnswer=async(idx)=>{
+      try {
+        setAnswer(allquestion[idx].answer)
+      } catch (error) {
+        console.error('Error fetching answers:', error);
+      }
+    }
+
 
     const genAnswer =async()=>{
         setIsLoading(true)
@@ -66,9 +90,17 @@ const ChatBot = () => {
     </div>
     {showChatBot?<div className='floatDiv' ref={chatBotRef}>
         <h3 style={{textAlign:"center",marginBottom:"10px",textDecoration:"underline"}}> <b>Ask Me Anything</b>  </h3>
-        <input type="text" placeholder='Write....' className='inp3' onChange={handleInput} value={question} name='question'/>  
+        <input type="text" placeholder='Write....' className='inp3' onChange={handleInput} value={question} name='question'  onKeyDown={(e)=>e.key==="Enter" ?genAnswer():""}/>  
 
         <IoMdSend className='icon2' onClick={genAnswer}/>
+        <div className='questions'>
+
+           {allquestion.map((elem ,idx)=>{
+            return <>
+            <p className="ques" onClick={()=>getpredefAnswer(idx)} >{elem.question}</p>
+            </>
+           }) }
+        </div>  
         {isLoading?<Loader1></Loader1>:""}
         <div className='content1'>
 

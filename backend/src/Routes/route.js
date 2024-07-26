@@ -19,6 +19,7 @@ const { sendEmail } = require('../controllers/emailController')
 const { recommendations, getRecommendedProducts } = require('../controllers/recommendationController')
 const { resetPassword, forgotPassword } = require('../controllers/passwordController')
 const { postReview, getReview, deleteReview } = require('../controllers/reviewController')
+const { getQuestion, answer } = require('../controllers/qaController')
 // const { generateInvoice } = require('../controllers/invoiceController')
 
 
@@ -59,6 +60,10 @@ router.get('/getAllOrders',getAllOrders)
 router.get('/deliveryMan',deliveryMan)
 router.get('/recommndProducts',getRecommendedProducts)
 // router.get('/distance',distance)
+// router.get('/answer',answer)
+router.get('/question',getQuestion)
+
+
 
 router.delete('/about/delete/:id',deleteUser)
 router.delete('/deleteReview/:id/:productId',deleteReview)
