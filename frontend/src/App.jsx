@@ -101,6 +101,7 @@ const App = () => {
             <Route path='/allproducts' element={<AllProducts></AllProducts>}></Route>
             <Route path='/showOrder/:id' element={<ShowOrders></ShowOrders>}></Route>
             <Route path='/resetpassword/:token' element={<ResetPassword></ResetPassword>}></Route>
+            <Route path="/payment/validate/:merchantTransactionId" element={<Success></Success>}></Route>
             <Route path='*' element={<Error></Error>}></Route>
           </Routes>
 

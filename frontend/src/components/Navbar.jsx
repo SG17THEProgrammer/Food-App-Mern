@@ -100,7 +100,7 @@ const Navbar = () => {
                                 <NavLink className="nav-link ml-2 blink" to='/mallmenu/6676c1731782239b95fa1fb6' style={{ marginRight: "-10px" }}>MallMenu <sup>New</sup><span className="sr-only"></span></NavLink>
                             </li>
                             {isLoggedIn?<li className="nav-item active">
-                                <BsList style={{ fontSize: "30px", marginTop: "3px" , cursor:"pointer"}} onClick={() => setdropdownMenu(!dropdownMenu)} />
+                                <BsList style={{ fontSize: "30px", marginTop: "3px" , cursor:"pointer"}} className='list' onClick={() => setdropdownMenu(!dropdownMenu)} />
                                 {dropdownMenu ? <div className='dropdown2' ref={dropdownRef}>
                                     <NavLink className='navlink' to='/allproducts'><p className='para4' >All Products </p></NavLink>
                                     <NavLink className='navlink' to='/orders'><p className='para4' >Your Orders </p></NavLink>

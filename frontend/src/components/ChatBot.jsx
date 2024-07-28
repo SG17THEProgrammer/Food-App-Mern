@@ -33,7 +33,7 @@ const ChatBot = () => {
       const fetchQuestions = async () => {
         try {
           const response = await axios.get(`${import.meta.env.VITE_BACKEND_API}/question`);
-          console.log(response);
+          // console.log(response);
           setAllquestion(response.data.ques);
         } catch (error) {
           console.error('Error fetching questions', error);

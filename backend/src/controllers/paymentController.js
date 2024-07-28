@@ -1,6 +1,9 @@
 const Stripe = require('stripe');
 const stripe = Stripe(`${process.env.STRIPE_SECRET_KEY}`);
 const order = require('../models/orderSchema');
+// const sha256 = require("sha256");
+// const uniqid = require("uniqid");
+// const axios = require('axios');
 
 const payment = async (req, res) => {
     //console.log(req.body)
@@ -96,6 +99,10 @@ const payment = async (req, res) => {
         res.status(err.statusCode || 500).json({ error: err.message });
     }
 }
+
+
+  
+
 
 
 

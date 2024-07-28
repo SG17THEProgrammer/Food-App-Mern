@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../css/Delivery/Delivery.css'
 import Navbar from '../../components/navbar'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { useAuth } from '../../components/Auth'
 import { toast } from 'react-toastify'
 import { useSelector } from 'react-redux'
@@ -9,6 +9,8 @@ import FormatPrice from '../../Helpers/FormatPrice'
 import { loadStripe } from '@stripe/stripe-js'
 import Address from './Address'
 import State from '../../components/Location/State'
+import axios from "axios"
+
 const Delivery = ({title}) => {
   
 
@@ -207,7 +209,7 @@ const totalAmount = finalPrice+shippingCharges;
           phone:user.phone,
           address:"",
           city:"",
-          pincode:"",
+          pincode:delAddress?delAddress[0]?delAddress[0].pincode:281006:281006,
           state:""
         });
 
@@ -221,91 +223,11 @@ const totalAmount = finalPrice+shippingCharges;
         toast.error("Couldn't place order ");
       }
     }
+    
+   
+    
 
 
-  //   const handleSubmitByRazorpay=async(e)=>{
-  //     e.preventDefault()
-  //     try {
-  //       const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/delivery`, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({userId:user._id,delDetails})
-  //       });
-  //       const resData = await response.json();
-	// 		//console.log("response data : ", response);
-	// 		//console.log(resData);
-  //     if(response.ok){
-  //       setDelDetails({
-  //         name: user.name,
-  //         email: user.email,
-  //         phone:user.phone,
-  //         address:"",
-  //         city:"",
-  //         pincode:"",
-  //         state:""
-  //       });
-
-  //       {title=="address"? "":handlePaymentByRazorpay()}
-  //       {title=="address"?toast.success(resData.message[0]):""}
-  //     }
-  //     else{
-  //       toast.error(resData.message[0])
-  //     }
-  //     } catch (error) {
-  //       toast.error("Couldn't place order ");
-  //     }
-  //   }
-
-
-  //   const handlePaymentByRazorpay = async () => {
-  //     const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
-  
-  //     const customerInfo = {
-  //       name: user.name,
-  //       address: {
-  //           line1:delDetails.address ,
-  //           city: delDetails.city,
-  //           state: delDetails.state,
-  //          postal_code: delDetails.pincode,
-  //           country: 'IN'
-  //       }
-  //   };
-  
-  
-  //     try {
-  //         const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/payment`, {
-  //             method: 'POST',
-  //             headers: {
-  //                 'Content-Type': 'application/json'
-  //             },
-  //             body: JSON.stringify({products:cartItems,customerInfo:customerInfo , deliveryCharge:shippingCharges , tax:tax,userId:user._id , amount:totalAmount , delManDetails:delMan[randomIndex]
-  //             })
-  //           });
-            
-  //         if (!response.ok) {
-  //           toast.error("Failed to create checkout session")
-  //           throw new Error('Failed to create checkout session');
-  
-  //         }
-  
-  //         const data = await response.json();
-  //         //console.log('Session data:', data);
-  //         toast.success("Redirecting to checkout")
-  //         setTimeout(async()=>{
-  
-  //           const result = await stripe.redirectToCheckout({ sessionId: data.id });
-  //           //console.log('Stripe redirect result:', result);
-  //         },1000 )
-  
-  //         if (result.error) {
-  //             //console.error('Stripe redirect error:', result.error);
-  //         }
-  //     } catch (error) {
-  //         //console.error('Error during payment handling:', error);
-  //     }
-  // };
 
     const getDeliveryAddress = async() => {
       try {
@@ -452,8 +374,8 @@ const totalAmount = finalPrice+shippingCharges;
                         <button type="button" data-mdb-button-init data-mdb-ripple-init className="button1 btn-primary btn-lg btn-block" onClick={handleSubmit}>
                        Place Order <sup className='blink'>Stripe</sup>
                         </button>
-                        {/* <button type="button" data-mdb-button-init data-mdb-ripple-init className="button1 btn-primary btn-lg btn-block" onClick={handleSubmitByRazorpay} style={{width:"208px"}}>
-                       Place Order <sup className='blink'>Razorpay</sup>
+                        {/* <button type="button" data-mdb-button-init data-mdb-ripple-init className="button1 btn-primary btn-lg btn-block" onClick={handleSubmitByPhonePe} style={{width:"208px"}}>
+                       Place Order <sup className='blink'>Paytm</sup>
                         </button> */}
                     </div>
                 </div>
