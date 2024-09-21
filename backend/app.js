@@ -6,7 +6,8 @@ const routes  = require('./src/Routes/route')
 const bodyParser = require('body-parser')
 
 const corsOptions = {
-    origin: "http://localhost:5173",
+    // origin: "http://localhost:5173",
+    origin: process.env.Frontend_URL,
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
 };
@@ -14,7 +15,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use((req,res,next)=>{
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", process.env.Frontend_URL);
   res.header("Access-Control-Allow-Methods", "ORIGIN , X-Requested-With,Content-Type, Accept");
   next();
 })
