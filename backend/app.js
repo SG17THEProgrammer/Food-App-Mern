@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 
 const corsOptions = {
     // origin: "http://localhost:5173",
-    origin: process.env.Frontend_URL,
+    origin:  'https://swadehindustan.netlify.app' || process.env.Frontend_URL,
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
 };
