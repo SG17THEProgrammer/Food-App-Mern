@@ -2,8 +2,6 @@ const nodemailer = require('nodemailer');
 
 const sendEmail =async(req,res)=>{
     try {   
-            // console.log(process.env.Email)
-            // console.log(process.env.password)
             console.log(req.body)
             const {reservationData} = req.body
             const {email,name,phone,entryIn,entryOut,tables , members } = reservationData
