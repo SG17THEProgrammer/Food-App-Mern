@@ -14,11 +14,11 @@ const corsOptions = {
 // app.use(cors());
 app.use(cors(corsOptions));
 
-app.use((req,res,next)=>{
-  res.header("Access-Control-Allow-Origin", 'https://swadehindustan.netlify.app' || process.env.Frontend_URL);
-  res.header("Access-Control-Allow-Methods", "ORIGIN , X-Requested-With,Content-Type, Accept");
-  next();
-})
+// app.use((req,res,next)=>{
+//   res.header("Access-Control-Allow-Origin", 'https://swadehindustan.netlify.app' || process.env.Frontend_URL);
+//   res.header("Access-Control-Allow-Methods", "ORIGIN , X-Requested-With,Content-Type, Accept");
+//   next();
+// })
  
 
 app.use(bodyParser.json({limit: '100mb'}));
