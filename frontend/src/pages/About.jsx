@@ -71,7 +71,7 @@ const About = () => {
 
             if (response.ok) {
                 toast.success("account deleted successfully")
-                window.location.reload();
+                //window.location.reload();
             }
             else {
                 //console.log('error')

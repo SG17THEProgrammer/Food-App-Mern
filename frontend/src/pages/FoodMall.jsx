@@ -17,7 +17,7 @@ import Search from '../components/Search';
 const FoodMall = () => {
   const {saveCartItemsToLS,user,getCartItems} = useAuth()
   const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
-  //console.log(mallproductData)
+  ////console.log(mallproductData)
 
   const productCartItem = useSelector((state) => state.product.cartItem);
 
@@ -27,7 +27,7 @@ const FoodMall = () => {
   })), 'AllCategories']
 
   const [items, setItems] = useState(mallproductData);
-
+  const [dropDown , setdropDown] = useState(false)
 
   const filterItem = (parameter) => { //parameter mein Breakfast , Lunch , .... yeh sab pass hote rahenge 
     if (parameter === 'AllCategories') {
@@ -52,18 +52,19 @@ const FoodMall = () => {
   const sorting = (e) => {
     // let option = document.getElementById('sort')  
     // let sortVal = option.options[option.selectedIndex].value;
-    // //console.log(sortVal)
+    // ////console.log(sortVal)
     let sortVal = e.target.value;
     setValue(sortVal)
   }
 
-  let filterData = [];
+  let [filterData , setFilterData] = useState([]) ;
   const sortData = (value) => {
-    let newData;
-    items == 0 ? newData = [...mallproductData] : newData = [...items]
+    let newData = items.length == 0 ? [...mallproductData] :[...items]
+
     switch (value) {
       case 'highest':
         filterData = newData.sort((a, b) => { return b.price - a.price });
+        
         break;
       case 'lowest':
         filterData = newData.sort((a, b) => a.price - b.price);
@@ -80,8 +81,33 @@ const FoodMall = () => {
       case 'lowToHigh':
         filterData = newData.sort((a, b) => a.rating - b.rating);
         break;
-      default:
+      case '1':
+        filterData = mallproductData?.filter((elem)=>elem.rating<=1)
+        
         break;
+      case '2':
+        
+        filterData = mallproductData?.filter((elem)=>elem.rating<=2)
+        
+        break;
+      case '3':
+        
+       
+        filterData = mallproductData?.filter((elem)=>elem.rating<=3)
+        
+        break;
+      case '4':
+       
+        filterData = mallproductData?.filter((elem)=>elem.rating<=4)
+        
+        break;
+      case '5':
+       
+       
+        filterData = mallproductData?.filter((elem)=>elem.rating<=5)
+        
+        break;
+
     }
     setItems(filterData);
 
@@ -99,7 +125,7 @@ const FoodMall = () => {
   //   return item.price
   // })
 
-  // // //console.log(Math.max(...priceArr))
+  // // ////console.log(Math.max(...priceArr))
   // const maxPrice = Math.max(...priceArr)
   // const minPrice = Math.min(...priceArr)
 
@@ -111,8 +137,8 @@ const FoodMall = () => {
   
   // const updatePriceFilter = (e) => {
   //   const { name, value } = e.target;
-  //   //console.log(name)
-  //   //console.log(value)
+  //   ////console.log(name)
+  //   ////console.log(value)
   //   setSliderValue({
   //     ...sliderValue,
   //     [name]: value
@@ -122,7 +148,7 @@ const FoodMall = () => {
   
   // const sortedProducts = items==0?mallproductData.filter(curElem => parseFloat(curElem.price) <= parseFloat(sliderValue.price)):items.filter(curElem => parseFloat(curElem.price) <= parseFloat(sliderValue.price))
   
-  // //console.log(sortedProducts)
+  // ////console.log(sortedProducts)
 
   // useEffect(() => {
   // }, [sliderValue.price])
@@ -144,6 +170,7 @@ const FoodMall = () => {
   const loadMore = () => {
     setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 8);
   };
+
  
   return (
     <>
@@ -205,7 +232,16 @@ const FoodMall = () => {
               <option value="a-z"   >a-z</option>
               <option value="z-a"  >z-a</option>
               <option value="highToLow"  >Rating(high-low)</option>
-              <option value="lowToHigh"  >Rating(low-high)</option>
+              <option value="lowToHigh"  >Rating(low-high)</option>        
+
+              <optgroup label='Rating Levels'>
+              <option value="1"  >1</option>
+              <option value="2"  >2</option>
+              <option value="3"  >3</option>
+              <option value="4"  >4</option>
+              <option value="5"  >5</option>
+              </optgroup>
+
             </select>
 
           </div>

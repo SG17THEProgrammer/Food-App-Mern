@@ -7,8 +7,7 @@ const routes = require('./src/Routes/route');
 const app = express();
 
 const corsOptions = {
-    // origin: process.env.FRONTEND_URL || 'https://swadehindustan.netlify.app',
-    origin: 'https://swadehindustan.netlify.app',
+    origin: process.env.Frontend_URL || 'http://localhost:5173',
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
 };

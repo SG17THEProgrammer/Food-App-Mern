@@ -52,7 +52,7 @@ export const productSlice = createSlice({
       const index = cartItem.findIndex((elem) => elem._id === itemId);
       cartItem.splice(index, 1);
       localStorage.setItem(userId, JSON.stringify(cartItem));
-      window.location.reload();
+      //window.location.reload();
       toast.success("Item Deleted");
       
     },
@@ -81,7 +81,7 @@ export const productSlice = createSlice({
       //console.log(total)
       cartItem[index].total = total;
       localStorage.setItem(userId, JSON.stringify(cartItem));
-      window.location.reload();
+      //window.location.reload();
       
     },
     decreaseQty: (state, action) => {
@@ -104,7 +104,7 @@ export const productSlice = createSlice({
 
         cartItem[index].total = total;
         localStorage.setItem(userId, JSON.stringify(cartItem));
-      window.location.reload();
+      //window.location.reload();
 
       }
     },
@@ -116,7 +116,7 @@ export const productSlice = createSlice({
       else{
         localStorage.removeItem(action.payload);
       setTimeout(() => {
-        window.location.reload();
+        //window.location.reload();
         navigate("/cart")
         // state.cartItem = [];
       },1000)

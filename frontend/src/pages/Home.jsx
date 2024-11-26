@@ -37,7 +37,7 @@ const Home = () => {
           <SlidingButton></SlidingButton>
           <h1 style={{ marginBottom: "40px" }}>The Best Ordering and Delivery at your home</h1>
           <h5 style={{ marginBottom: "50px", fontWeight: "normal" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur laboriosam, vel hic sequi vero eveniet reiciendis blanditiis illum ipsum enim. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim praesentium recusandae rem ab fuga maxime aliquam quisquam quasi, molestias in, aut modi nesciunt consequuntur? Saepe suscipit molestias aut hic blanditiis?</h5>
-          <button className='butn'>Order Now</button>
+          {/* <button className='butn'>Order Now</button> */}
         </div>
 
 

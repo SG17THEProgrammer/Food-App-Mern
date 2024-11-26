@@ -16,7 +16,7 @@ const HandleOrders = () => {
           await fetchOrders()
           toast.success(response.data.message[0]);
           // setTimeout(()=>{
-          //   window.location.reload()
+          //   //window.location.reload()
           // },2000)
         }
         else{

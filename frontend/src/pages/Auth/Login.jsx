@@ -15,7 +15,7 @@ const Login = () => {
 
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
-  const { storeTokensInLS, isLoggedIn } = useAuth()
+  const { storeTokensInLS , isLoggedIn} = useAuth()
 
 
   const [loginUser, setloginUser] = useState({
@@ -73,11 +73,11 @@ const Login = () => {
         toast.success(resData.message[0]);
         setloginUser({ email: "", password: "" });
 
-        // Navigate to the home page without reloading
+        
         setTimeout(() => {
-          window.location.reload();
+          //window.location.reload();
           navigate('/home');
-        }, 3000); // Adjust the timeout as needed
+        }, 3000); 
       } else {
         toast.error(resData.message[0]);
       }
@@ -90,11 +90,9 @@ const Login = () => {
     }
   };
 
-
-
   return (
     <>
-      <Navbar></Navbar>
+      {!isLoggedIn? <><Navbar></Navbar>
       <div className="container">
         <input type="checkbox" id="flip" />
         <div className="cover">
@@ -141,18 +139,8 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div>
-      {isLoading ? <Loader></Loader> : ""}
-      {isLoggedIn ?
-        useEffect(() => {
-
-          toast.error("You are already logged in")
-
-          navigate('/')
-        }, [isLoggedIn])
-
-        :
-        ""}
+      </div></>:<Authorize isLoggedIn={isLoggedIn}></Authorize>
+ }     {isLoading ? <Loader></Loader> : ""}
     </>
   )
 }

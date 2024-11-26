@@ -18,12 +18,16 @@ const EditProduct = () => {
   const productCartItem = useSelector((state) => state.product.cartItem);
   const foodproductData = useSelector((state) => state.product.productList)
   const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
+
   const allproducts = [...foodproductData, ...mallproductData];
 
-  const productDisplay = allproducts.filter((elem) => elem._id === id)[0];
-    //console.log(productDisplay)
+  const productDisplay = allproducts?.filter((elem) => elem._id === id)[0];
+    // console.log(productDisplay)
 
   const [productData, setProductData] = useState(true)
+
+  // console.log(productData ,allproducts)
+
   const [cardProduct, setcardProduct] = useState({
     name: "",
       description: "",
@@ -34,13 +38,13 @@ const EditProduct = () => {
     })
 
 
-  if (productData && allproducts) {
+  if (productData && productDisplay) {
       setcardProduct({
-          name: productDisplay.name,
-          description: productDisplay.description,
-          price: productDisplay.price,
-          image: productDisplay.image,
-          category: productDisplay.category,
+          name: productDisplay?.name,
+          description: productDisplay?.description,
+          price: productDisplay?.price,
+          image: productDisplay?.image,
+          category: productDisplay?.category,
       });
       setProductData(false);
   }
@@ -89,7 +93,7 @@ const EditProduct = () => {
       //console.log(res)
       toast.success(res.message)
       setTimeout(() =>{
-        window.location.reload()
+        //window.location.reload()
         navigate("/")
       },2000)
       // setcardProduct(() => {
@@ -122,15 +126,15 @@ const EditProduct = () => {
           <div className="image-holder">
         <label htmlFor='image' className='imgDiv2'>
           {
-                        cardProduct.image ? <div className='imgDiv2'>
-                          <img src={cardProduct.image} className='img10' />              
+                        cardProduct?.image ? <div className='imgDiv2'>
+                          <img src={cardProduct?.image} className='img10' />              
                       <FaUpload style={{position:"absolute",left:"48%",bottom:"45%" , fontSize:"25px",cursor:"pointer",opacity:"0.8" }} title='Upload image'></FaUpload>
                       <p className='para3 para'>Tap to insert the image </p>
                           </div>
                           :
                           <label htmlFor="image" className='imgDiv2'>
                           <div className='imgDiv2'>
-                            <img src={cardProduct.image} alt="add-image" className='img10' />
+                            <img src={cardProduct?.image} alt="add-image" className='img10' />
                             <FaUpload style={{position:"absolute",left:"48%",bottom:"45%" , fontSize:"25px",cursor:"pointer",opacity:"0.8" }} title='Upload image'></FaUpload>
                             <p className='para3 para'>Tap to insert the image </p>
                           </div>
@@ -144,12 +148,12 @@ const EditProduct = () => {
 
             <div className="form-wrapper1 form-wrapper" style={{marginTop:"-10px"}}>
             <label  className='label2'>Name</label>
-              <input type="text" placeholder="Name" className="form-control1 form-control" onChange={handleInput} name='name' value={cardProduct.name}/>
+              <input type="text" placeholder="Name" className="form-control1 form-control" onChange={handleInput} name='name' value={cardProduct?.name}/>
 
             </div>
             <div className="form-wrapper1 form-wrapper" style={{marginTop:"-7px",marginBottom:"7px"}}>
             <label htmlFor='database' className='label2'>Item Type</label>
-                  <select name="database" id="database" className='dropdown1' value={cardProduct.database} required onChange={handleInput}>
+                  <select name="database" id="database" className='dropdown1' value={cardProduct?.database} required onChange={handleInput}>
                     <option value="other">Select Item Type</option>
                     <option value="fooditem">FoodItem</option>
                     <option value="mallitem">MallItem</option>
@@ -157,9 +161,9 @@ const EditProduct = () => {
             </div>
             <div className="form-wrapper1 form-wrapper" >
             <label htmlFor="category" className='label2'>Category</label>
-            {cardProduct.database?cardProduct.database && cardProduct.database==='mallitem'?
+            {cardProduct?.database?cardProduct?.database && cardProduct?.database==='mallitem'?
                   <select className='dropdown1' id='category' name='category' required onChange={handleInput}
-                    value={cardProduct.category}>
+                    value={cardProduct?.category}>
                     <option value="other" >Select Category</option>
                     <option value="Fruits">Fruits</option>
                     <option value="Vegetable">Vegetable</option>
@@ -173,7 +177,7 @@ const EditProduct = () => {
                     <option value="Sandwich">Sandwich</option>
                   </select>:
                   <select className='dropdown1' id='category' name='category' required onChange={handleInput}
-                    value={cardProduct.category}>
+                    value={cardProduct?.category}>
                     <option value="other" >Select Category</option>
                     <option value="Dinner">Dinner</option>
                     <option value="Breakfast">Breakfast</option>
@@ -183,8 +187,8 @@ const EditProduct = () => {
                     <option value="NightMunchies">Night Munchies</option>
                     <option value="Rice">Rice</option>
                   </select>:<select className='dropdown1' id='category' name='category' required onChange={handleInput}
-                    value={cardProduct.category}>
-                    {!cardProduct.database==null?<option value="other" >Select Database</option>:
+                    value={cardProduct?.category}>
+                    {!cardProduct?.database==null?<option value="other" >Select Database</option>:
                     <option value="other" >Choose Database First</option>}
                     </select>}
 

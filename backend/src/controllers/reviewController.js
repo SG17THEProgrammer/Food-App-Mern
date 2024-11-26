@@ -1,18 +1,24 @@
 
+const Products = require('../models/productSchema');
 const Review = require('../models/reviewSchema');
+const mallProducts = require('../models/mallproductSchema');
 
 const postReview = async (req, res) => {
-    try {
-      //console.log(req.body)
-      const { review, userName ,productId} = req.body;
-      const { rating, comment } = review;
-      
+  try {
+      const { rating, userName ,productId,comment} = req.body;
+      console.log(rating, userName ,productId,comment)
+
+      if(userName==undefined){
+        return res.status(400).json({ message: ["Pls login to give review"] });
+   }
+
       const reviewData = {
         rating,
         comment,
         userName,
         productId
       };
+
       if(!rating){
            return res.status(400).json({ message: ["Can't post without star rating"] });
   
@@ -29,14 +35,19 @@ const postReview = async (req, res) => {
       const ratingSum = ratings.reduce((sum, rate) => sum + rate.rating, 0);
       // //console.log(ratingSum)
       let averageRating = ratings.length >0 ? ratingSum / ratings.length:0;
+
       averageRating = Math.round(averageRating*10) / 10;    
        //console.log(averageRating)
+
       const updtProduct = await Products.findByIdAndUpdate(productId, { rating: averageRating });
+
     let updtMallProduct
+
       if(!updtProduct){
      updtMallProduct = await mallProducts.findByIdAndUpdate(productId, { rating: averageRating });
   
         }
+
         if(!updtMallProduct && !updtProduct){
           return res.status(500).json({ message:[ "Product Id not found "] });
   
@@ -46,7 +57,8 @@ const postReview = async (req, res) => {
         return res.status(200).json({ message:[ "Review saved successfully"] });
   
     } catch (error) {
-        return res.status(500).json({ message:[ "Error occurred while sending review"] });
+      console.log(error)
+        // return res.status(500).json({ message:[ "Error occurred while sending review"] });
     }
   }
   

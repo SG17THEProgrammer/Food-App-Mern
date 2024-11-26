@@ -112,10 +112,20 @@
   width: fit-content;
   margin-bottom: 5px;
   padding: 5px;
+  color:sienna;
 }
 
 .para4:hover {
   background-color: #F1E4C3;
+  text-decoration: inherit;
+}
+
+.navlink{
+  text-decoration: none;
+}
+
+.navlink :hover{
+  text-decoration: inherit;
 }
 
 

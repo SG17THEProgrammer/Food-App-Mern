@@ -17,6 +17,7 @@ const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
     const {user} =useAuth()
     const navigate = useNavigate()
 
+    
     const [review , setReview] = useState({
         rating:0,
         comment:""
@@ -39,21 +40,22 @@ const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
       const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
+            console.log('1')
 			const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/postReview`, {
-				method: "POST",
+				method: 'POST',
 				headers: {
-					"Content-Type": "application/json",
+					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({review:review,userName:user.name  , productId:productId}),
+				body: JSON.stringify({comment:review.comment,rating : review.rating , userName:user.name  , productId:productId}),
 			});
 			const resData = await response.json();
-			//console.log(resData);
+			console.log(resData);
 
 			if (response.ok) {
                 toast.success(resData.message[0]);
-                navigate("/home")
+                // navigate("/home")
                 setTimeout(() =>{
-                    window.location.reload(); 
+                    //window.location.reload(); 
                 },2000)
                productDisplay?navigate(`/mallmenu/${productDisplay._id}`): navigate(`/menu/${productId}`)            
        

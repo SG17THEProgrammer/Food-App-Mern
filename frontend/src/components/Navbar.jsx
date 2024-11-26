@@ -102,7 +102,7 @@ const Navbar = () => {
                             {isLoggedIn?<li className="nav-item active">
                                 <BsList style={{ fontSize: "30px", marginTop: "3px" , cursor:"pointer"}} className='list' onClick={() => setdropdownMenu(!dropdownMenu)} />
                                 {dropdownMenu ? <div className='dropdown2' ref={dropdownRef}>
-                                    <NavLink className='navlink' to='/allproducts'><p className='para4' >All Products </p></NavLink>
+                                   {user.email=="shray@gmail.com"?<NavLink className='navlink' to='/allproducts'><p className='para4' >All Products </p></NavLink>:""}
                                     <NavLink className='navlink' to='/orders'><p className='para4' >Your Orders </p></NavLink>
                                     {user.email=="shray@gmail.com"?<NavLink className='navlink' to='/handleOrders'><p className='para4' >Handle Orders </p></NavLink>:""}
                                     <NavLink className='navlink' to='/address'> <p className='para4'>Address Book</p></NavLink>

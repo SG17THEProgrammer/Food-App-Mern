@@ -35,7 +35,6 @@ const getCartItems = () => {
 
 
       let isLoggedIn = !!token; //token hai true hojayega isLoggedIn agar nhi hai toh isLoggedIn false ho jayega
-  //  //console.log(token);
    //console.log("isLoggedin ", isLoggedIn);  
  
    const LogoutUser = () => {
