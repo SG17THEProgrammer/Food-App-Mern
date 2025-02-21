@@ -86,9 +86,10 @@ useEffect(() => {
                     otherReview && otherReview.map(otherReview => (<>
                         <div key={otherReview._id} className='review'>
                             {/* <p>Review by {review.userName===user.name?"You":review.userName}</p> */}
-                            <p>Review by {otherReview.userName}</p>
                             <p style={{marginBottom:"4px"}}>Rating: {otherReview.rating}⭐</p>
                             <p>Comment: {otherReview.comment}</p>
+
+                            <p style={{fontFamily:"'Roboto', sans-serif" , fontWeight:"550" , textAlign:"right", paddingRight:"5px"}}>~{otherReview.userName}</p>
                             
                         </div>
                         

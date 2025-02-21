@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../components/Auth'
 import { useNavigate, useParams } from 'react-router-dom';
 import '../css/EditUser.css'
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbar';
 import { toast } from 'react-toastify';
 const EditUser = () => {
     

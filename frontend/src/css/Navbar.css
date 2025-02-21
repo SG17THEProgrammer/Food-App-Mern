@@ -32,6 +32,7 @@
   padding: 0px 10px;
   background-color: #FDF0D1;
   border: 1px solid lightsalmon;
+  width: auto;
 }
 
 .btn:hover {

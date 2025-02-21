@@ -84,7 +84,15 @@
     top: 57%;
     left: 65%;
     font-size: 20px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 20px;
+
+}
+.catRat{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid red; */
+    height: 30px;
 
 }

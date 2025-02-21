@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Navbar from '../../components/navbar'
+import Navbar from '../../components/Navbar'
 import '../../css/Auth/Login.css'
 import '../../css/Auth/Register.css'
 // import img from '../images/bg-registration-form-3.jpg'

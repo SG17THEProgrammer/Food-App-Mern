@@ -76,10 +76,10 @@ const payment = async (req, res) => {
                     
                 }
             },
-            // success_url: `http://localhost:5173/success`, 
-            // cancel_url: `http://localhost:5173/failed`,
-            success_url: `http://localhost:5173/verify?success=true&orderId=${newOrder._id}`, 
-            cancel_url: `http://localhost:5173/verify?success=false&orderId=${newOrder._id}`,
+            // success_url: `${process.env.Frontend_URL}/success`, 
+            // cancel_url: `${process.env.Frontend_URL}/failed`,
+            success_url: `${process.env.Frontend_URL}/verify?success=true&orderId=${newOrder._id}`, 
+            cancel_url: `${process.env.Frontend_URL}/verify?success=false&orderId=${newOrder._id}`,
         
         };
         const { country } = customerInfo.address;

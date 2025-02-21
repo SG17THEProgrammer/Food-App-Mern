@@ -7,7 +7,7 @@
     width: 60px;
     height: 240px;
     background-color: crimson;
-    /* color: white; */
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,6 +23,7 @@
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    
 }
 
 .reviews-popup {
@@ -52,14 +53,13 @@
     transform: translateY(-50%) translateX(0); 
 }
 .review{
-    border: 1px solid red ;
+    /* border: 1px solid red ; */
     border-radius: 20px;
     margin-bottom: 20px;
     background-color: antiquewhite;
     padding:5px 10px;
     border-top-left-radius: 8px;
     box-shadow: rgba(139, 69, 19, 0.17) 0px -23px 25px 0px inset, rgba(139, 69, 19, 0.15) 0px -36px 30px 0px inset, rgba(139, 69, 19, 0.1) 0px -79px 40px 0px inset, rgba(139, 69, 19, 0.06) 0px 2px 1px, rgba(139, 69, 19, 0.09) 0px 4px 2px, rgba(139, 69, 19, 0.09) 0px 8px 4px, rgba(139, 69, 19, 0.09) 0px 16px 8px, rgba(139, 69, 19, 0.09) 0px 32px 16px;
-
 }
 
 
@@ -92,10 +92,10 @@
     transition: box-shadow 0.3s ease-in-out;
 }
 
-.glowing-border:hover {
-    box-shadow: 0 0 20px rgba(247, 153, 116, 0.7),  /* Brighter tan glow */
+/* .glowing-border:hover {
+    box-shadow: 0 0 20px rgba(247, 153, 116, 0.7), 
                 0 0 30px rgba(229, 167, 86, 0.7), 
                 0 0 40px rgba(210, 180, 140, 0.7), 
                 0 0 50px rgba(157, 134, 104, 0.7), 
                 0 0 60px rgba(156, 132, 100, 0.7);
-}
+} */

@@ -62,13 +62,27 @@ const Home = () => {
                       <div className="col-md-30">
                         <div className="card-body ">
                           <h5 className="card-name" style={{ marginBottom: "3px" }}>{name} </h5>
+                          <div className='catRat'>
                           <p className="card-text" style={{ fontSize: '16px', color: "#BF3131", marginBottom: "3px" }}>{category}</p>
+                              <p style={{marginTop:"15px"}}> 
+                                                            <FaStar style={{fontSize:"13px", color:"red",marginRight:"3px",marginBottom:"3px"}}/>
+                              {rating}</p>
+
+                          </div>
+
                           <p className="card-text"><small className="text-muted" style={{ marginBottom: "-10px", fontSize: "15px" }}>Price: {<FormatPrice price={price}></FormatPrice>}
                           </small></p>
+
+                              {/* <FaStar style={{fontSize:"15px", color:"red"}}/> */}
+
+
                           <div className='rating1'>
-                              <FaStar style={{fontSize:"15px", color:"red",marginRight:"2px"}}/>
-                            <p style={{marginTop:"-1px"}}>
-                              {rating}</p>
+                              <div>
+                              </div>
+                              <div>
+
+                            
+                              </div>
                               {/* <i className="fa-solid fa-star fa-xs"></i> */}
                           </div>
                           {/* <button className='btn' style={{ marginLeft: "-10px", marginTop: "10px" }}>Add to Cart</button> */}

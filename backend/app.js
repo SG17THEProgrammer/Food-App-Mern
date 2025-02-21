@@ -7,7 +7,7 @@ const routes = require('./src/Routes/route');
 const app = express();
 
 const corsOptions = {
-    origin: process.env.Frontend_URL || 'http://localhost:5173',
+    origin: process.env.Frontend_URL,
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
 };

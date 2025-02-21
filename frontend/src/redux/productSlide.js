@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useAuth } from "../components/Auth";
+// import { useAuth } from "../components/Auth";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 
@@ -54,9 +54,13 @@ export const productSlice = createSlice({
       localStorage.setItem(userId, JSON.stringify(cartItem));
       //window.location.reload();
       toast.success("Item Deleted");
+
+      
       
     },
     increaseQty: (state, action) => {
+
+
       const userId = action.payload[1];
       const itemId = action.payload[0];
       let cartItem= JSON.parse(localStorage.getItem(userId));
@@ -82,9 +86,10 @@ export const productSlice = createSlice({
       cartItem[index].total = total;
       localStorage.setItem(userId, JSON.stringify(cartItem));
       //window.location.reload();
-      
+
     },
     decreaseQty: (state, action) => {
+
       const userId = action.payload[1];
       const itemId = action.payload[0];
       let cartItem= JSON.parse(localStorage.getItem(userId));
@@ -107,6 +112,9 @@ export const productSlice = createSlice({
       //window.location.reload();
 
       }
+      else{
+        toast.error("Remove item to make quantity 0");
+      }
     },
     clearCart:(state,action) => {
       //console.log(action.payload)
@@ -115,12 +123,11 @@ export const productSlice = createSlice({
       }
       else{
         localStorage.removeItem(action.payload);
-      setTimeout(() => {
-        //window.location.reload();
-        navigate("/cart")
-        // state.cartItem = [];
-      },1000)
       toast.success("Cart cleared");
+      return {
+        ...state,
+        cartItem: []
+      };
     }
     },
     logoutUser:(state) => {

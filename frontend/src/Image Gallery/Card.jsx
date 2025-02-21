@@ -48,10 +48,10 @@ const Card = ({ id, image, name, price, category, rating }) => {
     return (
         <>
 
-            <div className="card mb-5" key={id} style={{ maxWidth: '270px', height: "fit-content", boxShadow: '10px 10px 8px #888888', backgroundColor: "#FFF7D4", borderRadius: "4px", marginLeft: "40px" }}>
+            <div className="card mb-5" key={id} style={{ maxWidth: '260px', height: "fit-content", boxShadow: '10px 10px 8px #888888', backgroundColor: "#FFF7D4", borderRadius: "4px", marginLeft: "40px" }}>
                 <div className="row">
 
-                    <div className="col-md-4 ctn">
+                    <div className="col-md-12 ctn">
                         <NavLink style={{ textDecoration: "none", color: "black" }}
                             to={`/menu/${id}`}
                             onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}
@@ -62,27 +62,29 @@ const Card = ({ id, image, name, price, category, rating }) => {
                             </div>
                         </NavLink>
                     </div>
-                    <div className="col-md-8">
-                        <div className="card-body " style={{ width: "270px" }}>
+                    <div className="col-md-12">
+                        <div className="card-body " style={{ border:"1px solid red"}}>
                             <h4 className="card-name">{name} </h4>
                             <h5 className="card-text" style={{ color: "#BF3131" }}>{category}</h5>
                             <h5 style={{ marginBottom: "15px" }} className="card-text"><small className="text-muted" >Price: {<FormatPrice price={price}></FormatPrice>}  </small></h5>
                             {/* <h5 style={{position:"absolute" , left:"170px" , bottom:"47px" , fontSize:"18px "}}> <i className="fa-solid fa-star fa-xs" style={{margin:"6px 30px 0 0" ,color: "#BF3131"}}></i>
 {rating}</h5> */}
 
-                            <button className='btn' style={{ marginLeft: "-8px", marginBottom: "10px" }}
+                                <div className='btnDiv1'>
+
+                            <button className='btn' style={{ marginBottom: "5px" }}
                                 onClick={handleAddCartProduct}
 
                             >Add to Cart</button>
 
 
-                            <NavLink to="/cart"><button className='btn' style={{ marginLeft: "10px", marginBottom: "10px" }}
+                            <NavLink to="/cart"><button className='btn' style={{ marginBottom: "5px" }}
 
                                 onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>Go to Cart</button></NavLink>
                             {user.email === "shray@gmail.com" ?
-                                <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{ marginLeft: "-8px" }}
-
+                                <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' 
                                 >Edit Product</button></NavLink> : ""}
+                                </div>
                             {/* {user.email === "shray@gmail.com" ?
                                 <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{ marginLeft: "8px" }}
 

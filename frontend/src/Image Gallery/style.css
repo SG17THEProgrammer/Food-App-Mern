@@ -12,7 +12,7 @@ img {
 
 .mainDiv {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   align-items: center;
   margin: 30px 20px 20px 0px;
@@ -50,10 +50,10 @@ img {
   transform: rotate(360deg);
 }
 
-.ctn {
+/* .ctn {
   position: relative;
   width: 100%;
-}
+} */
 
 .img2 {
   opacity: 1;
