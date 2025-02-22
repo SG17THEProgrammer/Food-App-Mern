@@ -195,7 +195,7 @@ const FoodMall = () => {
           }
           <br /><br />
 
-          <h5>Price Range</h5>
+          {/* <h5>Price Range</h5> */}
           {/* <p>
             <FormatPrice price={sliderValue.price}></FormatPrice>
           </p>

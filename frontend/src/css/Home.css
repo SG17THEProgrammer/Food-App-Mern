@@ -6,12 +6,12 @@
 }
 
 .left {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 20px 0px 0px 35px;
 }
 
 .right {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 20px 38px 0px 0px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -90,7 +90,7 @@
 }
 .catRat{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     /* border: 1px solid red; */
     height: 30px;

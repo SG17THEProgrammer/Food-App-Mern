@@ -41,7 +41,7 @@ const Address = ({title}) => {
 
     useEffect(()=>{
         getDeliveryAddress()
-    },[user._id])
+    },[showComponent,delAddress])
 
   return (
     <div>
@@ -49,7 +49,7 @@ const Address = ({title}) => {
             <div className="inner1" onClick={handleClick}>
              <div style={{fontSize:"15px"}} className='address' ><FaPlus />  Add Address <IoIosArrowForward style={{marginLeft:"40px"}}/></div>
             </div>
-            {showComponent && <Delivery title={"address"}/>}
+            {showComponent && <Delivery title={"address"} setShowComponent={setShowComponent}/>}
             
     { title===undefined ?       <div className="ctn2">
             {delAddress?.length>0 ? delAddress.map((elem)=>{

@@ -5,29 +5,14 @@ import { useAuth } from '../Auth';
 import { IoTrashBin } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 const Review = ({productId,userName}) => {
-    const {user } = useAuth();
-    const [reviews, setReviews] = useState();
+    const {user,getReviews ,reviews} = useAuth();
+    // const [review , setReviews ] = useState(reviews);
     //console.log(reviews)
-    const myReview = reviews && reviews.length>0 ?reviews.filter(review => review.userName===user.name):""
+    const myReview = reviews && reviews?.length>0 ?reviews?.filter(review => review.userName===user.name):""
     //console.log(myReview)
-    const otherReview = reviews && reviews.length>0 ?reviews.filter(review => review.userName!=user.name):""
+    const otherReview = reviews && reviews?.length>0 ?reviews?.filter(review => review.userName!=user.name):""
     //console.log(otherReview)
-    const getReviews = async () => {
-        try {
-                const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/getReview?productId=${productId}&userName=${userName}`);
-                
-                const data = await response.json();
-                //console.log(data)
-                if (!response.ok) {
-                    setReviews([]);
-                }
-                else{
-                    setReviews(data.reviews);
-                }
-            } catch (err) {
-                toast.error(err.message);
-            }
-        };
+    
 
         const deleteReview = async (reviewId) => {
             try {
@@ -37,7 +22,8 @@ const Review = ({productId,userName}) => {
     //console.log(response)
                 const data = await response.json();
                 if (response.ok) {
-                    setReviews(reviews.filter(review => review._id !== reviewId));
+                    // setReviews(reviews.filter(review => review._id !== reviewId));
+                    getReviews(productId,userName)
                     toast.success('Review deleted successfully');
                     // setTimeout(() =>{
                     //     //window.location.reload();
@@ -51,8 +37,8 @@ const Review = ({productId,userName}) => {
         };
 
 useEffect(() => {
-        getReviews();
-    }, [productId, userName]);
+        getReviews(productId,userName);
+    }, []);
 
 
     return (
@@ -60,7 +46,7 @@ useEffect(() => {
             <div className="button-text">REVIEwS</div>
             <div className="reviews-popup glowing-border ">
             <div className='myReview '>
-            <h5 style={{textDecoration:"underline",margin:"0 0 13px 3px" ,fontFamily:"cursive", fontWeight:"bolder"}}>Your review :  {myReview && myReview.length>0?myReview.length:0} </h5>
+            <h5 style={{margin:"0 0 13px 3px" ,fontFamily:"cursive", fontWeight:"bolder"}}><u>Your review</u>:  {myReview && myReview.length>0?myReview.length:0} </h5>
 
             { myReview && myReview.length===0? (
                     <p style={{fontWeight:"900",marginLeft:"5px",fontFamily:"cursive"}}>No reviews found </p>
@@ -79,7 +65,7 @@ useEffect(() => {
 
             </div>
             <div>
-            <h5 style={{textDecoration:"underline",margin:"0 0 13px 3px"}}>Other reviews: {otherReview && otherReview.length>0?otherReview.length:0} </h5>
+            <h5 style={{margin:"0 0 13px 3px"}}><u>Other reviews</u> : {otherReview && otherReview.length>0?otherReview.length:0} </h5>
                 { otherReview && otherReview.length === 0 ? (
                     <p style={{fontWeight:"900",marginLeft:"5px"}}>No reviews found </p>
                 ) : (

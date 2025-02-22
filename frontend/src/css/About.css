@@ -109,7 +109,7 @@ h6 {
     display: inline-block;
 }
 .outerDiv1{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 95px 40px;
     display: flex;
     justify-content: center;

@@ -24,6 +24,11 @@ const Cart = () => {
     }
   };
 
+  const handleClearCart=()=>{
+    dispatch(clearCart(user._id))
+    getCartItems()
+  }
+
     useEffect(() => {
       getCartItems()
     },[user])
@@ -41,7 +46,7 @@ const Cart = () => {
           <div className="col-lg-9">
             <div className="card border" style={{ width: '800px' }}>
               <div className="m-4">
-                <button className="btn" style={{ position: 'absolute', right: '0', top: '3px' }} onClick={() => dispatch(clearCart(user._id))}>
+                <button className="btn" style={{ position: 'absolute', right: '0', top: '3px' }} onClick={handleClearCart}>
                   Clear Cart
                 </button>
                 <h4 className="card-title mb-4" style={{ textDecoration: 'underline' }}>

@@ -11,7 +11,7 @@ import Address from './Address'
 import State from '../../components/Location/State'
 import axios from "axios"
 
-const Delivery = ({title}) => {
+const Delivery = ({title ,setShowComponent}) => {
   
 
   const [delAddress , setDelAddress] = useState();
@@ -213,6 +213,9 @@ const totalAmount = finalPrice+shippingCharges;
           state:""
         });
 
+        setShowComponent(false)
+        getDeliveryAddress()
+
         {title=="address"? "":handlePayment()}
         {title=="address"?toast.success(resData.message[0]):""}
       }
@@ -261,13 +264,13 @@ const totalAmount = finalPrice+shippingCharges;
     useEffect(()=>{
       getDeliveryAddress()
       fetchDelMan()
-  },[user._id])
+  },[title])
     
 
   return (
     <div>
     <div style={{zIndex:"1000"}}><Navbar></Navbar></div>
-  {title=="address"?"": <div className='add'> <NavLink to='/address' style={{textDecoration:"none",color:"black"}}><Address title={'del'}></Address></NavLink></div>}
+  {title=="address"?"": <div className='add'> <NavLink to='/address' style={{textDecoration:"none",color:"black"}}><Address title={'del'} ></Address></NavLink></div>}
           <div className="centered-container">
         <div className={title=="address"? "row ": "row container"} style={{backgroundColor:title=="address"?"#ddd0c8" :"brown" , width:"80vw" , height:"fit-content" , marginBottom:"100px" ,marginTop:title=="address"?"20px":"100px"}}>
             <div className={title=="address"?"col-md-8 mb-4 popup-background  popup-content":"col-md-8 mb-4"} style={{zIndex:""}}  >

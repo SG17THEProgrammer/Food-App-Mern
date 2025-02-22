@@ -14,7 +14,7 @@ const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
 //console.log(productDisplay)
 
 
-    const {user} =useAuth()
+    const {user,getReviews} =useAuth()
     const navigate = useNavigate()
 
     
@@ -53,11 +53,9 @@ const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
 
 			if (response.ok) {
                 toast.success(resData.message[0]);
-                // navigate("/home")
-                setTimeout(() =>{
-                    //window.location.reload(); 
-                },2000)
-               productDisplay?navigate(`/mallmenu/${productDisplay._id}`): navigate(`/menu/${productId}`)            
+               
+            //    productDisplay?navigate(`/mallmenu/${productDisplay._id}`): navigate(`/menu/${productId}`) 
+            getReviews(productId,user.name)
        
 				setReview({
 					rating: 0,

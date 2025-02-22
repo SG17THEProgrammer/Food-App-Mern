@@ -117,19 +117,19 @@ export const productSlice = createSlice({
       }
     },
     clearCart:(state,action) => {
-      //console.log(action.payload)
-      if(localStorage.getItem(action.payload)===null){
-        toast.error("Cart is already empty");
-      }
-      else{
-        localStorage.removeItem(action.payload);
-      toast.success("Cart cleared");
-      return {
-        ...state,
-        cartItem: []
-      };
-    }
-    },
+        if(localStorage.getItem(action.payload)===null){
+          toast.error("Cart is already empty");
+        }
+        else{
+          localStorage.setItem(action.payload, null); 
+          toast.success("Cart cleared");
+          return {
+            ...state,
+            cartItem: []
+          };
+        }
+      
+      },
     logoutUser:(state) => {
       return {
         ...state,
@@ -137,8 +137,9 @@ export const productSlice = createSlice({
       };
     },
     setCartItem: (state, action) => {
+      if(action.payload){
       state.cartItem = [...action.payload];
-      
+      }
     },
     // setUser: (state, action) => {
     //   state.user = action.payload;

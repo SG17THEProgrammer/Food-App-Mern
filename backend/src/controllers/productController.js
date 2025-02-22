@@ -12,14 +12,15 @@ const addnewitem = async (req, res) => {
             delete req.body.database;
             const data = await Products(req.body)
             await data.save()
+            res.send({ message: "Upload successfully" , allItems:data})
         }
         if (req.body.database === "mallitem") {
             delete req.body.database
           const data = await mallProducts(req.body)
           await data.save()
+          res.send({ message: "Upload successfully",allItems:data })
 
         }
-        res.send({ message: "Upload successfully" })
 
     } catch (error) {
         res.send({ message: "Error while uploading" })
@@ -84,7 +85,8 @@ try {
   }
 
   await Products.findByIdAndDelete({_id:id});
-  res.status(200).json({msg:"Product deleted successfully"})
+  const items = await Products.find()
+  res.status(200).json({msg:"Product deleted successfully" , items:items})
 
 
 } catch (error) {
@@ -104,7 +106,9 @@ try {
   }
 
   await mallProducts.findByIdAndDelete({_id:id});
-  res.status(200).json({msg:"Product deleted successfully"})
+
+  const mallItems = await mallProducts.find()
+  res.status(200).json({msg:"Product deleted successfully" , mallItems:mallItems})
 
 
 } catch (error) {

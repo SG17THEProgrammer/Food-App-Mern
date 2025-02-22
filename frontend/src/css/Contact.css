@@ -21,14 +21,15 @@
 }
 
 .ctn1 {
-  border: 1px solid black ;
+  /* border: 1px solid black ; */
   height: 80vh;
   margin: 0 200px;
 }
 
 .otrDiv {
   height: fit-content;
-  border: 1px solid red ;
+  /* border: 1px solid red ;
+   */
   margin: 100px 40px 0 40px;
   overflow: hidden;
 }
@@ -104,7 +105,7 @@
 }
 
 .mapDiv {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin: 170px 40px 0 40px;
   width: 95%;
 

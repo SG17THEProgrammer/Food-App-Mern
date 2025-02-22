@@ -38,6 +38,7 @@ const AllProducts = () => {
             const response = await axios.post(`${import.meta.env.VITE_BACKEND_API}/deleteProduct`,{id})
             
             console.log(response)
+            setItems(response.data.items);
             toast.success(response.data.msg)
             
             
@@ -51,6 +52,7 @@ const AllProducts = () => {
             const response = await axios.post(`${import.meta.env.VITE_BACKEND_API}/deleteMallProduct`,{id})
 
             console.log(response)
+            setmallItems(response.data.mallItems)
             toast.success(response.data.msg)
             
 
@@ -77,8 +79,8 @@ const AllProducts = () => {
                     <h4>Freshly prepared food items / Order-to-cook food items</h4>
                     <div className='searchItems'>
 
-                    <h5>Total Items : {productData.length}</h5>
-                    <Search productData={productData} setItems={setItems}></Search>
+                    <h5>Total Items : {items?.length}</h5>
+                    <Search productData={items} setItems={setItems}></Search>
                     </div>
                     <div className='tblforFreshfood'>
                         <table>
@@ -92,7 +94,7 @@ const AllProducts = () => {
                                 <th>Edit Product</th>
                                 <th>Delete Product</th>
                             </tr>
-                            {items.length>0?items.map((elem,idx)=>{
+                            {items?.length>0?items.map((elem,idx)=>{
                                 const {name, category, price, description,rating,_id} = elem;
                                 return <>
                                 <tr>
@@ -124,7 +126,7 @@ const AllProducts = () => {
                 <div className='packfood'>
                     <h4>Groceries / Mall Products</h4>
                     <div className='searchItems'>
-                    <h5>Total Items : {mallproductData.length}</h5>
+                    <h5>Total Items : {mallproductData?.length}</h5>
                     <Search mallproductData={mallproductData} setItems={setmallItems} ></Search>
                     </div>
                     <div className='tblforPackfood'>
@@ -139,7 +141,7 @@ const AllProducts = () => {
                                 <th>Edit Product</th>
                                 <th>Delete Product</th>
                             </tr>
-                            {mallitems.length>0 ? mallitems.map((elem,idx)=>{
+                            {mallitems?.length>0 ? mallitems?.map((elem,idx)=>{
                                 const {name, category, price, description,rating,_id} = elem;
                                 return <>
                                 <tr>

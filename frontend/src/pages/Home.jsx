@@ -6,7 +6,7 @@ import Gallery from '../Image Gallery/Gallery'
 import Slider from '../components/Slider'
 import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../components/Footer'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import FormatPrice from '../Helpers/FormatPrice'
 import { fetchCartItems } from '../redux/productSlide'
 import { useAuth } from '../components/Auth'
@@ -15,7 +15,9 @@ import { FaStar } from "react-icons/fa";
 import Loader from '../components/Loader'
 const Home = () => {
 
-  const { user, getCartItems } = useAuth()
+  const { user, getCartItems ,getReviews} = useAuth()
+  const navigate = useNavigate()
+
   const productCartItem = useSelector((state) => state.product.cartItem);
   //console.log(productCartItem)
 
@@ -23,6 +25,12 @@ const Home = () => {
   // //console.log(productData)
   const homeProductList = productData.slice(0, 6)
 
+  const handleReadMore=(id)=>{
+    // e.preventDefault();
+    navigate(`/menu/${id}`)
+    window.scrollTo({ top: "0", behavior: "smooth" })
+    getReviews(id,user?.name)
+  }
 
   useEffect(() => {
     getCartItems();
@@ -48,22 +56,20 @@ const Home = () => {
               const { id, name, image, category, price, _id, rating } = val;
               return (
 
-                <NavLink style={{ textDecoration: "none", color: "black" }}
-                  to={`/menu/${_id}`}
-                  onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>
-                  <div className="card mb-5" key={id} style={{ maxWidth: '200px', height: "240px", boxShadow: '10px 10px 8px #888888', marginRight: "20px", backgroundColor: "#FFF7D4" }}>
+                
+                  <div className="card mb-5" key={id} style={{ maxWidth: '200px', height: "240px", boxShadow: '10px 10px 8px #888888', marginRight: "20px", backgroundColor: "#FFF7D4" }} onClick={()=>handleReadMore(_id)}>
                     <div className="">
 
                       <div className="col-md-14">
 
-                        <img src={image} className="img-fluid img" alt="error" style={{}} />
+                        <img src={image} className="img-fluid img" alt="error" style={{cursor:"pointer"}} />
 
                       </div>
                       <div className="col-md-30">
                         <div className="card-body ">
                           <h5 className="card-name" style={{ marginBottom: "3px" }}>{name} </h5>
                           <div className='catRat'>
-                          <p className="card-text" style={{ fontSize: '16px', color: "#BF3131", marginBottom: "3px" }}>{category}</p>
+                          <p className="card-text" style={{ fontSize: '16px', color: "#BF3131", margin: "0 15px 0px 0" }}>{category}</p>
                               <p style={{marginTop:"15px"}}> 
                                                             <FaStar style={{fontSize:"13px", color:"red",marginRight:"3px",marginBottom:"3px"}}/>
                               {rating}</p>
@@ -91,7 +97,6 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                </NavLink>
 
               )
             })

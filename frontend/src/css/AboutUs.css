@@ -39,7 +39,7 @@ body {
 
   }
   .outerDiv{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 95px 40px;
    overflow: hidden;
   }

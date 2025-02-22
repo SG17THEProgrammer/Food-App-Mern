@@ -167,8 +167,8 @@ const Reservation = () => {
                                                     <option value="1" style={{ backgroundColor: "#B2B2B2" }}>1</option>
                                                     <option value="2" style={{ backgroundColor: "#B2B2B2" }}>2</option>
                                                     <option value="3" style={{ backgroundColor: "#B2B2B2" }}>3</option>
-                                                    <option value="3" style={{ backgroundColor: "#B2B2B2" }}>4</option>
-                                                    <option value="3" style={{ backgroundColor: "#B2B2B2" }}>5</option>
+                                                    <option value="4" style={{ backgroundColor: "#B2B2B2" }}>4</option>
+                                                    <option value="5" style={{ backgroundColor: "#B2B2B2" }}>5</option>
                                                 </select>
                                                 {/* <span className="select-arrow"></span> */}
                                                 <FaArrowDown style={{ position: "absolute", left: "80%", bottom: "12px", color: "silver" }} />

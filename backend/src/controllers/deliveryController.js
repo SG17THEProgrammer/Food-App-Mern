@@ -30,7 +30,7 @@ const delivery=async(req,res)=>{
           }
         const details = new delivery_add(delData);
         await details.save();
-        return res.status(200).json({ message:[ "delivery details saved successfully "] });
+        return res.status(200).json({ message:[ "Delivery details saved successfully "] });
 
         
 

@@ -4,13 +4,12 @@ import { toast } from 'react-toastify'
 import { ImagetoBase64 } from '../utility/ImagetoBase64'
 import '../css/Admin.css'
 import { FaUpload } from 'react-icons/fa'
-import { useAuth } from '../components/Auth'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Admin = () => {
-  const {user,getCartItems} =useAuth()
-  const productCartItem = useSelector((state) => state.product.cartItem);
-
+  const navigate = useNavigate()
+  
   const [foodData, setFoodData] = useState({
     name: "",
     category: "",
@@ -63,6 +62,11 @@ const Admin = () => {
       const res = await response.json()
       //console.log(res)
       toast.success(res.message)
+      setTimeout(() =>{
+        window.location.reload()
+        navigate('/allproducts')
+      },2000)
+
 
       setFoodData(() => {
         return {
@@ -80,9 +84,7 @@ const Admin = () => {
       toast.error("Enter all required Fields")
     }
   }
-  useEffect(()=>{
-    getCartItems();
-  },[user,productCartItem])
+
 
   return (
     <>

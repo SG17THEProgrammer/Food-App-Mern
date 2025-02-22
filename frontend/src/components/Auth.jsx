@@ -8,6 +8,8 @@ export const AuthProvider = ({ children }) => {
     const [team , setTeam] = useState([]);
     const [allUsers , setAllUsers] = useState();
     const [cartItems,setCartItems] =useState()
+        const [reviews, setReviews] = useState();
+    
 
 
 
@@ -109,6 +111,23 @@ const getCartItems = () => {
     }
   }
 
+  const getReviews = async (productId,userName) => {
+    console.log(productId,userName)
+          try {
+                  const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/getReview?productId=${productId}&userName=${userName}`);
+                  
+                  const data = await response.json();
+                  console.log(data)
+                  if (!response.ok) {
+                      setReviews([]);
+                  }
+                  else{
+                      setReviews(data.reviews);
+                  }
+              } catch (err) {
+                  toast.error(err.message);
+              }
+          };
 
 
   
@@ -125,7 +144,7 @@ const getCartItems = () => {
 
     return (
         <>
-        <AuthContext.Provider value={{ isLoggedIn, storeTokensInLS, LogoutUser ,user ,team,saveCartItemsToLS,cartItems,getCartItems,allUsers}}>
+        <AuthContext.Provider value={{ isLoggedIn, storeTokensInLS, LogoutUser ,user ,team,saveCartItemsToLS,cartItems,getCartItems,allUsers,getReviews,reviews}}>
           {children}
         </AuthContext.Provider>
         </>

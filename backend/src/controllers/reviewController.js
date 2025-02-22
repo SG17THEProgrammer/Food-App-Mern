@@ -52,9 +52,8 @@ const postReview = async (req, res) => {
           return res.status(500).json({ message:[ "Product Id not found "] });
   
         }
-  
-  
-        return res.status(200).json({ message:[ "Review saved successfully"] });
+          
+        return res.status(200).json({ message:[ "Review saved successfully"]});
   
     } catch (error) {
       console.log(error)

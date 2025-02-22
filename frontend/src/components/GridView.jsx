@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import FormatPrice from '../Helpers/FormatPrice'
 import "../css/FoodMall.css"
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,9 +10,9 @@ import { FaStar } from 'react-icons/fa'
 
 
 const GridView = ({ name, category, price, rating, image, id }) => {
-    const{user,isLoggedIn} = useAuth()
+    const{user,isLoggedIn,getReviews} = useAuth()
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
     const handleAddCartProduct = (e) => {
         isLoggedIn?dispatch(addCartItem({
             _id: id,
@@ -26,20 +26,27 @@ const GridView = ({ name, category, price, rating, image, id }) => {
     const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
     const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
 // //console.log(productDisplay)
+
+const handleReadMore=(e)=>{
+    e.preventDefault();
+    navigate(`/mallmenu/${id}`)
+    window.scrollTo({ top: "0", behavior: "smooth" })
+    getReviews(id,user?.name)
+}
     return (
         <>
             <div className="card mb-4  " key={id} style={{ maxWidth: '245px', height: "340px", boxShadow: '10px 10px 8px #888888', margin: "10px 0 0px 20px", backgroundColor: "#FFF7D4" }}>
 
                 <div className="col-md-14 ctn">
-                    <NavLink style={{ textDecoration: "none", color: "black" }}
+                    {/* <NavLink style={{ textDecoration: "none", color: "black" }}
                         to={`/mallmenu/${id}`}
-                        onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>
-                        <img src={`${image}`} className="img8 " alt="error" style={{ width: "90%", margin: "10px 0 0 11.5px" }} />
-                        <div class="middle">
+                        onClick={handleReadMore}> */}
+                        <img src={`${image}`} className="img8 " alt="error" style={{ width: "90%", margin: "10px 0 0 11.5px" ,cursor:"pointer" }} onClick={handleReadMore} />
+                        <div class="middle" onClick={handleReadMore}>
                             <div class="txt">Read More</div>
                         </div>
 
-                    </NavLink>
+                    {/* </NavLink> */}
 
 
 
