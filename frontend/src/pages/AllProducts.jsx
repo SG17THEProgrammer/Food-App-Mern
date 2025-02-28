@@ -9,26 +9,31 @@ import Search from '../components/Search';
 import axios from "axios"
 import { toast } from 'react-toastify';
 import FormatPrice from '../Helpers/FormatPrice';
+import { useAuth } from '../components/Auth';
 const AllProducts = () => {
 
+    const {allProducts,allMallProducts} = useAuth()
     
     const navigate = useNavigate()
-    const productData = useSelector((state) => state.product.productList);
-    const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
+    // const productData = useSelector((state) => state.product.productList);
+    // const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
+
+    // console.log(productData);
+    // console.log(mallproductData)
 
     
-    const [items, setItems] = useState(productData);
-    const [mallitems, setmallItems] = useState(mallproductData);
+    const [items, setItems] = useState(allProducts);
+    const [mallitems, setmallItems] = useState(allMallProducts);
 
     
     const editProd =(id)=>{
-        const productDisplay = productData.filter((elem) => elem._id === id)[0];
+        const productDisplay = allProducts.filter((elem) => elem._id === id)[0];
         
         navigate(`/edit/${productDisplay._id}`)
     }
 
     const editMallProd =(id)=>{
-        const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
+        const productDisplay = allMallProducts.filter((elem) => elem._id === id)[0];
         
         navigate(`/edit/${productDisplay._id}`)
     }
@@ -64,9 +69,9 @@ const AllProducts = () => {
 
     
     useEffect(() => {
-        setItems(productData);
-        setmallItems(mallproductData);
-    }, [productData,mallproductData]);
+        setItems(allProducts);
+        setmallItems(allMallProducts);
+    }, [allProducts, allMallProducts]);
 
     return (
         <>
@@ -84,7 +89,7 @@ const AllProducts = () => {
                     </div>
                     <div className='tblforFreshfood'>
                         <table>
-                            <tr>
+                            <tr className='pftr'>
                                 <th>S.No</th>
                                 <th>Name</th>
                                 <th>Category</th>
@@ -97,7 +102,7 @@ const AllProducts = () => {
                             {items?.length>0?items.map((elem,idx)=>{
                                 const {name, category, price, description,rating,_id} = elem;
                                 return <>
-                                <tr>
+                                <tr className='pftr'>
                                 <td>{++idx}</td>
                                 <td>{name}</td>
                                 <td>{category}</td>
@@ -126,12 +131,12 @@ const AllProducts = () => {
                 <div className='packfood'>
                     <h4>Groceries / Mall Products</h4>
                     <div className='searchItems'>
-                    <h5>Total Items : {mallproductData?.length}</h5>
-                    <Search mallproductData={mallproductData} setItems={setmallItems} ></Search>
+                    <h5>Total Items : {allMallProducts?.length}</h5>
+                    <Search mallproductData={allMallProducts} setItems={setmallItems} ></Search>
                     </div>
                     <div className='tblforPackfood'>
                     <table>
-                            <tr>
+                            <tr className='pftr'>
                                 <th>S.No</th>
                                 <th>Name</th>
                                 <th>Category</th>
@@ -144,7 +149,7 @@ const AllProducts = () => {
                             {mallitems?.length>0 ? mallitems?.map((elem,idx)=>{
                                 const {name, category, price, description,rating,_id} = elem;
                                 return <>
-                                <tr>
+                                <tr className='pftr'>
                                 <td>{++idx}</td>
                                 <td>{name}</td>
                                 <td>{category}</td>

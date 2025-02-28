@@ -18,6 +18,14 @@ const Cart = () => {
   const tax = Math.ceil(totalPrice * 0.12, 2);
   const finalPrice = Math.ceil(totalPrice + tax, 2);
 
+  // console.log(totalPriceceil)
+  // console.log(isNaN(totalPriceceil))
+  // console.log(tax)
+  // console.log(finalPrice)
+  // console.log(cartItems)
+  // console.log(cartItems?.length )
+
+
   const handlePurchase = () => {
     if (cartItems?.length === 0) {
       toast.error('No item in cart');
@@ -89,23 +97,23 @@ const Cart = () => {
             <div className="card col-lg-15">
               <div className="card-body">
                 SUMMARY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span style={{ textDecoration: 'underline' }}>{cartItems?.length} items</span>
+                <span style={{ textDecoration: 'underline' }}>{cartItems==null ? 0 : cartItems?.length} items</span>
               </div>
             </div>
             <div className="card shadow-0 border">
               <div className="card-body">
                 <div className="d-flex justify-content-between">
                   <p className="mb-2">Total price:</p>
-                  <p className="mb-2">{<FormatPrice price={totalPriceceil} />}</p>
+                  <p className="mb-2">{<FormatPrice price={isNaN(totalPriceceil)? 0 :totalPriceceil } />}</p>
                 </div>
                 <div className="d-flex justify-content-between">
                   <p className="mb-2">TAX:</p>
-                  <p className="mb-2 text-danger">+{<FormatPrice price={tax} />}</p>
+                  <p className="mb-2 text-danger">+{<FormatPrice price={isNaN(tax)? 0 :tax } />}</p>
                 </div>
                 <hr />
                 <div className="d-flex justify-content-between">
                   <p className="mb-2">Final price:</p>
-                  <p className="mb-2 fw-bold">{<FormatPrice price={finalPrice} />}</p>
+                  <p className="mb-2 fw-bold">{<FormatPrice price={isNaN(totalPrice)? 0 :totalPrice } />}</p>
                 </div>
 
                 <div className="mt-3">

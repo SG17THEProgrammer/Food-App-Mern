@@ -10,7 +10,7 @@ const Search = ({mallproductData,setItems,productData}) => {
     // } 
     const updtdItems = mallproductData ?mallproductData.filter((curElem) => {
       return curElem.name.toLowerCase().includes(parameter)
-    }):productData.filter((curElem) => {
+    }):productData?.filter((curElem) => {
         return curElem.name.toLowerCase().includes(parameter)
       })
     setItems(updtdItems);

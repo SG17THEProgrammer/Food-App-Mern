@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     }}
   >
     <AuthProvider>
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
         <Provider store={store}>
             <App />
             <ToastContainer
@@ -38,7 +38,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
             />
         </Provider>
-    </React.StrictMode>
+    {/* </React.StrictMode> */}
 </AuthProvider>
 </Auth0Provider>
 );

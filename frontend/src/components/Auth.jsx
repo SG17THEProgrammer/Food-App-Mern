@@ -1,14 +1,17 @@
 import { createContext, useContext ,useState,useEffect} from "react";
-import { logoutUser } from "../redux/productSlide";
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState("");
     const [team , setTeam] = useState([]);
     const [allUsers , setAllUsers] = useState();
     const [cartItems,setCartItems] =useState()
-        const [reviews, setReviews] = useState();
+    const [reviews, setReviews] = useState();
+    const [allProducts, setAllProducts] = useState();
+    const [allMallProducts, setMallProducts] = useState();
     
 
 
@@ -130,6 +133,30 @@ const getCartItems = () => {
           };
 
 
+          const getProducts=async()=>{
+            try {
+              const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/getproduct`)
+                  const resData = await res.json()
+              //     console.log(resData)
+              setAllProducts(resData)
+            } catch (error) {
+              console.log(error)
+            }
+          }
+
+
+          const getAllMallProducts=async()=>{
+            try {
+              const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/getMallproduct`)
+                  const resData = await res.json()
+              //     console.log(resData)
+              setMallProducts(resData)
+            } catch (error) {
+              console.log(error)
+            }
+          }
+
+
   
   
   
@@ -140,11 +167,13 @@ const getCartItems = () => {
     getCartItems();
     userAuthentication();
     getTeam();
+    getProducts()
+    getAllMallProducts()
   }, []);
 
     return (
         <>
-        <AuthContext.Provider value={{ isLoggedIn, storeTokensInLS, LogoutUser ,user ,team,saveCartItemsToLS,cartItems,getCartItems,allUsers,getReviews,reviews}}>
+        <AuthContext.Provider value={{ isLoggedIn, storeTokensInLS, LogoutUser ,user ,team,saveCartItemsToLS,cartItems,getCartItems,allUsers,getReviews,reviews,allProducts,allMallProducts,getProducts,getAllMallProducts}}>
           {children}
         </AuthContext.Provider>
         </>

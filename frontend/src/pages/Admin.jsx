@@ -4,11 +4,14 @@ import { toast } from 'react-toastify'
 import { ImagetoBase64 } from '../utility/ImagetoBase64'
 import '../css/Admin.css'
 import { FaUpload } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { setDataProduct } from '../redux/productSlide'
 
 const Admin = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   
   const [foodData, setFoodData] = useState({
     name: "",
@@ -60,10 +63,13 @@ const Admin = () => {
       })
 
       const res = await response.json()
-      //console.log(res)
+
+      console.log(res)
       toast.success(res.message)
+
+      dispatch(setDataProduct(res.allItems))
       setTimeout(() =>{
-        window.location.reload()
+        // window.location.reload()
         navigate('/allproducts')
       },2000)
 
@@ -89,7 +95,7 @@ const Admin = () => {
   return (
     <>
       <Navbar></Navbar>
-      <h2 style={{ margin:"90px 0 20px 40px" , textAlign:"center" ,textDecoration:"underline" ,fontFamily:"cursive"}}>Create Product</h2>
+      <h2 style={{ margin:"90px 0 20px 40px" , textAlign:"center" ,textDecoration:"underline" ,fontFamily:"cursive"}}>Add Product</h2>
       <div style={{ display: "flex", justifyContent: "center",marginTop:"0px" }}>
         <div className="topDiv">
           <div className='leftDiv'>
@@ -139,8 +145,8 @@ const Admin = () => {
                     <option value="Rice">Rice</option>
                   </select>:<select className='dropdown' id='category' name='category' required onChange={handleOnChange}
                     value={foodData.category}>
-                    {!foodData.database==null?<option value="other" >Select Database</option>:
-                    <option value="other" >Choose Database First</option>}
+                    {!foodData.database==null?<option value="other" >Select Category</option>:
+                    <option value="other" >Choose Item Type First</option>}
                     </select>}
 
 

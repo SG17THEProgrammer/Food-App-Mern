@@ -12,13 +12,17 @@ const addnewitem = async (req, res) => {
             delete req.body.database;
             const data = await Products(req.body)
             await data.save()
-            res.send({ message: "Upload successfully" , allItems:data})
+
+            const allData = await Products.find()
+            res.send({ message: "Upload successfully" , allItems:allData})
         }
         if (req.body.database === "mallitem") {
             delete req.body.database
           const data = await mallProducts(req.body)
           await data.save()
-          res.send({ message: "Upload successfully",allItems:data })
+
+          const allData = await mallProducts.find()
+          res.send({ message: "Upload successfully",allItems:allData })
 
         }
 
@@ -35,6 +39,7 @@ const edititem = async (req, res) => {
   try {
     if(req.body.database === "fooditem") {
     const updatedProduct = await Products.findByIdAndUpdate(id, updateData);
+    
     if (!updatedProduct) {
       return res.status(404).json({ message: "Product not found" });
     }

@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import '../css/EditProduct.css'
 import Navbar from '../components/navbar'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from '../components/Auth'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FaUpload } from 'react-icons/fa'
 import { ImagetoBase64 } from '../utility/ImagetoBase64'
 // import CustomSelect from '../components/CustomSelect'
 import { toast } from 'react-toastify'
+import { setmallDataProduct } from '../redux/mallproductSlice'
+import { setDataProduct } from '../redux/productSlide'
 
 
 const EditProduct = () => {
   const navigate = useNavigate()
-  const {user,getCartItems} =useAuth()
+  const {allMallProducts,allProducts,getAllMallProducts,getProducts} =useAuth()
+
   const { id } = useParams();
   //console.log(id)
-  const productCartItem = useSelector((state) => state.product.cartItem);
-  const foodproductData = useSelector((state) => state.product.productList)
-  const mallproductData = useSelector((state) => state.mallproduct.mallproductList)
+  
 
-  const allproducts = [...foodproductData, ...mallproductData];
+
+  const allproducts = [...(Array.isArray(allProducts) ? allProducts : []), ...(Array.isArray(allMallProducts) ? allMallProducts : [])];
 
   const productDisplay = allproducts?.filter((elem) => elem._id === id)[0];
-    // console.log(productDisplay)
+    console.log(productDisplay)
 
   const [productData, setProductData] = useState(true)
 
@@ -90,21 +92,26 @@ const EditProduct = () => {
       })
 
       const res = await response.json()
-      //console.log(res)
+      console.log(res)
+
       toast.success(res.message)
-      setTimeout(() =>{
-        //window.location.reload()
-        navigate("/")
-      },2000)
-      // setcardProduct(() => {
-      //   return {
-      //     name: "",
-      //     category: "",
-      //     image: "",
-      //     price: "",
-      //     description: ""
-      //   }
-      // })
+
+      getProducts()
+      getAllMallProducts()
+      
+      // setTimeout(() =>{
+      //   //window.location.reload()
+      //   navigate("/allproducts")
+      // },2000)    
+    //   // setcardProduct(() => {
+    //   //   return {
+    //   //     name: "",
+    //   //     category: "",
+    //   //     image: "",
+    //   //     price: "",
+    //   //     description: ""
+    //   //   }
+    //   // })
     }
     else {
       toast.error("Enter all required Fields")
@@ -113,9 +120,31 @@ const EditProduct = () => {
 
 
 
+  // useEffect(()=>{
+  //   getCartItems();
+  // },[allMallProducts,allProducts])
+
+  const dispatch = useDispatch()
+
   useEffect(()=>{
-    getCartItems();
-  },[user,productCartItem])
+    (async()=>{
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/getproduct`)
+      const resData = await res.json()
+      console.log(resData)
+      dispatch(setDataProduct(resData))
+    })()
+  },[allMallProducts,allProducts])
+
+  useEffect(()=>{
+    (async()=>{
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/getMallproduct`)
+      const resData = await res.json()
+      console.log(resData)
+      dispatch(setmallDataProduct(resData))
+    })()
+  },[allProducts,allMallProducts])
+
+
 
   return (
     <>
@@ -164,7 +193,7 @@ const EditProduct = () => {
             {cardProduct?.database?cardProduct?.database && cardProduct?.database==='mallitem'?
                   <select className='dropdown1' id='category' name='category' required onChange={handleInput}
                     value={cardProduct?.category}>
-                    <option value="other" >Select Category</option>
+                    <option value="other" defaultChecked>Select Category</option>
                     <option value="Fruits">Fruits</option>
                     <option value="Vegetable">Vegetable</option>
                     <option value="Icecream">Icecream</option>
@@ -188,8 +217,8 @@ const EditProduct = () => {
                     <option value="Rice">Rice</option>
                   </select>:<select className='dropdown1' id='category' name='category' required onChange={handleInput}
                     value={cardProduct?.category}>
-                    {!cardProduct?.database==null?<option value="other" >Select Database</option>:
-                    <option value="other" >Choose Database First</option>}
+                    {!cardProduct?.database==null?<option value="other" >Select Category</option>:
+                    <option value="other" >Choose Item Type First</option>}
                     </select>}
 
               {/* <CustomSelect

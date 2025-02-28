@@ -10,7 +10,7 @@ const loginSchema = require('../validators/loginSchema')
 const contactSchema = require('../validators/contactSchema')
 const aboutSchema = require('../validators/aboutSchema')
 const { payment } = require('../controllers/paymentController')
-const { delivery,updateDeliveryStatus, getDeliveryAddress,deliveryMan } = require('../controllers/deliveryController')
+const { delivery,updateDeliveryStatus, getDeliveryAddress,deliveryMan, deleteDeliveryDetails } = require('../controllers/deliveryController')
 // const { distance } = require('../controllers/locationController')
 const { verifyOrder, getOrder, showOrder, getAllOrders } = require('../controllers/orderController')
 const { getImage, uploadImage } = require('../controllers/imageController')
@@ -46,6 +46,7 @@ router.post('/forgotpassword',forgotPassword)
 router.post('/contact',validate(contactSchema),contact)
 router.post('/deleteProduct',deleteProduct)
 router.post('/deleteMallProduct',deleteMallProduct)
+router.post('/deleteDeliveryDetails',deleteDeliveryDetails)
 
 
 

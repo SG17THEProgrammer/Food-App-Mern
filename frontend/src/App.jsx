@@ -12,7 +12,6 @@ import Menu from './pages/Menus/Menu'
 import { setDataProduct } from './redux/productSlide'
 import { setmallDataProduct } from './redux/mallproductSlice'
 import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
 import Success from './pages/Success'
 import Failed from './pages/Failed'
 import Error from './pages/Error'
@@ -43,22 +42,21 @@ import AllProducts from './pages/AllProducts'
 const App = () => {
 
   const dispatch = useDispatch()
-  const productData = useSelector((state)=>state.product)
 
   useEffect(()=>{
     (async()=>{
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/getproduct/`)
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/getproduct`)
       const resData = await res.json()
-      // //console.log(resData)
+      // console.log(resData)
       dispatch(setDataProduct(resData))
     })()
   },[])
 
   useEffect(()=>{
     (async()=>{
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/getMallproduct/`)
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/getMallproduct`)
       const resData = await res.json()
-      // //console.log(resData)
+      // console.log(resData)
       dispatch(setmallDataProduct(resData))
     })()
   },[])

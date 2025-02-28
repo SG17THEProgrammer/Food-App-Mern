@@ -40,6 +40,27 @@ const delivery=async(req,res)=>{
     }
 }
 
+const deleteDeliveryDetails = async(req,res)=>{
+    try {
+        const {addId} = req.body
+        const address = await delivery_add.findById({_id:addId})
+        if(!address){
+          res.status(400).json({msg:"Address not found"})
+          return;
+        }
+        await delivery_add.findByIdAndDelete({_id:addId})
+
+        const allAddress = await delivery_add.find()
+
+        res.status(200).json({msg:"Address deleted successfully" , allAddress:allAddress})
+
+
+    } catch (error) {
+        console.log(error)
+  res.status(404).json({msg:"Couldn't delete address"})
+    }
+}
+
 
 const updateDeliveryStatus =async(req,res)=>{
     const {orderId ,status}= req.body;
@@ -76,4 +97,4 @@ const deliveryMan = async(req,res)=>{
     }
 }
 
-module.exports = {delivery ,updateDeliveryStatus,getDeliveryAddress,deliveryMan}
+module.exports = {delivery ,updateDeliveryStatus,getDeliveryAddress,deliveryMan,deleteDeliveryDetails}
