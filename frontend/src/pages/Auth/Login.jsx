@@ -75,9 +75,11 @@ const Login = () => {
 
         
         setTimeout(() => {
-          //window.location.reload();
           navigate('/home');
+          window.location.reload();
         }, 3000); 
+
+
       } else {
         toast.error(resData.message[0]);
       }
@@ -92,7 +94,8 @@ const Login = () => {
 
   return (
     <>
-      {!isLoggedIn? <><Navbar></Navbar>
+      {!isLoggedIn? <>
+      <Navbar></Navbar>
       <div className="container">
         <input type="checkbox" id="flip" />
         <div className="cover">

@@ -15,9 +15,11 @@
     padding: 5px;
     right: 0;
     top: 1.7px;
+    max-width: 200px;
+    width: 100%;
 }
 .divbtn{
-    width: 25%;
+    width: 30%;
     margin: 20px 0 ;
     margin-left: 70px;
     /* border: 1px solid red ; */
@@ -25,6 +27,7 @@
     justify-content: space-between;
     align-items: center;
     height: 40px;
+
 
 }
 .cardOutrDiv{

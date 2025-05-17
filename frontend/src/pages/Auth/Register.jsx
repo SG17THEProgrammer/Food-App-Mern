@@ -70,7 +70,7 @@ const Register = () => {
         navigate('/home')
         toast.success(resData.message[0]); 
          setTimeout(()=>{
-           //window.location.reload();
+           window.location.reload();
          },2000)
         //console.log(resData);
       } else {

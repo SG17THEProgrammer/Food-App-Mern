@@ -57,10 +57,6 @@ const Navbar = () => {
 
 
     useEffect(() => {
-
-    }, [cartItems, user, isLoggedIn])
-
-    useEffect(() => {
         dispatch(fetchCartItems(user._id));
     }, [dispatch, user._id]);
 
@@ -111,14 +107,14 @@ const Navbar = () => {
                                 </div> : ""}
                             </li>:""}
                             <li className="nav-item active">
-                                <NavLink className="nav-link ml-2 cart" to='/cart'>                                 <div className='cart'><i className="fa-solid fa-cart-shopping fa-sm  icon" style={{ position: "relative" }} ></i><span className='superscript count'>{cartItems ? cartItems.length : 0}</span></div>
+                                <NavLink className="nav-link ml-2 cart" to='/cart'>                                 <div className='cart'><i className="fa-solid fa-cart-shopping fa-sm  icon" style={{ position: "relative" }} ></i><span className='superscript count'>{cartItems ? cartItems?.length : 0}</span></div>
                                     {/* <span className="sr-only">Cart</span> */}
                                 </NavLink>
                             </li>
-                            {user.image && isLoggedIn
+                            {isLoggedIn
                                 ?
                                 <>
-                                    <NavLink to='/about'><img src={user.image} alt="error" className='image' /></NavLink>
+                                    <NavLink to='/about'><img src={user?.image} alt="error" className='image' /></NavLink>
                                 </> : ""}
 
 
