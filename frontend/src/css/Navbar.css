@@ -4,6 +4,10 @@
   box-sizing: border-box; /* Include this for better box model handling */
 }
 
+ .navbar-toggler{
+    margin-right: 20px;
+  }
+
 .navbar {
   background-color: #8EACCD;
   height: 60px;
@@ -130,7 +134,7 @@
 }
 
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .navbar {
       flex-direction: column; /* Stack items vertically on smaller screens */
       height: auto; /* Allow navbar height to adjust based on content */
@@ -170,6 +174,50 @@
     margin-left: 8px;
   }
   .navbar-toggler{
-    margin-right: 240px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      height: auto; /* Allow navbar height to adjust based on content */
+  }
+
+  .navbar li {
+      padding-left: 0; /* Remove left padding on list items */
+      margin-bottom: 10px; /* Add spacing between list items */
+      margin-left: 20px;
+  }
+
+  .title {
+      margin-left: 0; /* Center align or adjust margin as needed */
+      text-align: center;
+  }
+
+  .btn {
+      font-size: 14px; /* Adjust font size for smaller screens */
+      padding: 5px 8px; /* Adjust padding for smaller buttons */
+      
+  }
+
+  .image {
+      margin: 5px auto; /* Center align image */
+      margin-left: 30px;
+      margin-bottom: 10px;
+
+  }
+
+  .cart {
+      margin-left: auto; /* Push cart icon to the right */
+      margin-right: 10px; /* Add right margin for spacing */
+      margin-left: -5px;
+
+  }
+  .list{
+    margin-left: 8px;
+  }
+  .navbar-toggler{
+    margin-right: 20px;
   }
 }

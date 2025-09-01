@@ -51,16 +51,16 @@ const Slider = () => {
 <i className="fa-solid fa-arrow-right itag1" onClick={nextProduct}></i>
 </div>         
           </div>
-        <div  key={3}
+        <div key={3}
           className="slider" style={{scrollBehavior:"smooth"}}  
           ref={slideProductRef}
         >
         {
-          homeProductCakeList.map((elem) => {
-                return (<>
+          homeProductCakeList.map((elem,idx) => {
+                return (
                   <CardFeature
                   // key={elem.length+1}
-                  key={elem._id}
+                    key={idx}
                     id={elem._id}
                     name={elem.name}
                     category={elem.category}
@@ -68,7 +68,7 @@ const Slider = () => {
                     image={elem.image}
                     rating={elem.rating}
                   />
-                  </>
+                  
                 );
               })}
 

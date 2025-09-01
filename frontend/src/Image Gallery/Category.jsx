@@ -20,12 +20,12 @@ const Category = ({ filterItem,allCategories , heading ,productData,setItems}) =
 
                 {
                     allCategories.map((curElem ,index) => {
-                        return <>
-                        <div key={index} className='outerCatDiv'>
+                        return (
+                        <div className='outerCatDiv' key={index}>
                         <img src="/images/fork.png" alt="error" className='image1' onClick={() => filterItem(curElem)}></img>
                         <button className="btn btn4" style={{margin:"0 10px"}} key ={index} onClick={() => filterItem(curElem)} >{curElem}</button>
                         </div>
-                        </>
+                        )
 
                     })
                 }

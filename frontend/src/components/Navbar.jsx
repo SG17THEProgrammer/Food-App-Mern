@@ -146,7 +146,7 @@ const Navbar = () => {
                                 <NavLink className="nav-link " to='/login' ><button className='btn' >Login</button> <span className="sr-only"></span></NavLink>
                             </li>
                                 <li className="nav-item active">
-                                    <NavLink className="nav-link mr-4" style={{ marginLeft: "-18px" }} to='/register' ><button className='btn' >SignUp</button> <span className="sr-only"></span></NavLink>
+                                    <NavLink className="nav-link mr-4"  to='/register' ><button className='btn' >SignUp</button> <span className="sr-only"></span></NavLink>
                                 </li>
                             </>
 

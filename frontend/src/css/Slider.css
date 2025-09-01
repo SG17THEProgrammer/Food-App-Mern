@@ -1,6 +1,7 @@
 .maindiv{
-    /* border: 1px solid #643843; */
+    border: 1px solid #643843;
     margin: 60px 35px 0 35px ;
+    /* width: 100vw; */
 
 }
 
@@ -90,9 +91,37 @@
     text-overflow: ellipsis;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .name::-webkit-scrollbar {
     display: none;
-  }
+}
 
- 
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+    .maindiv{
+    border: 1px solid #643843;
+    margin: 60px 35px 0 35px ;
+    /* width: 100vw; */
+
+}
+
+}
+
+@media (max-width: 768px) {
+    .maindiv{
+    border: 1px solid #643843;
+    margin: 60px 35px 0 35px ;
+    width: 110vw;
+    
+}
+}
+
+@media (max-width: 480px) {
+    .maindiv{
+        border: 1px solid #643843;
+    margin: 60px 35px 0 35px ;
+    width: 134vw;
+    
+}
+
+}

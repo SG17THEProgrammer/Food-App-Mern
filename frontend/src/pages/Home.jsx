@@ -23,7 +23,7 @@ const Home = () => {
 
   const productData = useSelector((state) => state.product.productList)
   // //console.log(productData)
-  const homeProductList = productData.slice(0, 6)
+  const homeProductList = productData.slice(0, 8)
 
   const handleReadMore=(id)=>{
     // e.preventDefault();
@@ -52,12 +52,10 @@ const Home = () => {
         <div className="right" >
           {
 
-            homeProductList.map((val) => {
+            homeProductList.map((val,idx) => {
               const { id, name, image, category, price, _id, rating } = val;
               return (
-
-                
-                  <div className="card mb-5" key={id} style={{ maxWidth: '200px', height: "240px", boxShadow: '10px 10px 8px #888888', marginRight: "20px", backgroundColor: "#FFF7D4" }} onClick={()=>handleReadMore(_id)}>
+                  <div className="card mb-5" key={idx} style={{ maxWidth: '200px', height: "240px", boxShadow: '10px 10px 8px #888888', marginRight: "20px", backgroundColor: "#FFF7D4" }} onClick={()=>handleReadMore(_id)}>
                     <div className="">
 
                       <div className="col-md-14">
