@@ -40,7 +40,7 @@ const Search = ({mallproductData,setItems,productData}) => {
 
   return (
     <div>
-         <input className='inp2' placeholder='Search' style={{width:"200px", marginTop:"0px"}} name='text' value={search.text} onChange={handleInput} ></input>
+         <input className='inp2' placeholder='Search' name='text' value={search.text} onChange={handleInput} ></input>
     </div>
   )
 }

@@ -185,11 +185,11 @@ const FoodMall = () => {
 
           {
             allCategories.map((curElem, index) => {
-              return <>
+              return (
                 <div key={index} className='outerCatDiv'>
                   <button className="btn" style={{ margin: "10px 0 10px 0 " }} key={index} onClick={() => filterItem(curElem)} >{curElem}</button>
                 </div>
-              </>
+            )
 
             })
           }

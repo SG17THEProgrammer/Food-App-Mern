@@ -69,7 +69,7 @@ useEffect(() => {
                 { otherReview && otherReview.length === 0 ? (
                     <p style={{fontWeight:"900",marginLeft:"5px"}}>No reviews found </p>
                 ) : (
-                    otherReview && otherReview.map(otherReview => (<>
+                    otherReview && otherReview.map(otherReview => (
                         <div key={otherReview._id} className='review'>
                             {/* <p>Review by {review.userName===user.name?"You":review.userName}</p> */}
                             <p style={{marginBottom:"4px"}}>Rating: {otherReview.rating}⭐</p>
@@ -79,7 +79,7 @@ useEffect(() => {
                             
                         </div>
                         
-                        </>
+                        
                     ))
                 )}
             </div>

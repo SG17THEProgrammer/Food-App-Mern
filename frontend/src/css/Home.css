@@ -12,10 +12,12 @@
 .left h1{
     width: 94vw;
     border: 1px solid red;
+    font-family: Georgia, serif;    
 }
 .left h5{
     width: 94vw;
     border: 1px solid red;
+    font-family: cursive;
 }
 
 .right {
@@ -58,21 +60,33 @@
 @media (max-width: 1200px) {
     .main {
         grid-template-columns: 1fr;
-        margin-top: 50px;
+        margin-top: 70px;
+        border: 1px solid red;
+        width: 150vw;
     }
-    .left, .right {
+    /* .left, .right {
         margin: 20px auto;
         width: 90%;
-    }
+    } */
+     .left{
+        width: 140vw;
+        border: 1px solid red;
+
+     }
     .right {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto;
         padding: 10px;
         justify-items: center;
-
+        width: 140vw;
+        margin-left: 40px;
     }
     .left h1{
-    width: 90vw;
+    width: 140vw;
+    border: 1px solid red;
+}
+    .left h5{
+    width: 140vw;
     border: 1px solid red;
 }
 
@@ -81,23 +95,27 @@
 @media (max-width: 768px) {
     .main {
         grid-template-columns: 1fr;
-        margin-top: 80px;
+        margin-top: 70px;
     }
     .left {
         margin: 10px 0 10px 20px ;
         width: 100%;
     }
     .right {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(3,1fr);
         grid-template-rows: auto;
         padding: 5px;
-        width: 114vw;
+        width: 145vw;
         margin-left: 20px;
         justify-items: center;
         border: 1px solid red;
     }
     .left h1{
-    width: 98vw;
+    width: 145vw;
+    border: 1px solid red;
+}
+    .left h5{
+    width: 145vw;
     border: 1px solid red;
 }
 
@@ -108,30 +126,30 @@
         /* grid-template-rows: 1fr; */
         /* margin-top: 20px; */
         border: 1px solid red;
-        width: 140vw;
+        width: 160vw;
         margin-left: 20px;
     }
-    .left, .right {
+    .left{
         /* margin: 5px auto; */
-        width: 140vw;
+        width: 150vw;
         border: 1px solid red;
     }
     .right {
         grid-template-columns: repeat(2,1fr);
         grid-template-rows: auto;
         justify-items: center;
-
+width: 155vw;
     }
     /* .img {
         height: auto;
         width: 100%;
     } */
     .left h1{
-    width: 130vw;
+    width: 155vw;
     border: 1px solid red;
 }
     .left h5{
-    width: 130vw;
+    width: 155vw;
     border: 1px solid red;
 }
 

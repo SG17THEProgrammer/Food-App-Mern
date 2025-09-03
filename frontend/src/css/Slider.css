@@ -2,6 +2,8 @@
     border: 1px solid #643843;
     margin: 60px 35px 0 35px ;
     /* width: 100vw; */
+    width: 95vw;
+    
 
 }
 
@@ -101,7 +103,7 @@
     .maindiv{
     border: 1px solid #643843;
     margin: 60px 35px 0 35px ;
-    /* width: 100vw; */
+    width: 140vw;
 
 }
 
@@ -111,16 +113,16 @@
     .maindiv{
     border: 1px solid #643843;
     margin: 60px 35px 0 35px ;
-    width: 110vw;
-    
+    width: 140vw;
 }
+
 }
 
 @media (max-width: 480px) {
     .maindiv{
         border: 1px solid #643843;
     margin: 60px 35px 0 35px ;
-    width: 134vw;
+    width: 150vw;
     
 }
 

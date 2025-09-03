@@ -1,3 +1,9 @@
+html body{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
 img {
   transition: transform .2s;
 }
@@ -16,6 +22,7 @@ img {
   justify-content: center;
   align-items: center;
   margin: 30px 20px 20px 0px;
+  justify-items: center;
 }
 
 .innerCat {
@@ -25,31 +32,10 @@ img {
   padding: 5px;
 }
 
-@media (max-width:1200px) {
-  .outerCat{
-    border: 1px solid black;
-    width: 98vw;
-    margin:10px 20px 0 30px;
-
-  }
-  .innerCat{
-    border: 1px solid red;
-    margin-left: 20px;
-    width: 95vw;
-  }
-  
-.outerCatDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid red;
-}
-
-}
 
 .heading {
   text-decoration: underline;
+  font-family: serif;
 }
 
 .outerCatDiv {
@@ -65,7 +51,7 @@ img {
   width: 65px;
   margin: 8px 0;
   border-radius: 50%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   transition: transform .7s ease-in-out;
 }
 
@@ -77,6 +63,7 @@ img {
   position: relative;
   width: 100%;
 } */
+
 
 .img2 {
   opacity: 1;
@@ -131,37 +118,119 @@ img {
   padding: 2px 10px;
   background-color: #FFE7C1;
   border: 2px solid black;
+  width: 15vw;
 }
 
-/* Media Queries for Responsive Design */
+.head{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 80px 40px 0px 40px;
+  width: 93vw;
+}
+
+
 @media (max-width: 1200px) {
   .mainDiv {
       grid-template-columns: repeat(3, 1fr);
-      margin: 20px 10px;
+      margin: 20px 20px;
+      /* border: 1px solid red; */
+      width: 95vw;
+      justify-items: center;
   }
-  .innerCat {
-      margin: 15px 20px;
+
+  .outerCat{
+    margin-left: 45px;
+    /* border: 1px solid black; */
+    width: 92vw;
+    margin:10px 25px 0 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
   }
+  .innerCat{
+    margin: 15px 20px;
+    /* border: 1px solid red; */
+    margin-left: 20px;
+    width: 95vw;
+  }
+  
+.outerCatDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid red; */
+}
+.head{
+  border: 1px solid red;
+  width: 90vw;
+}
+.inp2{
+  width: 12vw;
+}
+ .footer{
+  width: 100vw;
+ }
+ .pagination{
+width: 100vw;
+ }
 }
 
 @media (max-width: 768px) {
   .mainDiv {
       grid-template-columns: repeat(2, 1fr);
-      margin: 15px 5px;
+      margin: 15px 25px 0 50px;
+      border: 1px solid red;
+      width: 140vw;
+      justify-items: center;
   }
   .heading {
       margin: 40px 0px 0px 20px;
       text-align: center;
   }
-  .innerCat {
+  /* .innerCat {
       margin: 10px 15px;
+    width: 139vw;
+      border: 1px solid red;
+  } */
+  .outerCat{
+    /* border: 1px solid black; */
+    width: 145vw;
+    /* margin-left: 30px; */
+    /* margin-right: -20px; */
+  }
+
+  .outerCatDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid red; */
+}
+
+  .inp2{
+   width: 20vw;
+  }
+  .head{
+    width: 140vw;
+  }
+  .footer{
+    width: 155vw;
+  }
+  .pagination{
+    width: 150vw;
   }
 }
 
 @media (max-width: 480px) {
   .mainDiv {
       grid-template-columns: 1fr;
-      margin: 10px 0px;
+      margin: 10px 20px 0 40px;
+      width: 190vw;
+      justify-items: center;
   }
   .heading {
       margin: 30px 0px 0px 10px;
@@ -178,13 +247,17 @@ img {
       font-size: 12px;
       width: 80px;
   }
-}
-
-.head{
-  /* border: 1px solid red; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 80px 40px 0px 40px;
-
+  .head{
+    width:190vw;
+  }
+  .outerCat{
+    width: 200vw;
+  }
+  .footer{
+    width: 220vw;
+  }
+  .pagination{
+    border: 1px solid red;
+    width: 220vw;
+  }
 }

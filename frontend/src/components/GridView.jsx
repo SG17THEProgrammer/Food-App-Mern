@@ -35,15 +35,15 @@ const handleReadMore=(e)=>{
 }
     return (
         <>
-            <div className="card mb-4  " key={id} style={{ maxWidth: '245px', height: "340px", boxShadow: '10px 10px 8px #888888', margin: "10px 0 0px 20px", backgroundColor: "#FFF7D4" }}>
+            <div className="card mb-4  " key={id} style={{ height: "340px", boxShadow: '10px 10px 8px #888888', margin: "10px 0 0px 20px", backgroundColor: "#FFF7D4" }}>
 
                 <div className="col-md-14 ctn">
                     {/* <NavLink style={{ textDecoration: "none", color: "black" }}
                         to={`/mallmenu/${id}`}
                         onClick={handleReadMore}> */}
                         <img src={`${image}`} className="img8 " alt="error" style={{ width: "90%", margin: "10px 0 0 11.5px" ,cursor:"pointer" }} onClick={handleReadMore} />
-                        <div class="middle" onClick={handleReadMore}>
-                            <div class="txt">Read More</div>
+                        <div className="middle" onClick={handleReadMore}>
+                            <div className="txt">Read More</div>
                         </div>
 
                     {/* </NavLink> */}
@@ -68,15 +68,17 @@ const handleReadMore=(e)=>{
                               {rating}</p>
                           </div>
 
+                    <div className='btndiv'>
 
-                        <button className='btn' style={{ marginLeft: "-5px", marginTop: "-14px" }}
+                        <button className='btn'
                             onClick={handleAddCartProduct}>Add to Cart</button>
-
-                        <NavLink to="/cart"> <button className='btn' style={{ marginLeft: "4px", marginTop: "-7px", position: "absolute" }} onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>Go to Cart</button></NavLink>
+&nbsp; &nbsp;
+                        <NavLink to="/cart"> <button className='btn' onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}>Go to Cart</button></NavLink>
                         {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{marginLeft:"-5px",marginTop:"5px"}} >Edit Product</button></NavLink>:""}
                         {/* {user.email=="shray@gmail.com"? <NavLink to={`/edit/${productDisplay._id}`}><button className='btn' style={{marginLeft:"5px",marginTop:"5px"}} >Delete</button></NavLink>:""} */}
                        
                         {/* <p style={{ fontSize: '12px', paddingTop: '20px', bottom: '0px' }}>Prices may vary for different occasions</p> */}
+                    </div>
                     </div>
                 </div>
             </div>

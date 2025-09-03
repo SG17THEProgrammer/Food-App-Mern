@@ -28,7 +28,7 @@ const Star = ({ rating }) => {
 
   return (
     <>
-  <span > {starRating}</span>
+  <span> {starRating}</span>
   </>
   )
 };

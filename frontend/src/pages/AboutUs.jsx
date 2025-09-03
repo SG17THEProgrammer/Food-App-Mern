@@ -20,10 +20,10 @@ const AboutUs = () => {
 
 <h2 style={{textAlign:"center" ,marginTop:"50px" ,textDecoration:"underline"}}>Our Team</h2>
 <div className=" row cardDiv">
-  { team.map((elem)=>{
+  { team.map((elem,idx)=>{
     const {name , designation, image , about , email } = elem;
-    return <>
-    <div className="column1">
+    return(
+    <div className="column1" key={idx}>
     <div className="card2">
       <img src={image}  className='img2 img' alt="Jane" style={{width:"100%"}}/>
       <div className="container2">
@@ -35,7 +35,7 @@ const AboutUs = () => {
       </div>
     </div>
   </div>
-    </>
+    )
   })
  }
 

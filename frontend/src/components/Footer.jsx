@@ -4,9 +4,8 @@ const Footer = () => {
   return (
     <>
 <div  style={{ marginTop:"200px"}}>
-
-  <footer style={{backgroundColor: "#eee6d3" ,marginTop:"auto"}}>
-    <div className=" p-4">
+  <footer style={{backgroundColor: "#eee6d3"  , border:"1px solid red"}} className='footer' >
+    <div className="p-4"> 
       <div className="row">
         <div className="col-lg-6 col-md-12 mb-4">
           <h5 className="mb-3 text-dark">footer content</h5>
@@ -34,7 +33,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="col-lg-3 col-md-6 mb-4">
-          <h5 className="mb-1 text-dark">opening hours</h5>
+          <h5 className="mb-1 text-dark">Opening hours</h5>
           <table className="table" style={{borderColor:" #666"}}>
             <tbody>
               <tr>

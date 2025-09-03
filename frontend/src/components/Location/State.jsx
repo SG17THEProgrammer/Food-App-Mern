@@ -198,8 +198,8 @@ const State = ({ delDetails, setDelDetails, name, title }) => {
       <select onChange={handleStateInput} value={delDetails.state} style={{ width: "120px", marginLeft: "5px" }}>
         <option value="Select State" defaultValue={"Select State"}>Select state</option>
         {stateArr ? stateArr.map((elem, idx) => {
-          return <><option value={elem} key={idx}>{elem}</option>
-          </>
+          return <option value={elem} key={idx}>{elem}</option>
+      
         }) : ""}
       </select>
 

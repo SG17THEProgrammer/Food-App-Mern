@@ -96,9 +96,9 @@ const ChatBot = () => {
         <div className='questions'>
 
            {allquestion.map((elem ,idx)=>{
-            return <>
-            <p className="ques" onClick={()=>getpredefAnswer(idx)} >{elem.question}</p>
-            </>
+            return (
+            <p className="ques" onClick={()=>getpredefAnswer(idx)} key={idx}>{elem.question}</p>
+           )
            }) }
         </div>  
         {isLoading?<Loader1></Loader1>:""}

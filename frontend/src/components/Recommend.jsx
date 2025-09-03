@@ -93,9 +93,7 @@ useEffect(()=>{
         {recommendations?.map((elem, index) => {
           const {name, price,rating , image,description,_id} = elem
           return (
-            <>
-
-            <div className="card1">
+            <div className="card1" key={index}>
   <img
     className="card1__background"
     src={`${image}`}
@@ -123,8 +121,6 @@ useEffect(()=>{
     </span>
   </div>
 </div>
-
-            </>
           );
         })}
             </div>

@@ -31,7 +31,7 @@ const Slider = () => {
   return (
     <>
      <div key={5}>
-        <div className=" maindiv flex w-full items-center " >
+        <div className="maindiv" >
           <h2  style={{marginTop:"30px" , textDecoration:"underline"}}>
             Cakes
           </h2>
