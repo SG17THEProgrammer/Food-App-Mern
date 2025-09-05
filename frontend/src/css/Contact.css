@@ -133,9 +133,7 @@ align-items:center;
   .mapDiv{
     width: 93vw;
   }
-  .form{
-    /* border: 1px solid red; */
-  }
+
 }
 
 @media (max-width: 1020px) {

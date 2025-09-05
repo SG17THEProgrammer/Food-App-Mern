@@ -97,9 +97,6 @@ input::-webkit-inner-spin-button {
     /* border: 1px solid red; */
     width: 30vw;
   }
-  .respDiv{
-    /* border: 1px solid red; */
-  }
+ 
   
 }
-@media (max-width: 480px) {}  
