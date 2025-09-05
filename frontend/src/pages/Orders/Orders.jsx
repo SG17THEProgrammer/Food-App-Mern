@@ -84,7 +84,7 @@ const Orders = ({ navbar, title, handleStatus, btn }) => {
             </span>
             <div class="ctn3 mt-3 mb-5 " style={{ border: "none" }}>
                 <div class="" style={{ marginBottom: "200px" }}>
-                    <div class="" style={{ width: "84vw" }}>
+                    <div class="">
                         <div class="rounded" >
                             <div class="table-responsive table-borderless">
                                 <table class="table" >

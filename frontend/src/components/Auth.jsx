@@ -115,7 +115,6 @@ const getCartItems = () => {
   }
 
   const getReviews = async (productId,userName) => {
-    console.log(productId,userName)
           try {
                   const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/getReview?productId=${productId}&userName=${userName}`);
                   

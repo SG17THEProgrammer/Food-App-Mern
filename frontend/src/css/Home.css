@@ -11,17 +11,17 @@
 }
 .left h1{
     width: 94vw;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     font-family: Georgia, serif;    
 }
 .left h5{
     width: 94vw;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     font-family: cursive;
 }
 
 .right {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 20px 38px 0px 35px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -32,9 +32,9 @@
     
 }
 
-.img {
+/* .img {
     height: 120px;
-}
+} */
 
 .rating1{
     position: absolute;
@@ -61,7 +61,7 @@
     .main {
         grid-template-columns: 1fr;
         margin-top: 70px;
-        border: 1px solid red;
+        /* border: 1px solid red; */
         width: 150vw;
     }
     /* .left, .right {
@@ -70,7 +70,7 @@
     } */
      .left{
         width: 140vw;
-        border: 1px solid red;
+        /* border: 1px solid red; */
 
      }
     .right {
@@ -83,11 +83,11 @@
     }
     .left h1{
     width: 140vw;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
     .left h5{
     width: 140vw;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 }
@@ -96,6 +96,7 @@
     .main {
         grid-template-columns: 1fr;
         margin-top: 70px;
+
     }
     .left {
         margin: 10px 0 10px 20px ;
@@ -105,18 +106,18 @@
         grid-template-columns: repeat(3,1fr);
         grid-template-rows: auto;
         padding: 5px;
-        width: 145vw;
+        width: 150vw;
         margin-left: 20px;
         justify-items: center;
-        border: 1px solid red;
+        /* border: 1px solid red; */
     }
     .left h1{
-    width: 145vw;
-    border: 1px solid red;
+    width: 150vw;
+    /* border: 1px solid red; */
 }
     .left h5{
-    width: 145vw;
-    border: 1px solid red;
+    width: 150vw;
+    /* border: 1px solid red; */
 }
 
 }
@@ -125,32 +126,32 @@
     .main {
         /* grid-template-rows: 1fr; */
         /* margin-top: 20px; */
-        border: 1px solid red;
-        width: 160vw;
+        /* border: 1px solid red; */
+        width: 220vw;
         margin-left: 20px;
     }
     .left{
         /* margin: 5px auto; */
         width: 150vw;
-        border: 1px solid red;
+        /* border: 1px solid red; */
     }
     .right {
         grid-template-columns: repeat(2,1fr);
         grid-template-rows: auto;
         justify-items: center;
-width: 155vw;
+        width: 215vw;
     }
     /* .img {
         height: auto;
         width: 100%;
     } */
     .left h1{
-    width: 155vw;
-    border: 1px solid red;
+    width: 215vw;
+    /* border: 1px solid red; */
 }
     .left h5{
-    width: 155vw;
-    border: 1px solid red;
+    width: 215vw;
+    /* border: 1px solid red; */
 }
 
 }

@@ -18,11 +18,14 @@ img {
 
 .mainDiv {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
   margin: 30px 20px 20px 0px;
   justify-items: center;
+  column-gap: 50px;
+  width: 95vw;
+  margin-left: 2.5vw;
 }
 
 .innerCat {
@@ -59,10 +62,10 @@ img {
   transform: rotate(360deg);
 }
 
-/* .ctn {
+.ctn {
   position: relative;
   width: 100%;
-} */
+}
 
 
 .img2 {
@@ -165,7 +168,7 @@ img {
   /* border: 1px solid red; */
 }
 .head{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 90vw;
 }
 .inp2{
@@ -183,7 +186,7 @@ width: 100vw;
   .mainDiv {
       grid-template-columns: repeat(2, 1fr);
       margin: 15px 25px 0 50px;
-      border: 1px solid red;
+      /* border: 1px solid red; */
       width: 140vw;
       justify-items: center;
   }
@@ -215,13 +218,14 @@ width: 100vw;
    width: 20vw;
   }
   .head{
-    width: 140vw;
+    width: 148vw;
+
   }
   .footer{
-    width: 155vw;
+    width: 164vw;
   }
   .pagination{
-    width: 150vw;
+    width: 155vw;
   }
 }
 
@@ -248,16 +252,20 @@ width: 100vw;
       width: 80px;
   }
   .head{
-    width:190vw;
+    
+    width:210vw;
   }
   .outerCat{
-    width: 200vw;
+    width: 210vw;
   }
   .footer{
-    width: 220vw;
+    width: 230vw;
   }
   .pagination{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 220vw;
+  }
+   .inp2{
+   width: 45vw;
   }
 }

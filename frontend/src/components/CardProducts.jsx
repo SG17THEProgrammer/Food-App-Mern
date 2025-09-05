@@ -29,7 +29,7 @@ const CardProducts = ({ qty, total, price, id, name, category, image }) => {
 
 
   return (
-    <div className="row mb-5">
+    <div className="row mb-3 respDiv">
       <div className="col-lg-5">
         <div className="me-lg-5">
           <div className="d-flex">
@@ -68,7 +68,7 @@ const CardProducts = ({ qty, total, price, id, name, category, image }) => {
       </div>
       <div className="col-lg col-sm-6 d-flex justify-content-xl-end">
         <div className="float-md-end">
-          <button className="btn btn-light border text-danger icon-hover-danger" onClick={handleRemoveItem}>
+          <button className="btn btn-light border text-danger icon-hover-danger" style={{width:"90px"}} onClick={handleRemoveItem}>
             Remove
           </button>
         </div>

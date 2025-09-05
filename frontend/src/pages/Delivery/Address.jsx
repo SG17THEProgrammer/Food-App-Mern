@@ -79,9 +79,9 @@ const Address = ({title}) => {
             {showComponent && <Delivery title={"address"} setShowComponent={setShowComponent}/>}
             
     { title===undefined ?       <div className="ctn2">
-            {delAddress?.length>0 ? delAddress.map((elem)=>{
+            {delAddress?.length>0 ? delAddress.map((elem,idx)=>{
                 const {address,city,state,pincode,_id} = elem
-                return <div className="card4">
+                return <div className="card4" key={idx} >
                 <MdDelete className='delBtn1' title='Delete Address' onClick={()=>handleDeleteAddress(_id)}/>
         <h3><b>Address :</b> {address}</h3>
         <h4 ><b>City :</b>  {city}</h4>

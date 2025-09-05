@@ -253,12 +253,12 @@ const FoodMall = () => {
                 grid ?
                   <div className="gridDiv">
                     {
-                      mallproductData.slice(0, visibleProducts).map((val) => {
+                      mallproductData.slice(0, visibleProducts).map((val,idx) => {
                         const { id, name, image, category, price, _id, rating } = val;
             
                         return (
                           <GridView
-                            key={id}
+                            key={idx}
                             name={name}
                             image={image}
                             category={category}
@@ -271,11 +271,11 @@ const FoodMall = () => {
                       )}
                   </div>
                   :
-                  mallproductData.slice(0, visibleProducts).map((val) => {
+                  mallproductData.slice(0, visibleProducts).map((val,idx) => {
                     const { id, name, image, category, price, _id, rating, description } = val;
                     return (
                       <ListView
-                        key={id}
+                        key={idx}
                         name={name}
                         image={image}
                         category={category}
@@ -292,11 +292,11 @@ const FoodMall = () => {
                 grid ?
                   <div className="gridDiv">
                     {
-                      items.slice(0, visibleProducts).map((val) => {
+                      items.slice(0, visibleProducts).map((val,idx) => {
                         const { id, name, image, category, price, _id, rating } = val;
                         return (
                           <GridView
-                            key={id}
+                            key={idx}
                             name={name}
                             image={image}
                             category={category}
@@ -308,11 +308,11 @@ const FoodMall = () => {
                       })}
                   </div>
                   :
-                  items.slice(0, visibleProducts).map((val) => {
+                  items.slice(0, visibleProducts).map((val,idx) => {
                     const { id, name, image, category, price, _id, rating, description } = val;
                     return (
                       <ListView
-                        key={id}
+                        key={idx}
                         name={name}
                         image={image}
                         category={category}

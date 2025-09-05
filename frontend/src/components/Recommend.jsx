@@ -33,7 +33,7 @@ const Recommend = () => {
       // console.log(response);
 
         setRecommendations(response.data.recommendedProducts);
-      
+      // setAge('')
     } catch (err) {
       console.error(err);
       toast.error(err.response.data.message[0])
@@ -64,7 +64,7 @@ useEffect(()=>{
 
 useEffect(()=>{
     getCartItems();
-  },[user,productCartItem,cartItems])
+  },[user,productCartItem])
 
   useEffect(()=>{
     user?saveCartItemsToLS(productCartItem,user._id):""
@@ -89,6 +89,7 @@ useEffect(()=>{
   <>
     {recommendations && recommendations.length > 0 ? (
       <ul>
+      <h4 style={{marginBottom:"-20px"}}>For {age} years </h4>
             <div className='cardOutrDiv'>
         {recommendations?.map((elem, index) => {
           const {name, price,rating , image,description,_id} = elem

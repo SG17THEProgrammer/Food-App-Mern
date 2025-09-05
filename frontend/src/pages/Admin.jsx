@@ -171,7 +171,7 @@ const Admin = () => {
                   </label>
                 </li>
 
-                <li className='listitem' style={{ marginTop: "21px" }}>
+                <li className='listitem' >
 
                   <label htmlFor='price' className='my-2'>Price</label>
                   <input type="number" className='dropdown' name='price' onChange={handleOnChange} required value={foodData.price} />            </li>

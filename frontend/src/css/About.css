@@ -41,9 +41,7 @@
 }
 
 .innerDiv {
-    width: 100%; /* Set to 100% for responsive */
     overflow: hidden;
-    height: auto; /* Use auto height for responsive */
     padding: 10px; /* Add padding for better spacing on mobile */
 }
 
@@ -222,7 +220,7 @@ h6 {
 
 @media (max-width: 480px) {
     .card2 {
-        margin-bottom: 15px;
+        margin: 40px 0 15px 0px;
     }
 
     .user-profile {
@@ -232,7 +230,7 @@ h6 {
 
     .inp1 {
         font-size: 14px; /* Smaller font size for very small screens */
-        width: 100%; /* Full width */
+        width: 80%; /* Full width */
         margin-left: 0; /* Reset margin */
     }
 
@@ -252,5 +250,19 @@ h6 {
 
     .card-block {
         padding: 0.5rem;
+    }
+    /* .page-content{
+        border: 1px solid red;
+    } */
+    .row{
+        width: 100vw;
+        /* border: 1px solid red; */
+    }
+    .butn{
+        width: 90%;
+    }
+    .card-block{
+        /* border: 1px solid red; */
+        width: 95%;
     }
 }

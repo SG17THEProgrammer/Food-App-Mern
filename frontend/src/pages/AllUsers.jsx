@@ -46,7 +46,7 @@ const AllUsers = ({deleteUser}) => {
                     </thead>
                     <tbody>
                         {filteredUsers && filteredUsers.length > 0 ? filteredUsers.map((user,index) => (
-                            <tr>
+                            <tr key={index}>
                               <td style={{textAlign:"center"}}>{++index}</td>
                                 <td>{user.date}</td>
                                 <td>{user._id}</td>

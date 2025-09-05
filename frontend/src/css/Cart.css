@@ -17,7 +17,7 @@
       }
 
       .butn3{
-        margin-left: -40px;
+        margin-left: -100px;
         margin-right: 50px;
         width: 140px;
         /* border: 1px solid red   ; */
@@ -27,6 +27,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        
       }
       .text{
         margin-top: 3px;
@@ -50,3 +51,55 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.border{
+    /* border: 1px solid red; */
+    width:60vw;
+    /* margin-left: 200px; */
+  }
+
+  .summary, .summaryHead{
+    /* border: 1px solid red; */
+    width: 20vw;
+  }
+
+  .summaryDiv{
+    width: 20vw;
+  }
+
+@media (max-width: 1200px) {}
+@media (max-width: 768px) {
+  .border , .card{
+    /* border: 1px solid red; */
+    min-width:150vw;
+    /* margin-left: 200px; */
+  }
+
+  .summary, .summaryHead{
+    /* border: 1px solid red; */
+    width: 100vw;
+  }
+
+  .summaryDiv{
+    /* border: 1px solid red; */
+    width: 100vw;
+    margin-top: 20px;
+  }
+  .mainCtn{
+    /* border: 1px solid black; */
+        width: 150vw;
+  }
+  .row{
+    /* border: 1px solid red; */
+    width: 160vw;
+  }
+  .btn{
+    /* border: 1px solid red; */
+    width: 30vw;
+  }
+  .respDiv{
+    /* border: 1px solid red; */
+  }
+  
+}
+@media (max-width: 480px) {}  

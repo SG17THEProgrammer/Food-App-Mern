@@ -52,12 +52,12 @@ const Cart = () => {
         <div className="row">
           {/* Cart items */}
           <div className="col-lg-9">
-            <div className="card border" style={{ width: '800px' }}>
+            <div className="card border">
               <div className="m-4">
                 <button className="btn" style={{ position: 'absolute', right: '0', top: '3px' }} onClick={handleClearCart}>
                   Clear Cart
                 </button>
-                <h4 className="card-title mb-4" style={{ textDecoration: 'underline' }}>
+                <h4 className="card-title mb-4" style={{ textDecoration: 'underline'}}>
                   YOUR SHOPPING CART
                 </h4>
                 <br />
@@ -76,7 +76,7 @@ const Cart = () => {
                     />
                   ))
                 ) : (
-                  <h4 style={{ marginTop: '45px', textAlign: 'center', textDecoration: 'underline', color: 'crimson' }}>
+                  <h4 style={{textAlign: 'center', textDecoration: 'underline', color: 'crimson' }}>
                     Cart is Empty
                   </h4>
                 )}
@@ -93,14 +93,14 @@ const Cart = () => {
           </div>
 
           {/* Summary */}
-          <div style={{ width: '250px' }}>
-            <div className="card col-lg-15">
-              <div className="card-body">
-                SUMMARY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div className='summaryDiv'>
+            <div className="card col-lg-15 summaryHead">
+              <div className="card-body" style={{display:"flex" , justifyContent:"space-between" , alignItems:"center" }}>
+                <span>SUMMARY</span>
                 <span style={{ textDecoration: 'underline' }}>{cartItems==null ? 0 : cartItems?.length} items</span>
               </div>
             </div>
-            <div className="card shadow-0 border">
+            <div className="card shadow-0 border summary">
               <div className="card-body">
                 <div className="d-flex justify-content-between">
                   <p className="mb-2">Total price:</p>
@@ -113,24 +113,24 @@ const Cart = () => {
                 <hr />
                 <div className="d-flex justify-content-between">
                   <p className="mb-2">Final price:</p>
-                  <p className="mb-2 fw-bold">{<FormatPrice price={isNaN(totalPrice)? 0 :totalPrice } />}</p>
+                  <p className="mb-2 fw-bold">{<FormatPrice price={isNaN(totalPrice)? 0 :totalPrice+ tax} />}</p>
                 </div>
 
                 <div className="mt-3">
                   {cartItems?.length !== 0 ? (
                     <NavLink to="/delivery" style={{ color: 'black' }}>
-                      <span className="btn w-100 mb-2" onClick={handlePurchase}>
+                      <span className="btn mb-2" onClick={handlePurchase}>
                         Proceed To Checkout
                       </span>
                     </NavLink>
                   ) : (
                     <NavLink to="/cart" style={{ color: 'black' }}>
-                      <span className="btn w-100 mb-2" onClick={handlePurchase}>
+                      <span className="btn mb-2" onClick={handlePurchase}>
                         Proceed To Checkout
                       </span>
                     </NavLink>
                   )}
-                  <NavLink to="/home" className="btn btn-light w-100 border mt-2">
+                  <NavLink to="/home" className="btn btn-light">
                     Back to shop
                   </NavLink>
                 </div>

@@ -22,7 +22,7 @@ const MallMenuOtherProducts = ({heading}) => {
         <Search mallproductData={mallproductData} setItems={setItems} ></Search>
         </div>
 
-        <div className="gridDiv" style={{marginLeft:"20px" , display:"grid" , gridTemplateColumns:"repeat(5,1fr)"}}>
+        <div className="gridDiv">
                     {!items?
                       mallproductData.slice(page*5-5,page*5).map((val) => {
                         const { id, name, image, category, price, _id, rating } = val;

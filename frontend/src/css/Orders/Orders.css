@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Assistant');
 .title2{
-    margin: 50px 0 0 80px;
+    margin: 50px 0 0 40px;
     text-decoration: underline;
 }
 
@@ -61,9 +61,16 @@ thead {
 .ctn3 {
   border: 1px solid black ;
   height: 80vh;
-  margin: 0 140px;
+  margin: 0 40px;
 }
 
 th,tr,table{
   overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+  .table{
+    overflow-x: auto;
+    width: 80vw;
+  }
 }

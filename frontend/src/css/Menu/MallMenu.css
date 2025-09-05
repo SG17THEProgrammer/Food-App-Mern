@@ -9,6 +9,7 @@
 .lftdiv{
     display: grid;
     grid-template-columns: 1fr 1fr ;
+    margin-left: 50px;
 }
 
 .vertical{
@@ -37,7 +38,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    border: 1px solid red ;
+    /* border: 1px solid red ; */
     height: 100px;
 }
 .serDiv{
@@ -58,7 +59,7 @@
 .icondiv{
     height: 50px;
     width: 50px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     border-radius: 50%;
     background-color: bisque;
 }
@@ -79,3 +80,17 @@
     top: 2px;
     position: relative;
 }
+
+
+@media (max-width: 1200px) {
+    .outer{
+        border: 1px solid red;
+        width: 130vw;
+    }
+    /* .head{
+        width: 125vw;
+    } */
+    
+}
+@media (max-width: 768px) {}
+@media (max-width: 480px) {}

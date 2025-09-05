@@ -17,7 +17,8 @@ margin-right: 15px;
 -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1)
 }
 .comment-box {
-padding: 5px
+padding: 5px;
+margin-top: 80px;
 }
 .comment-area textarea {
 resize: none;
