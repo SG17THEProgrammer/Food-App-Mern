@@ -162,12 +162,12 @@ const About = () => {
                                                 </NavLink> : ""} */}
                                                 <i className="fa-solid fa-pen-to-square fa-xl" title='Edit Account Details' style={{ marginTop: "10px" }} onClick={handleEditClick}></i>                                            <h6 className="m-b-20 p-b-5 b-b-default f-w-600" style={{ fontSize: "35px", color: "#FFF3CF" }}>Your Profile{update? <h5 style={{marginTop:"5px"}}>(Edit Your profile)</h5>:""}</h6>
                                                 <div className="row">
-                                                    <div className="col-sm-6">
-                                                        <p className="m-b-10 f-w-600" style={{ fontSize: "25px", color: "#FFE4C9" }}>Email</p>
-                                                        <input className="text-muted f-w-400 inp1" value={about.email} name='email' onChange={handleInput} readOnly={isReadOnly}></input>
+                                                    <div className="col-sm-6" style={{marginRight:"40px"}}>
+                                                        <p className="f-w-600" style={{ fontSize: "25px", color: "#FFE4C9" }}>Email</p>
+                                                        <input style={{marginBottom:"20px"}} className="text-muted f-w-400 inp1" value={about.email} name='email' onChange={handleInput} readOnly={isReadOnly}></input>
                                                     </div>
                                                     <div className="col-sm-6">
-                                                        <p className="m-b-10 f-w-600" style={{ fontSize: "25px", color: "#FFE4C9" }}>Phone</p>
+                                                        <p className="f-w-600" style={{ fontSize: "25px", color: "#FFE4C9" }}>Phone</p>
                                                         <input className="text-muted f-w-400 inp1" value={about.phone} name='phone' onChange={handleInput} readOnly={isReadOnly}></input>
                                                     </div>
 

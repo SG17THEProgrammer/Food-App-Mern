@@ -142,6 +142,7 @@ const totalAmount = finalPrice+shippingCharges;
 
 
   const handlePayment = async () => {
+    console.log("chala hai");
     const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
     const customerInfo = {
@@ -178,17 +179,17 @@ const totalAmount = finalPrice+shippingCharges;
         setTimeout(async()=>{
 
           const result = await stripe.redirectToCheckout({ sessionId: data.id });
-          //console.log('Stripe redirect result:', result);
+          console.log('Stripe redirect result:', result);
         },1000 )
 
         if (result.error) {
-            //console.error('Stripe redirect error:', result.error);
+            console.error('Stripe redirect error:', result.error);
         }
     } catch (error) {
-        //console.error('Error during payment handling:', error);
+        console.error('Error during payment handling:', error);
     }
 };
-
+console.log(title==undefined);
     const handleSubmit=async(e)=>{
       e.preventDefault()
       try {
@@ -200,8 +201,9 @@ const totalAmount = finalPrice+shippingCharges;
           body: JSON.stringify({userId:user._id,delDetails})
         });
         const resData = await response.json();
-			//console.log("response data : ", response);
-			//console.log(resData);
+			console.log("response data : ", response);
+			console.log(resData);
+console.log(response.ok);
       if(response.ok){
         setDelDetails({
           name: user.name,
@@ -213,10 +215,12 @@ const totalAmount = finalPrice+shippingCharges;
           state:""
         });
 
-        setShowComponent(false)
+        // setShowComponent(false)
         getDeliveryAddress()
 
-        {title=="address"? "":handlePayment()}
+        console.log(title);
+
+        {title===undefined? handlePayment():""}
         {title=="address"?toast.success(resData.message[0]):""}
       }
       else{
@@ -264,7 +268,7 @@ const totalAmount = finalPrice+shippingCharges;
     useEffect(()=>{
       getDeliveryAddress()
       fetchDelMan()
-  },[title])
+  },[])
     
 
   return (
@@ -272,7 +276,7 @@ const totalAmount = finalPrice+shippingCharges;
     <div style={{zIndex:"1000"}}><Navbar></Navbar></div>
   {title=="address"?"": <div className='add'> <NavLink to='/address' style={{textDecoration:"none",color:"black"}}><Address title={'del'} ></Address></NavLink></div>}
           <div className="centered-container">
-        <div className={title=="address"? "row ": "row container"} style={{backgroundColor:title=="address"?"#ddd0c8" :"brown" , width:"80vw" , height:"fit-content" , marginBottom:"100px" ,marginTop:title=="address"?"20px":"100px"}}>
+        <div className={title=="address"? "row ": "row container"} style={{backgroundColor:title=="address"?"#ddd0c8" :"brown" , width:"80vw" , height:"fit-content" , marginLeft:"100px", marginBottom:"100px" ,marginTop:title=="address"?"20px":"100px"}}>
             <div className={title=="address"?"col-md-8 mb-4 popup-background  popup-content":"col-md-8 mb-4"} style={{zIndex:""}}  >
                 <div className="card mb-4 ">
                     {title=="address" ? "":<div className="card-header py-3 ">

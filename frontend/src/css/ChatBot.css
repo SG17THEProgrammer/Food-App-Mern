@@ -28,7 +28,7 @@
   }
 
 .floatDiv{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     z-index: 1000;
     position: fixed;
     left: 57px;

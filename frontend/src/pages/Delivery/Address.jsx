@@ -68,7 +68,7 @@ const Address = ({title}) => {
 
     useEffect(()=>{
         getDeliveryAddress()
-    },[showComponent,delAddress])
+    },[showComponent])
 
   return (
     <div>
@@ -78,7 +78,7 @@ const Address = ({title}) => {
             </div>
             {showComponent && <Delivery title={"address"} setShowComponent={setShowComponent}/>}
             
-    { title===undefined ?       <div className="ctn2">
+    { title==undefined ?       <div className="ctn2">
             {delAddress?.length>0 ? delAddress.map((elem,idx)=>{
                 const {address,city,state,pincode,_id} = elem
                 return <div className="card4" key={idx} >

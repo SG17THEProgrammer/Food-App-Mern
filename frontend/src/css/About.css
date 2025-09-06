@@ -1,5 +1,5 @@
 .user-card-full {
-    overflow: hidden;
+    width: 120vw;
     margin: 0 10px; /* Add some margin for smaller screens */
 }
 
@@ -8,11 +8,8 @@
     height: 40px;
     color: #E1AA74;
     background-color: #FFE7C1;
-    width: 280px;
     border: none;
     border-radius: 20px;
-    padding-left: 10px;
-    margin-left: -10px;
 }
 
 .card2 {
@@ -25,7 +22,7 @@
 }
 
 .m-r-0 {
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 .m-l-0 {
@@ -34,6 +31,8 @@
 
 .user-card-full .user-profile {
     border-radius: 5px 0 0 5px;
+    width: 40vw;
+    /* border: 10px solid red; */
 }
 
 .bg-c-lite-green {
@@ -43,6 +42,7 @@
 .innerDiv {
     overflow: hidden;
     padding: 10px; /* Add padding for better spacing on mobile */
+    width: 90vw;
 }
 
 .user-profile {
@@ -50,8 +50,9 @@
 }
 
 .card-block {
-    height: auto; /* Use auto height for responsive */
     padding: 1.25rem;
+    /* border: 21px solid red; */
+    width: 40vw;
 }
 
 .m-b-25 {
@@ -107,7 +108,6 @@ h6 {
     display: inline-block;
 }
 .outerDiv1{
-    /* border: 1px solid red; */
     margin: 95px 40px;
     display: flex;
     justify-content: center;
@@ -120,6 +120,7 @@ h6 {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+
 
 .label1 {
     position: absolute;
@@ -189,7 +190,7 @@ h6 {
     }
 
     .inp1 {
-        width: 100%; /* Full width input for smaller screens */
+        width: 120%; /* Full width input for smaller screens */
         font-size: 16px; /* Smaller font size for smaller screens */
         margin-left: 0; /* Reset margin */
     }

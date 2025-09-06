@@ -37,15 +37,17 @@
 } */
 
 .rating1{
-    position: absolute;
     display: flex;
+    align-items: center;
     justify-content: center;
-    top: 57%;
-    left: 65%;
+    width: 10vw;
     font-size: 20px;
-    /* border: 1px solid red; */
-    height: 20px;
-
+}
+.priceRat{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom: 5px;
 }
 .catRat{
     display: flex;
@@ -106,18 +108,25 @@
         grid-template-columns: repeat(3,1fr);
         grid-template-rows: auto;
         padding: 5px;
-        width: 150vw;
+        width: 160vw;
         margin-left: 20px;
         justify-items: center;
         /* border: 1px solid red; */
     }
     .left h1{
-    width: 150vw;
+        margin-left: 60px;
+    width: 140vw;
     /* border: 1px solid red; */
 }
     .left h5{
-    width: 150vw;
+                margin-left: 60px;
+
+    width: 140vw;
     /* border: 1px solid red; */
+}
+
+.slide{
+    margin-left: 60px;
 }
 
 }

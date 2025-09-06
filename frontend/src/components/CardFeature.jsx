@@ -50,18 +50,26 @@ const {user,saveCartItemsToLS,isLoggedIn} = useAuth()
               {name}
             </h1>
             <h4  style={{paddingLeft:"10px",color:"#BF3131"}}>{category}</h4>
+            <div className='priceRat'>
+
             <h5>
               <span  style={{paddingLeft:"10px"}}></span>
               <span><FormatPrice price={price}></FormatPrice></span>
             </h5>
             {/* <h5 style={{position:"absolute" , left:"130px" , bottom:"0.1px" }}> <i className="fa-solid fa-star fa-xs" style={{margin:"6px 30px 0 0" ,color: "#BF3131"}}></i>
 {rating}</h5> */}
-<div className='rating1' style={{marginTop:"10px"}}>
-                              <FaStar style={{fontSize:"15px",marginRight:"2px" , color:"#BF3131"}}/>
-                            <p style={{marginTop:"-2px"}}>
-                              {rating}</p>
+<div className='rating1'>
+                              <div>
+
+                              <FaStar style={{fontSize:"15px", color:"#BF3131"}}/>
+                              </div>
+                            <div>
+                              {rating}</div>
                               {/* <i className="fa-solid fa-star fa-xs"></i> */}
                           </div>
+
+            </div>
+
           </div>
           </NavLink>
           <div style={{display:"flex"}}>

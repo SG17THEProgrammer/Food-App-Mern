@@ -82,7 +82,7 @@ const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
                 </div>
                 <form onSubmit={handleSubmit}>
                 <div className="col-10">
-                    <div className="comment-box ml-2">
+                    <div className="comment-box">
                         <h4>Add a comment</h4>
                         <div className="rating">
                             <input

@@ -184,10 +184,10 @@ width: 100vw;
 
 @media (max-width: 768px) {
   .mainDiv {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       margin: 15px 25px 0 50px;
       /* border: 1px solid red; */
-      width: 140vw;
+      width: 150vw;
       justify-items: center;
   }
   .heading {

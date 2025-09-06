@@ -69,7 +69,7 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 1200px) {}
 @media (max-width: 768px) {
-  .border , .card{
+  .border{
     /* border: 1px solid red; */
     min-width:150vw;
     /* margin-left: 200px; */
@@ -89,14 +89,8 @@ input::-webkit-inner-spin-button {
     /* border: 1px solid black; */
         width: 150vw;
   }
-  .row{
-    /* border: 1px solid red; */
-    width: 160vw;
-  }
-  .btn{
-    /* border: 1px solid red; */
-    width: 30vw;
-  }
+  
+
  
   
 }

@@ -83,3 +83,11 @@ border-color: #95D2B3;
     opacity: 0.4;
   }
   
+  @media (max-width: 1200px) {}
+  @media (max-width: 768px) {
+    .comment-box{
+      width: 30vw;
+      margin-left: 500px;
+    }
+  }
+  @media (max-width: 480px) {}

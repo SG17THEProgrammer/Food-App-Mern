@@ -51,15 +51,15 @@ useEffect(() => {
             { myReview && myReview.length===0? (
                     <p style={{fontWeight:"900",marginLeft:"5px",fontFamily:"cursive"}}>No reviews found </p>
                 ) : (
-                    myReview && myReview.map(myReview => (<>
+                    myReview && myReview.map(myReview => (
                         <div key={myReview._id} className='review'>
                         <IoTrashBin className='icn' title='Delete Comment' onClick={()=>deleteReview(myReview._id)}/>
                             <p style={{marginBottom:"4px"}}> <b>Rating: {myReview.rating}</b> <FaStar style={{marginTop:"-1px",fontSize:"13px" ,color:"#EF9C66"}} /></p>
                             <p> <b>Comment: </b> {myReview.comment} </p>
                             
                         </div>
-                        
-                        </>
+                
+                
                     ))
                 )}
 

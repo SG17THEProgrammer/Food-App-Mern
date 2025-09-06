@@ -40,16 +40,18 @@
     justify-content: flex-start;
     /* border: 1px solid red ; */
     height: 100px;
+    margin-bottom: 60px;
 }
 .serDiv{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     margin-right: 10px;
     /* border: 1px solid red ; */
     width: 160px;
-
+    text-align: center;
+    height: 15vw;
 }
 .icon{
     top: 20px;
@@ -84,7 +86,7 @@
 
 @media (max-width: 1200px) {
     .outer{
-        border: 1px solid red;
+        /* border: 1px solid red; */
         width: 130vw;
     }
     /* .head{
