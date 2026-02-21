@@ -57,7 +57,7 @@ const Card = ({ id, image, name, price, category, rating }) => {
     return (
         <>
 
-            <div className="card mb-5" key={id} style={{height: "fit-content", boxShadow: '10px 10px 8px #888888', backgroundColor: "#FFF7D4", borderRadius: "4px"}}>
+            <div className="card mb-5" key={id} style={{boxShadow: '10px 10px 8px #888888', backgroundColor: "#FFF7D4", borderRadius: "4px"}}>
                 <div className="row">
 
                     <div className="col-md-12 ctn">

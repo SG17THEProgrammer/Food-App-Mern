@@ -17,6 +17,10 @@ margin-right: 15px;
 -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1)
 }
 .comment-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
 padding: 5px;
 margin-top: 80px;
 }
@@ -35,7 +39,8 @@ box-shadow: 0 0 0 1px rgb(255, 0, 0) !important
 color: #fff;
 background-color:green;
 border-color: green;
-padding-right: 5px;
+/* padding-right: 5px; */
+
 }
 
 .send:hover {
@@ -85,9 +90,11 @@ border-color: #95D2B3;
   
   @media (max-width: 1200px) {}
   @media (max-width: 768px) {
+
     .comment-box{
       width: 30vw;
-      margin-left: 500px;
     }
   }
-  @media (max-width: 480px) {}
+  @media (max-width: 480px) {
+   
+  }

@@ -2,9 +2,15 @@
     border: 1px solid #643843;
     margin: 60px 35px 0 35px ;
     /* width: 100vw; */
-    width: 95vw;
+    width: 96%;
     
 
+}
+
+.imgDiv .img{
+    height: 150px;
+    width: 200px;
+    object-fit: cover;
 }
 
 .buttonDiv{
@@ -46,26 +52,26 @@
 .slider{
     display: flex;
     justify-content: flex-start;
-    width: 100%;
     overflow: scroll;
     height:fit-content;
     /* border: 1px solid #643843; */
-
-
-   
+    
+    
+    
 }
 .slider::-webkit-scrollbar {
     display: none;
   }
 
-.sliderCards{
+  .sliderCards{
+    /* width: 300px; */
     /* height: 330px; */
-    border: 1px solid #643843;
+    /* border: 1px solid #643843; */
     /* display: flex;
     flex-direction: column;
     justify-content: center; */
     align-items: center;
-    width: 300px;
+    /* width: 300px; */
     height: fit-content;
     margin-right:12px ;
     margin-top: 10px;
@@ -103,7 +109,7 @@
     .maindiv{
     border: 1px solid #643843;
     margin: 60px 35px 0 35px ;
-    width: 140vw;
+    width: 142vw;
 
 }
 
@@ -112,18 +118,34 @@
 @media (max-width: 768px) {
     .maindiv{
     border: 1px solid #643843;
-    margin: 60px 35px 0 35px ;
-    width: 150vw;
+    /* margin: 60px 35px 0 35px ; */
+    width: 154vw;
 }
 
 }
 
 @media (max-width: 480px) {
-    .maindiv{
-        border: 1px solid #643843;
-    margin: 60px 35px 0 35px ;
-    width: 210vw;
-    
+ .maindiv{
+    width: 265%;
+ }
+
 }
+@media (max-width: 320px) {
+ .maindiv{
+    width: 350%;
+ }
+ .head{
+    width: 360vw;
+ }
+ .outerCat{
+    width: 360vw;
+ }
+ .mainDiv{
+    width: 360vw;
+ }
+ .pagination{
+    width: 100vw;
+    margin-left: 150%;
+ }
 
 }

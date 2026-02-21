@@ -62,7 +62,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg  w-100" style={{ borderBottom: "1px solid #F3D7CA", backgroundColor: "#DDD0C8", zIndex: "99", position: "fixed", top: "0", height: "70px" }}>
+            <nav className="navbar navbar-expand-lg  w-100" style={{ borderBottom: "1px solid #F3D7CA", zIndex: "99", position: "fixed", top: "0", height: "70px" }}>
                 <div className="container-fluid">
                     <NavLink className="navbar-brand ml-4 pb-2" to='/' ><h5 style={{ height: "15px" }}>Swad-E Hindustan</h5></NavLink>
 
@@ -70,9 +70,9 @@ const Navbar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className={`collapse navbar-collapse ${toggleButton ? "show" : ""} `} id="navbarSupportedContent" style={{ backgroundColor: "#DDD0C8", opacity: "0.9" }}>
+                    <div className={`collapse navbar-collapse ${toggleButton ? "show" : ""} `} id="navbarSupportedContent" >
 
-                        <ul className="navbar-nav ml-auto">
+                        <ul className="navbar-nav">
                             <li className="nav-item active">
                                 <NavLink className="nav-link ml-2" to='/' >Home <span className="sr-only"></span></NavLink>
                             </li>

@@ -48,9 +48,9 @@ const {isLoggedIn} = useAuth()
 
   return (
     <>
-     {productDisplay? <><Review productId={productDisplay._id} userName={user.name}></Review>
+     {productDisplay? <>
+     {/* <Review productId={productDisplay._id} userName={user.name}></Review> */}
       <Navbar></Navbar>
-      <div className='upperDiv'>
         <div className="ctnr">
           <div className="crd">
             <div className="crd-image">
@@ -75,7 +75,6 @@ const {isLoggedIn} = useAuth()
           </div>
 
         </div>
-      </div>
 
       <Gallery heading={"Related Products"} ></Gallery>
       <Footer></Footer>

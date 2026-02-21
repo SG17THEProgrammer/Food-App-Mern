@@ -132,12 +132,12 @@ const productDisplay = mallproductData.filter((elem) => elem._id === id)[0];
                                 {/* <div className="col-6">
                                     <div className="pull-left"> <button className="btn btn-success btn-sm">Cancel</button> </div>
                                 </div> */}
-                               {title=="Menu"?<div className="col-6" style={{marginLeft:"0px"}} >
-                                    <div className="pull-right" > <button className="send btn-sm" style={{width:"70px",marginRight:"20px",paddingRight:"20px"}}>Post <i className="fa fa-long-arrow-right mr-4 "></i></button> </div>
+                               {title=="Menu"?<div className="" >
+                                    <div className="pull-right" > <button className="send btn-sm" >Post </button> </div>
                                 </div>
                                 
-                                : <div className="col-6" style={{marginLeft:"-10px"}} >
-                                    <div className="pull-right"> <button className="send btn-sm">Post <i className="fa fa-long-arrow-right ml-1 pr-2"></i></button> </div>
+                                : <div className="" >
+                                    <div className="pull-right"> <button className="send btn-sm">Post</button> </div>
                                 </div>
                                 }
                             </div>

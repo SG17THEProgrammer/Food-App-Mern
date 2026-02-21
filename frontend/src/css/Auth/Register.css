@@ -1,24 +1,242 @@
-.label{
-    height:20px;
-     width:40px;
-    position:absolute;
-    margin-top:-14px ;
-     font-size:7px ;
-    right:3px ;
-    border-radius:50%;
+/* ========== Base Responsive Improvements ========== */
+
+.container {
+  max-width: 1100px;
+  width: 95%;
+  margin: 110px auto 0 auto;
+  min-height: 490px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
-.pic{
-    margin-top:-45px ;
-    right:0px;
-    position:absolute;
+
+.cover {
+  width: 50%;
+  height: 100%;
+  position: relative;
 }
-.inp{
-    /* background-color:#B19470; */
-    height:20px;
-     width:40px;
-    margin-top:-20px; 
-     font-size:9px ;
-     right:9px; 
-    border-radius:50% ;
-    visibility:hidden;
+
+.cover .front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
+.forms {
+  width: 50%;
+  background: #fff;
+  padding: 40px 30px;
+  box-sizing: border-box;
+}
+
+.form-content {
+  width: 100%;
+}
+
+/* Profile image section */
+.pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.label {
+  /* position: absolute; */
+  /* bottom: -5px;
+  right: 30%; */
+  font-size: 10px;
+  background-color: #B19470;
+  padding: 3px 6px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.inp {
+  display: none;
+}
+
+/* Input boxes */
+.input-box {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  /* border-bottom: 1px solid #ccc; */
+  padding: 5px 0;
+}
+
+.input-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 14px;
+  background: transparent;
+}
+
+.button input {
+  width: 100%;
+  padding: 10px;
+  background-color: #B19470;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+/* .button input:hover {
+  background-color: #9a7a55;
+} */
+
+/* ================== MEDIA QUERIES ================== */
+
+/* ---------- Large Screens (1200px+) ---------- */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* ---------- Laptops ---------- */
+@media (max-width: 1199px) {
+  .container {
+    width: 95%;
+  }
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width: 991px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .cover {
+    width: 100%;
+    height: 250px;
+  }
+
+  .forms {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .cover .text {
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+/* ---------- Mobile Devices ---------- */
+@media (max-width: 768px) {
+  .container {
+    margin-top: 80px;
+  }
+
+  .forms {
+    padding: 20px 15px;
+  }
+
+  .title {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .input-box input {
+    font-size: 13px;
+  }
+
+  .button input {
+    padding: 8px;
+  }
+
+  .cover {
+    height: 200px;
+  }
+  .pic{
+    margin-top: 20px;
+  }
+}
+
+/* ---------- Small Phones ---------- */
+@media (max-width: 480px) {
+
+  .container {
+    margin-top: 60px !important;
+    height: auto !important;   /* REMOVE FIXED HEIGHT */
+    display: block !important;
+  }
+
+  .cover {
+    display: none !important; /* Hide image section */
+  }
+
+  .forms {
+    width: 100% !important;
+    padding: 20px 15px !important;
+  }
+
+  .form-content {
+    width: 100%;
+  }
+
+  .signup-form {
+    width: 100%;
+  }
+
+ .pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  margin-top: 20px;
+}
+
+  .input-box {
+    width: 100%;
+  }
+
+  .input-box input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .button input {
+    width: 100%;
+  }
+  
+}
+
+
+@media (max-width: 768px) {
+
+  .container {
+    display: block !important;
+    height: auto !important;
+    margin-top: 80px !important;
+  }
+
+  /* .cover {
+    display: none !important;
+  } */
+
+  .forms {
+    width: 100% !important;
+    padding: 20px !important;
+  }
+
+  .form-content {
+    width: 100%;
+  }
+
+  .signup-form {
+    width: 100%;
+  }
+
+}
+

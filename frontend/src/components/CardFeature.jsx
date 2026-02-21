@@ -43,7 +43,7 @@ const {user,saveCartItemsToLS,isLoggedIn} = useAuth()
             onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}
           >
             <div className="imgDiv">
-              <img src={image}  style={{height:"147px" , width:"198px" , marginLeft:"2.9px" }} className='img'/>
+              <img src={image} className='img'/>
             </div>
             <div className='content'>
             <h1 className="name">

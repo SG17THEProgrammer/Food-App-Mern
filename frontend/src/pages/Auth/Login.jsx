@@ -119,9 +119,9 @@ const Login = () => {
                   </div>
                   <div className="input-box">
                     {showPassword ? <>
-                      <i className="fa-solid fa-eye" style={{ marginRight: "25px" }} title='Show Password' onClick={handleshowPassword}></i>
+                      <i className="fa-solid fa-eye" title='Show Password' onClick={handleshowPassword} style={{marginRight:"25px"}}></i>
                     </> : <>
-                      <i className="fa-solid fa-eye-slash" style={{ marginRight: "25px" }} title='Show Password' onClick={handleshowPassword}></i>
+                      <i className="fa-solid fa-eye-slash" title='Show Password' onClick={handleshowPassword} style={{marginRight:"25px"}}></i>
 
                     </>}
 
@@ -130,13 +130,13 @@ const Login = () => {
 
 
                   </div>
-                  <div className="text" ><NavLink to='/forgotpassword' style={{ color: "#B19470" }}>
+                  <div className="text" ><NavLink to='/forgotpassword' style={{color:"#B19470"}}>
                     Forgot password?
                   </NavLink></div>
                   <div className="button input-box">
                     <input type="submit" value="Login" />
                   </div>
-                  <div className="text sign-up-text">Don't have an account? <label htmlFor="flip"><NavLink to="/register" style={{ color: "#B19470" }} >Sigup now</NavLink></label></div>
+                  <div className="text sign-up-text">Don't have an account? <label htmlFor="flip"><NavLink to="/register"   style={{"color" : "#B19470"}}>Sigup now</NavLink></label></div>
                 </div>
               </form>
             </div>

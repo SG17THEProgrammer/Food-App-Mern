@@ -111,7 +111,7 @@ const Register = () => {
   return (
 <>
 {!isLoggedIn?<><Navbar></Navbar>
-<div className="container" style={{marginTop:"110px" ,height:"490px"}}>
+<div className="container" style={{marginTop:"110px"}}>
         <div className="cover">
           <div className="front">
             <img src="images/bg-registration-form-3.jpg" alt="error" />

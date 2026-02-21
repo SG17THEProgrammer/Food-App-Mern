@@ -132,12 +132,12 @@ const Contact = () => {
 		<>
 			{/* {isLoading ? <Loader></Loader> : ""} */}
 			{isLoggedIn ? <><Navbar></Navbar>
-				<div className='otrDiv'>
 					<div className="ctn1">
 						<img src="images/contact image.jpg" alt="error" className='img5' />
 
 						<form className='form' onSubmit={handleSubmit}>
-							<h1 className="title text-center mb-4">Talk to Us<Discuss
+							<h1 className="title text-center mb-4">Talk to Us
+							{/* <Discuss
 								visible={true}
 								height="80"
 								width="80"
@@ -147,7 +147,9 @@ const Contact = () => {
 								color="#fff"
 								colors={['white', 'red']}
 								backgroundColor="#F4442E"
-							/></h1>
+							/> */}
+								
+							</h1>
 
 							<div className="form-group position-relative">
 								<label htmlFor="formName" className="d-block">
@@ -176,7 +178,6 @@ const Contact = () => {
 						</form>
 
 					</div>
-				</div>
 
 				<div className='mapDiv'>
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3539.826251336639!2d77.64943747470733!3d27.474668076316725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397373bfee84fa59%3A0x4ef32952d15bb3f9!2sPushpanjali%20upvan%20extension!5e0!3m2!1sen!2sin!4v1708171013715!5m2!1sen!2sin" width="600" height="450" allowFullScreen="" loading="lazy" classnamereferrerpolicy="no-referrer-when-downgrade" className='map'></iframe>

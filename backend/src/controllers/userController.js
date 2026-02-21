@@ -127,7 +127,7 @@ const login = async (req, res) => {
         }
 
     } catch (error) {
-        // res.status(404).send(error)
+        res.status(404).send(error)
         res.status(404).json({ message: "Server prblm" })
 
 

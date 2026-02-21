@@ -101,7 +101,7 @@ const Home = () => {
           }
         </div>
       </div>
-      <Slider></Slider>
+      <Slider></Slider> 
       <Gallery heading={"All products"}></Gallery>
       {/* <Menu></Menu> */}
       <Footer></Footer>

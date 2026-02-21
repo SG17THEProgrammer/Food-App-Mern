@@ -205,12 +205,12 @@
 
 @media (max-width: 480px) {
     .mainDiv {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        /* display: grid;
+        grid-template-columns: repeat(2, 1fr); */
         /* border: 1px solid red; */
-        justify-items: center;
-        width: 150vw;
-        margin-left: 150px;
+        /* justify-items: center; */
+        /* width: 100%; */
+        /* margin-left: 150px; */
     }
     .card {
         width: 65vw;
